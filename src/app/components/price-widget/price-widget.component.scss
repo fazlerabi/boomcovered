@@ -1,0 +1,70 @@
+@import '../../../assets/styles/variables';
+.modal-btns {
+  width: 100%;
+  height: 180px !important;
+  background-color: #edecec !important;
+  color: #000 !important;
+  .img-wrapper {
+    img {
+      width: 100px;
+    }
+    .universal-img {
+      width: 140px;
+    }
+    .liberty-mutual {
+      width: 140px !important;
+      margin-bottom: 16px;
+    }
+  }
+  .icon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  .bindnow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      color: #4caf50;
+    }
+    p {
+      color: #000;
+      text-decoration: underline #4caf50;
+    }
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .modal-btns{
+    height: 180px !important;
+
+    .img-wrapper {
+      .liberty-mutual {
+        width: 120px !important;
+      }
+    }
+    .price-num-container {
+      h3 {
+        font-size: 1.5rem !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .modal-btns {
+    .price-num-container {
+      h3 {
+        font-size: 1.2rem !important;
+      }
+    }
+  }
+}

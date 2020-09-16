@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 inputContainer">
+      <h4 class="text-center font-weight-bold pb-4 h4-responsive font-italic">When do you need your policy to begin?</h4>
+      <div class="form-row">
+        <input type="date" class="form-control col-md-4 offset-md-4 col-8 offset-2" [(ngModel)]="start_date"/>
+      </div>
+      <div class="form-group mt-5 col-md-4 offset-md-4 col-8 offset-2">
+        <button
+          class="btn btn-block btn-white text-center font-weight-bold font-italic shadow-none m-0"
+          type="button" (click)="next()">next
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2 col-md-3 col-12">
+      <div class="row">
+        <div class="col-6 col-md-12">
+          <app-price-sort (sort)="sortPrices($event)"></app-price-sort>
+        </div>
+        <div class="col-6 col-md-12">
+          <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">We're not around but we still want to hear from you!
+                    Leave us
+                    a note:</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                    <i class="fas fa-user prefix grey-text"></i>
+                    <input type="text" id="form34" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="form34">Your name</label>
+                  </div>
+
+                  <div class="md-form mb-5">
+                    <i class="fas fa-envelope prefix grey-text"></i>
+                    <input type="email" id="form29" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="form29">Your email</label>
+                  </div>
+
+                  <div class="md-form mb-5">
+                    <i class="fas fa-tag prefix grey-text"></i>
+                    <input type="text" id="form32" class="form-control validate">
+                    <label data-error="wrong" data-success="right" for="form32">Subject</label>
+                  </div>
+
+                  <div class="md-form">
+                    <i class="fas fa-pencil prefix grey-text"></i>
+                    <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+                    <label data-error="wrong" data-success="right" for="form8">Your message</label>
+                  </div>
+
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button class="btn btn-unique send-btn">Send <i class="fas fa-paper-plane-o ml-1"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn mb-4 mt-2 pl-0 pr-0 mx-auto chat-btn font-weight-bold text-capitalize"
+                  (click)="goForChat()"><span>Talk <span
+            class="text-lowercase">to an</span> Expert
+      </span><i class="far fa-comment-dots fa-2x mt-2"></i></button>
+        </div>
+        <div class="col-6 col-md-12">
+          <app-price-filter (filter)="doFilter($event)"></app-price-filter>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 col-md-9 col-12">
+      <div class="row">
+        <app-price-widget *ngFor="let insurance of filteredInsurances" [className]="priceWidgetCommonClass" [price]="insurance.price"
+                          [imgURL]="insuranceImgs[insurance.type]"
+                          (openModal)="setModalData(insurance)"
+        ></app-price-widget>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showNationWide"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showMetlife"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showTravellers"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="universalLoader"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="plymouthLoader"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="libertyLoader"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="progressiveLoader"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="stillwaterLoader"></app-price-loader>
+        <app-price-loader [className]="priceLoaderCommonClass" *ngIf="hippoLoader"></app-price-loader>
+        <div class="col-md-12 mt-5 mb-5 form-row" *ngIf="filteredInsurances.length==0 && allDataLoaded()">
+          <h1 class="mx-auto font-weight-bold ">No data exist.</h1>
+        </div>
+      </div>
+      <div class="row">
+        <!--Price details modal-->
+        <app-price-details-modal [showModal]="showModal" (bindNow)="bindNow()" (showChatWidget)="showChatWidget($event)"
+                                 [modalData]="modalData"></app-price-details-modal>
+        <div class="col-md-8 offset-md-2 col-12 chatWidget animated fadeIn"
+             *ngIf="showChat && !commonService.isMobileMode()">
+          <div class="form-row">
+            <img [src]="insuranceImgs[chatType]" class="mx-auto price-image"/>
+          </div>
+          <div class="chat-container" style="margin-bottom: 50px">
+            <div class="form-row">
+              <h2 class="text-black pt-3 font-weight-bold mx-auto text-center">{{chatPricing|currency:'USD':'symbol':'1.0-0'}}</h2>
+            </div>
+            <div class="form-row loader" style="margin-top: 100px;">
+              <div class="sbl-circ-path mx-auto"></div>
+            </div>
+            <div id="olark-box-container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--    <div class="col-md-3 col-12">-->
+<!--      <div class="drag-compare p-5">-->
+<!--        <p class="font-weight-bold text-center">Drag And Drop to Compare</p>-->
+<!--        <i class="fas fa-plus fa-5x text-center"></i>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+</div>

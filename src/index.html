@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" style="height: 100%;" ng-app="swipe.example" ng-controller="swipeCtrl">
+<head>
+  <meta charset="utf-8">
+  <title>Boomcovered</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="./assets/images/logo/logo-white.svg"/>
+  <link
+    href="https://fonts.googleapis.com/css?family=Exo|Open+Sans|Lobster|Dosis|Nunito|Righteous|Comfortaa:700|Poppins"
+    rel="stylesheet" type="text/css">
+  <link
+    href="https://fonts.googleapis.com/css?family=Montserrat:400,700i,800i,900,900iAnton|Yanone+Kaffeesatz&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>-->
+  <!--<script src="https://cdn.rawgit.com/hammerjs/touchemulator/master/touch-emulator.js"></script>-->
+
+  <script src="/assets/javascripts/storage.js"></script>
+  <style type="text/css">
+    body {
+      font-family: Roboto !important;
+    }
+
+    @media screen and (max-width: 768px) {
+
+      .lds-roller {
+        left: 40% !important;
+      }
+    }
+  </style>
+  <script>
+    window.devMode = location.href.indexOf("192.168.0.150") > -1;
+  </script>
+</head>
+<body>
+<app-root></app-root>
+</body>
+</html>
+<!---->

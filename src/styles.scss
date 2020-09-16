@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/variables';
+
+html {
+  position: relative;
+}
+
+html, body {
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  // padding:30px;
+  background: #333;
+  justify-content: center;
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px;
+    font-size: 20px;
+
+    &:hover, &.active {
+      background: white;
+      color: #333;
+    }
+
+  }
+}
+
+[role=document].modal-dialog {
+  top: 70px;
+}
+
+.main {
+  min-height: calc(100vh - 290px);
+}
+
+button {
+  color: #fff !important;
+}
+
+button, input {
+  border-radius: 10px !important;
+}
+
+.badge-warning {
+  border: solid 2px $primary-color !important;
+  color: black !important;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.badge-default {
+  border: solid 2px #C8C8C8 !important;
+  color: #000 !important;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767px) {
+  .form-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+    label {
+      margin-bottom: 1rem !important;
+    }
+  }
+}
+
+
+/*comment*/
+input[type=text], input[type=date], input[type=email], input[type=number] {
+  //height: 40px !important;
+  border-radius: 0px !important;
+  border-top: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  border-bottom-width: 2px !important;
+  background-color: transparent !important;
+  text-indent: 10px !important;
+}
+input[type=text]::placeholder, input[type=date]::placeholder, input[type=email]::placeholder, input[type=number]::placeholder
+{
+
+  font-weight: bold;
+}
+input[type=text].ng-untouched, input[type=date].ng-untouched, input[type=email].ng-untouched, input[type=number].ng-untouched {
+  border-color: gray !important;
+}
+
+input[type=text].ng-touched, input[type=date].ng-touched, input[type=email].ng-touched, input[type=number].ng-touched {
+  border-color: red !important;
+}
+
+.text-danger {
+  color: $primary-color !important;
+}
+
+mdb-badge {
+  border-radius: 10px;
+}
+
+.top-nav-collapse {
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #fff;
+  }
+}
+
+#navbarCollapse > links > ul > li.nav-item.active > a {
+  padding-left: 6px !important;
+}
+
+#navbarCollapse > links > ul > li.nav-item > a {
+  color: #ed1c24;
+  font-weight: bold !important;
+}
+
+//span.navbar-toggler-icon {
+//  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba(255, 255, 255, 1)" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>') !important;
+//}
+
+nav {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}

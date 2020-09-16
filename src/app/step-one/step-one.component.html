@@ -1,0 +1,249 @@
+<div class="container pt-md-2 pt-2 pb-5">
+  <div *ngIf="!isProcessing">
+    <div class="col-md-8 offset-md-2 inputPage">
+      <!-- Material input -->
+      <div class="form-group elemContainer">
+        <app-issuing></app-issuing>
+        <div class="md-form col-md-12 addressDiv mx-auto" *ngIf="!isDisplay">
+          <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()"
+            *ngIf="selectedMode==1" />
+
+          <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)"
+            id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text"
+            *ngIf="GooglePlace==true" placeholder="" #placesRef>
+
+          <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" style="
+                 float: right;
+                 position: absolute;
+                 top: 0;
+                 right: 0;
+             " (click)="handleAddressChangeWithCache()">
+
+          <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460"
+            *ngIf="GooglePlace==false" [(ngModel)]="fullAddressText" />
+
+          <div class="col-md-12 col-sm-12 row pr-0 pl-0 mr-0 ml-0" *ngIf="!GooglePlace">
+            <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pl-0'">
+              <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']">
+            </div>
+            <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':''">
+              <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']">
+            </div>
+            <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pr-0'">
+              <input type="number" class="form-control" placeholder="Year Built" [(ngModel)]="zillowData['built_year']">
+            </div>
+          </div>
+
+          <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0"
+            style="text-decoration: underline !important;"
+            [ngStyle]="commonService.isMobileMode()?{'padding-left':'15px !important'}:''"
+            (click)="GooglePlace=!GooglePlace;loadGooglePlace()">
+            <strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- details section Start-->
+    <div class="col-md-12 detailsContainer mx-auto" *ngIf="isDisplay">
+      <div class="addressTxt-wrapper">
+        <h4 class="font-weight-bold text-center pt-2 addressTxt">
+          {{fullAddressText}}
+          <span class="badge badge-pill green"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
+        </h4>
+      </div>
+    </div>
+    <!-- details section End-->
+
+    <div class="swipeDiv" *ngIf="commonService.isMobileMode() && isDisplay"></div>
+
+    <app-alerts></app-alerts>
+    <div class="swipeDiv pt-3 pb-5" *ngIf="isDisplay">
+      <div class="swipePrediv"></div>
+      <swiper [config]="config" #usefulSwiper>
+        <div class="swiper-wrapper align-middle">
+          <div class="swiper-slide first mx-auto" (click)="goToThreeStep()">
+            <p class="swipe-txt">CONTINUE</p>
+          </div>
+          <div class="swiper-slide last mx-auto">
+            <div class="left-edge">
+              <i class="arrow fas fa-angle-double-right fa-2x"></i>
+            </div>
+            <p class="text-center swipe-txt">Swipe to Quote!</p>
+          </div>
+        </div>
+      </swiper>
+    </div>
+  </div>
+
+  <!-- Sequence Start -->
+  <div *ngIf="isProcessing" class="processingDiv pt-md-2 mx-auto">
+
+    <!-- Sequence details section Start-->
+    <div class="col-md-12 detailsContainer mx-auto" *ngIf="isDisplay">
+      <div class="addressTxt-wrapper">
+        <h4 class="font-weight-bold text-center pt-2 addressTxt">
+          {{fullAddressText}}
+          &nbsp;
+          <span class="badge badge-pill green"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
+        </h4>
+      </div>
+    </div>
+
+    <div class="loading-container">
+      <!-- Shazam like animation Start -->
+      <div class="ripple" style="animation-delay: 0s">
+        <div class="animated processing-pane loadingRow-container">
+          <div class="loading-img-container">
+            <div class="loading-img-wrapper" *ngIf="showGoogleApiLogo">
+              <img src="../../assets/images/google-map-api.png" class="loading-img portrait" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showAwsLogo">
+              <img src="../../assets/images/aws.png" class="loading-img landscape aws-img" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showZillowPane">
+              <img src="../../assets/images/zillow.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showNationwide">
+              <img src="../../assets/images/companies/nationwide%20logo.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showProgressive">
+              <img src="../../assets/images/companies/progressive%20logo.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showMet">
+              <img src="../../assets/images/companies/metlife.jpg" class="loading-img landscape metlife-img" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showTraveler">
+              <img src="../../assets/images/companies/travelers%20logo.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showPlymouth">
+              <img src="../../assets/images/companies/plymouthrock-1.jpeg"
+                class="loading-img landscape plyouthrock-img" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showStateAuto">
+              <img src="../../assets/images/companies/State%20auto.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showUniversal">
+              <img src="../../assets/images/companies/universal%20.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showStillWater">
+              <img src="../../assets/images/companies/stillwater.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="showNeptune">
+              <img src="../../assets/images/companies/neptune.svg" class="loading-img neptune-img" />
+            </div>
+            <!-- #### -->
+            <div class="loading-img-wrapper" *ngIf="show2ndGoogleApiLogo">
+              <img src="../../assets/images/google-map-api.png" class="loading-img portrait" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndAwsLogo">
+              <img src="../../assets/images/aws.png" class="loading-img landscape aws-img" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndZillowPane">
+              <img src="../../assets/images/zillow.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndNationwide">
+              <img src="../../assets/images/companies/nationwide%20logo.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndProgressive">
+              <img src="../../assets/images/companies/progressive%20logo.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndMet">
+              <img src="../../assets/images/companies/metlife.jpg" class="loading-img landscape metlife-img" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndTraveler">
+              <img src="../../assets/images/companies/travelers%20logo.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndPlymouth">
+              <img src="../../assets/images/companies/plymouthrock-1.jpeg"
+                class="loading-img landscape plyouthrock-img" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndStateAuto">
+              <img src="../../assets/images/companies/State%20auto.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndUniversal">
+              <img src="../../assets/images/companies/universal%20.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndStillWater">
+              <img src="../../assets/images/companies/stillwater.png" class="loading-img landscape" />
+            </div>
+            <div class="loading-img-wrapper" *ngIf="show2ndNeptune">
+              <img src="../../assets/images/companies/neptune.svg" class="loading-img neptune-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Shazam like animation End -->
+
+    </div> <!-- Loading-container closing div -->
+  </div> <!-- processing closing div -->
+  <!-- ==== Sequence End === -->
+</div> <!-- container closing div -->
+
+<!-- New Front page design Start -->
+<section class="showcase-section" *ngIf="!isProcessing">
+  <div class="grey-curve-svg">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 220 1440 100">
+      <path fill="#ECF0F3" fill-opacity="1" style="--darkreader-inline-fill:#ECF0F3;" data-darkreader-inline-fill=""
+        d="M0,320L120,298.7C240,277,480,235,720,234.7C960,235,1201,277,1320,298.7L1440,320L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
+      </path>
+    </svg>
+  </div>
+  <div class="section-background-gif">
+    <div class="carriers-gif-wrapper">
+      <img class="carriers-gif" src="../../assets/images/home/frontpage.gif" alt="insurance carriers gif">
+    </div>
+  </div>
+  <div class="section-background section-background1">
+    <div class="showcase-section-container">
+      <h1 class="text-center animated bounceInLeft">EASY PEASY INSURANCE</h1>
+      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in
+        a
+        few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the
+        process!</p>
+      <img class="mx-auto swipeAnimation-gif" src="../../assets/images/home/swipeAnimation.gif" />
+    </div>
+  </div>
+  <div class="section2-curved-svg" style="margin-bottom: -5px !important;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#F43C58"
+      style='stroke-width: 0px; background-color: #ECF0F3; margin-bottom: -5px !important;'>
+      <path fill="#F43C58" fill-opacity="1"
+        d="M0,128L80,144C160,160,320,192,480,181.3C640,171,800,117,960,101.3C1120,85,1280,107,1360,117.3L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+        data-darkreader-inline-fill="" style="--darkreader-inline-fill:#F43C58;"></path>
+    </svg>
+  </div>
+  <div class="section-background section-background2">
+    <div class="showcase-section-container">
+      <h1 class="text-center">Insurance has evolved!</h1>
+      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in
+        a
+        few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the
+        process!</p>
+      <img class="dinosaur-img mx-auto" src="../../assets/images/home/dino.png" />
+    </div>
+  </div>
+  <div class="section2-curved-svg2nd">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" viewport-fill="#F43C58"
+      style='stroke-width: 0px; background-color: #fff;'>
+      <path fill="#F43C58" fill-opacity="1"
+        d="M0,32L60,53.3C120,75,240,117,360,144C480,171,600,181,720,154.7C840,128,960,64,1080,48C1200,32,1320,64,1380,80L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+        data-darkreader-inline-fill="" style="--darkreader-inline-fill:#F43C58;"></path>
+    </svg>
+  </div>
+  <div class="section-background section-background3">
+    <div class="showcase-section-container">
+      <h1 class="text-center">Insurance has evolved!</h1>
+      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in
+        a
+        few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the
+        process!</p>
+      <div class="appStore-container">
+        <img class="mx-auto swypeCov-img" src="../../assets/images/home/SwypeApp.png" />
+        <img class="appStore-img" src="../../assets/images/home/appstores.png" alt="app store">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- New Front page design End -->

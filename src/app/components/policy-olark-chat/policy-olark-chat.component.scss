@@ -1,0 +1,13 @@
+@import '../../../assets/styles/variables';
+
+.chatWidget {
+  margin-top: 100px;
+
+  .form-row {
+    min-height: auto !important;
+    img {
+      width: 40%;
+      height: 40%;
+    }
+  }
+}

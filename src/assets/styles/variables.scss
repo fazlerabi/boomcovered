@@ -1,0 +1,14 @@
+// Original primary color
+// $primary-color: #F74A63;
+// New Primary color
+$primary-color: #F43C58;
+$primary-font: Roboto;
+$primary-secondary-color: #000;
+$mobile-width: 767px;
+$desktop-width: 768px;
+$shadow-normal-light:
+  7px 5px 10px rgba(0,0,0,.1),
+  -7px -5px 10px rgba(255, 255, 255, 0.5);
+$shadow-inset-light:
+  inset 7px 5px 10px rgba(0,0,0,.1),
+  inset -7px -5px 10px rgba(255, 255, 255, 0.5);

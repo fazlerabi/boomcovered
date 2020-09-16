@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-10 offset-1">
+    <div class="row pt-3 pb-5 info-board">
+      <div class="col-md-12">
+        <p class="mb-1 address-text">{{addressInfo['address']}}</p>
+        <p class="mb-1 address-text">{{addressInfo['locality']}}, {{addressInfo['administrative_area_level_1']}}, {{addressInfo['postal_code']}}</p>
+      </div>
+      <div class="col-md-12">
+        <table width="100%" class="mt-5 mb-3">
+          <tr>
+            <td class="text-left">square feet:</td>
+            <td class="text-right">{{zillowInfo['square']}}</td>
+          </tr>
+          <tr>
+            <td class="text-left">year built:</td>
+            <td class="text-right">{{zillowInfo['built_year']}}</td>
+          </tr>
+          <tr>
+            <td class="text-left">estimate:</td>
+            <td class="text-right">{{'$'+zillowInfo['estimate']}}</td>
+          </tr>
+          <tr *ngIf="floodInfo['zone']">
+            <td class="text-left">Flood zone:</td>
+            <td class="text-right">{{floodInfo['zone']}}</td>
+          </tr>
+          <tr *ngIf="floodInfo['premium']">
+            <td class="text-left">Flood premium:</td>
+            <td class="text-right">{{'$'+floodInfo['premium']}}</td>
+          </tr>
+          <tr>
+            <td class="text-left">common claims:</td>
+            <td class="text-right"></td>
+          </tr>
+        </table>
+        <div class="row">
+          <div class="col-2 offset-1">
+            <img src="../../../assets/images/demo-price/fire.png" width="30">
+          </div>
+          <div class="col-2">
+            <img src="../../../assets/images/demo-price/temperature.png" width="30">
+          </div>
+          <div class="col-2">
+            <img src="../../../assets/images/demo-price/cloud.png" width="30">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

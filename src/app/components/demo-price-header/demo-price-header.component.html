@@ -1,0 +1,92 @@
+<div class="map-container">
+  <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>
+  <div class="overlay"></div>
+</div>
+<div class="container animated slideInLeft">
+  <div class="row">
+    <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-10 offset-1 bg-white p-3">
+      <div class="row">
+        <div class="col-4">
+          <p class="cost font-weight-bold">Cost</p>
+        </div>
+        <div class="col-4">
+          <p class="target text-center">target estimate</p>
+          <div class="form-row">
+            <img src="../../../assets/images/demo-price/target.png" width="50" class="mx-auto target-img" height="55"/>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="form-row">
+            <a (click)="send()" class="mx-auto send-btn">
+              <img src="../../../assets/images/demo-price/email.png" width="40"/>
+            </a>
+          </div>
+        </div>
+        <div class="col-12" *ngIf="showLoader">
+          <div class="loader form-row animated fadeIn mt-5">
+            <div class="preloader-wrapper big active mx-auto">
+              <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                  <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                  <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                  <div class="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12" *ngIf="!showLoader">
+          <h1 class="medium-price text-center font-weight-bold">
+            {{medium_price|currency:'USD':'symbol':'1.0-0'}}
+          </h1>
+        </div>
+        <div class="col-3" *ngIf="!showLoader">
+          <p class="range text-center">price range</p>
+          <div class="form-row">
+            <img src="../../../assets/images/demo-price/range.png" width="30" class="mx-auto"/>
+          </div>
+        </div>
+        <div class="col-9 pr-0 pl-0" *ngIf="!showLoader">
+          <h1 class="price-range-text text-left font-weight-bold">
+            {{lowest_price|currency:'USD':'symbol':'1.0-0'}} -
+            {{highest_price|currency:'USD':'symbol':'1.0-0'}}
+          </h1>
+        </div>
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-10 offset-1">
+              <p class="description text-center font-weight-bold">Prices can vary based on coverage selection, loss
+                history,
+                credit scores, education level and other factors.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row bottomImageContainer animated slideInUp">
+            <div class="col-4">
+              <div class="form-row">
+                <img src="../../../assets/images/companies/progressive logo.png" class="mx-auto mt-3 progressive"/>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-row">
+                <img src="../../../assets/images/nationwide.png" class="mx-auto"/>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-row">
+                <img src="../../../assets/images/metlife-1-logo.png" class="mx-auto mt-2 metlife"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

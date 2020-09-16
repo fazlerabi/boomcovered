@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-12 chatWidget animated fadeIn"
+         *ngIf="showChat && !commonService.isMobileMode()">
+      <div class="form-row" *ngIf="imgURL">
+        <img [src]="imgURL" class="mx-auto price-image"/>
+      </div>
+      <div class="chat-container" style="margin-bottom: 50px">
+        <div class="form-row" *ngIf="chatPricing">
+          <h2 class="text-black pt-3 font-weight-bold mx-auto">{{chatPricing|currency:'USD':'symbol':'1.0-0'}}
+            <small> / year</small>
+          </h2>
+        </div>
+        <div class="form-row loader" style="margin-top: 100px;">
+          <div class="sbl-circ-path mx-auto"></div>
+        </div>
+        <div id="olark-box-container"></div>
+      </div>
+    </div>
+  </div>
+</div>
