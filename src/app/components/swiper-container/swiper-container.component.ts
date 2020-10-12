@@ -17,7 +17,7 @@ export class SwiperContainerComponent implements OnInit {
     runCallbacksOnInit: true,
     on: {
       slideChange: () => {
-        if (this.usefulSwiper.swiper.activeIndex == 0) {
+        if (this.usefulSwiper && this.usefulSwiper.swiper && this.usefulSwiper.swiper.activeIndex == 0) {
           this.usefulSwiper.swiper.allowSlidePrev = true;
           this.next.emit();
         }

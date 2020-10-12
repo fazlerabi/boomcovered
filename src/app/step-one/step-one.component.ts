@@ -20,7 +20,19 @@ export class StepOneComponent implements AfterViewInit {
   public searchElementRef: ElementRef;
   @ViewChild("usefulSwiper", {static: false})
   public usefulSwiper: SwiperComponent;
-
+  config: any = {
+    initialSlide: 1,
+    runCallbacksOnInit: true,
+    on: {
+      slideChange: () => {
+        if (!!this.usefulSwiper && !!this.usefulSwiper.swiper && this.usefulSwiper.swiper.activeIndex == 0) {
+          this.usefulSwiper.swiper.allowSlidePrev = true;
+          // this.next.emit();
+          this.processDemoQuote();
+        }
+      }
+    }
+  };
   window: any = window;
   cacheMode: boolean = false;
 
@@ -47,10 +59,6 @@ export class StepOneComponent implements AfterViewInit {
   isFinished: boolean = false;
   isProcessing: boolean = false;
   progress: number = 0;
-  // show1stNationwide: boolean = false;
-  // show1stProgressive: boolean = false;
-  // show1stMet: boolean = false;
-  // show1stTraveler: boolean = false;
   showGoogleMap: boolean = false;
   showGoogleApiLogo: boolean = false;
   showAwsLogo: boolean = false;
@@ -91,19 +99,6 @@ export class StepOneComponent implements AfterViewInit {
   zillowParams: object = {};
   isMobileVideoDisplay: boolean = false;
   isMobileMode: boolean = this.commonService.isMobileMode();
-  config: any = {
-    initialSlide: 1,
-    runCallbacksOnInit: true,
-    on: {
-      slideChange: () => {
-        this.usefulSwiper.swiper.allowSlideNext = false;
-        if (this.usefulSwiper.swiper.activeIndex == 0) {
-          this.usefulSwiper.swiper.allowSlidePrev = false;
-          this.processDemoQuote();
-        }
-      }
-    }
-  };
 
   constructor(
     private router: Router,

@@ -16,10 +16,12 @@ export class DemoPriceSwiperComponent implements OnInit {
     runCallbacksOnInit: true,
     on: {
       slideChange: () => {
-        this.usefulSwiper.swiper.allowSlideNext = false;
-        if (this.usefulSwiper.swiper.activeIndex == 0) {
-          this.usefulSwiper.swiper.allowSlidePrev = false;
-          this.goToThreeStep();
+        if (this.usefulSwiper && this.usefulSwiper.swiper) {
+          this.usefulSwiper.swiper.allowSlideNext = false;
+          if (this.usefulSwiper.swiper.activeIndex == 0) {
+            this.usefulSwiper.swiper.allowSlidePrev = false;
+            this.goToThreeStep();
+          }
         }
       }
     }
