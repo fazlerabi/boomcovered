@@ -25,21 +25,39 @@
         .addressInput {
           position: relative;
           margin: 0 auto;
-          // width = (.addressDiv width) - (.addressInput padding-left)
-          width: 468px !important;
-          height: 45px;
+          box-sizing: border-box;
+          width: 100%;
+          height: 62px;
           border-radius: 10px !important;
-          padding-left: 22px;
-          padding-bottom: 2px;
+          box-shadow: none;
+          padding-left: 26px;
+          border-width: 1px;
 
-          // background img
-          background-image: url("../../assets/images/addressImg.png");
+          background-image: url("../../assets/images/addressImg_grey.png");
           background-size: contain;
           background-repeat: no-repeat;
-          background-size: 40px;
-          background-position: absolute;
+          background-size: 20px;
           background-position-x: 8px;
-          background-position-y: 6px;
+          background-position-y: center;
+        }
+
+        .right-arrow {
+          position: absolute;
+          width: 60px;
+          height: 62px;
+          background: #EA0A3F;
+          top: 0;
+          right: 0;
+          border-radius: 0 10px 10px 0;
+          color: #fff;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          i {
+            font-size: 1.5em;
+          }
         }
       }
 
@@ -48,8 +66,6 @@
           width: 400px !important;
 
           .addressInput {
-            // width = (.addressDiv width) - (.addressInput padding-left)
-            width: 368px !important;
           }
         }
       }
@@ -59,8 +75,6 @@
           width: 350px !important;
 
           .addressInput {
-            // width = (.addressDiv width) - (.addressInput padding-left)
-            width: 318px !important;
           }
         }
       }
@@ -70,8 +84,6 @@
           width: 290px !important;
 
           .addressInput {
-            // width = (.addressDiv width) - (.addressInput padding-left)
-            width: 258px !important;
           }
         }
       }
@@ -105,7 +117,7 @@
     swiper {
       width: 500px;
       height: 60px;
-      border: 3px solid $primary-color !important;
+      border: 1px solid $primary-color !important;
       border-radius: 10px !important;
       animation: shadow-pulse 1s infinite;
 
@@ -133,7 +145,7 @@
             background-color: $primary-color;
             color: #fff;
             width: 16%;
-            height: 70px;
+            height: 100%;
             position: absolute;
             z-index: 10000;
             left: -2px;
@@ -563,7 +575,7 @@
     height: 61px;
     width: 500px;
     padding: 0 !important;
-    border: solid 3px $primary-color !important;
+    border: solid 1px $primary-color !important;
     border-radius: 10px;
 
     // background img
@@ -667,7 +679,7 @@
     background-color: #ECF0F3;
 
     .carriers-gif {
-      margin: 50px auto auto auto;
+      margin: 0 auto auto auto;
       width: 700px;
     }
 
@@ -928,7 +940,7 @@
 
 input[type=text], input[type=date], input[type=email], input[type=number] {
   //height: 40px;
-  border: solid 3px $primary-color !important;
+  border: solid 1px $primary-color !important;
 }
 // input[type=text]:focus, input[type=date]:focus, input[type=email]:focus, input[type=number]:focus {
 //   outline: none;

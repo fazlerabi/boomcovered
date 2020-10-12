@@ -78,10 +78,10 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
     this.chartOptions = {
       series,
       chart: {
-        height: 350,
+        height: 500,
         type: 'bubble',
         toolbar: {
-          show: false
+          show: true
         },
         background: '#FFF'
       },
@@ -118,7 +118,7 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
         enabled: true,
         textAnchor: 'middle',
         formatter(val, opt) {
-          return String(Math.round(val));
+          return '$' + String(Math.round(val));
         }
       },
       legend: {
@@ -132,7 +132,7 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
         },
         xaxis: {
           lines: {
-            show: false
+            show: true
           }
         }
       }
@@ -192,9 +192,9 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
       result.push(this.getBubblePosition(high));
       result.push(this.getBubblePosition(pricing));
       result.push(this.getBubblePosition(low));
-      console.log(`plymouth ${item} burst high`, high);
-      console.log(`plymouth ${item} burst pricing`, pricing);
-      console.log(`plymouth ${item} burst low`, low);
+      // console.log(`plymouth ${item} burst high`, high);
+      // console.log(`plymouth ${item} burst pricing`, pricing);
+      // console.log(`plymouth ${item} burst low`, low);
     });
     return result;
   }
@@ -208,9 +208,9 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
       this.commonService.setLocalItem('unique_id', uniqueId);
       pricing = parseFloat(String(pricing));
       let {high, low} = this.commonService.getBurstPrices(pricing);
-      console.log(`stillwater burst high`, high);
-      console.log(`stillwater burst pricing`, pricing);
-      console.log(`stillwater burst low`, low);
+      // console.log(`stillwater burst high`, high);
+      // console.log(`stillwater burst pricing`, pricing);
+      // console.log(`stillwater burst low`, low);
       high = Math.floor(high);
       low = Math.floor(low);
       pricing = Math.floor(pricing);
@@ -231,9 +231,9 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
       let pricing: number = data.QuoteWrapper.Premium;
       pricing = parseFloat(String(pricing));
       let {high, low} = this.commonService.getBurstPrices(pricing);
-      console.log(`universal burst high`, high);
-      console.log(`universal burst pricing`, pricing);
-      console.log(`universal burst low`, low);
+      // console.log(`universal burst high`, high);
+      // console.log(`universal burst pricing`, pricing);
+      // console.log(`universal burst low`, low);
       high = Math.floor(high);
       low = Math.floor(low);
       pricing = Math.floor(pricing);
@@ -255,9 +255,9 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
       pricing = parseFloat(String(pricing));
       const result = [];
       let {high, low} = this.commonService.getBurstPrices(pricing);
-      console.log(`hippo burst high`, high);
-      console.log(`hippo burst pricing`, pricing);
-      console.log(`hippo burst low`, low);
+      // console.log(`hippo burst high`, high);
+      // console.log(`hippo burst pricing`, pricing);
+      // console.log(`hippo burst low`, low);
       high = Math.floor(high);
       low = Math.floor(low);
       pricing = Math.floor(pricing);
@@ -269,7 +269,6 @@ export class BubbleChartComponent implements OnInit, OnDestroy {
     } catch (e) {
       return [];
     }
-
   }
 
   getBubblePosition(xaxis) {

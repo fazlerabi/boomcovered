@@ -1,10 +1,12 @@
 <!-- Image and text -->
 <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
-  [ngClass]="!commonService.isMobileMode()?'red navbar-dark':'white  navbar-light'">
+            [ngClass]="!commonService.isMobileMode()?'red navbar-dark':'white  navbar-light'">
   <mdb-navbar-brand>
-    <h4 class="font-weight-bold pl-2 pt-3 lign-middle logo-text" [ngStyle]="{'color':navColor}"><span>SwypeCov</span>
-    </h4>
+    <div class="phone-area" *ngIf="commonService.isMobileMode()">
+      <a href="tel:+16108641155" class="text-white"><span><i class="fa fa-phone-alt"></i>call</span></a>
+    </div>
   </mdb-navbar-brand>
+  <a href="/" class="site-logo"><img src="../assets/images/logo/logo-site.png"/></a>
   <links>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item" routerLinkActive="active">
@@ -20,9 +22,15 @@
         <a class="nav-link waves-light" routerLink="/retrieve" mdbWavesEffect>Retrieve
           Quote</a>
       </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="!commonService.isMobileMode()">
+        <div class="phone-area">
+          <a href="tel:+16108641155" class="text-white"><span><i class="fa fa-phone-alt"></i>Call</span></a>
+        </div>
+      </li>
     </ul>
   </links>
 </mdb-navbar>
+
 <app-sub-header></app-sub-header>
 <div class="main pt-md-2 pt-1" [@routeAnimations]="o && o.activatedRouteData
       && o.activatedRouteData['animation']">
@@ -34,10 +42,10 @@
 <!-- === Curved Background  ===-->
 <div class="footer-svg-curve" *ngIf="isShowFooter">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#2A354C"
-    style='stroke-width: 0px; background-color: #fff;'>
+       style='stroke-width: 0px; background-color: #fff;'>
     <path fill="#2A354C" fill-opacity="1"
-      d="M0,192L60,181.3C120,171,240,149,360,154.7C480,160,600,192,720,224C840,256,960,288,1080,293.3C1200,299,1320,277,1380,266.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
-      data-darkreader-inline-fill="" style="--darkreader-inline-fill:#2A354C;"></path>
+          d="M0,192L60,181.3C120,171,240,149,360,154.7C480,160,600,192,720,224C840,256,960,288,1080,293.3C1200,299,1320,277,1380,266.7L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
+          data-darkreader-inline-fill="" style="--darkreader-inline-fill:#2A354C;"></path>
   </svg>
 </div>
 <!-- === Curved Background  ===-->
@@ -139,14 +147,14 @@
         </div>
       </div>
       <img class="footer-img" src="../assets/images/buildings/med.jpg" width="150" height="150"
-        style="border-radius: 50%">
+           style="border-radius: 50%">
 
     </div>
     <!-- Grid row -->
     <p class="text-center copyright-txt">
       &copy; 2020 SwypeCov Insurance. All Rights Reserved. Use of SwypeCov is subject
       to our <span><a class="copyright-link" href="#">Terms of Service </a></span> & <span><a class="copyright-link"
-          href="#"> Privacy
+                                                                                              href="#"> Privacy
           Policy</a></span>
     </p>
   </div>

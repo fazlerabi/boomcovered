@@ -96,6 +96,13 @@ export class ApiService {
       catchError(ApiService.handleError));
   }
 
+  getPdfLink(data): Observable<any> {
+    return this.http.post('/api/get_pdf_link', data, httpOptions).pipe(
+      map(ApiService.extractData),
+      catchError(ApiService.handleError)
+    );
+  }
+
   getPlymouthData(data): Observable<any> {
     return this.http.post('/api/get_plymouth_pricing', data, httpOptions).pipe(
       map(ApiService.extractData),
@@ -135,6 +142,10 @@ export class ApiService {
       .pipe(
         map(ApiService.extractData),
         catchError(ApiService.handleError));
+  }
+  getPdfDownloaded(data): Observable<any> {
+    let headers = new HttpHeaders();
+    return this.http.post('api/downlod_pdf', data, { headers: headers, responseType: 'blob' });
   }
 }
 

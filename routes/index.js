@@ -1,6 +1,7 @@
 let express = require('express');
 let router = express.Router();
 let config = require('../config');
+var unirest = require("unirest");
 let User = require('../models/User.js');
 const nodeZillow = require('node-zillow');
 const zillow = new nodeZillow(config.zillow_api);
@@ -32,22 +33,36 @@ const request = require('request');
 const emailHeader = commonTemplate.emailHeader;
 const emailFooter = commonTemplate.emailFooter;
 /* GET ALL Zillow data*/
-router.post('/get_zillow', function (req, res, next) {
-  let {address, citystatezip} = req.body;
-  const parameters = {
-    address: address,
-    citystatezip: citystatezip,
-    rentzestimate: false
-  };
-  zillow.get('GetDeepSearchResults', parameters)
-    .then(results => {
-      res.contentType('json');
-      res.send(JSON.stringify(results));
-      return results;
-    }).catch((err) => {
-    res.send({result: 'error'});
+router.post('/get_zillow', async function (req, response, next) {
+let {address, citystatezip} = req.body;
+
+  if (address) {
+    var req = unirest("GET", config.RealtorConfig.endpoint.location_lookup);
+
+    req.query({
+      "input": address + ',' + citystatezip
+    });
+
+    req.headers(setRapidApiHeader());
+
+      await req.end(async function (res) {
+      if (!res.error) // throw new Error(res.error);
+      {
+      const { mpr_id } = res.body.autocomplete && res.body.autocomplete[0] || null;
+      return getPropertyInfo(mpr_id).then((val) => {
+        response.send(val);
+      }).catch(() => {
+        response.send(null);
+      })
+
+    } response.send(res);
   });
+
+  } else {
+    response.send(null);
+  }
 });
+
 
 function prepare_stillwater_params(params) {
   let {
@@ -274,6 +289,35 @@ async function universal_get_pricing(params) {
   });
 }
 
+// pdf changes start
+
+router.post('/downlod_pdf', async (req, resp, next) => {
+  const {url} = req.body;
+  console.log(url);
+  if (url&& fs.existsSync(url)){ //  00a31ea8-cd01-4c1c-8048-be175b99c7ae.pdf')) {
+    var data = []
+    var readStream = fs.createReadStream(url);
+    readStream.on('data', function (chunk) {
+      data.push(chunk);
+    }).on('end', function () {
+      data = new Buffer.concat(data);
+      resp.writeHead(200, {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': 'attachment; filename=working-test.pdf',
+        'Content-Length': data.length
+      });
+      resp.end(data);
+    });
+  } else {
+    resp.writeHead(200, {
+      'Content-Type': 'application/pdf',
+      'Content-Length': 0
+    });
+    resp.end(data);
+  }
+});
+
+
 router.post('/get_plymouth_pricing',
   async function (req, res, next) {
     let {city, state, postal_code, street, mode, personData, is_demo} = req.body;
@@ -304,6 +348,40 @@ router.post('/get_plymouth_pricing',
     }
   }
 );
+
+/*router.post('/get_pdf_link',
+    async function (req, res, next) {
+        let {city, state, postal_code, street, mode, personData, is_demo} = req.body;
+
+        try {
+            const uniqueId = uuidv4();
+            const {formatted_address, email, cc_email, stillwater_pricing, universal_pricing, enhanced_pricing, coverage_a} = req.body;
+            let isPDFError = false;
+            const params = Object.assign(req.body, {uniqueId})
+            const pdf = new Pdf();
+            await pdf.generateBindPDF(params).catch(() => isPDFError = true)
+            if (isPDFError) {
+                res.send(
+                    {
+                        result: 'success',
+                        msg: 'An error occurred while creating invoice PDF'
+                    }
+                );
+                return;
+            }
+            let pdfurl = '';
+            let pdf_path = '';
+            if (uniqueId) {
+                let domain = req.headers.origin;
+                pdfurl = domain + '/pdfs/' + uniqueId + '.pdf';
+                pdf_path = './pdfs/' + uniqueId + '.pdf';
+            }
+            res.json(pdf_path);
+        } catch (e) {
+            res.json({result: 'error', data: []});
+        }
+    }
+);*/
 
 router.post('/get_stillwater_pricing',
   async function (req, res, next) {
@@ -1848,7 +1926,7 @@ router.post('/bundle_auto', function (req, res, next) {
 
 router.post('/send_demo_email', async function (req, res, next) {
   const uniqueId = uuidv4();
-  const {formatted_address, email, cc_email, stillwater_pricing, universal_pricing, enhanced_pricing} = req.body;
+  const {formatted_address, email, cc_email, stillwater_pricing, universal_pricing, enhanced_pricing, coverage_a} = req.body;
   let isPDFError = false;
   const params = Object.assign(req.body, {uniqueId})
   const pdf = new Pdf();
@@ -1916,6 +1994,41 @@ router.post('/send_demo_email', async function (req, res, next) {
     msg: 'successfully received.'
   })
 });
+
+router.post('/get_pdf_link', async function (req, res, next) {
+  const uniqueId = uuidv4();
+  const {formatted_address, email, cc_email, stillwater_pricing, universal_pricing, enhanced_pricing, coverage_a} = req.body;
+  let isPDFError = false;
+  const params = Object.assign(req.body, {uniqueId})
+  const pdf = new Pdf();
+  await pdf.generateBindPDF(params).catch(() => isPDFError = true)
+  if (isPDFError) {
+    res.send(
+      {
+        result: 'success',
+        msg: 'An error occurred while creating invoice PDF'
+      }
+    );
+    return;
+  }
+  let pdfurl = '';
+  let pdf_path = '';
+  if (uniqueId) {
+    let domain = req.headers.origin;
+    pdfurl = domain + '/pdfs/' + uniqueId + '.pdf';
+    pdf_path = './pdfs/' + uniqueId + '.pdf';
+  }
+  let templateParam = {
+    ...req.body, support_email: config.demoData.email, support_phone: config.demoData.phone, pdfurl
+  };
+
+  res.send({
+    result: pdf_path,
+    msg: 'successfully received.'
+  })
+});
+
+
 router.post('/send_details_email', (req, res, next) => {
   const data = {
     quoteID, premium, dwelling_value, structures, personal_property, loss_of_use, liability, med_to_pay,
@@ -1944,5 +2057,49 @@ router.post('/send_details_email', (req, res, next) => {
     })
   });
 });
+
+// function that calls property details api accepting the property id and returns the required  object
+async function getPropertyInfo(propertyId) {
+  return new Promise(resolve => {
+    if (propertyId) {
+
+      var req = unirest("GET", config.RealtorConfig.endpoint.property_details);
+
+      req.query({
+        "property_id": propertyId
+      });
+      req.header =
+        req.headers(setRapidApiHeader());
+
+      req.end(async function (res) {
+        if (res.error) {
+          console.log("error");
+          resolve(null);
+        }
+        console.log("success");
+        if (res.body && res.body.properties && res.body.properties.length > 0) {
+          const resp = {
+            year_built: res.body.properties[0].year_built || res.body.properties[0].public_records[0].year_built,
+            price: res.body.properties[0].price,
+            building_size: res.body.properties[0].building_size.size || res.body.properties[0].public_records[0].building_sqft
+          };
+          resolve(resp);
+        }
+      })
+    }
+    else {
+      resolve(null);
+    }
+  });
+}
+
+function setRapidApiHeader(){
+  
+  return {
+    "x-rapidapi-host": config.RealtorConfig.settings.host,
+    "x-rapidapi-key": config.RealtorConfig.settings.key,
+    "useQueryString": true
+  };
+}
 
 module.exports = router;

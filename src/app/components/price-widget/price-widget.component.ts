@@ -9,6 +9,7 @@ import {CommonService} from "../../services/common.service";
 export class PriceWidgetComponent implements OnInit {
   @Input('imgURL') public imgURL: string;
   @Input('price') public price: number;
+  @Input('dwelling') public dwelling: string;
   @Output('openModal') public openPriceModal: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(public commonService: CommonService) {

@@ -529,6 +529,16 @@ const config = {
       host: 'https://uat-api.neptuneflood.com',
       key: 'A62FAE40-6933-428D-859C-B206FFAE5E7A'
     },
+    RealtorConfig: {
+      endpoint: {
+          property_details: "https://realtor.p.rapidapi.com/properties/v2/detail",
+          location_lookup: "https://realtor.p.rapidapi.com/locations/auto-complete"
+      },
+      settings:{
+          key:"599a1bf29fmsha4c4b41a52a8228p138cbejsnbbfb265c093a",
+          host: "realtor.p.rapidapi.com"
+      }
+   },
     hippo: {
       production:{
         auth_token:'kMGra60EMRHCSYYCENYo6WXWXkp8KxO42R9cucoZPcFpJ4kv2lHplVi2QmqwqCny'

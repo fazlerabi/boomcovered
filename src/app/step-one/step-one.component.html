@@ -10,7 +10,10 @@
 
           <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)"
             id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text"
-            *ngIf="GooglePlace==true" placeholder="" #placesRef>
+            *ngIf="GooglePlace==true" placeholder="address" #placesRef>
+          <div class="right-arrow">
+            <i class="fa fa-arrow-right"></i>
+          </div>
 
           <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" style="
                  float: right;
@@ -38,7 +41,7 @@
             style="text-decoration: underline !important;"
             [ngStyle]="commonService.isMobileMode()?{'padding-left':'15px !important'}:''"
             (click)="GooglePlace=!GooglePlace;loadGooglePlace()">
-            <strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong>
+            <!--strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong-->
           </a>
 
         </div>

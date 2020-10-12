@@ -4,16 +4,40 @@ const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mean-angular6')
+/*mongoose.connect('mongodb://localhost/mean-angular6')
   .then(() => console.log('connection succesful'))
-  .catch((err) => console.error(err));
+  .catch((err) => console.error(err));*/
 
 const apiRouter = require('./routes/index');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
+
+let corsOptions = {
+    //origin: "http://boom.insure"
+    origin: "http://localhost:4200"
+};
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+const db = require("./models");
+//db.sequelize.sync();
+db.sequelize.sync({ force: true }).then(() => {
+    console.log("Drop and re-sync db.");
+});
+
+require("./routes/batch.routes")(app);
+
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+});
+
 const server = app.listen(3000, function () {
   console.log('Server listening at http://' + server.address().address + ':' + server.address().port);
 });
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
@@ -21,6 +45,11 @@ app.use(express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/index', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/policy', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/pdfs', express.static(path.join(__dirname, 'pdfs')));
+app.use('/step1', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
+app.use('/users', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
+app.use('/users/:id', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
+app.use('/add', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
+app.use('/batch', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/step2', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/step3', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/roof', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
@@ -35,6 +64,18 @@ app.use('/esign', express.static(path.join(__dirname, 'dist/mdb-angular-free')))
 app.use('/retrieve', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/get_quote_data', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use('/', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
+
+app.use((req, resp, next) => {
+  // console.log(req.url);
+  if (req.url === "/api/get_zillow") {
+    setTimeout(() => {
+      next();
+    }, 600);
+  } else {
+    next();
+  }
+});
+
 app.use('/api', apiRouter);
 app.use(function (req, res, next) {
   next(createError(404));

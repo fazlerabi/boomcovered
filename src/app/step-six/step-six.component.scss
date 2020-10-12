@@ -27,7 +27,7 @@
 
 .chat-btn {
   height: 90px;
-  width: 140px;
+  width: 168px;
   display: inline-block;
   font-size: 15px;
   background: $primary-color !important;
@@ -45,6 +45,10 @@
     justify-content: center;
     align-items: center;
   }
+
+  .chat-btn {
+    width: 100%;
+  }
 }
 
 @media screen and  (max-width: 450px) {
@@ -57,25 +61,27 @@
   min-height: 100px;
 }
 
+.drag-compare-wrapper {
+  .drag-compare {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.drag-compare {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  border: 1px solid darkgrey !important;
+    p {
+      font-size: 20px;
 
-  p {
-    font-size: 20px;
-
-    @media screen and (max-width: 1202px) {
-      font-size: 18px;
+      @media screen and (max-width: 1202px) {
+        font-size: 18px;
+      }
     }
-  }
 
-  i {
-    margin: 0 auto;
-    color: rgb(192, 192, 192, 0.4);
+    i {
+      margin: 0 auto;
+      border: 3px dotted #F43C58 !important;
+      padding: 30px;
+      border-radius: 10px;
+    }
   }
 }
 

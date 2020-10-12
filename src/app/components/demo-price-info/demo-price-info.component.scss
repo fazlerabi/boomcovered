@@ -1,8 +1,4 @@
 .info-board{
-  background-color: #FDFBFB;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
   .address-text{
     color: #EE3924;
     font-weight: 900;
@@ -12,8 +8,14 @@
     tr{
       border-bottom: solid 1px #F1F1F3;
       td{
-        font-weight: 900;
+        font-weight: normal;
+        font-family: PingFang, sans-serif;
         color: #6E6F70;
+        padding: 6px 0;
+      }
+
+      .text-right {
+        color: #EA0A3F;
       }
     }
   }

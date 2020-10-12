@@ -26,10 +26,14 @@ export class DemoPriceSwiperComponent implements OnInit {
   };
 
   constructor(public commonService: CommonService, private router: Router) {
+
   }
+
+
 
   ngOnInit() {
   }
+
   async goToThreeStep() {
     const total_data = this.commonService.getLocalItem('total_data');
     // total_data['mode'] = this.selectedMode;

@@ -9,7 +9,7 @@
     width: 400px;
     height: 60px;
     margin: 0 auto;
-    border: solid 3px $primary-color;
+    border: solid 1px $primary-color;
     border-radius: 10px;
     animation: shadow-pulse 1s infinite;
 
@@ -40,7 +40,7 @@
           align-items: center;
           justify-content: center;
           width: 16%;
-          height: 60px;
+          height: 100%;
           z-index: 10000;
           left: -2px;
           background-color: $primary-color;

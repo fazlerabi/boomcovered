@@ -70,10 +70,13 @@ export class DemoPageEmailModalComponent implements OnInit {
     ];
     const addressData = this.commonService.getAddressData();
     let hippoPrice = '';
+    let coverage_a = '';
     try {
-      hippoPrice = JSON.parse(total_data['hippo']).quote_premium
+      hippoPrice = JSON.parse(total_data['hippo']).quote_premium;
+      coverage_a = JSON.parse(total_data['hippo']).coverage_a;
     } catch (e) {
       hippoPrice = '';
+      coverage_a = '';
     }
     let flood_zone = '';
     try {
@@ -99,7 +102,7 @@ export class DemoPageEmailModalComponent implements OnInit {
       year_built: zillow['built_year'],
       estimate: zillow['estimate'],
       chartImgStr: total_data['chartbase64Img'],
-      flood_zone, hippoPrice
+      flood_zone, hippoPrice, coverage_a
     };
     this.apiService.sendDemoEmail(data).subscribe(res => {
       this.basicModal.hide();

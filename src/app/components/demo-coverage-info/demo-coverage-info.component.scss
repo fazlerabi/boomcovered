@@ -1,0 +1,52 @@
+.info-board{
+  font-family: "Arial Rounded MT Bold";
+  color: #EA0A3F;
+  table{
+    tr{
+      border-bottom: solid 1px #F1F1F3;
+      td{
+        font-weight: 500;
+        font-family: PingFang, sans-serif;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        .text-smaller {
+          color: #000;
+          font-size: 9px;
+        }
+      }
+      td:first-of-type {
+        padding-left: 1rem;
+        width: 50%;
+      }
+      td:last-of-type{
+        padding-left: 35%;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+
+    tr.bg-grey {
+      background-color: #F2F2F2;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .info-board{
+    table{
+      tr{
+        td:first-of-type {
+          padding-left: 1rem;
+          width: 64%;
+        }
+        td:last-of-type{
+          padding-left: 0;
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

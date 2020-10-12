@@ -1,7 +1,34 @@
 <app-demo-price-header (sendEmail)="sendEmail($event)"></app-demo-price-header>
-<div class="container">
+<div class="">
   <app-demo-price-swiper></app-demo-price-swiper>
-  <app-demo-price-info></app-demo-price-info>
-  <app-demo-price-bind></app-demo-price-bind>
+  <app-demo-coverage-info></app-demo-coverage-info>
+  <div class="container">
+    <p class="address-text text-pink font-weight-bold" style="font-family: 'Arial Rounded MT Bold';">
+      {{commonService.getAddressData()['address']}} {{commonService.getAddressData()['locality']}},
+      {{commonService.getAddressData()['administrative_area_level_1']}},
+      {{commonService.getAddressData()['postal_code']}}</p>
+
+    <div class="row pb-5">
+      <div class="col-lg-4 col-md-12 mt-3">
+        <app-demo-gmap></app-demo-gmap>
+      </div>
+      <div class="col-lg-4 col-md-12 mt-3">
+        <app-demo-price-info></app-demo-price-info>
+      </div>
+      <div class="col-lg-4 col-md-12 mt-3">
+        <app-demo-price-bind></app-demo-price-bind>
+      </div>
+    </div>
+
+    <p class="title text-pink" style="font-family: AllerDisplay, sans-serif;">Price Spectrum</p>
+    <app-bar-chart></app-bar-chart>
+  </div>
+
+  <!--app-bubble-chart></app-bubble-chart-->
+  <app-demo-email-pdf (sendEmail)="sendEmail1($event)" [prices]="prices"></app-demo-email-pdf>
+  <app-demo-claims></app-demo-claims>
 </div>
 <app-demo-page-email-modal [showModal]="showModal" [prices]="prices"></app-demo-page-email-modal>
+<div class="fixed-continue">
+  <app-demo-price-swiper></app-demo-price-swiper>
+</div>

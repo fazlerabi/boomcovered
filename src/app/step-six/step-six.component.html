@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-lg-2 col-md-3 col-12">
       <div class="row">
-        <div class="col-6 col-md-12">
+        <div class="col-lg-12 col-md-12 mt-3">
           <app-price-sort (sort)="sortPrices($event)"></app-price-sort>
         </div>
-        <div class="col-6 col-md-12">
+        <div class="col-lg-12 col-md-12">
           <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -50,20 +50,26 @@
               </div>
             </div>
           </div>
-          <button type="button" class="btn mb-4 mt-2 pl-0 pr-0 mx-auto chat-btn font-weight-bold text-capitalize"
-                  (click)="goForChat()"><span>Talk <span
-            class="text-lowercase">to an</span> Expert
-      </span><i class="far fa-comment-dots fa-2x mt-2"></i></button>
+          <button type="button" class="btn mb-4 mt-2 pl-0 pr-0 mx-0 chat-btn font-weight-bold text-capitalize"
+                  (click)="goForChat()"><span>Talk to an Expert</span><div><i class="far fa-comment-dots fa-2x mt-2"></i></div></button>
         </div>
-        <div class="col-6 col-md-12">
+        <div class="col-lg-12 col-md-12">
           <app-price-filter (filter)="doFilter($event)"></app-price-filter>
         </div>
       </div>
     </div>
-    <div class="col-lg-7 col-md-9 col-12">
-      <div class="row">
-        <app-price-widget *ngFor="let insurance of filteredInsurances" [className]="priceWidgetCommonClass" [price]="insurance.price"
-                          [imgURL]="insuranceImgs[insurance.type]"
+    <div class="col-lg-7 col-md-9 col-12 pl-4">
+      <div class="mb-3 mt-4">
+        <a href="javascript:void(0)" class="sort-btn mr-3" (click)="viewmode = 'List'">
+          <img class="mx-auto" src="../../../assets/images/step-six/list_view.png" width="24">
+        </a>
+        <a href="javascript:void(0)" class="sort-btn" (click)="viewmode = 'Grid'">
+          <img class="mx-1" src="../../../assets/images/step-six/grid_view.png" width="24">
+        </a>
+      </div>
+      <div class="row" [ngClass]="viewmode == 'Grid' ? 'gridview' : 'listview'">
+        <app-price-widget *ngFor="let insurance of filteredInsurances" [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass" [price]="insurance.price"
+                          [imgURL]="insuranceImgs[insurance.type]" [dwelling]="insurance.dwelling"
                           (openModal)="setModalData(insurance)"
         ></app-price-widget>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showNationWide"></app-price-loader>
@@ -100,11 +106,24 @@
         </div>
       </div>
     </div>
-<!--    <div class="col-md-3 col-12">-->
-<!--      <div class="drag-compare p-5">-->
-<!--        <p class="font-weight-bold text-center">Drag And Drop to Compare</p>-->
-<!--        <i class="fas fa-plus fa-5x text-center"></i>-->
-<!--      </div>-->
-<!--    </div>-->
+    <div class="col-md-3 col-12 mt-4">
+      <p class="font-weight-bold text-black">add policy:</p>
+
+      <div class="row drag-compare-wrapper mx-0">
+        <div class="col-4 drag-compare px-1">
+          <i class="fas fa-plus fa-1x text-center"></i>
+        </div>
+        <div class="col-4 drag-compare px-1">
+          <i class="fas fa-plus fa-1x text-center"></i>
+        </div>
+        <div class="col-4 drag-compare px-1">
+          <i class="fas fa-plus fa-1x text-center"></i>
+        </div>
+      </div>
+
+      <button class="col-12 mx-auto mt-4 mb-4 text-white btn" mdbbtn="" type="button" (click)="goForChat()" style="border-radius: 3px !important; font-size: 2rem; background-color: #34C07D">NEXT</button>
+      <img class="" src="../../../assets/images/step-six/featured_image.png" width="100%"/>
+      <p class="text-center text-small text-black font-weight-bold pt-1" style="line-height: 1rem">Worried about water damage? Make sure you consider adding <span style="color: #F43C58;">water backup</span> and/or <span style="color: #F43C58">flood</span> protection!</p>
+    </div>
   </div>
 </div>

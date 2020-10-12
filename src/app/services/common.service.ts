@@ -314,8 +314,8 @@ export class CommonService {
   }
 
   getBurstPrices(price) {
-    const low = Number(((price - 25) * .97).toFixed(2));
-    const high = Number(((price - 25) * .93).toFixed(2));
+    const low = Number(((price - 25) * .93).toFixed(2));
+    const high = Number(((price - 25) * .97).toFixed(2));
     return {
       low, high
     }

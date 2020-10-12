@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CommonService} from "../services/common.service";
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-issuing',
@@ -17,7 +18,15 @@ export class IssuingComponent implements OnInit {
     condo: false
   }
 
-  constructor(private commonService:CommonService) {
+  constructor(private commonService: CommonService) {
+    $('body').on('click',function(event){
+
+      if($("#jumbo-dropdown-menu").hasClass('fadeInDropdown') && !$(event.target).is('#jumbo-dropdown-menu') && !$(event.target).is('.jumbo-option *')){
+        $("#jumbo-dropdown-menu").removeClass('fadeInDropdown');
+        $(".dropdown").removeClass('open show');
+        $(".dropdown-toggle").focus();
+      }
+    });
   }
 
   ngOnInit() {

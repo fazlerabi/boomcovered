@@ -6,7 +6,7 @@ class Pdf {
   async generateBindPDF(params) {
     const {
       address, city, county, state, zip_code, lowPrice, highPrice, pricing, sqft, year_built,
-      estimate, chartImgStr, hippoPrice,flood_zone,uniqueId
+      estimate, chartImgStr, hippoPrice,flood_zone, coverage_a, uniqueId
     } = params;
     return new Promise((resolve, reject) => {
       const doc = new PDFDocument({size: [702, 893]});
@@ -21,13 +21,19 @@ class Pdf {
       doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(22).fillColor('#acacaf').text(address, 470, 30);
       doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(12).fillColor('#ef3624').text(address, 153, 115);
       doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(11).fillColor('#ef3624').text(city + ' , ' + state + ', ' + zip_code, 265, 116);
-//      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(7).fillColor('#acacaf').text(sqft, 140, 279);
-//      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(7).fillColor('#acacaf').text(year_built, 140, 293);
-//      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(7).fillColor('#acacaf').text(estimate, 140, 307);
+      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(8).fillColor('#acacaf').text(sqft, 250, 137);
+      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(8).fillColor('#acacaf').text(year_built, 250, 151);
+      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(8).fillColor('#acacaf').text(estimate, 250, 165);
 //      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(7).fillColor('#acacaf').text(flood_zone, 140, 321);
       doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(40).fillColor('#ef3624').text('$' + pricing, 260, 278);
       doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(17).fillColor('#acacaf').text('$' + lowPrice + ' - ' + '$' + highPrice, 430, 247);
-      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(11).fillColor('#1cb777').text('$' + hippoPrice, 346, 486, {lineBreak: false});
+      doc.font('./src/assets/fonts/Roboto/Roboto-Bold.ttf').fontSize(11).fillColor('#1cb777').text('$' + hippoPrice, 333, 496, {lineBreak: false});
+
+      doc.font('./src/assets/fonts/Roboto/AllerDisplay.ttf').fontSize(16).fillColor('#E71D4E').text(coverage_a.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), 428, 582);
+      doc.font('./src/assets/fonts/Roboto/AllerDisplay.ttf').fontSize(16).fillColor('#E71D4E').text(Math.round(coverage_a * 0.1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), 428, 663);
+      doc.font('./src/assets/fonts/Roboto/AllerDisplay.ttf').fontSize(16).fillColor('#E71D4E').text(Math.round(coverage_a * 0.7).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), 429, 705);
+      doc.font('./src/assets/fonts/Roboto/AllerDisplay.ttf').fontSize(16).fillColor('#E71D4E').text(Math.round(coverage_a * 0.2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','), 429, 742);
+
       doc.addPage();
       doc.image(secondImageUrl, 0, 0, {width: 702, height: 893});
 

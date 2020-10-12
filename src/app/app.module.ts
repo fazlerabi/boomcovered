@@ -2,7 +2,7 @@ import {BrowserModule, HAMMER_GESTURE_CONFIG, HammerGestureConfig} from '@angula
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppComponent} from './app.component';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import {PathLocationStrategy, LocationStrategy} from '@angular/common';
 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrderComponent} from './order/order.component';
@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {Ng4LoadingSpinnerModule} from 'ng4-loading-spinner';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbdDatepickerBasic} from './directives/datepicker';
+import { OnblurDirective } from './directives/onblur.directive';
 import {NgxMaskModule} from 'ngx-mask';
 import * as Hammer from 'hammerjs';
 import {
@@ -63,11 +64,22 @@ import {PriceFilterComponent} from './components/price-filter/price-filter.compo
 import {PriceWidgetComponent} from './components/price-widget/price-widget.component';
 import {PriceLoaderComponent} from './components/price-loader/price-loader.component';
 import {DemoPageComponent} from './components/demo-page/demo-page.component';
+import {BatchPageComponent} from './components/batch-page/batch-page.component';
+import {AddressInputComponent} from './components/address-input/address-input.component';
+import {AddCodePageComponent} from './components/add-code-page/add-code-page.component';
+import {UserListComponent} from './components/user-list/user-list.component';
+import {BulkListComponent} from './components/bulk-list/bulk-list.component';
+import {UserDetailsComponent} from './components/user-details/user-details.component';
 import {DemoPriceHeaderComponent} from './components/demo-price-header/demo-price-header.component';
+import {DemoClaimsComponent} from './components/demo-claims/demo-claims.component';
+import {DemoEmailPdfComponent} from './components/demo-email-pdf/demo-email-pdf.component';
+import {DemoGmapComponent} from './components/demo-gmap/demo-gmap.component';
 import {DemoPriceSwiperComponent} from './components/demo-price-swiper/demo-price-swiper.component';
 import {DemoPriceInfoComponent} from './components/demo-price-info/demo-price-info.component';
+import {DemoCoverageInfoComponent} from './components/demo-coverage-info/demo-coverage-info.component';
 import {DemoPriceBindComponent} from './components/demo-price-bind/demo-price-bind.component';
 import {BubbleChartComponent} from './components/bubble-chart/bubble-chart.component';
+import {BarChartComponent} from './components/bar-chart/bar-chart.component';
 import {NgApexchartsModule} from 'ng-apexcharts';
 import {PriceDetailsModalComponent} from './components/price-details-modal/price-details-modal.component';
 import {DemoPageEmailModalComponent} from './components/demo-page-email-modal/demo-page-email-modal.component';
@@ -120,11 +132,22 @@ export class MyHammerConfig extends HammerGestureConfig {
     PriceWidgetComponent,
     PriceLoaderComponent,
     DemoPageComponent,
+    BatchPageComponent,
+    AddressInputComponent,
+    AddCodePageComponent,
+    UserListComponent,
+    BulkListComponent,
+    UserDetailsComponent,
     DemoPriceHeaderComponent,
+    DemoGmapComponent,
+    DemoClaimsComponent,
+    DemoEmailPdfComponent,
     DemoPriceSwiperComponent,
     DemoPriceInfoComponent,
+    DemoCoverageInfoComponent,
     DemoPriceBindComponent,
     BubbleChartComponent,
+    BarChartComponent,
     PriceDetailsModalComponent,
     DemoPageEmailModalComponent,
     PreparingPolicyComponent,
@@ -134,7 +157,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     PolicyOlarkChatComponent,
     HavenInputsComponent,
     SwiperContainerComponent,
-    HavenResultComponent],
+    HavenResultComponent,
+    OnblurDirective],
   imports: [
     NgbModule,
     AgmCoreModule.forRoot({
@@ -171,7 +195,7 @@ export class MyHammerConfig extends HammerGestureConfig {
   ],
   providers: [
     ApiService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy},
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
     {
       provide: HAMMER_GESTURE_CONFIG, useClass: MyHammerConfig
     }

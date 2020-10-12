@@ -22,26 +22,27 @@
     .jumbo-h1{
       font-weight: 900;
       // 99px is about equal to 6.05em
-      font-size: 99px;
+      font-size: 55px;
       // font-size: 6.05em;
       letter-spacing: 5px;
+      font-family: "Arial Rounded MT Bold";
     }
 
     .jumbo-p{
       color: gray;
       letter-spacing: 4px;
-      font-size: 20px;
+      font-size: 18px;
       margin-bottom: 75px;;
     }
 
     @media screen and (max-width: 1026px) {
       .jumbo-h1 {
-        font-size: 80px !important;
+        font-size: 50px !important;
       }
     }
     @media screen and (max-width: 991px) {
       .jumbo-h1 {
-        font-size: 70px !important;
+        font-size: 46px !important;
       }
     }
     @media screen and (max-width: 519px) {
@@ -52,32 +53,32 @@
     @media screen and (max-width: 478px) {
       .jumbo-h1 {
         letter-spacing: normal;
-        font-size: 70px !important;
+        font-size: 38px !important;
       }
     }
     @media screen and (max-width: 466px) {
       .jumbo-h1 {
-        font-size: 65px !important;
+        font-size: 38px !important;
       }
     }
     @media screen and (max-width: 403px) {
       .jumbo-h1 {
-        font-size: 60px !important;
+        font-size: 36px !important;
       }
     }
     @media screen and (max-width: 383px) {
       .jumbo-h1 {
-        font-size: 57px !important;
+        font-size: 32px !important;
       }
     }
     @media screen and (max-width: 365px) {
       .jumbo-h1 {
-        font-size: 55px !important;
+        font-size: 32px !important;
       }
     }
     @media screen and (max-width: 355px) {
       .jumbo-h1 {
-        font-size: 54px !important;
+        font-size: 32px !important;
       }
     }
   }
@@ -86,8 +87,8 @@
     width: 500px;
     height: 100px;
     padding: 5px 5px 5px 25px !important;
-    color: #404041 !important;
-    border-color: #404041;
+    color: #EA0A3F !important;
+    border: 1px solid #ccc;
     font-family: arial;
     display: flex;
     flex-direction: row;
@@ -103,11 +104,12 @@
     .home-txt {
       text-transform: lowercase;
       display: inline;
-      font-family: arial;
+      font-family: "Arial Rounded MT Bold";
       font-weight: bolder;
       font-size: 44px;
       margin-right: 100px;
       margin-bottom: 0 !important;
+      color: #000;
     }
 
     .home-checkbox-container {
@@ -133,7 +135,7 @@
     /* Create a custom checkbox */
     .home-checkmark {
       position: absolute;
-      top: 0;
+      top: -3px;
       left: 0;
       height: 25px;
       width: 25px;
@@ -147,7 +149,7 @@
 
     /* When the checkbox is checked, add a blue background */
     .home-checkbox-container input:checked ~ .home-checkmark {
-      background-color: #2196F3;
+      background-color: #EA0A3F;
     }
 
     /* Create the checkmark/indicator (hidden when not checked) */
@@ -165,11 +167,11 @@
     /* Style the checkmark/indicator */
     .home-checkbox-container .home-checkmark:after {
       left: 9px;
-      top: 5px;
-      width: 5px;
-      height: 10px;
+      top: 3px;
+      width: 8px;
+      height: 14px;
       border: solid white;
-      border-width: 0 3px 3px 0;
+      border-width: 0 2px 2px 0;
       -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
       transform: rotate(45deg);
@@ -190,8 +192,11 @@
       }
 
       .caretIcon {
-        height: 25px;
-        margin-top: -12px;
+      }
+
+      .caretIcon:before {
+        font-size: 40px;
+        line-height: 14px;
       }
     }
   }
@@ -238,7 +243,7 @@
     .jumbo-dropdown-text{
       text-transform: lowercase;
       display: inline;
-      font-family: arial;
+      font-family: "Arial Rounded MT Bold";
       font-weight: bolder;
       font-size: 44px;
     }
@@ -279,7 +284,7 @@
     /* Create a custom checkbox */
     .checkmark {
       position: absolute;
-      top: 0;
+      top: -3px;
       left: 0;
       height: 25px;
       width: 25px;
@@ -293,7 +298,7 @@
 
     /* When the checkbox is checked, add a blue background */
     .checkbox-container input:checked ~ .checkmark {
-      background-color: #2196F3;
+      background-color: #EA0A3F;
     }
 
     /* Create the checkmark/indicator (hidden when not checked) */
@@ -311,11 +316,11 @@
     /* Style the checkmark/indicator */
     .checkbox-container .checkmark:after {
       left: 9px;
-      top: 5px;
-      width: 5px;
-      height: 10px;
+      top: 3px;
+      width: 8px;
+      height: 14px;
       border: solid white;
-      border-width: 0 3px 3px 0;
+      border-width: 0 2px 2px 0;
       -webkit-transform: rotate(45deg);
       -ms-transform: rotate(45deg);
       transform: rotate(45deg);

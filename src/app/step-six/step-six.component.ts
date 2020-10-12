@@ -73,7 +73,10 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
   filteredInsurances: Array<ModalData> = [];
   filterConditions: any;
   priceLoaderCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
-  priceWidgetCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
+  gridpriceWidgetCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
+  listpriceWidgetCommonClass = 'col-12 mt-2 mb-2 form-row animated bounceIn';
+  viewmode: string;
+  value_sort_up: boolean;
 
   @HostListener('window:resize', ['$event'])
 
@@ -94,6 +97,7 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.calcPrices();
     this.getPricing();
+    this.viewmode = 'List';
   }
 
   ngOnDestroy(): void {
@@ -526,8 +530,16 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
   sortPrices(type) {
     if (type == 'DESC') {
       this.filteredInsurances = this.filteredInsurances.sort((a, b) => b.price - a.price);
-    } else {
+    } else if (type == 'ASC'){
       this.filteredInsurances = this.filteredInsurances.sort((a, b) => a.price - b.price);
+    } else {
+      if (this.value_sort_up) {
+        this.filteredInsurances = this.filteredInsurances.sort((a, b) => a.dwelling - b.dwelling);
+        this.value_sort_up = false;
+      } else {
+        this.filteredInsurances = this.filteredInsurances.sort((a, b) => b.dwelling - a.dwelling);
+        this.value_sort_up = true;
+      }
     }
   }
 

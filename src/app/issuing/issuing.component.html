@@ -6,11 +6,13 @@
 <!-- Angular dropdown -->
 <div class="form-row">
   <div id="jumbo-div" class="container-fluid">
-    <h1 class="jumbo-h1">Just Swype</h1>
-    <p class="jumbo-p">You'll see quotes instantly.</p>
+    <h1 class="jumbo-h1 pt-5">compare policies online <span style="color: #EA0A3F">quickly</span>.</h1>
+    <p class="jumbo-p pt-2">Get and compare insurance quotes easily.</p>
   </div>
+
+
   <div class="dropdown" mdbDropdown [autoClose]="false">
-    <button mdbDropdownToggle mdbBtn class="dropdown-toggle waves-light" id="dropdown-btn" type="button" mdbWavesEffect>
+    <button mdbDropdownToggle mdbBtn #toggleButton class="dropdown-toggle waves-light" id="dropdown-btn" type="button" mdbWavesEffect style="box-shadow: none;">
       <img class="home-img" src="../../assets/images/button-icons/home-icon.png">
       <p class="home-txt">home</p>
       <label class="home-checkbox-container">
@@ -18,12 +20,12 @@
         <span class="home-checkmark"></span>
       </label>
       <div class="dropDownCaretContainer">
-        <p class="select-txt">select more</p>
-        <i class="fas fa-caret-down fa-4x caretIcon"></i>
+        <p class="select-txt text-black">more</p>
+        <i class="fas fa-caret-down caretIcon"></i>
       </div>
     </button>
 
-    <div class="dropdown-menu dropdown-primary" id="jumbo-dropdown-menu">
+    <div class="dropdown-menu dropdown-primary" id="jumbo-dropdown-menu" #menu>
       <div class="jumbo-option">
         <div class="icon-wrapper">
           <img class="jumbo-dropdown-image" src="../../assets/images/button-icons/car-icon.png">
@@ -92,7 +94,6 @@
           <span class="checkmark"></span>
         </label>
       </div>
-      <div class="jumbo-option-divider-div"></div>
 
     </div>
   </div>

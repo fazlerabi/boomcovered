@@ -1,12 +1,24 @@
 @import '../assets/styles/variables';
 
 mdb-navbar.navbar {
-  background-color: white !important;
+
+}
+
+.phone-area {
+  background: #000;
+  border-radius: 4px;
+  padding: 3px 10px;
+  display: flex;
+  align-items: center;
+
+  i {
+    padding-right: 8px;
+  }
 }
 
 mdb-navbar-brand {
-  height: 60px;
-  width: 141px;
+  height: auto;
+  width: auto;
 
   h4 {
     span {
@@ -231,4 +243,13 @@ footer{
     background-color: white !important;
   }
 }
-/*comment*/
+
+@media screen and (max-width: 768px) {
+  .site-logo {
+    img {
+      height: 36px;
+      object-fit: contain;
+      padding-top: 3px;
+    }
+  }
+}

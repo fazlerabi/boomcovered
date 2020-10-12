@@ -18,6 +18,11 @@ import {ChatComponent} from "./chat/chat.component";
 import {AboutComponent} from "./about/about.component";
 import {ContactComponent} from "./contact/contact.component";
 import {DemoPageComponent} from "./components/demo-page/demo-page.component";
+import {BatchPageComponent} from "./components/batch-page/batch-page.component";
+import {AddCodePageComponent} from "./components/add-code-page/add-code-page.component";
+import {UserListComponent} from "./components/user-list/user-list.component";
+import {BulkListComponent} from "./components/bulk-list/bulk-list.component";
+import {UserDetailsComponent} from "./components/user-details/user-details.component";
 import {PreparingPolicyComponent} from "./components/preparing-policy/preparing-policy.component";
 import {PolicyStartDateComponent} from "./components/policy-start-date/policy-start-date.component";
 import {PolicyHaveMortgageComponent} from "./components/policy-have-mortgage/policy-have-mortgage.component";
@@ -29,93 +34,93 @@ import {HavenResultComponent} from "./components/haven-result/haven-result.compo
 const routes: Routes = [
   {
     path: 'step1', component: StepOneComponent, data: {
-      animation: 'StepOne'
-    }
+    animation: 'StepOne'
+  }
   },
   {
     path: 'step2', component: StepTwoComponent, data: {
-      animation: 'StepTwo'
-    }
+    animation: 'StepTwo'
+  }
   },
   {
     path: 'step3', component: StepThreeComponent, data: {
-      animation: 'StepThree'
-    }
+    animation: 'StepThree'
+  }
   },
   {
     path: 'roof', component: RoofComponent, data: {
-      animation: 'Roof'
-    }
+    animation: 'Roof'
+  }
   },
   {
     path: 'exterior', component: ExteriorComponent, data: {
-      animation: 'Exterior'
-    }
+    animation: 'Exterior'
+  }
   },
   {
     path: 'step4', component: StepFourComponent, data: {
-      animation: 'StepFour'
-    }
+    animation: 'StepFour'
+  }
   },
   {
     path: 'step5', component: StepFiveComponent, data: {
-      animation: 'StepFive'
-    }
+    animation: 'StepFive'
+  }
   },
   {
     path: 'step6', component: StepSixComponent, data: {
-      animation: 'StepSix'
-    }
+    animation: 'StepSix'
+  }
   },
   {
     path: 'preparing-policy', component: PreparingPolicyComponent, data: {
-      animation: 'PreparingPolicy'
-    }
+    animation: 'PreparingPolicy'
+  }
   },
   {
     path: 'policy-start-date', component: PolicyStartDateComponent, data: {
-      animation: 'PolicyStartDate'
-    }
+    animation: 'PolicyStartDate'
+  }
   },
   {
     path: 'policy-have-mortgage', component: PolicyHaveMortgageComponent, data: {
-      animation: 'PolicyHaveMortgage'
-    }
+    animation: 'PolicyHaveMortgage'
+  }
   },
   {
     path: 'policy-mortgage-info', component: PolicyMortgageInfoComponent, data: {
-      animation: 'PolicyMortgageInfo'
-    }
+    animation: 'PolicyMortgageInfo'
+  }
   },
   {
     path: 'policy-chat', component: PolicyOlarkChatComponent, data: {
-      animation: 'PolicyOlarkChat'
-    }
+    animation: 'PolicyOlarkChat'
+  }
   },
   {
     path: 'step7', component: StepSevenComponent, data: {
-      animation: 'StepSeven'
-    }
+    animation: 'StepSeven'
+  }
   },
   {
     path: 'step8', component: StepEightComponent, data: {
-      animation: 'StepEight'
-    }
+    animation: 'StepEight'
+  }
   },
   {
     path: 'step9', component: StepNineComponent, data: {
-      animation: 'StepNine'
-    }
+    animation: 'StepNine'
+  }
   },
   {
     path: 'haven-inputs', component: HavenInputsComponent, data: {
-      animation: 'HavenInputs'
-    }
+    animation: 'HavenInputs'
+  }
   },
   {
     path: 'haven-result', component: HavenResultComponent, data: {
-      animation: 'HavenResult'
-    }
+    animation: 'HavenResult'
+  }
   },
   {path: 'esign', component: EsignComponent},
   {path: 'about', component: AboutComponent},
@@ -123,12 +128,19 @@ const routes: Routes = [
   {path: 'chat', component: ChatComponent},
   {path: 'retrieve', component: RetrieveComponent},
   {path: 'demo', component: DemoPageComponent},
+
+  {path: 'add', component: AddCodePageComponent},
+  {path: 'batch', component: BatchPageComponent},
+  {path: 'users', component: UserListComponent},
+  {path: 'history', component: BulkListComponent},
+  {path: 'users/:id', component: UserDetailsComponent},
+
   {path: '', redirectTo: '/step1', pathMatch: 'full'}
 ];
 
 @NgModule({
   exports: [RouterModule],
-  imports: [RouterModule.forRoot(routes)]
+  imports: [RouterModule.forRoot(routes, { useHash: false })]
 })
 
 

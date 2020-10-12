@@ -55,6 +55,9 @@
                 "input": "node_modules/swiper/css/swiper.css"
               },
               {
+                "input": "src/assets/fonts/Roboto/font-custom.css"
+              },
+              {
                 "input": "src/styles.scss"
               }
             ],
@@ -93,7 +96,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mdb-angular-free:build"
+            "browserTarget": "mdb-angular-free:build",
+            "proxyConfig":"proxy.config.json"
           },
           "configurations": {
             "production": {
@@ -115,6 +119,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
+              {
+                "input": "src/assets/fonts/Roboto/font-custom.css"
+              },
               {
                 "input": "src/styles.scss"
               }

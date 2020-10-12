@@ -190,7 +190,7 @@ export class StepOneComponent implements AfterViewInit {
     return new Promise((resolve, reject) => {
       this.apiService.getZillow(data).subscribe(
         res => {
-          if (res["message"]["code"] == 508) {
+          if(!res.hasOwnProperty('price')) {
             this.commonService.modalOpen(
               "Error",
               "Exact address not found, please enter manually."
@@ -210,32 +210,17 @@ export class StepOneComponent implements AfterViewInit {
             });
             return;
           }
-          if (res["message"]["code"] != 0) {
-            this.GooglePlace = false;
-            reject({
-              result: "error",
-              code: 400,
-              message: "An error occurred. Please try again later."
-            });
-          } else {
-            this.zillowData["value"] = res.response.results.result[0];
-            const estimate =
-              this.zillowData["value"].zestimate[0].amount[0]._ * 1;
-            this.zillowData["square"] = this.commonService.commafy(
-              this.zillowData["value"].finishedSqFt[0] * 1
-            );
-            this.zillowData["built_year"] = this.zillowData[
-              "value"
-              ].yearBuilt[0];
-            this.zillowData["estimate"] =
-              estimate != NaN ? this.commonService.commafy(estimate) : 0;
+            if (res.hasOwnProperty('price')) {
+              const estimate = res.price
+              this.zillowData['square'] = res.building_size;
+              this.zillowData['built_year'] = res.year_built;
+              this.zillowData['estimate'] = estimate != NaN ? this.commonService.commafy(estimate) : 0;
             resolve({
               result: "success",
               code: 200,
               message: "Successfully completed."
             });
           }
-
         },
         err => {
           reject({
@@ -414,7 +399,7 @@ export class StepOneComponent implements AfterViewInit {
       postal_code = addressData["postal_code"],
       street = addressData["address"],
       year_built = this.zillowData["built_year"],
-      sqft = this.zillowData["square"].replace(",", ""),
+      sqft = this.zillowData["square"],  //.replace(",", ""),
       mode = this.selectedMode,
       ac_year = (electric_year = plumbing_year = roof_year = currentYear),
       construction_type = 1,

@@ -1,10 +1,32 @@
 <button type="button" mdbBtn class="relative waves-light p-2 modal-btns" (click)="openModal()" mdbWavesEffect>
+  <div class="row grid-price-widget">
+
   <div class="col">
     <div class="img-wrapper">
       <img [src]="imgURL"/>
     </div>
     <div class="price-num-container">
-      <h5 class="text-black pt-3 font-weight-bold text-lowercase text-center mb-0">
+      <h5 class="text-black pt-3 font-weight-bold text-lowercase text-center mb-0" style="font-size: 1.85rem">
+        {{price|currency:'USD':'symbol':'1.0-0'}}
+      </h5>
+    </div>
+    <div class="icon-container mt-3 pt-2">
+      <img src="../../../assets/images/icons/fire.png" alt="">
+      <img src="../../../assets/images/icons/water.png" alt="">
+      <img src="../../../assets/images/icons/wind.png" alt="">
+    </div>
+  </div>
+
+  </div>
+
+  <div class="row list-price-widget">
+
+  <div class="col-5">
+    <div class="img-wrapper">
+      <img [src]="imgURL"/>
+    </div>
+    <div class="price-num-container">
+      <h5 class="text-black pt-2 font-weight-bold text-lowercase text-center mb-0" style="font-size: 1.6rem">
         {{price|currency:'USD':'symbol':'1.0-0'}}
       </h5>
     </div>
@@ -13,5 +35,21 @@
       <img src="../../../assets/images/icons/water.png" alt="">
       <img src="../../../assets/images/icons/wind.png" alt="">
     </div>
+  </div>
+
+  <div class="col-2">
+  </div>
+
+  <div class="col-5">
+    <div class="text-black font-weight-bold text-capitalize text-center text-smaller dwelling-coverage">
+      dwelling coverage
+    </div>
+    <div class="price-num-container">
+      <h5 class="text-black pt-2 font-weight-bold text-lowercase text-center mb-0" style="font-size: 1.85rem;">
+        {{dwelling | number:'1.0-0'}}
+      </h5>
+    </div>
+  </div>
+
   </div>
 </button>

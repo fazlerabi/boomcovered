@@ -131,6 +131,149 @@ mdb-badge {
 //}
 
 nav {
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
+
+.text-small {
+  font-size: 0.95rem;
+}
+.text-smaller {
+  font-size: 0.75rem;
+}
+
+.text-black {
+  color: #000 !important;
+}
+
+.text-pink {
+  color: #EA0A3F !important;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #ccc !important;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #ccc !important;
+  opacity:  1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #ccc !important;
+  opacity:  1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #ccc !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:    #ccc !important;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+  color:    #ccc !important;
+}
+
+.listview {
+  .form-row {
+    .modal-btns {
+      height: auto !important;
+      margin: 0;
+
+      .grid-price-widget {
+	display: none;
+      }
+      .list-price-widget {
+	.img-wrapper {
+	  img {
+	    padding-top: 10px;
+	  }
+	}
+      }
+    }
+  }
+}
+
+.gridview {
+  .form-row {
+    .modal-btns {
+      .list-price-widget {
+	display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  nav {
+    .container {
+      flex-direction: row-reverse !important;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .gridview {
+    .modal-btns{
+      width: 160px !important;
+    }
+  }
+}
+
+.swiper-container {
+  border-radius: 8px !important;
+}
+
+.fixed-continue {
+  display: none;
+  
+  /*position: fixed;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+
+  .swiper-wrapper {
+    transform: translate3d(-348px, 0px, 0px);
+  }*/
+}
+
+@media only screen and (max-width: 768px) {
+  .fixed-continue {
+    display: block;
+  }
+  app-bar-chart {
+    apx-chart > div {
+    min-height: 300px;
+    .apexcharts-canvas {
+      height: 300px !important;
+    }
+    }
+  }
+}
+
+.apexcharts-grid {
+  display: none !important;
+}
+
+.apexcharts-xaxis {
+/*  display: none !important;*/
+}
+
+.single-email-row .action-area .sebm-google-map-container {
+  width: 90px !important;
+  height: 90px !important;
+}
+
+.single-email-row .progress {
+  width: 100px !important;
+}
+
+.batch-page app-address-input:not(:first-of-type) .title {
+  display: none;
+}
+
+
