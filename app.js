@@ -69,10 +69,8 @@ app.use('/', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 app.use((req, resp, next) => {
   if (req.url === "/api/get_zillow") {
     currentWaitTime += WAIT_TIME;
-    console.log("current wait time1 =", currentWaitTime);
     setTimeout(() => {
       currentWaitTime -= WAIT_TIME;
-      console.log("current wait time2 =", currentWaitTime);
       next();
     }, currentWaitTime);
   } else {
