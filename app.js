@@ -11,7 +11,8 @@ const mongoose = require('mongoose');
 const apiRouter = require('./routes/index');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const WAIT_TIME = 500;
+let currentWaitTime = 20;
 const app = express();
 
 let corsOptions = {
@@ -66,11 +67,14 @@ app.use('/get_quote_data', express.static(path.join(__dirname, 'dist/mdb-angular
 app.use('/', express.static(path.join(__dirname, 'dist/mdb-angular-free')));
 
 app.use((req, resp, next) => {
-  // console.log(req.url);
   if (req.url === "/api/get_zillow") {
+    currentWaitTime += WAIT_TIME;
+    console.log("current wait time1 =", currentWaitTime);
     setTimeout(() => {
+      currentWaitTime -= WAIT_TIME;
+      console.log("current wait time2 =", currentWaitTime);
       next();
-    }, 600);
+    }, currentWaitTime);
   } else {
     next();
   }

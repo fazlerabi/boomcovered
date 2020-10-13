@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http';
 
-//const apiUrl = 'https://boom.insure/api/';
-const apiUrl = 'http://localhost:3000/api/';
+const apiUrl = 'https://boom.insure/api/';
+// const apiUrl = 'http://localhost:3000/api/';
 
 @Injectable({
   providedIn: 'root'
