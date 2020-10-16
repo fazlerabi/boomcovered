@@ -19,20 +19,22 @@
       margin-bottom: 0 !important;
 
       .addressDiv {
-        width: 500px !important;
+        width: 100% !important;
         padding: 0 !important;
 
-        .addressInput {
+        .addressInput, .addressSelcted {
           position: relative;
           margin: 0 auto;
           box-sizing: border-box;
           width: 100%;
-          height: 62px;
-          border-radius: 10px !important;
+          height: 80px;
+          border-radius: 10px 0px 0px 10px !important;
           box-shadow: none;
           padding-left: 26px;
           border-width: 1px;
-
+          border: solid 1px #Ccc !important;
+        }
+        .addressInput {
           background-image: url("../../assets/images/addressImg_grey.png");
           background-size: contain;
           background-repeat: no-repeat;
@@ -63,7 +65,7 @@
 
       @media screen and (max-width: 560px) {
         .addressDiv {
-          width: 400px !important;
+          width: 100% !important;
 
           .addressInput {
           }
@@ -72,7 +74,7 @@
 
       @media screen and (max-width: 441px) {
         .addressDiv {
-          width: 350px !important;
+          width: 100% !important;
 
           .addressInput {
           }
@@ -81,7 +83,7 @@
 
       @media screen and (max-width: 400px) {
         .addressDiv {
-          width: 290px !important;
+          width: 100% !important;
 
           .addressInput {
           }
@@ -946,3 +948,138 @@ input[type=text], input[type=date], input[type=email], input[type=number] {
 //   outline: none;
 // }
 
+@media screen and (max-width: 441px) {
+  #jumbo-div{
+    padding: 0 !important;
+
+    .jumbo-p{
+      margin-bottom: 30px;
+      letter-spacing: normal;
+    }
+  }
+}
+
+#jumbo-div{
+  text-align: center;
+  margin-top: 0 !important;
+  font-family: arial;
+
+  .jumbo-h1{
+    font-weight: 900;
+    // 99px is about equal to 6.05em
+    font-size: 55px;
+    color: gray;
+    // font-size: 6.05em;
+    letter-spacing: 5px;
+    font-family: "Arial Rounded MT Bold";
+  }
+
+  .jumbo-p{
+    color: gray;
+    letter-spacing: 4px;
+    font-size: 18px;
+    margin-bottom: 75px;;
+  }
+
+  @media screen and (max-width: 1026px) {
+    .jumbo-h1 {
+      font-size: 50px !important;
+    }
+  }
+  @media screen and (max-width: 991px) {
+    .jumbo-h1 {
+      font-size: 46px !important;
+    }
+  }
+  @media screen and (max-width: 519px) {
+    .jumbo-h1 {
+      letter-spacing: 1px;
+    }
+  }
+  @media screen and (max-width: 478px) {
+    .jumbo-h1 {
+      letter-spacing: normal;
+      font-size: 38px !important;
+    }
+  }
+  @media screen and (max-width: 466px) {
+    .jumbo-h1 {
+      font-size: 38px !important;
+    }
+  }
+  @media screen and (max-width: 403px) {
+    .jumbo-h1 {
+      font-size: 36px !important;
+    }
+  }
+  @media screen and (max-width: 383px) {
+    .jumbo-h1 {
+      font-size: 32px !important;
+    }
+  }
+  @media screen and (max-width: 365px) {
+    .jumbo-h1 {
+      font-size: 32px !important;
+    }
+  }
+  @media screen and (max-width: 355px) {
+    .jumbo-h1 {
+      font-size: 32px !important;
+    }
+  }
+}
+.title {
+  margin-bottom: 5rem !important;
+}
+
+.addressInput::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 1.5rem;
+}
+.addressInput::-moz-placeholder { /* Firefox 19+ */
+  font-size: 1.5rem;
+}
+.addressInput:-ms-input-placeholder { /* IE 10+ */
+  font-size: 1.5rem;
+}
+.addressInput:-moz-placeholder { /* Firefox 18- */
+  font-size: 1.5rem;
+}
+h5.addressTxt{
+  margin: 1rem;
+}
+.map-container {
+  width: 100%;
+  height: 570px;
+
+  agm-map {
+    width: 100%;
+    height: 100%;
+  }
+
+  .overlay {
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    margin-top: -570px;
+    background: linear-gradient(180deg, #fafafa 50%, #fdfdfd 100%);
+  }
+}
+.loader{
+    max-width: 1000px;
+    margin-left: calc((100% - 1000px) / 2) !important;
+    font-family: Roboto;
+    position: absolute;
+    top: 100px;
+    z-index: 1020;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+:host ::ng-deep .progress .progress-bar  {
+  height:40px !important
+}
+
+:host ::ng-deep mdb-progress .progress {
+  height:25px !important
+}

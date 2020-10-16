@@ -9,6 +9,13 @@ import * as $ from "jquery";
 })
 export class IssuingComponent implements OnInit {
 
+  dropdownItems = [
+    { name: "auto", url: "../../assets/images/button-icons/car-icon.png" },
+    { name: "flood", url: "../../assets/images/button-icons/flood-icon.png" },
+    { name: "life", url: "../../assets/images/button-icons/life-icon.png" },
+    { name: "umbrella", url: "../../assets/images/button-icons/umbrella-icon.png" },
+    { name: "condo", url: "../../assets/images/button-icons/condo-icon.png" }
+  ];
   insuranceOptions = {
     home: true,
     auto: false,

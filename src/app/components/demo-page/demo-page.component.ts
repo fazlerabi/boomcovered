@@ -18,17 +18,17 @@ export class DemoPageComponent implements OnInit {
       let docViewTop = $(window).scrollTop();
       let docViewBottom = docViewTop + $(window).height();
 
-      let elem = $("app-demo-price-swiper");
-      let elemTop = $(elem).offset().top;
-      let elemBottom = elemTop + $(elem).height();
+      // let elem = $("app-demo-price-swiper");
+      // let elemTop = $(elem).offset().top;
+      // let elemBottom = elemTop + $(elem).height();
 
-      if ((elemBottom <= docViewBottom) && (elemTop >= docViewTop)) {
-        if ($(".fixed-continue").hasClass("fixed")) {
-          $(".fixed-continue").removeClass("fixed");
-        }
-      } else {
-        $(".fixed-continue").addClass("fixed");
-      }
+      // if ((elemBottom <= docViewBottom) && (elemTop >= docViewTop)) {
+      //   if ($(".fixed-continue").hasClass("fixed")) {
+      //     $(".fixed-continue").removeClass("fixed");
+      //   }
+      // } else {
+      //   $(".fixed-continue").addClass("fixed");
+      // }
     });
   }
 

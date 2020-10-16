@@ -84,21 +84,18 @@
   }
 
   #dropdown-btn{
-    width: 500px;
-    height: 100px;
-    padding: 5px 5px 5px 25px !important;
-    color: #EA0A3F !important;
+    width: 100%;
+    height: 80px;
+    padding: 2px 2px 2px 2px !important;
+    color: #000 !important;
     border: 1px solid #ccc;
     font-family: arial;
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
+    display: block;
     align-items: center;
-
+    border-radius: 0px 10px 10px 0px !important;
     .home-img{
       width: 40px;
       display: inline;
-      margin-right: 25px;
     }
 
     .home-txt {
@@ -213,31 +210,23 @@
   }
 
   #jumbo-dropdown-menu{
-    width: 500px;
-    margin-top: 65px;
+    width: 100%;
+    // margin: 0 .375rem !important;
+   //  margin-top: 30px;
 
     .jumbo-option{
-      padding-left: 10px;
       font-weight: bold;
-      display: flex;
-      flex-direction: row;
       justify-content: center;
       align-items: center;
     }
 
-    .icon-wrapper {
-      width: 50px;
-      margin-right: 25px;
+    .jumbo-option.selected{
+      background-color: $primary-color !important;
     }
-
     .jumbo-option:hover {
       border-radius: 10px;
       background-color: $primary-color !important;
       color: #FCFDFF;
-    }
-
-    .text-wrapper {
-      flex: 1 1 100px;
     }
 
     .jumbo-dropdown-text{
@@ -250,9 +239,13 @@
 
     .jumbo-option-divider-div{
       border-bottom: 1px solid lightgray;
-      width: 90%;
+      width: 100%;
       margin: auto;
-      margin-bottom: 15px;
+      margin: 15px 0px 10px 0px;
+    }
+
+    .jumbo-option-last-item{
+      margin: 15px 0px 0px 0px;
     }
 
     .option-checkbox{
@@ -331,7 +324,7 @@
 
   @media screen and (max-width: 560px) {
     #dropdown-btn{
-      width: 400px !important;
+      width: 100% !important;
 
       .home-txt {
         margin-right: 25px !important;
@@ -339,7 +332,7 @@
     }
 
     #jumbo-dropdown-menu{
-      width: 400px !important;
+      width: 100% !important;
 
       .checkbox-container {
         padding-right: 90px !important;
@@ -358,10 +351,10 @@
     }
 
     #dropdown-btn{
-      height: 90px;
-      width: 350px !important;
-      padding-left: 20px;
-      padding-right: 20px;
+      height: 80px;
+      width: 100% !important;
+      // padding-left: 20px;
+      // padding-right: 20px;
 
       .home-txt {
         margin-right: 15px !important;
@@ -370,7 +363,7 @@
     }
 
     #jumbo-dropdown-menu{
-      width: 350px !important;
+      width: 100% !important;
 
       .jumbo-dropdown-text {
         font-size: 34px !important;
@@ -384,12 +377,8 @@
   @media screen and (max-width: 400px) {
 
       #dropdown-btn{
-        width: 290px !important;
-        padding: 5px 15px 5px 15px !important;
-
-        .home-img {
-          margin-right: 20px !important;
-        }
+        width: 100% !important;
+       // padding: 5px 15px 5px 15px !important;
 
         .home-txt {
           margin-right: 10px !important;
@@ -408,7 +397,7 @@
       }
 
       #jumbo-dropdown-menu{
-        width: 290px !important;
+        width: 100% !important;
 
         .jumbo-dropdown-text {
           font-size: 30px !important;
@@ -421,6 +410,21 @@
 
   // === Media Queries End ===
 
+}
+
+:host ::ng-deep .dropdown-menu {
+    min-width: 5rem;
+    text-align: center;
+    margin: 2em 0.15em 0.2em 0em;
+    margin-left: -0.325rem;
+}
+
+:host ::ng-deep .form-row {
+  display: block;
+}
+
+:host ::ng-deep .btn {
+  margin: 0rem;
 }
   //===================================
   // +++ End New front page styles +++

@@ -1,49 +1,62 @@
 <div class="container">
 <div class="row mt-3">
   <div class="col-12">
-    <div class="row pt-3 pb-5 info-board">
-      <div class="col-md-12">
+    <div class="row pt-3">
+      <div class="col-10 row offset-2 tab-header">
+      <div [ngClass]="selectedTab==='coverages' ? 'selected' :''" class="col-6" (click)="selectedTab='coverages'">coverages</div>
+      <div [ngClass]="selectedTab==='features' ? 'selected' :''" class="col-5 offset-1" (click)="selectedTab='features'">features</div>
+      </div>
+    </div>
+    <div class="row pt-1 pb-5 info-board">
+      <div class="col-md-10 offset-1">
         <!--p class="mb-1">Coverages:</p-->
-        <table width="100%" class="mt-4 mb-3">
+        <table *ngIf="selectedTab ==='coverages'" width="100%" class="mt-4 mb-3">
           <tr class="bg-grey">
-            <td class="text-left">Home Coverage <span class="text-black" *ngIf="!commonService.isMobileMode()"> (also known as Coverage A) - used to rebuild your home in the event of complete damage.)</span>
+            <td class="text-left">Home Coverage <span class="text-black" *ngIf="!commonService.isMobileMode() && !hideTableDescription"> (also known as Coverage A) - used to rebuild your home in the event of complete damage.)</span>
             </td>
             <td class="">{{ coverage_a | number }}</td>
           </tr>
           <tr>
             <td class="text-left">Extended Replacement Cost<span class="text-black"
-                                                                 *ngIf="!commonService.isMobileMode()"> - addtional coverage for rebuilding your house if the cost of doing so is higher than normal market prices.</span>
+                                                                 *ngIf="!commonService.isMobileMode() && !hideTableDescription"> - addtional coverage for rebuilding your house if the cost of doing so is higher than normal market prices.</span>
             </td>
             <td class="">25%</td>
           </tr>
           <tr class="bg-grey">
-            <td class="text-left">Other Structures <span class="text-black" *ngIf="!commonService.isMobileMode()"> ( Coverage B) - used to rebuild other structures on your property, such as a detached garage, fence, pool, shed.</span>
+            <td class="text-left">Other Structures <span class="text-black" *ngIf="!commonService.isMobileMode() && !hideTableDescription"> ( Coverage B) - used to rebuild other structures on your property, such as a detached garage, fence, pool, shed.</span>
             </td>
             <td class="">{{ coverage_b | number }}</td>
           </tr>
           <tr>
-            <td class="text-left">Personal Property<span class="text-black" *ngIf="!commonService.isMobileMode()"> ( Coverage C) - replaces your personal items during a covered claim. This could be furniture, electronics, clothing and more! </span>
-              <span *ngIf="!commonService.isMobileMode()">Replacement Cost - YES</span>
+            <td class="text-left">Personal Property<span class="text-black" *ngIf="!commonService.isMobileMode() && !hideTableDescription"> ( Coverage C) - replaces your personal items during a covered claim. This could be furniture, electronics, clothing and more! </span>
+              <span *ngIf="!commonService.isMobileMode()  && !hideTableDescription">Replacement Cost - YES</span>
             </td>
             <td class="">{{ personal_property | number }}</td>
           </tr>
           <tr class="bg-grey">
-            <td class="text-left">Loss of Use <span class="text-black" *ngIf="!commonService.isMobileMode()">( Coverage D) - covers living expenses as your home is being rebuilt or repaired.</span>
-            </td>
-            <td class="">{{ coverage_d | number}}</td>
-          </tr>
-          <tr>
-            <td class="text-left">Liability <span class="text-black" *ngIf="!commonService.isMobileMode()"> ( Coverage E) - covers bodiliy injury or harm to others which you or your family are responsible for.</span>
+            <td class="text-left">Liability <span class="text-black" *ngIf="!commonService.isMobileMode() && !hideTableDescription"> ( Coverage E) - covers bodiliy injury or harm to others which you or your family are responsible for.</span>
             </td>
             <td class="">500,000</td>
           </tr>
+          <tr class="">
+            <td class="text-left">Loss of Use <span class="text-black" *ngIf="!commonService.isMobileMode() && !hideTableDescription">( Coverage D) - covers living expenses as your home is being rebuilt or repaired.</span>
+            </td>
+            <td class="">{{ coverage_d | number}}</td>
+          </tr>
           <tr class="bg-grey">
-            <td class="text-left">Coverages to add: <span class="text-black" *ngIf="!commonService.isMobileMode()"> Water Sewer Backup, Mortgage Protection, Sewer Line Coverage, Home Systems</span>
+            <td class="text-left">Medical <span class="text-black" *ngIf="!commonService.isMobileMode() && !hideTableDescription"> Water Sewer Backup, Mortgage Protection, Sewer Line Coverage, Home Systems</span>
             </td>
             <td class="">
-              <div>optional</div>
-              <div class="text-smaller">(add these before you finalize)</div>
+              <div>5,000</div>
+              <!-- <div class="text-smaller">(add these before you finalize)</div> -->
             </td>
+          </tr>
+        </table>
+        <table *ngIf="selectedTab==='features'" width="100%" class="mt-4 mb-3">
+          <tr class="bg-grey">
+            <td class="text-left">Features Tab1 <span class="text-black" *ngIf="!commonService.isMobileMode() && !hideTableDescription"> (also known as Coverage A) - used to rebuild your home in the event of complete damage.)</span>
+            </td>
+            <td class="">{{ coverage_a | number }}</td>
           </tr>
         </table>
       </div>

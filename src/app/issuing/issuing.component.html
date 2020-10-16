@@ -5,14 +5,33 @@
 <!-- -------------------- -->
 <!-- Angular dropdown -->
 <div class="form-row">
-  <div id="jumbo-div" class="container-fluid">
-    <h1 class="jumbo-h1 pt-5">compare policies online <span style="color: #EA0A3F">quickly</span>.</h1>
-    <p class="jumbo-p pt-2">Get and compare insurance quotes easily.</p>
-  </div>
-
-
   <div class="dropdown" mdbDropdown [autoClose]="false">
-    <button mdbDropdownToggle mdbBtn #toggleButton class="dropdown-toggle waves-light" id="dropdown-btn" type="button" mdbWavesEffect style="box-shadow: none;">
+
+    <button mdbDropdownToggle mdbBtn #toggleButton class="dropdown-toggle waves-light btn waves-effect"
+      id="dropdown-btn" mdbWavesEffect style="box-shadow: none;" type="button" aria-haspopup="true"
+      aria-expanded="true">
+      <div style="font-size: 1em; margin: 0px 5px 5px 5px;">home</div>
+      <div><img class="home-img" src="../../assets/images/button-icons/home-icon.png"></div>
+      <div>
+        <i class="fas fa-2x fa-chevron-down"></i>
+      </div>
+    </button>
+    <div class="dropdown-menu dropdown-primary" id="jumbo-dropdown-menu" #menu>
+      <div *ngFor="let item of dropdownItems; index as i" class="jumbo-option" [ngClass]="insuranceOptions[item.name] ?'selected':''" (click)="toggle(item.name)">
+        <div class="text-wrapper">
+          {{item.name}}
+        </div>
+        <div class="icon-wrapper">
+          <img class="jumbo-dropdown-image" src="{{item.url}}">
+        </div>
+        <div [ngClass]="i !=dropdownItems.length -1 ? 'jumbo-option-divider-div' : 'jumbo-option-last-item'"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- <button mdbDropdownToggle mdbBtn #toggleButton class="dropdown-toggle waves-light" id="dropdown-btn" type="button" mdbWavesEffect style="box-shadow: none;">
       <img class="home-img" src="../../assets/images/button-icons/home-icon.png">
       <p class="home-txt">home</p>
       <label class="home-checkbox-container">
@@ -95,6 +114,6 @@
         </label>
       </div>
 
-    </div>
+    </div> 
   </div>
-</div>
+</div>-->

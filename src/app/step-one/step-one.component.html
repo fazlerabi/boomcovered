@@ -1,63 +1,59 @@
-<div class="container pt-md-2 pt-2 pb-5">
-  <div *ngIf="!isProcessing">
-    <div class="col-md-8 offset-md-2 inputPage">
+<div>
+  <div  class="container pt-md-2 pt-2 title pb-5" *ngIf="!isProcessing">
+    <div class="col-md-9 offset-md-1 inputPage">
       <!-- Material input -->
       <div class="form-group elemContainer">
-        <app-issuing></app-issuing>
-        <div class="md-form col-md-12 addressDiv mx-auto" *ngIf="!isDisplay">
-          <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()"
-            *ngIf="selectedMode==1" />
-
-          <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)"
-            id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text"
-            *ngIf="GooglePlace==true" placeholder="address" #placesRef>
-          <div class="right-arrow">
-            <i class="fa fa-arrow-right"></i>
-          </div>
-
-          <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" style="
-                 float: right;
-                 position: absolute;
-                 top: 0;
-                 right: 0;
-             " (click)="handleAddressChangeWithCache()">
-
-          <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460"
-            *ngIf="GooglePlace==false" [(ngModel)]="fullAddressText" />
-
-          <div class="col-md-12 col-sm-12 row pr-0 pl-0 mr-0 ml-0" *ngIf="!GooglePlace">
-            <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pl-0'">
-              <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']">
-            </div>
-            <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':''">
-              <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']">
-            </div>
-            <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pr-0'">
-              <input type="number" class="form-control" placeholder="Year Built" [(ngModel)]="zillowData['built_year']">
-            </div>
-          </div>
-
-          <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0"
-            style="text-decoration: underline !important;"
-            [ngStyle]="commonService.isMobileMode()?{'padding-left':'15px !important'}:''"
-            (click)="GooglePlace=!GooglePlace;loadGooglePlace()">
-            <!--strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong-->
-          </a>
-
+        <div id="jumbo-div" class="col-12 title container-fluid">
+          <h1 class="jumbo-h1 pt-5">Instant Insurance.<span> Simple for everyone.</span></h1>
         </div>
-      </div>
-    </div>
+        <div class="row">
+          <div class="col-10 p-0">
+            <div class="col-12 addressDiv" *ngIf="!isDisplay; else displayAddress">
+              <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()"
+                *ngIf="selectedMode==1" />
+              <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)"
+                id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text"
+                *ngIf="GooglePlace==true" placeholder="enter address to insure" #placesRef>
+              <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" style="float: right;position: absolute;
+                           top: 0;right: 0;" (click)="handleAddressChangeWithCache()">
+              <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460"
+                *ngIf="GooglePlace==false" [(ngModel)]="fullAddressText" />
+        
+              <div class="col-md-12 col-sm-12 row pr-0 pl-0 mr-0 ml-0" *ngIf="!GooglePlace">
+                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pl-0'">
+                  <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']">
+                </div>
+                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':''">
+                  <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']">
+                </div>
+                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pr-0'">
+                  <input type="number" class="form-control" placeholder="Year Built" [(ngModel)]="zillowData['built_year']">
+                </div>
+              </div>
+        
+              <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0" style="text-decoration: underline !important;"
+                [ngStyle]="commonService.isMobileMode()?{'padding-left':'15px !important'}:''"
+                (click)="GooglePlace=!GooglePlace;loadGooglePlace()">
+                <!--strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong-->
+              </a>
+            </div>
+            <!-- details section Start-->
+            <ng-template #displayAddress>
+              <div class="col-12 addressDiv" *ngIf="isDisplay">
+                <div class="addressTxt-wrapper addressSelcted">
+                  <h5 class="font-weight-bold text-center pt-2 addressTxt">
+                    {{fullAddressText}}
+                    <span class="badge badge-pill green"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
+                  </h5>
+                </div>
+              </div> 
+            </ng-template>
+          </div>
+            <div class="col-2 p-0">
+              <app-issuing></app-issuing>
+            </div>
 
-
-    <!-- details section Start-->
-    <div class="col-md-12 detailsContainer mx-auto" *ngIf="isDisplay">
-      <div class="addressTxt-wrapper">
-        <h4 class="font-weight-bold text-center pt-2 addressTxt">
-          {{fullAddressText}}
-          <span class="badge badge-pill green"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
-        </h4>
-      </div>
-    </div>
+          </div>
     <!-- details section End-->
 
     <div class="swipeDiv" *ngIf="commonService.isMobileMode() && isDisplay"></div>
@@ -80,12 +76,40 @@
       </swiper>
     </div>
   </div>
-
+    </div>
+  </div>
+</div>
   <!-- Sequence Start -->
   <div *ngIf="isProcessing" class="processingDiv pt-md-2 mx-auto">
 
+    
+    <div class="col-12 map-container">
+      <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
+      <div class="overlay"></div>
+    </div>
+    <div class="loader">
+      <div class="row">
+        <div class="col-8 offset-3 bg-white m-6" style="text-align: center; margin-top:5rem">
+          <div class="row">
+            <div class="col-8 offset-2" style="text-align: center; margin-top: 3rem;padding-bottom: 8rem;">
+            <h1 class="jumbo-h1 pt-5" style="margin-bottom:2rem;font-size:3rem;font-weight:900">running quotes....</h1>
+            <div class="col-8 offset-2" style="height:40px">
+              <mdb-progress value="{{progress}}" style="height:25px" min="0" max="100" type="info" aria-valuenow="{{progress}}"
+                aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+            </div>
+            <!-- <div class="progress" style="height:25px">
+            <div class="progress-bar" role="progressbar" width="{{progress}}" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100" style="height:25px;width:{{progress}}%">
+            </div> -->
+            <div style="text-align: center; padding: 5px;">{{progress}} % complete</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Sequence details section Start-->
-    <div class="col-md-12 detailsContainer mx-auto" *ngIf="isDisplay">
+    <!-- <div class="col-md-12 detailsContainer mx-auto" *ngIf="isDisplay">
       <div class="addressTxt-wrapper">
         <h4 class="font-weight-bold text-center pt-2 addressTxt">
           {{fullAddressText}}
@@ -93,11 +117,11 @@
           <span class="badge badge-pill green"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
         </h4>
       </div>
-    </div>
+    </div> -->
 
-    <div class="loading-container">
+    <div class="loading-container"></div>
       <!-- Shazam like animation Start -->
-      <div class="ripple" style="animation-delay: 0s">
+      <!-- <div class="ripple" style="animation-delay: 0s">
         <div class="animated processing-pane loadingRow-container">
           <div class="loading-img-container">
             <div class="loading-img-wrapper" *ngIf="showGoogleApiLogo">
@@ -137,7 +161,6 @@
             <div class="loading-img-wrapper" *ngIf="showNeptune">
               <img src="../../assets/images/companies/neptune.svg" class="loading-img neptune-img" />
             </div>
-            <!-- #### -->
             <div class="loading-img-wrapper" *ngIf="show2ndGoogleApiLogo">
               <img src="../../assets/images/google-map-api.png" class="loading-img portrait" />
             </div>
@@ -177,13 +200,12 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- Shazam like animation End -->
 
-    </div> <!-- Loading-container closing div -->
-  </div> <!-- processing closing div -->
+    <!-- </div> Loading-container closing div-->
+  </div> 
   <!-- ==== Sequence End === -->
-</div> <!-- container closing div -->
 
 <!-- New Front page design Start -->
 <section class="showcase-section" *ngIf="!isProcessing">

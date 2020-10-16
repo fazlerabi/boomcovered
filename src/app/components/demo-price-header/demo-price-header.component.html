@@ -1,30 +1,51 @@
 <div class="map-container">
   <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    <!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
   </agm-map>
   <div class="overlay"></div>
 </div>
 <div class="container animated slideInLeft">
   <div class="row">
-    <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-10 offset-1 bg-white p-3">
+    <div class="col-8 offset-2 pt-5">
       <div class="row">
-        <div class="col-4">
-          <p class="cost font-weight-bold">Cost</p>
+        <div class="col-10">
+          <div class="address-header">
+            <span class="address-text font-weight-bold" style="font-family: 'Arial Rounded MT Bold';">
+              {{commonService.getAddressData()['address']}} {{commonService.getAddressData()['locality']}},
+              {{commonService.getAddressData()['administrative_area_level_1']}},
+              {{commonService.getAddressData()['postal_code']}}</span>
+          </div>
+          <div class="pt-2" style="text-align: center;">coverage for your home</div>
+          <div class="d-flex justify-content-center pt-5">
+          <div class="rounded-circle rounded-circle-pricing pricing-contents">
+            <div class="col-12 pt-3">
+            <h1 class="medium-price text-center font-weight-bold">
+              {{medium_price|currency:'USD':'symbol':'1.0-0'}}
+            </h1>
+            <div class="text-center pb-3">PER YEAR</div>
+            <div class="text-center"><i class="fas fa-info-circle"></i></div>
+            </div>
+          </div>
+          </div>
+          <div class = "col-10 offset-2 pt-5">
+            <button class="col-4 btn  btn-light">download</button>
+            <button class="col-4 btn offset-1 btn-light" (click)="send()">email</button>
+          </div>
         </div>
-        <div class="col-4">
+        <!-- <div class="col-4">
           <p class="target text-center">target estimate</p>
           <div class="form-row">
             <img src="../../../assets/images/demo-price/target.png" width="50" class="mx-auto target-img" height="55"/>
           </div>
-        </div>
-        <div class="col-4">
+        </div> -->
+        <!-- <div class="col-4">
           <div class="form-row">
             <a (click)="send()" class="mx-auto send-btn">
               <img src="../../../assets/images/demo-price/email.png" width="40"/>
             </a>
           </div>
-        </div>
-        <div class="col-12" *ngIf="showLoader">
+        </div> -->
+        <!-- <div class="col-12" *ngIf="showLoader">
           <div class="loader form-row animated fadeIn mt-5">
             <div class="preloader-wrapper big active mx-auto">
               <div class="spinner-layer spinner-red-only">
@@ -40,8 +61,8 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-12" *ngIf="!showLoader">
+        </div> -->
+        <!-- <div class="col-12" *ngIf="!showLoader">
           <h1 class="medium-price text-center font-weight-bold">
             {{medium_price|currency:'USD':'symbol':'1.0-0'}}
           </h1>
@@ -57,8 +78,8 @@
             {{lowest_price|currency:'USD':'symbol':'1.0-0'}} -
             {{highest_price|currency:'USD':'symbol':'1.0-0'}}
           </h1>
-        </div>
-        <div class="col-md-12">
+        </div> -->
+        <!-- <div class="col-md-12">
           <div class="row">
             <div class="col-10 offset-1">
               <p class="description text-center font-weight-bold">Prices can vary based on coverage selection, loss
@@ -84,6 +105,19 @@
                 <img src="../../../assets/images/metlife-1-logo.png" class="mx-auto mt-2 metlife"/>
               </div>
             </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-2 pt-5">
+      <div class="d-flex justify-content-center pt-5">
+        <div class="rounded-circle rounded-circle-next next-contents" (click)="goToThreeStep()">
+          <div class="col-12 pb-1">
+          <div>
+            <i class="fas fa-2x fa-long-arrow-alt-right"></i>
+            </div>
+            <div>Next
+              </div>
           </div>
         </div>
       </div>

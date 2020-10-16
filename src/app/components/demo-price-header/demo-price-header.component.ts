@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import * as $ from "jquery";
 import {CommonService} from "../../services/common.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-demo-price-header',
@@ -9,7 +10,7 @@ import {CommonService} from "../../services/common.service";
 })
 export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  constructor(public commonService: CommonService) {
+  constructor(public commonService: CommonService, private router: Router) {
   }
 
   showLoader: boolean = true;
@@ -82,6 +83,15 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   ngAfterViewInit(): void {
+
+  }
+
+  async goToThreeStep() {
+    const total_data = this.commonService.getLocalItem('total_data');
+    // total_data['mode'] = this.selectedMode;
+    total_data['mode'] = 0;
+    this.commonService.setLocalItem('total_data', total_data);
+    this.router.navigate(['/step3']);
 
   }
 }

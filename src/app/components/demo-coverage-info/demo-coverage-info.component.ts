@@ -15,6 +15,9 @@ export class DemoCoverageInfoComponent implements OnInit {
   coverage_b: string;
   coverage_d: string;
   personal_property: string;
+  selectedTab= "coverages";
+  // flag set to hide table decription
+  hideTableDescription: boolean =true;
 
   ngOnInit() {
     const total_data = this.commonService.getLocalItem('total_data');
