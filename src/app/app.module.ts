@@ -91,6 +91,7 @@ import {PolicyOlarkChatComponent} from './components/policy-olark-chat/policy-ol
 import {HavenInputsComponent} from './components/haven-inputs/haven-inputs.component';
 import {SwiperContainerComponent} from './components/swiper-container/swiper-container.component';
 import {HavenResultComponent} from './components/haven-result/haven-result.component';
+import { PropertyFormComponent } from './property-form/property-form.component';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -158,7 +159,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     HavenInputsComponent,
     SwiperContainerComponent,
     HavenResultComponent,
-    OnblurDirective],
+    OnblurDirective,
+    PropertyFormComponent],
   imports: [
     NgbModule,
     AgmCoreModule.forRoot({

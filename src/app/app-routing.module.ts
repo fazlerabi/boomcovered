@@ -30,6 +30,7 @@ import {PolicyMortgageInfoComponent} from "./components/policy-mortgage-info/pol
 import {PolicyOlarkChatComponent} from "./components/policy-olark-chat/policy-olark-chat.component";
 import {HavenInputsComponent} from "./components/haven-inputs/haven-inputs.component";
 import {HavenResultComponent} from "./components/haven-result/haven-result.component";
+import { PropertyFormComponent } from './property-form/property-form.component';
 
 const routes: Routes = [
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
   }
   },
   {
-    path: 'step3', component: StepThreeComponent, data: {
+    path: 'step3', component: PropertyFormComponent, data: {
     animation: 'StepThree'
   }
   },

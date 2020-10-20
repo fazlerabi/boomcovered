@@ -247,6 +247,7 @@ footer{
 @media screen and (max-width: 768px) {
   .site-logo {
     img {
+      width:3rem !important;
       height: 36px;
       object-fit: contain;
       padding-top: 3px;

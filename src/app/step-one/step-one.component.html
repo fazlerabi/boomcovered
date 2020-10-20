@@ -1,14 +1,15 @@
 <div>
-  <div  class="container pt-md-2 pt-2 title pb-5" *ngIf="!isProcessing">
+  <div  class="container pt-md-2 mt-4 background-img title pb-5" *ngIf="!isProcessing">
     <div class="col-md-9 offset-md-1 inputPage">
       <!-- Material input -->
       <div class="form-group elemContainer">
-        <div id="jumbo-div" class="col-12 title container-fluid">
-          <h1 class="jumbo-h1 pt-5">Instant Insurance.<span> Simple for everyone.</span></h1>
+        <div id="jumbo-div" class="col-12 title container-fluid d-flex">
+          <img src ="../../assets/images/SVG/rocket.svg" style="width:5rem">
+          <h1 class="jumbo-h1 pt-5">Instant Insurance.<span style="font-size:3rem"> Simple for everyone.</span></h1>
         </div>
         <div class="row">
           <div class="col-10 p-0">
-            <div class="col-12 addressDiv" *ngIf="!isDisplay; else displayAddress">
+            <div class="col-12 white-bg addressDiv" *ngIf="!isDisplay; else displayAddress">
               <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()"
                 *ngIf="selectedMode==1" />
               <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)"
@@ -39,7 +40,7 @@
             </div>
             <!-- details section Start-->
             <ng-template #displayAddress>
-              <div class="col-12 addressDiv" *ngIf="isDisplay">
+              <div class="col-12 addressDiv white-bg" *ngIf="isDisplay">
                 <div class="addressTxt-wrapper addressSelcted">
                   <h5 class="font-weight-bold text-center pt-2 addressTxt">
                     {{fullAddressText}}
@@ -49,7 +50,7 @@
               </div> 
             </ng-template>
           </div>
-            <div class="col-2 p-0">
+            <div class="col-2 white-bg  p-0">
               <app-issuing></app-issuing>
             </div>
 
@@ -95,7 +96,8 @@
           <div class="row">
             <div class="col-8 offset-2" style="text-align: center; margin-top: 3rem;padding-bottom: 8rem;">
             <h1 class="jumbo-h1 pt-5" style="margin-bottom:2rem;font-size:3rem;font-weight:900">running quotes....</h1>
-            <div class="col-8 offset-2" style="height:40px">
+            <div class="col-8 offset-2" 
+            >
               <mdb-progress value="{{progress}}" style="height:25px" min="0" max="100" type="info" aria-valuenow="{{progress}}"
                 aria-valuemin="0" aria-valuemax="100"></mdb-progress>
             </div>

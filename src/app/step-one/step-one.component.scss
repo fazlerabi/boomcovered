@@ -1083,3 +1083,14 @@ h5.addressTxt{
 :host ::ng-deep mdb-progress .progress {
   height:25px !important
 }
+
+.background-img{
+background-image: url("../../assets/images/background.png");
+background-position-y: 7rem;
+background-repeat: no-repeat;
+background-size: 100% 100%;
+}
+
+.white-bg{
+  background-color: white !important;
+}

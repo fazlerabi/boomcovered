@@ -74,7 +74,7 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
   filterConditions: any;
   priceLoaderCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
   gridpriceWidgetCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
-  listpriceWidgetCommonClass = 'col-12 mt-2 mb-2 form-row animated bounceIn';
+  listpriceWidgetCommonClass = 'col-6 mt-2 mb-2 form-row animated bounceIn';
   viewmode: string;
   value_sort_up: boolean;
 
@@ -147,9 +147,9 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
       building_type, roof_type, exterior_type, roof_status, is_basement, is_bundle, is_security, is_smart, foundation_type,
       smoke_alarm, dwell_coverage, central_fire_alarm, deadbolt_locks, central_bulgar_alarm, bundle_discount
     } = total_data;
-    const firstname = personData[0]['first_name'];
-    const lastname = personData[0]['last_name'];
-    const birthday = personData[0]['birthday'];
+    const firstname = personData.first_name;
+    const lastname = personData.last_name;
+    const birthday = "01-01-2000";
     let sqft, year_built, estimate, addressData: any;
     addressData = this.commonService.getAddressData();
     sqft = String(zillow['square']).replace(',', '');

@@ -1,0 +1,382 @@
+<div class="col-12 map-container">
+    <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
+       <span style="font-size:15rem; color:blue float:right">
+        <i class="fas fa-5x fa-angle-right"></i>
+    </span>
+    </agm-map>
+    <div class="overlay"></div>
+</div>
+<div class="loader">
+    <div class="row d-flex justify-content-center">
+        <div class="col-1 align-self-center float-left nav-arrow" style="transform: rotate(180deg);" (click)="moveTab(false)"> 
+            <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto"/>
+        </div>
+        <div class="col-6 bg-white mt-6" style="text-align: center; margin-top:2rem">
+            <div class="row container">
+                <div *ngIf="currentTab !='Tab5'" class="col-8 justify-content-center offset-2 mt-5 mb-3" style="height:25px">
+                    <mdb-progress value="{{progress}}" style="height:15px" min="0" max="100" type="info" aria-valuenow="progress"
+                        aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+                </div>
+                <!--Tab1 contents-->
+                <div *ngIf="currentTab==='Tab1'" class="tab-1 col">
+                    <h4>
+                        Confirm some details about your property:
+                    </h4>
+                    <div class="form-row">
+                    <div class="form-group d-flex mx-sm-2 mb-2">
+                        <label for="yearInput" class="align-self-center mx-2">year built:</label>
+                        <input mdbInput type="number" [(ngModel)]="built_year" class="form-control"
+                        [ngModelOptions]="{standalone: true}" id="yearInput">
+                    </div>
+                    <div class="form-group d-flex mx-sm-2 mb-2">
+                        <label for="squareInput" class="align-self-center mx-2">square footage:</label>
+                        <input mdbInput type="number" class="form-control" [(ngModel)]="square" [ngModelOptions]="{standalone: true}"
+                        id="squareInput">
+                    </div>
+                    </div> 
+                    <div class="form-row">
+                        <!-- Default input -->
+                        <div class="form-group col-md-12">
+                    <div class="row d-flex justify-content-center">
+                        <div class="mx-4 margin10 constructionDiv">
+                            <mdb-badge [default]="foundationType!=1" [warning]="foundationType==1" (click)="foundationType=1">
+                                <div class="my-4 mx-2"> 
+                                <img src="../../assets/images/icons/basement-1.svg" class="btn-icon" alt="">
+                                Basement
+                                </div>
+                            </mdb-badge>
+                        </div>
+                        <div class="mx-4 margin10 constructionDiv">
+                            <mdb-badge [default]="foundationType!=2" [warning]="foundationType==2" (click)="foundationType=2">
+                                <div class="my-4 mx-2"> 
+                                <img src="../../assets/images/icons/basement-3.svg" class="btn-icon" alt="">
+                                Craw Space
+                                </div>
+                            </mdb-badge>
+                        </div>
+                        <div class="mx-4 margin10 constructionDiv">
+                            <mdb-badge [default]="foundationType!=3" [warning]="foundationType==3" (click)="foundationType=3">
+                                <div class="my-4 mx-2"> 
+                                <img src="../../assets/images/icons/foundation.png" class="btn-icon" alt="">
+                                Slab
+                                </div>
+                            </mdb-badge>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <!-- Default input -->
+                        <div class="form-group col-md-12">
+                            <div>
+                                <label>Construction Type&nbsp;<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+                                    <mdb-badge [default]="constructionType!=1" [warning]="constructionType==1" (click)="constructionType=1">
+                                        <!-- <img src="../../assets/images/icons/woodframe.svg" class="btn-icon" alt=""> -->
+                                        Wood Frame
+                                    </mdb-badge>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+                                    <mdb-badge [default]="constructionType!=2" [warning]="constructionType==2" (click)="constructionType=2">
+                                        <!-- <img src="../../assets/images/icons/building.svg" class="btn-icon" alt=""> -->
+                                        Steel Frame
+                                    </mdb-badge>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+                                    <mdb-badge [default]="constructionType!=3" [warning]="constructionType==3" (click)="constructionType=3">
+                                        <!-- <img src="../../assets/images/icons/brick.svg" class="btn-icon" alt=""> -->
+                                        Masonry / Brick
+                                    </mdb-badge>
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv">
+                                    <mdb-badge [default]="constructionType!=4" [warning]="constructionType==4" (click)="constructionType=4">
+                                        <!-- <img src="../../assets/images/icons/cement.svg" class="btn-icon" alt=""> -->
+                                        Concrete
+                                    </mdb-badge>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div>
+
+                </div>
+               <!--Tab2 contents-->
+                <div *ngIf="currentTab=='Tab2'" class="tab-2 col">
+                    <h4>
+                        tell us about any upgrade:
+                    </h4>
+
+                    <div class="form-row">
+                        <!-- Default input -->
+                        <div class="form-group col-md-12">
+                            <div>
+                                <label>basement finished&nbsp;<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="d-flex">
+                                <div class="margin10 mx-2 basementDiv">
+                                    <mdb-badge [default]="isBasement!=1" [warning]="isBasement==1" (click)="isBasement=1">
+                                        <!-- <img src="../../assets/images/icons/woodframe.svg" class="btn-icon" alt=""> -->
+                                       Yes
+                                    </mdb-badge>
+                                </div>
+                                <div class="margin10 mx-2 basementDiv">
+                                    <mdb-badge [default]="isBasement!=2" [warning]="isBasement==2" (click)="isBasement=2">
+                                        <!-- <img src="../../assets/images/icons/building.svg" class="btn-icon" alt=""> -->
+                                        No
+                                    </mdb-badge>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="form-row">
+                        <!-- Default input -->
+                        <div class="form-group col-md-12">
+                            <div>
+                                <label>please let us know what year your systems are from&nbsp;<span class="text-danger">*</span></label>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                                    <label>roof</label>
+                                    <!-- <input type="text" class="form-control" placeholder="roof" id="inputroof"> -->
+                                    <input mdbInput type="number" class="form-control" id="roofyearInput" [(ngModel)]="roof_year"
+                                    [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                                    <label>plumbing</label>
+                                    <!-- <input type="text" class="form-control" placeholder="plumbing" id="inputplumbing"> -->
+                                    <input mdbInput type="number" class="form-control" id="plumbingInput" [(ngModel)]="plumbing_year"
+                                    [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                                    <label>A/C</label>
+                                    <!-- <input type="text" class="form-control" placeholder="a/c" id="inputac"> -->
+                                    <input mdbInput type="number" class="form-control" id="acInput" [(ngModel)]="ac_year"
+                                    [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                                    <label>Electric</label>
+                                    <!-- <input type="text" class="form-control" placeholder="electrical" id="inputelectric"> -->
+                                    <input mdbInput type="number" class="form-control" id="electricInput" [(ngModel)]="electric_year"
+                                    [ngModelOptions]="{standalone: true}">
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <ng-container *ngTemplateOutlet="carousel" >
+
+                            </ng-container>
+                            <!-- <div>
+                                <ng-container #simpleCarousel>
+                                    <mdb-carousel [isControls]="true"  class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+                                        [animation]="'slide'">
+                                        <mdb-carousel-item *ngFor="let item of slides; let i = index">
+                                            <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
+                                                <mdb-card class="my-1">
+                                                    <mdb-card-title>
+                                                        <h5>{{card.title}}</h5>
+                                                    </mdb-card-title>
+                                                    <mdb-card-body>
+                                                        <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
+                                                    </mdb-card-body>
+                                                </mdb-card>
+                                            </div>
+                                        </mdb-carousel-item>
+                                    </mdb-carousel>
+                                </ng-container>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!--Tab3 contents-->
+                <div *ngIf="currentTab=='Tab3'" class="tab-3 col">
+                    <h4>
+                        tell us about any exterior:
+                    </h4>
+                    <div class="form-row">
+                        <!-- Default input -->
+                        <div class="form-group col-md-12">
+                            <div class="row d-flex justify-content-center">
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=1" [warning]="exterior_type==1" (click)="exterior_type=1">
+                                        <div class="mt-5 mb-5">
+                                            Aluminum Siding
+                                            <img src="../../assets/images/exteriors/aluminum%20siding.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=2" [warning]="exterior_type==2" (click)="exterior_type=2">
+                                        <div class="mt-5 mb-5">
+                                             Brick Veneer
+                                            <img src="../../assets/images/exteriors/brick-veneer.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=3" [warning]="exterior_type==3" (click)="exterior_type=3">
+                                        <div class="mt-5 mb-5">
+                                            Brick
+                                            <img src="../../assets/images/exteriors/brick.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-2 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=4" [warning]="exterior_type==4" (click)="exterior_type=4">
+                                        <div class="mt-5 mb-5">
+                                            Concrete
+                                            <img src="../../assets/images/exteriors/concrete.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=5" [warning]="exterior_type==5" (click)="exterior_type=5">
+                                        <div class="mt-5 mb-5">
+                                            Hardiplank
+                                            <img src="../../assets/images/exteriors/hardiplank.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=6" [warning]="foundationType==6" (click)="foundationType=6">
+                                        <div class="mt-5 mb-5">
+                                            Stone Veneer
+                                            <img src="../../assets/images/exteriors/stone%20veneer.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=7" [warning]="exterior_type==7" (click)="exterior_type=7">
+                                        <div class="mt-5 mb-5">
+                                            Stone
+                                            <img src="../../assets/images/exteriors/stone.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=8" [warning]="exterior_type==8" (click)="exterior_type=8">
+                                        <div class="mt-5 mb-5">
+                                            Stucco Siding
+                                            <img src="../../assets/images/exteriors/stucco%20siding.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=9" [warning]="exterior_type==9" (click)="exterior_type=9">
+                                        <div class="mt-5 mb-5">
+                                            Vinyl Siding
+                                            <img src="../../assets/images/exteriors/vinyl%20siding.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                                <div class="mx-1 my-3 exteriorDiv">
+                                    <mdb-badge [default]="exterior_type!=10" [warning]="exterior_type==10" (click)="exterior_type=10">
+                                        <div class="mt-5 mb-5">
+                                            Wood Siding
+                                            <img src="../../assets/images/exteriors/wood%20siding.png" class="btn-icon mt-2" alt="">
+                                        </div>
+                                    </mdb-badge>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Tab4 contents-->
+                <div *ngIf="currentTab=='Tab4'" class="tab-24">
+                    <form [formGroup]="userForm" (ngSubmit)="submitUserData()">
+
+                        <h4>
+                            how can we best contact you?
+                        </h4>
+                        <div class="form-row">
+                            <div class="form-group row mx-sm-2 mb-2">
+                                <input type="text" class="form-control" placeholder="email" id="inputemail"
+                                mdbInput [(ngModel)]="email" formControlName="emailInput">
+                            </div>
+                            <div class="form-group row mx-sm-2 mb-2">
+                                <input type="text" class="form-control" mdbInput [(ngModel)]="phone"
+                                 placeholder="phone" id="inputphone"  formControlName="phoneInput">
+                            </div>
+                        </div>
+    
+                        <h4>
+                            what is your name ?
+                        </h4>
+                        <div class="form-row">
+                            <div class="form-group row mx-sm-2 mb-2">
+                                <input type="text" class="form-control" placeholder="first" mdbInput
+                                 [(ngModel)]="personData.first_name" formControlName="firstnameInput">
+                            </div>
+                            <div class="form-group row mx-sm-2 mb-2">
+                                <input type="text" class="form-control" mdbInput [(ngModel)]="personData.last_name"
+                                formControlName="lastnameInput" placeholder="last" >
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                    <!-- <h4>
+                        how can we best contact you?
+                    </h4>
+                    <div class="form-row">
+                        <div class="form-group row mx-sm-2 mb-2">
+                            <input type="text" class="form-control" placeholder="email" id="inputemail">
+                        </div>
+                        <div class="form-group row mx-sm-2 mb-2">
+                            <input type="text" class="form-control" placeholder="phone" id="inputphone">
+                        </div>
+                    </div>
+
+                    <h4>
+                        what is your name ?
+                    </h4>
+                    <div class="form-row">
+                        <div class="form-group row mx-sm-2 mb-2">
+                            <input type="text" class="form-control" placeholder="first" id="inputfirstname">
+                        </div>
+                        <div class="form-group row mx-sm-2 mb-2">
+                            <input type="text" class="form-control" placeholder="last" id="inputlastname">
+                        </div>
+                    </div> -->
+                </div>
+                <div *ngIf="currentTab=='Tab5'">
+                    <app-step-six></app-step-six>
+                </div>
+            </div>
+        </div>
+        <div class="col-1 align-self-center float-right nav-arrow" (click)="moveTab(true)"> 
+            <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto"/>
+        </div>
+    </div>
+</div>
+<ng-template #carousel>
+    <div class="carousel row">
+        <div class="col-1">
+            <button class="control prev" (click)="slide(true)">
+                <span class="arrow left"></span>
+            </button>
+        </div>
+        <div class="col-10 carousel-items exteriorDiv d-flex">
+        <ng-container  class="mx-2 my-3 exteriorDiv" *ngFor="let card of cards; let i = index">
+                <mdb-badge class="mx-3" [default]="roof_type!=(i+1)" [warning]="roof_type==(i+1)" (click)="roof_type=i+1">
+                    <div>
+                        {{card.title}}
+                        <img [src]="card.img" class="btn-icon mt-2" alt="">
+                    </div>
+                </mdb-badge>
+        </ng-container>
+        </div>
+        <div class="col-1">
+            <button class="control next" (click)="slide(false)">
+                <span class="arrow right"></span>
+            </button>
+        </div>
+        <!-- <div class="carousel-buttons"> -->
+        <!-- controls -->
+    </div>
+</ng-template>

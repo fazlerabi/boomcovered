@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2 col-md-3 col-12">
+    <!--hiding as per new design-->
+    <!-- <div class="col-lg-2 col-md-3 col-12">
       <div class="row">
         <div class="col-lg-12 col-md-12 mt-3">
           <app-price-sort (sort)="sortPrices($event)"></app-price-sort>
@@ -57,18 +58,50 @@
           <app-price-filter (filter)="doFilter($event)"></app-price-filter>
         </div>
       </div>
-    </div>
-    <div class="col-lg-7 col-md-9 col-12 pl-4">
-      <div class="mb-3 mt-4">
+    </div> -->
+    <!--hiding as per new design-->
+    <div  (filter)="doFilter($event)" class="col-lg-12 col-md-12 col-12 pl-4">
+      <div class="col-lg-12 col-md-12">
+        <app-price-filter (filter)="doFilter($event)" [hidden]="true"></app-price-filter>
+      </div>
+      <!-- <div class="mb-3 mt-4">
         <a href="javascript:void(0)" class="sort-btn mr-3" (click)="viewmode = 'List'">
           <img class="mx-auto" src="../../../assets/images/step-six/list_view.png" width="24">
         </a>
         <a href="javascript:void(0)" class="sort-btn" (click)="viewmode = 'Grid'">
           <img class="mx-1" src="../../../assets/images/step-six/grid_view.png" width="24">
         </a>
+      </div> -->
+
+      <!-- new changes-->
+      <div class="d-flex mb-3 mt-4">
+        <div class="margin10 mx-2 basementDiv">
+          <mdb-badge (click)="sortPrices('')">
+              <div class="my-1">
+               best
+               </div>
+              <img src="../../../assets/images/step-six/value.png" class="btn-icon" alt="">
+          </mdb-badge>
+      </div>
+      <div class="margin10 mx-2 basementDiv">
+          <mdb-badge (click)="sortPrices('ASC')">
+            <div class="my-1">
+            low
+          </div>
+              <img src="../../../assets/images/step-six/sort_amount_down.png" class="btn-icon" alt="">
+          </mdb-badge>
+      </div>
+      <div class="margin10 mx-2 basementDiv">
+        <mdb-badge  (click)="sortPrices('DESC')">
+          <div class="my-1">
+          high
+        </div>
+           <img src="../../../assets/images/step-six/sort_amount_up.png" class="btn-icon" alt="">
+        </mdb-badge>
+    </div>
       </div>
       <div class="row" [ngClass]="viewmode == 'Grid' ? 'gridview' : 'listview'">
-        <app-price-widget *ngFor="let insurance of filteredInsurances" [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass" [price]="insurance.price"
+        <app-price-widget class="col-6" *ngFor="let insurance of filteredInsurances" [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass" [price]="insurance.price"
                           [imgURL]="insuranceImgs[insurance.type]" [dwelling]="insurance.dwelling"
                           (openModal)="setModalData(insurance)"
         ></app-price-widget>
@@ -106,7 +139,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3 col-12 mt-4">
+    <!-- <div class="col-md-3 col-12 mt-4">
       <p class="font-weight-bold text-black">add policy:</p>
 
       <div class="row drag-compare-wrapper mx-0">
@@ -124,6 +157,6 @@
       <button class="col-12 mx-auto mt-4 mb-4 text-white btn" mdbbtn="" type="button" (click)="goForChat()" style="border-radius: 3px !important; font-size: 2rem; background-color: #34C07D">NEXT</button>
       <img class="" src="../../../assets/images/step-six/featured_image.png" width="100%"/>
       <p class="text-center text-small text-black font-weight-bold pt-1" style="line-height: 1rem">Worried about water damage? Make sure you consider adding <span style="color: #F43C58;">water backup</span> and/or <span style="color: #F43C58">flood</span> protection!</p>
-    </div>
+    </div> -->
   </div>
 </div>
