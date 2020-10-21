@@ -57,24 +57,27 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
   chatType: number;
   userData: object = {};
   insuranceImgs: object = [
-    '../../assets/images/nationwide.svg',
+    '../../assets/images/SVG/nationwide-icon.svg',
     '../../assets/images/metlife-tag.png',
-    '../../assets/images/travleers%20transparent.png',
-    '../../assets/images/companies/universal%20.png',
+    '../../assets/images/SVG/travelers-icon.svg',
+    '../../assets/images/SVG/universal-icon.svg',
     '../../assets/images/plymouth_logo260x50.png',
     '../../assets/images/companies/liberty-mutual-transparent2.png',
-    '../../assets/images/companies/progressive logo.png',
-    '../../assets/images/companies/hippo.png',
-    '../../assets/images/still-water.png'
+    '../../assets/images/SVG/progressive-icon.svg',
+    '../../assets/images/SVG/hippo-icon.svg',
+    '../../assets/images/SVG/still-water.icon'
   ];
 
+  bgColor: any = [
+    "darkblue","darkgreen","red","darkred","#5bc0de","lightblue","#167EF8","green","darkyellow"
+  ];
   chatPricing: number;
   insurances: Array<ModalData> = [];
   filteredInsurances: Array<ModalData> = [];
   filterConditions: any;
   priceLoaderCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
   gridpriceWidgetCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
-  listpriceWidgetCommonClass = 'col-6 mt-2 mb-2 form-row animated bounceIn';
+  listpriceWidgetCommonClass = 'col-12 mt-2 mb-2 form-row animated bounceIn';
   viewmode: string;
   value_sort_up: boolean;
 
@@ -147,8 +150,8 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
       building_type, roof_type, exterior_type, roof_status, is_basement, is_bundle, is_security, is_smart, foundation_type,
       smoke_alarm, dwell_coverage, central_fire_alarm, deadbolt_locks, central_bulgar_alarm, bundle_discount
     } = total_data;
-    const firstname = personData.first_name;
-    const lastname = personData.last_name;
+    const firstname = personData[0].first_name;
+    const lastname = personData[0].last_name;
     const birthday = "01-01-2000";
     let sqft, year_built, estimate, addressData: any;
     addressData = this.commonService.getAddressData();
@@ -177,12 +180,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
           type: 0,
           price: this.low_price,
           imgURL: this.insuranceImgs[0],
+          bgColor:this.bgColor[0],
           dwelling: this.dwelling_basic,
           liability: 300000,
           contents: this.dwelling_basic * 0.5,
           waterBackup: 100000,
           deductible: 1000,
-          keyword: ['well', 'bundle', 'extended', 'underground']
+          keyword: ['well', 'bundle', 'extended', 'underground'],
+          name:"Nationwide"
         });
       this.doFilter();
     }, 4000);
@@ -193,12 +198,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
         type: 1,
         price: this.high_price,
         imgURL: this.insuranceImgs[1],
+        bgColor:this.bgColor[1],
         dwelling: this.dwelling_basic,
         liability: 500000,
         contents: this.dwelling_basic * 0.5,
         waterBackup: 100000,
         deductible: 1000,
-        keyword: ['well', 'bundle', 'extended', 'underground']
+        keyword: ['well', 'bundle', 'extended', 'underground'],
+        name:"MetLife"
       });
       this.doFilter();
     }, 6000);
@@ -208,12 +215,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
         type: 2,
         price: this.high_price + 47,
         imgURL: this.insuranceImgs[2],
+        bgColor:this.bgColor[2],
         dwelling: this.dwelling_basic,
         liability: 500000,
         contents: this.dwelling_basic * 0.5,
         waterBackup: 100000,
         deductible: 1000,
-        keyword: ['well', 'bundle', 'extended', 'underground']
+        keyword: ['well', 'bundle', 'extended', 'underground'],
+        name:"Travelers"
       });
       this.doFilter();
     }, 8000);
@@ -226,6 +235,8 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
             type: 7,
             price: data['quote_premium'],
             imgURL: this.insuranceImgs[7],
+            name:"Hippo",
+            bgColor:this.bgColor[7],
             dwelling: data['coverage_a'],
             liability: 500000,
             contents: data['coverage_a'] * 0.5,
@@ -253,12 +264,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
             type: 3,
             price: this.universalPricing,
             imgURL: this.insuranceImgs[3],
+            bgColor:this.bgColor[3],
             dwelling: this.universalQuoteData['CoverageA'],
             liability: this.universalQuoteData['CoverageE'],
             contents: this.universalQuoteData['CoverageC'],
             waterBackup: 100000,
             deductible: this.universalQuoteData['AOPDeductible'],
-            keyword: ['extended', 'underground']
+            keyword: ['extended', 'underground'],
+            name:"Universal"
           });
         }
       }
@@ -277,12 +290,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
           type: 4,
           price: this.plymouthData['pricing'] * 12,
           imgURL: this.insuranceImgs[4],
+          bgColor:this.bgColor[4],
           dwelling: this.plymouthData['dwelling'],
           liability: this.plymouthData['personalLiability'],
           contents: this.dwelling_basic * 0.5,
           waterBackup: 100000,
           deductible: 1000,
-          keyword: ['bundle', 'extended', 'underground']
+          keyword: ['bundle', 'extended', 'underground'],
+          name:"Plymouth"
         });
         this.doFilter();
         setTimeout(() => {
@@ -291,12 +306,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
             type: 5,
             price: this.plymouthData['pricing'] * 12,
             imgURL: this.insuranceImgs[5],
+            bgColor:this.bgColor[5],
             dwelling: this.plymouthData['dwelling'],
             liability: this.plymouthData['personalLiability'],
             contents: this.dwelling_basic * 0.5,
             waterBackup: 100000,
             deductible: 1000,
-            keyword: ['well', 'extended', 'underground']
+            keyword: ['well', 'extended', 'underground'],
+            name:"Liberty Mutual"
           });
           this.doFilter();
         }, 2000);
@@ -306,12 +323,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
             type: 6,
             price: this.plymouthData['pricing'] * 12,
             imgURL: this.insuranceImgs[6],
+            bgColor:this.bgColor[6],
             dwelling: this.plymouthData['dwelling'],
             liability: this.plymouthData['personalLiability'],
             contents: this.dwelling_basic * 0.5,
             waterBackup: 100000,
             deductible: 1000,
-            keyword: ['bundle', 'extended', 'underground']
+            keyword: ['bundle', 'extended', 'underground'],
+            name:"Progressive"
           });
           this.doFilter();
         }, 4000);
@@ -375,12 +394,14 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
               type: 8,
               price: this.pricing,
               imgURL: this.insuranceImgs[8],
+              bgColor:this.bgColor[8],
               dwelling: this.dwelling_value,
               liability: this.liability,
               contents: this.contents,
               waterBackup: this.water_backup,
               deductible: 1000,
-              keyword: ['bundle', 'extended', 'underground']
+              keyword: ['bundle', 'extended', 'underground'],
+              name:"Stillwater"
             });
             this.doFilter();
             this.setInsuranceData('stillwater', this.stillwaterData);

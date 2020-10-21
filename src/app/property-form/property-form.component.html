@@ -41,7 +41,7 @@
                         <div class="mx-4 margin10 constructionDiv">
                             <mdb-badge [default]="foundationType!=1" [warning]="foundationType==1" (click)="foundationType=1">
                                 <div class="my-4 mx-2"> 
-                                <img src="../../assets/images/icons/basement-1.svg" class="btn-icon" alt="">
+                                <img src="../../assets/images/homebasement.jpg" class="btn-icon" alt="">
                                 Basement
                                 </div>
                             </mdb-badge>
@@ -49,7 +49,7 @@
                         <div class="mx-4 margin10 constructionDiv">
                             <mdb-badge [default]="foundationType!=2" [warning]="foundationType==2" (click)="foundationType=2">
                                 <div class="my-4 mx-2"> 
-                                <img src="../../assets/images/icons/basement-3.svg" class="btn-icon" alt="">
+                                <img src="../../assets/images/homecrawlspace.jpg" class="btn-icon" alt="">
                                 Craw Space
                                 </div>
                             </mdb-badge>
@@ -57,7 +57,7 @@
                         <div class="mx-4 margin10 constructionDiv">
                             <mdb-badge [default]="foundationType!=3" [warning]="foundationType==3" (click)="foundationType=3">
                                 <div class="my-4 mx-2"> 
-                                <img src="../../assets/images/icons/foundation.png" class="btn-icon" alt="">
+                                <img src="../../assets/images/homeonslab.jpg" class="btn-icon" alt="">
                                 Slab
                                 </div>
                             </mdb-badge>
@@ -170,25 +170,6 @@
                             <ng-container *ngTemplateOutlet="carousel" >
 
                             </ng-container>
-                            <!-- <div>
-                                <ng-container #simpleCarousel>
-                                    <mdb-carousel [isControls]="true"  class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
-                                        [animation]="'slide'">
-                                        <mdb-carousel-item *ngFor="let item of slides; let i = index">
-                                            <div class="col-md-4" *ngFor="let card of item; let cardIndex = index">
-                                                <mdb-card class="my-1">
-                                                    <mdb-card-title>
-                                                        <h5>{{card.title}}</h5>
-                                                    </mdb-card-title>
-                                                    <mdb-card-body>
-                                                        <mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
-                                                    </mdb-card-body>
-                                                </mdb-card>
-                                            </div>
-                                        </mdb-carousel-item>
-                                    </mdb-carousel>
-                                </ng-container>
-                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -309,10 +290,10 @@
                         <div class="form-row">
                             <div class="form-group row mx-sm-2 mb-2">
                                 <input type="text" class="form-control" placeholder="first" mdbInput
-                                 [(ngModel)]="personData.first_name" formControlName="firstnameInput">
+                                 [(ngModel)]="personData[0].first_name" formControlName="firstnameInput">
                             </div>
                             <div class="form-group row mx-sm-2 mb-2">
-                                <input type="text" class="form-control" mdbInput [(ngModel)]="personData.last_name"
+                                <input type="text" class="form-control" mdbInput [(ngModel)]="personData[0].last_name"
                                 formControlName="lastnameInput" placeholder="last" >
                             </div>
                         </div>
@@ -320,29 +301,6 @@
 
 
                     </form>
-                    <!-- <h4>
-                        how can we best contact you?
-                    </h4>
-                    <div class="form-row">
-                        <div class="form-group row mx-sm-2 mb-2">
-                            <input type="text" class="form-control" placeholder="email" id="inputemail">
-                        </div>
-                        <div class="form-group row mx-sm-2 mb-2">
-                            <input type="text" class="form-control" placeholder="phone" id="inputphone">
-                        </div>
-                    </div>
-
-                    <h4>
-                        what is your name ?
-                    </h4>
-                    <div class="form-row">
-                        <div class="form-group row mx-sm-2 mb-2">
-                            <input type="text" class="form-control" placeholder="first" id="inputfirstname">
-                        </div>
-                        <div class="form-group row mx-sm-2 mb-2">
-                            <input type="text" class="form-control" placeholder="last" id="inputlastname">
-                        </div>
-                    </div> -->
                 </div>
                 <div *ngIf="currentTab=='Tab5'">
                     <app-step-six></app-step-six>

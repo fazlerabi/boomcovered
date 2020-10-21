@@ -28,10 +28,11 @@ export class PropertyFormComponent implements OnInit {
   currentTab= "Tab1";
   sliderCurrentIndex = 0;
   cards =[];
-  personData = {
+  personData = [{
     first_name : '',
-    last_name : ''
-  }
+    last_name : '',
+    birthday: "1995-02-14"
+  }]
   //, birthday: ''}];
   email: string = '';
   phone: string = '';
@@ -105,8 +106,8 @@ export class PropertyFormComponent implements OnInit {
     let data = await this.commonService.getLocalItem('total_data');
     this.staticAddress = data['static_address'];
     console.log(data['zillow'])
-  //  this.built_year = data['zillow']['built_year'].split(',').join('');
-  //  this.square = data['zillow']['square'].split(',').join('');
+    this.built_year = data['zillow']['built_year'];
+    this.square = data['zillow']['square'];
     this.generateMapData();
     this.slides = this.chunk(this.sliderCards, 4);
     this.cards = this.slides[this.sliderCurrentIndex];
@@ -117,8 +118,8 @@ export class PropertyFormComponent implements OnInit {
     let data = await this.commonService.getLocalItem('total_data');
     data['construction_type'] == undefined ? this.constructionType : this.constructionType = data['construction_type'];
     data['foundation_type'] == undefined ? this.foundationType : this.foundationType = data['foundation_type'];
-    // ['square'] == undefined ? this.square = data['zillow']['square'].split(',').join('') : this.square = data['square'];
-    // data['built_year'] == undefined ? this.built_year = data['zillow']['built_year'].split(',').join('') : this.built_year = data['built_year'];
+    data['square'] == undefined ? this.square = data['zillow']['square'] : this.square = data['square'];
+    data['built_year'] == undefined ? this.built_year = data['zillow']['built_year'] : this.built_year = data['built_year'];
     data['is_basement'] == undefined ? this.isBasement : this.isBasement = data['is_basement'];
     data['ac_year'] == undefined ? this.ac_year : this.ac_year = data['ac_year'];
     data['building_type'] == undefined ? this.buildingType : this.buildingType = data['building_type'];
@@ -156,39 +157,38 @@ export class PropertyFormComponent implements OnInit {
     switch (this.currentTab) {
       case "Tab1": {
         if (isForward) {
-          if(this.validateAllInputs(false)){
-          this.currentTab = "Tab2";
-          this.progress += 25;
+          if (this.validateAllInputs(false)) {
+            this.currentTab = "Tab2";
+            this.progress += 25;
           }
         }
         break;
       }
       case "Tab2": {
         if (isForward) {
-          if(this.validateAllInputs(false)){
-          this.currentTab = "Tab3";
-          this.progress += 25;
+          if (this.validateAllInputs(false)) {
+            this.currentTab = "Tab3";
+            this.progress += 25;
           }
         } else {
           this.currentTab = "Tab1";
           this.progress -= 25;
         }
         break;
-
       }
       case "Tab3": {
         if (isForward) {
-          if(this.validateAllInputs(false)){
-          this.validateUserForm();
-          let data = await this.commonService.getLocalItem('total_data');
-          if (data['personData'] != undefined) {
-            this.personData = data['personData'];
-          }
-          this.email = data['email'];
-          this.phone = data['phone'] != undefined ? data['phone'].replace(/-/g, '') : '';
-          this.calcPriceRange(data);
-          this.currentTab = "Tab4";
-          this.progress += 25;
+          if (this.validateAllInputs(false)) {
+            this.validateUserForm();
+            let data = await this.commonService.getLocalItem('total_data');
+            if (data['personData'] != undefined) {
+              this.personData = data['personData'];
+            }
+            this.email = data['email'];
+            this.phone = data['phone'] != undefined ? data['phone'].replace(/-/g, '') : '';
+            this.calcPriceRange(data);
+            this.currentTab = "Tab4";
+            this.progress += 25;
           }
         } else {
           this.currentTab = "Tab2";
@@ -202,8 +202,8 @@ export class PropertyFormComponent implements OnInit {
           this.progress -= 25;
         }
         else {
-          if(this.validateAllInputs(false)){
-          this.currentTab ="Tab5"
+          if (this.validateAllInputs(false)) {
+            this.currentTab = "Tab5"
           }
         }
         break;
@@ -213,10 +213,9 @@ export class PropertyFormComponent implements OnInit {
         if (!isForward) {
           this.currentTab = "Tab4";
         }
-
         break;
-      
       }
+      
       default:
         break;
     }
@@ -295,8 +294,8 @@ export class PropertyFormComponent implements OnInit {
         // Validators.pattern(
         // /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
       phoneInput: new FormControl(this.phone, [Validators.required]), // Validators.pattern(/^(\()?\d{3}(\))?(|\s)?\d{3}(|\s)\d{4}$/)]),
-      firstnameInput: new FormControl(this.personData.first_name, [Validators.required]),
-      lastnameInput: new FormControl(this.personData.last_name, [Validators.required])
+      firstnameInput: new FormControl(this.personData[0].first_name, [Validators.required]),
+      lastnameInput: new FormControl(this.personData[0].last_name, [Validators.required])
     };
     this.userForm = new FormGroup(formData);
   }
@@ -317,11 +316,25 @@ export class PropertyFormComponent implements OnInit {
     }
     this.commonService.spinnerService.show();
     let total_data = await this.commonService.getLocalItem('total_data');
-     total_data['personData'] = this.personData;
+    total_data['construction_type'] = this.constructionType;
+    total_data['foundation_type'] = this.foundationType;
+    total_data['square'] = this.square;
+    total_data['built_year'] = this.built_year;
+    total_data['ac_year'] = this.ac_year;
+    total_data['electric_year'] = this.electric_year;
+    total_data['plumbing_year'] = this.plumbing_year;
+    total_data['roof_year'] = this.roof_year;
+    total_data['is_basement'] = this.isBasement;
+    total_data['exterior_type'] = this.exterior_type;
+    total_data['roof_type'] == undefined ? this.roof_type : this.roof_type = total_data['roof_type'];
+    total_data['personData'] = this.personData;
     total_data['email'] = this.email;
     total_data['phone'] = this.formatPhoneNumber(this.phone);
     total_data['low_price'] = this.lowPrice;
     total_data['high_price'] = this.highPrice;
+    total_data['building_type'] = 1;
+    total_data['roof_type'] = 1;
+    total_data['roof_status'] = "peaked";
     await this.commonService.setLocalItem('total_data', total_data);
    // this.router.navigate(['/step6']);
   }
@@ -330,9 +343,5 @@ export class PropertyFormComponent implements OnInit {
     const commonPricing = await this.commonService.getPricings(total_data);
     this.lowPrice = commonPricing['lowPrice'];
     this.highPrice = commonPricing['highPrice'];
-  }
-
-  async loadPricingDetails() {
-
   }
 }

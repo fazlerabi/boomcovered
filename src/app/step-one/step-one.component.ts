@@ -171,6 +171,7 @@ export class StepOneComponent implements AfterViewInit {
         citystatezip:
           locality + ", " + administrative_area_level_1 + ", " + postal_code
       };
+      this.processDemoQuote();
     } catch (e) {
       this.commonService.modalOpen("Error", "Please enter the correct address type.");
     }
@@ -186,11 +187,12 @@ export class StepOneComponent implements AfterViewInit {
       this.apiService.getZillow(data).subscribe(
         res => {
           if(!res.hasOwnProperty('price')) {
+            this.isDisplay = false;
             this.commonService.modalOpen(
               "Error",
               "Exact address not found, please enter manually."
             );
-            this.GooglePlace = false;
+            // this.GooglePlace = false;
             reject({
               result: "error",
               code: 508,
@@ -198,6 +200,7 @@ export class StepOneComponent implements AfterViewInit {
             });
             return;
           } else if (res["result"] == "error") {
+            this.isDisplay = false;
             reject({
               result: "error",
               code: 400,

@@ -1,14 +1,13 @@
 <div class="map-container">
   <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
-    <!-- <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker> -->
   </agm-map>
   <div class="overlay"></div>
 </div>
 <div class="container animated slideInLeft">
   <div class="row">
-    <div class="col-8 offset-2 pt-5">
+    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 mr-auto ml-auto pt-5">
       <div class="row">
-        <div class="col-10">
+        <div class="col-10 mr-auto ml-auto">
           <div class="address-header">
             <span class="address-text font-weight-bold" style="font-family: 'Arial Rounded MT Bold';">
               {{commonService.getAddressData()['address']}} {{commonService.getAddressData()['locality']}},
@@ -16,108 +15,33 @@
               {{commonService.getAddressData()['postal_code']}}</span>
           </div>
           <div class="pt-2" style="text-align: center;">coverage for your home</div>
-          <div class="d-flex justify-content-center pt-5">
-          <div class="rounded-circle rounded-circle-pricing pricing-contents">
-            <div class="col-12 pt-3">
-            <h1 class="medium-price text-center font-weight-bold">
-              {{medium_price|currency:'USD':'symbol':'1.0-0'}}
-            </h1>
-            <div class="text-center pb-3">PER YEAR</div>
-            <div class="text-center"><i class="fas fa-info-circle"></i></div>
-            </div>
-          </div>
-          </div>
-          <div class = "col-10 offset-2 pt-5">
-            <button class="col-4 btn  btn-light">download</button>
-            <button class="col-4 btn offset-1 btn-light" (click)="send()">email</button>
-          </div>
-        </div>
-        <!-- <div class="col-4">
-          <p class="target text-center">target estimate</p>
-          <div class="form-row">
-            <img src="../../../assets/images/demo-price/target.png" width="50" class="mx-auto target-img" height="55"/>
-          </div>
-        </div> -->
-        <!-- <div class="col-4">
-          <div class="form-row">
-            <a (click)="send()" class="mx-auto send-btn">
-              <img src="../../../assets/images/demo-price/email.png" width="40"/>
-            </a>
-          </div>
-        </div> -->
-        <!-- <div class="col-12" *ngIf="showLoader">
-          <div class="loader form-row animated fadeIn mt-5">
-            <div class="preloader-wrapper big active mx-auto">
-              <div class="spinner-layer spinner-red-only">
-                <div class="circle-clipper left">
-                  <div class="circle"></div>
-                </div>
-                <div class="gap-patch">
-                  <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                  <div class="circle"></div>
-                </div>
+          <div class="d-flex justify-content-center pt-4">
+            <div class="rounded-circle rounded-circle-pricing pricing-contents">
+              <div class="col-12 pt-3">
+                <h1 class="medium-price text-center font-weight-bold">
+                  {{medium_price|currency:'USD':'symbol':'1.0-0'}}
+                </h1>
+                <div class="text-center pb-3">PER YEAR</div>
+                <div class="text-center"><i class="fas fa-info-circle"></i></div>
               </div>
             </div>
           </div>
-        </div> -->
-        <!-- <div class="col-12" *ngIf="!showLoader">
-          <h1 class="medium-price text-center font-weight-bold">
-            {{medium_price|currency:'USD':'symbol':'1.0-0'}}
-          </h1>
-        </div>
-        <div class="col-3" *ngIf="!showLoader">
-          <p class="range text-center">price range</p>
-          <div class="form-row">
-            <img src="../../../assets/images/demo-price/range.png" width="30" class="mx-auto"/>
+          <div class="row col-lg-12 col-sm-12 mr-auto ml-auto pt-3">
+            <button class="col-lg-4 mr-auto ml-auto col-sm-6 col-xs-12 mb-2 btn btn-light" (click)="download()">download</button>
+            <button class="col-lg-4 col-sm-6 ml-auto mr-auto col-xs-12 mb-2 btn btn-light" (click)="send()">email</button>
           </div>
         </div>
-        <div class="col-9 pr-0 pl-0" *ngIf="!showLoader">
-          <h1 class="price-range-text text-left font-weight-bold">
-            {{lowest_price|currency:'USD':'symbol':'1.0-0'}} -
-            {{highest_price|currency:'USD':'symbol':'1.0-0'}}
-          </h1>
-        </div> -->
-        <!-- <div class="col-md-12">
-          <div class="row">
-            <div class="col-10 offset-1">
-              <p class="description text-center font-weight-bold">Prices can vary based on coverage selection, loss
-                history,
-                credit scores, education level and other factors.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="row bottomImageContainer animated slideInUp">
-            <div class="col-4">
-              <div class="form-row">
-                <img src="../../../assets/images/companies/progressive logo.png" class="mx-auto mt-3 progressive"/>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-row">
-                <img src="../../../assets/images/nationwide.png" class="mx-auto"/>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-row">
-                <img src="../../../assets/images/metlife-1-logo.png" class="mx-auto mt-2 metlife"/>
-              </div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
-    <div class="col-2 pt-5">
-      <div class="d-flex justify-content-center pt-5">
+    <div *ngIf="!commonService.isMobileMode()" class="col-2 align-self-center">
+      <div class="d-flex justify-content-center">
         <div class="rounded-circle rounded-circle-next next-contents" (click)="goToThreeStep()">
           <div class="col-12 pb-1">
-          <div>
-            <i class="fas fa-2x fa-long-arrow-alt-right"></i>
+            <div>
+              <i class="fas fa-2x fa-long-arrow-alt-right"></i>
             </div>
             <div>Next
-              </div>
+            </div>
           </div>
         </div>
       </div>

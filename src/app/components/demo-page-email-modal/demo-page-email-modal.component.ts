@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
-import {ModalDirective} from "ng-uikit-pro-standard";
-import {CommonService} from "../../services/common.service";
-import {ApiService} from "../../services/api-service";
+import { Component, EventEmitter, Input, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from "ng-uikit-pro-standard";
+import { CommonService } from "../../services/common.service";
+import { ApiService } from "../../services/api-service";
 
 @Component({
   selector: 'app-demo-page-email-modal',
@@ -12,7 +12,7 @@ export class DemoPageEmailModalComponent implements OnInit {
 
   demoEmailAddr: string = '';
   ccEmail: string = '';
-  @ViewChild('basicModal', {static: false}) public basicModal: ModalDirective;
+  @ViewChild('basicModal', { static: false }) public basicModal: ModalDirective;
   @Input('prices') prices: any;
   @Input('showModal') showModal: EventEmitter<boolean>;
 
@@ -28,23 +28,27 @@ export class DemoPageEmailModalComponent implements OnInit {
     }
   }
 
-  sendDemoEmailFunc() {
-    console.log(this.prices,'this.prices');
-    const pattern =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!this.demoEmailAddr) {
-      this.commonService.modalOpen('Warning', 'Please type the email address.');
-      return;
+  sendDemoEmailFunc(isPdf?: boolean, price?: any) {
+    if(isPdf){
+      this.prices = price;
     }
-    if (!pattern.test(this.demoEmailAddr)) {
-      this.commonService.modalOpen('Warning', 'Please type the correct email address');
-      return;
+    console.log(this.prices, 'this.prices');
+    if (!isPdf) {
+      const pattern =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!this.demoEmailAddr) {
+        this.commonService.modalOpen('Warning', 'Please type the email address.');
+        return;
+      }
+      if (!pattern.test(this.demoEmailAddr)) {
+        this.commonService.modalOpen('Warning', 'Please type the correct email address');
+        return;
+      }
+      if (this.ccEmail !== '' && !pattern.test(this.ccEmail)) {
+        this.commonService.modalOpen('Warning', 'Please type the correct cc email address');
+        return;
+      }
     }
-    if (this.ccEmail !== '' && !pattern.test(this.ccEmail)) {
-      this.commonService.modalOpen('Warning', 'Please type the correct cc email address');
-      return;
-    }
-
     const total_data = this.commonService.getLocalItem('total_data');
     let formatted_address = '';
     try {
@@ -104,14 +108,30 @@ export class DemoPageEmailModalComponent implements OnInit {
       chartImgStr: total_data['chartbase64Img'],
       flood_zone, hippoPrice, coverage_a
     };
-    this.apiService.sendDemoEmail(data).subscribe(res => {
-      this.basicModal.hide();
-      if (res['result'] == 'success') {
-        this.commonService.modalOpen('Success', 'Successfully sent.');
-      } else {
-        this.commonService.modalOpen('Error', res['msg'])
-      }
-    }, (err) => {
-    });
+    if (!isPdf) {
+      this.apiService.sendDemoEmail(data).subscribe(res => {
+        this.basicModal.hide();
+        if (res['result'] == 'success') {
+          this.commonService.modalOpen('Success', 'Successfully sent.');
+        } else {
+          this.commonService.modalOpen('Error', res['msg'])
+        }
+      }, (err) => {
+      });
+    } else {
+      this.apiService.getPdfLink(data).subscribe(res => {
+        let pdf_link = "";
+        if (res['msg'] == 'successfully received.') {
+          pdf_link = res['result'];
+        }
+        this.apiService.getPdfDownloaded({ url: pdf_link }).subscribe(val => {
+          const file1 = new Blob([val], { type: 'application/pdf' });
+          let reader = new FileReader();
+          reader.readAsDataURL(file1);
+          const fileURL = URL.createObjectURL(file1);
+          window.open(fileURL);
+        })
+      })
+    }
   }
 }

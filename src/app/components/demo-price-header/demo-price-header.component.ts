@@ -20,6 +20,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   lowest_price: number;
   medium_price: number;
   @Output('sendEmail') sendEmail: EventEmitter<any> = new EventEmitter<any>()
+  @Output('sendPdf') sendPdf: EventEmitter<any> = new EventEmitter<any>()
   interval: any;
 
   ngOnInit() {
@@ -77,6 +78,10 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
     this.showLoader = false;
   }
 
+  download(){
+    const {highest_price, lowest_price, medium_price} = this;
+    this.sendPdf.emit({highest_price, lowest_price, medium_price});
+  }
   send() {
     const {highest_price, lowest_price, medium_price} = this;
     this.sendEmail.emit({highest_price, lowest_price, medium_price})

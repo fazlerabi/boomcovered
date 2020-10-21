@@ -2,7 +2,6 @@
 .modal-btns {
   width: 100%;
   height: 174px !important;
-  background-color: #f2f2f2 !important;
   color: #000 !important;
 
   border-radius:5px !important;
@@ -51,7 +50,6 @@
   }
 
   .dwelling-coverage {
-    height: 33px;
     display: inline-flex;
     align-items: flex-end;
   }
@@ -93,4 +91,17 @@
       }
     }
   }
+}
+
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+:host ::ng-deep .card-body{
+  padding:0.23rem !important
+}
+
+:host ::ng-deep .card{
+  border: none !important;
 }

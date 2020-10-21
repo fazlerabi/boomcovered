@@ -101,10 +101,12 @@
     </div>
       </div>
       <div class="row" [ngClass]="viewmode == 'Grid' ? 'gridview' : 'listview'">
-        <app-price-widget class="col-6" *ngFor="let insurance of filteredInsurances" [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass" [price]="insurance.price"
-                          [imgURL]="insuranceImgs[insurance.type]" [dwelling]="insurance.dwelling"
+        <ng-container *ngFor="let insurance of filteredInsurances">
+        <app-price-widget  *ngIf="insuranceImgs[insurance.type].length > 0"   [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass" [price]="insurance.price"
+                          [imgURL]="insuranceImgs[insurance.type]"  [name]="insurance.name" [bgColor]="bgColor[insurance.type]" [dwelling]="insurance.dwelling"
                           (openModal)="setModalData(insurance)"
         ></app-price-widget>
+        </ng-container>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showNationWide"></app-price-loader>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showMetlife"></app-price-loader>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showTravellers"></app-price-loader>

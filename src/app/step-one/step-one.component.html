@@ -1,10 +1,10 @@
 <div>
-  <div  class="container pt-md-2 mt-4 background-img title pb-5" *ngIf="!isProcessing">
+  <div class="container pt-md-2 mt-4 background-img title pb-5" *ngIf="!isProcessing">
     <div class="col-md-9 offset-md-1 inputPage">
       <!-- Material input -->
       <div class="form-group elemContainer">
         <div id="jumbo-div" class="col-12 title container-fluid d-flex">
-          <img src ="../../assets/images/SVG/rocket.svg" style="width:5rem">
+          <img src="../../assets/images/SVG/rocket.svg" style="width:5rem">
           <h1 class="jumbo-h1 pt-5">Instant Insurance.<span style="font-size:3rem"> Simple for everyone.</span></h1>
         </div>
         <div class="row">
@@ -17,9 +17,10 @@
                 *ngIf="GooglePlace==true" placeholder="enter address to insure" #placesRef>
               <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" style="float: right;position: absolute;
                            top: 0;right: 0;" (click)="handleAddressChangeWithCache()">
-              <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460"
-                *ngIf="GooglePlace==false" [(ngModel)]="fullAddressText" />
-        
+              <input type="text" class="form-control"
+                placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460" *ngIf="GooglePlace==false"
+                [(ngModel)]="fullAddressText" />
+
               <div class="col-md-12 col-sm-12 row pr-0 pl-0 mr-0 ml-0" *ngIf="!GooglePlace">
                 <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pl-0'">
                   <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']">
@@ -28,11 +29,13 @@
                   <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']">
                 </div>
                 <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pr-0'">
-                  <input type="number" class="form-control" placeholder="Year Built" [(ngModel)]="zillowData['built_year']">
+                  <input type="number" class="form-control" placeholder="Year Built"
+                    [(ngModel)]="zillowData['built_year']">
                 </div>
               </div>
-        
-              <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0" style="text-decoration: underline !important;"
+
+              <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0"
+                style="text-decoration: underline !important;"
                 [ngStyle]="commonService.isMobileMode()?{'padding-left':'15px !important'}:''"
                 (click)="GooglePlace=!GooglePlace;loadGooglePlace()">
                 <!--strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong-->
@@ -43,171 +46,72 @@
               <div class="col-12 addressDiv white-bg" *ngIf="isDisplay">
                 <div class="addressTxt-wrapper addressSelcted">
                   <h5 class="font-weight-bold text-center pt-2 addressTxt">
+                    <span class="badge badge-pill green mx-2"><i class="fas fa-check white-text"
+                      aria-hidden="true"></i></span>
                     {{fullAddressText}}
-                    <span class="badge badge-pill green"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
                   </h5>
                 </div>
-              </div> 
+              </div>
             </ng-template>
           </div>
-            <div class="col-2 white-bg  p-0">
-              <app-issuing></app-issuing>
-            </div>
-
+          <div class="col-2 white-bg  p-0">
+            <app-issuing></app-issuing>
           </div>
-    <!-- details section End-->
 
-    <div class="swipeDiv" *ngIf="commonService.isMobileMode() && isDisplay"></div>
-
-    <app-alerts></app-alerts>
-    <div class="swipeDiv pt-3 pb-5" *ngIf="isDisplay">
-      <div class="swipePrediv"></div>
-      <swiper [config]="config" #usefulSwiper>
-        <div class="swiper-wrapper align-middle">
-          <div class="swiper-slide first mx-auto" (click)="goToThreeStep()">
-            <p class="swipe-txt">CONTINUE</p>
-          </div>
-          <div class="swiper-slide last mx-auto">
-            <div class="left-edge">
-              <i class="arrow fas fa-angle-double-right fa-2x"></i>
-            </div>
-            <p class="text-center swipe-txt">Swipe to Quote!</p>
-          </div>
         </div>
-      </swiper>
-    </div>
-  </div>
+        <!-- details section End-->
+
+        <div class="swipeDiv" *ngIf="commonService.isMobileMode() && isDisplay"></div>
+
+        <app-alerts></app-alerts>
+        <div *ngIf="commonService.isMobileMode() && isDisplay" class="swipeDiv pt-3 pb-5">
+          <div class="swipePrediv"></div>
+          <swiper [config]="config" #usefulSwiper>
+            <div class="swiper-wrapper align-middle">
+              <div class="swiper-slide first mx-auto" (click)="goToThreeStep()">
+                <p class="swipe-txt">CONTINUE</p>
+              </div>
+              <div class="swiper-slide last mx-auto">
+                <div class="left-edge">
+                  <i class="arrow fas fa-angle-double-right fa-2x"></i>
+                </div>
+                <p class="text-center swipe-txt">Swipe to Quote!</p>
+              </div>
+            </div>
+          </swiper>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-  <!-- Sequence Start -->
-  <div *ngIf="isProcessing" class="processingDiv pt-md-2 mx-auto">
+<!-- Sequence Start -->
+<div *ngIf="isProcessing" class="processingDiv pt-md-2 mx-auto">
 
-    
-    <div class="col-12 map-container">
-      <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-      </agm-map>
-      <div class="overlay"></div>
-    </div>
-    <div class="loader">
-      <div class="row">
-        <div class="col-8 offset-3 bg-white m-6" style="text-align: center; margin-top:5rem">
-          <div class="row">
-            <div class="col-8 offset-2" style="text-align: center; margin-top: 3rem;padding-bottom: 8rem;">
+
+  <div class="col-12 map-container">
+    <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map>
+    <div class="overlay"></div>
+  </div>
+  <div class="loader">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 bg-white mr-auto ml-auto">
+        <div class="row">
+          <div class="col-8 mr-auto ml-auto" style="text-align: center; margin-top: 3rem;padding-bottom: 8rem;">
             <h1 class="jumbo-h1 pt-5" style="margin-bottom:2rem;font-size:3rem;font-weight:900">running quotes....</h1>
-            <div class="col-8 offset-2" 
-            >
-              <mdb-progress value="{{progress}}" style="height:25px" min="0" max="100" type="info" aria-valuenow="{{progress}}"
-                aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+            <div class="col-8 mr-auto ml-auto">
+              <mdb-progress value="{{progress}}" style="height:25px" min="0" max="100" type="info"
+                aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></mdb-progress>
             </div>
-            <!-- <div class="progress" style="height:25px">
-            <div class="progress-bar" role="progressbar" width="{{progress}}" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100" style="height:25px;width:{{progress}}%">
-            </div> -->
             <div style="text-align: center; padding: 5px;">{{progress}} % complete</div>
-            </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Sequence details section Start-->
-    <!-- <div class="col-md-12 detailsContainer mx-auto" *ngIf="isDisplay">
-      <div class="addressTxt-wrapper">
-        <h4 class="font-weight-bold text-center pt-2 addressTxt">
-          {{fullAddressText}}
-          &nbsp;
-          <span class="badge badge-pill green"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
-        </h4>
-      </div>
-    </div> -->
-
-    <div class="loading-container"></div>
-      <!-- Shazam like animation Start -->
-      <!-- <div class="ripple" style="animation-delay: 0s">
-        <div class="animated processing-pane loadingRow-container">
-          <div class="loading-img-container">
-            <div class="loading-img-wrapper" *ngIf="showGoogleApiLogo">
-              <img src="../../assets/images/google-map-api.png" class="loading-img portrait" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showAwsLogo">
-              <img src="../../assets/images/aws.png" class="loading-img landscape aws-img" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showZillowPane">
-              <img src="../../assets/images/zillow.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showNationwide">
-              <img src="../../assets/images/companies/nationwide%20logo.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showProgressive">
-              <img src="../../assets/images/companies/progressive%20logo.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showMet">
-              <img src="../../assets/images/companies/metlife.jpg" class="loading-img landscape metlife-img" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showTraveler">
-              <img src="../../assets/images/companies/travelers%20logo.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showPlymouth">
-              <img src="../../assets/images/companies/plymouthrock-1.jpeg"
-                class="loading-img landscape plyouthrock-img" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showStateAuto">
-              <img src="../../assets/images/companies/State%20auto.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showUniversal">
-              <img src="../../assets/images/companies/universal%20.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showStillWater">
-              <img src="../../assets/images/companies/stillwater.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="showNeptune">
-              <img src="../../assets/images/companies/neptune.svg" class="loading-img neptune-img" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndGoogleApiLogo">
-              <img src="../../assets/images/google-map-api.png" class="loading-img portrait" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndAwsLogo">
-              <img src="../../assets/images/aws.png" class="loading-img landscape aws-img" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndZillowPane">
-              <img src="../../assets/images/zillow.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndNationwide">
-              <img src="../../assets/images/companies/nationwide%20logo.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndProgressive">
-              <img src="../../assets/images/companies/progressive%20logo.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndMet">
-              <img src="../../assets/images/companies/metlife.jpg" class="loading-img landscape metlife-img" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndTraveler">
-              <img src="../../assets/images/companies/travelers%20logo.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndPlymouth">
-              <img src="../../assets/images/companies/plymouthrock-1.jpeg"
-                class="loading-img landscape plyouthrock-img" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndStateAuto">
-              <img src="../../assets/images/companies/State%20auto.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndUniversal">
-              <img src="../../assets/images/companies/universal%20.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndStillWater">
-              <img src="../../assets/images/companies/stillwater.png" class="loading-img landscape" />
-            </div>
-            <div class="loading-img-wrapper" *ngIf="show2ndNeptune">
-              <img src="../../assets/images/companies/neptune.svg" class="loading-img neptune-img" />
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!-- Shazam like animation End -->
-
-    <!-- </div> Loading-container closing div-->
-  </div> 
-  <!-- ==== Sequence End === -->
+  </div>
+</div>
+<!-- ==== Sequence End === -->
 
 <!-- New Front page design Start -->
 <section class="showcase-section" *ngIf="!isProcessing">

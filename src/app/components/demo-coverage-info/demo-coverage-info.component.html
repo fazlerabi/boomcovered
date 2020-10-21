@@ -2,13 +2,13 @@
 <div class="row mt-3">
   <div class="col-12">
     <div class="row pt-3">
-      <div class="col-10 row offset-2 tab-header">
+      <div class="col-10 row mr-auto ml-auto tab-header">
       <div [ngClass]="selectedTab==='coverages' ? 'selected' :''" class="col-6" (click)="selectedTab='coverages'">coverages</div>
       <div [ngClass]="selectedTab==='features' ? 'selected' :''" class="col-5 offset-1" (click)="selectedTab='features'">features</div>
       </div>
     </div>
-    <div class="row pt-1 pb-5 info-board">
-      <div class="col-md-10 offset-1">
+    <div class="row pt-1 pb-2 info-board">
+      <div class="col-md-10 mr-auto ml-auto">
         <!--p class="mb-1">Coverages:</p-->
         <table *ngIf="selectedTab ==='coverages'" width="100%" class="mt-4 mb-3">
           <tr class="bg-grey">

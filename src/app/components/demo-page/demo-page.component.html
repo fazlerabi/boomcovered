@@ -1,34 +1,18 @@
-<app-demo-price-header (sendEmail)="sendEmail($event)"></app-demo-price-header>
-<div class="">
-  <!-- <app-demo-price-swiper></app-demo-price-swiper> -->
+<app-demo-price-header (sendPdf)="downloadPdf($event)" (sendEmail)="sendEmail($event)"></app-demo-price-header>
+<div *ngIf="commonService.isMobileMode()" class="row mt-4">
+  <button class="btn btn-primary col-8 mr-auto ml-auto" (click)="goToThreeStep()">next</button>
+</div>
+<div>
   <app-demo-coverage-info></app-demo-coverage-info>
-  <div class="container">
-    <!-- <p class="address-text text-pink font-weight-bold" style="font-family: 'Arial Rounded MT Bold';">
-      {{commonService.getAddressData()['address']}} {{commonService.getAddressData()['locality']}},
-      {{commonService.getAddressData()['administrative_area_level_1']}},
-      {{commonService.getAddressData()['postal_code']}}</p> -->
-
-    <div class="row pb-5">
-      <div class="col-5 offset-1 mt-3">
+  <div class="row">
+    <div class="row col-lg-8 col-sm-10 col-xs-10 mr-auto ml-auto pb-5">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-3">
         <app-demo-gmap></app-demo-gmap>
       </div>
-      <div class="col-5 mt-3">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-3">
         <app-demo-price-info></app-demo-price-info>
       </div>
-      <!-- <div class="col-lg-4 col-md-12 mt-3">
-        <app-demo-price-bind></app-demo-price-bind>
-      </div> -->
     </div>
-<!-- 
-    <p class="title text-pink" style="font-family: AllerDisplay, sans-serif;">Price Spectrum</p>
-    <app-bar-chart></app-bar-chart> -->
   </div>
-
-  <!--app-bubble-chart></app-bubble-chart--> <!--Not part of refactoring KJO-->
-  <!-- <app-demo-email-pdf (sendEmail)="sendEmail1($event)" [prices]="prices"></app-demo-email-pdf>
-  <app-demo-claims></app-demo-claims> -->
+  <app-demo-page-email-modal #sendPdf [showModal]="showModal" [prices]="prices"></app-demo-page-email-modal>
 </div>
-<!-- <app-demo-page-email-modal [showModal]="showModal" [prices]="prices"></app-demo-page-email-modal> -->
-<!-- <div class="fixed-continue">
-  <app-demo-price-swiper></app-demo-price-swiper>
-</div> -->

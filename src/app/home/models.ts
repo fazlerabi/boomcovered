@@ -70,6 +70,8 @@ export interface ModalData {
   waterBackup: number;
   deductible: number;
   keyword?: Array<string>;
+  bgColor?: string;
+  name?: string;
 }
 
 /*comment*/
