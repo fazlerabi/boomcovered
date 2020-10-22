@@ -2,8 +2,8 @@
 <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
             [ngClass]="!commonService.isMobileMode()?'red navbar-dark':'white  navbar-light'">
   <mdb-navbar-brand>
-    <div id="logo_gif" *ngIf="commonService.isMobileMode()">
-      <a href="/" class="site-logo"><img style="width:3rem" src="../../assets/images/SVG/Logos_Carousel.gif"/></a>
+    <div id='gif_div' *ngIf="commonService.isMobileMode()">
+      <a href="/" class="site-logo"><img id="logo_gif" src="../../assets/images/SVG/ezgif.com-crop.gif"/></a>
     </div>
   </mdb-navbar-brand>
   <a href="/" class="site-logo"><img style="width:3rem" src="../../assets/images/SVG/boom-icon.svg"/></a>
@@ -35,8 +35,9 @@
         <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>about</a>
       </li>
       <li class="nav-item ml-5" routerLinkActive="active" *ngIf="!commonService.isMobileMode()">
-        <div id="logo_gif"></div>
-        <a href="/" class="site-logo"><img style="width:3rem" src="../../assets/images/SVG/Logos_Carousel.gif"/></a>
+        <div id='gif_div'>
+          <a href="/" class="site-logo"><img id="logo_gif"src="../../assets/images/SVG/ezgif.com-crop.gif"/></a>
+        </div>
       </li>
     </ul>
   </links>
