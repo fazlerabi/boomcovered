@@ -34,13 +34,13 @@ mdb-navbar-brand {
   }
 }
 
-#logo_gif {
-  width: 3rem;
-  margin-left: 20px;
-}
-
 #gif_div {
   border-left: 1px solid #cccccc;
+}
+
+#gif_div a img {
+  width: 3rem;
+  margin-left: 20px;
 }
 
 ul.navbar-nav {

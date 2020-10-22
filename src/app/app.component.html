@@ -3,7 +3,7 @@
             [ngClass]="!commonService.isMobileMode()?'red navbar-dark':'white  navbar-light'">
   <mdb-navbar-brand>
     <div id='gif_div' *ngIf="commonService.isMobileMode()">
-      <a href="/" class="site-logo"><img id="logo_gif" src="../../assets/images/SVG/ezgif.com-crop.gif"/></a>
+      <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif"/></a>
     </div>
   </mdb-navbar-brand>
   <a href="/" class="site-logo"><img style="width:3rem" src="../../assets/images/SVG/boom-icon.svg"/></a>
@@ -36,7 +36,7 @@
       </li>
       <li class="nav-item ml-5" routerLinkActive="active" *ngIf="!commonService.isMobileMode()">
         <div id='gif_div'>
-          <a href="/" class="site-logo"><img id="logo_gif"src="../../assets/images/SVG/ezgif.com-crop.gif"/></a>
+          <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif"/></a>
         </div>
       </li>
     </ul>
