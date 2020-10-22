@@ -2,14 +2,14 @@
 <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
             [ngClass]="!commonService.isMobileMode()?'red navbar-dark':'white  navbar-light'">
   <mdb-navbar-brand>
-    <div class="phone-area" *ngIf="commonService.isMobileMode()">
-      <a href="tel:+16108641155" class="text-white"><span><i class="fa fa-phone-alt"></i>call</span></a>
+    <div id="logo_gif" *ngIf="commonService.isMobileMode()">
+      <a href="/" class="site-logo"><img style="width:3rem" src="../../assets/images/SVG/Logos_Carousel.gif"/></a>
     </div>
   </mdb-navbar-brand>
   <a href="/" class="site-logo"><img style="width:3rem" src="../../assets/images/SVG/boom-icon.svg"/></a>
   <links>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item" routerLinkActive="active">
+      <!-- <li class="nav-item" routerLinkActive="active">
         <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>Home</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
@@ -21,11 +21,22 @@
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link waves-light" routerLink="/retrieve" mdbWavesEffect>Retrieve
           Quote</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active" *ngIf="!commonService.isMobileMode()">
+      </li> -->
+      <!-- <li class="nav-item" routerLinkActive="active" *ngIf="!commonService.isMobileMode()">
         <div class="phone-area">
           <a href="tel:+16108641155" class="text-white"><span><i class="fa fa-phone-alt"></i>Call</span></a>
         </div>
+      </li> -->
+      
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>quotes</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>about</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="!commonService.isMobileMode()">
+        <div id="logo_gif"></div>
+        <a href="/" class="site-logo"><img style="width:3rem" src="../../assets/images/SVG/Logos_Carousel.gif"/></a>
       </li>
     </ul>
   </links>
