@@ -12,7 +12,7 @@
             <ul class="list-group">
                 <li class="list-group-item" *ngFor="let user of users; let i = index" [class.active]="i == currentIndex"
                     (click)="setActiveUser(user, i)"> {{ user.user_email }} </li>
-            </ul> <button class="m-3 btn btn-sm btn-danger" (click)="removeAllUsers()"> Remove All </button>
+            </ul> <button class="m-3 btn btn-sm btn-danger" (click)="removeAllUser()"> Remove All </button>
         </div>
         <div class="col-md-6">
             <div *ngIf="currentUser">

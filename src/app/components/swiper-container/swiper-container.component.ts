@@ -29,4 +29,8 @@ export class SwiperContainerComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToThreeStep(){
+    return null;
+  }
+
 }

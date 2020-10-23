@@ -8,7 +8,7 @@ import {OlarkService} from "../services/olark.service";
   providers: [OlarkService]
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  constructor(private olark: OlarkService) {
+  constructor(public olark: OlarkService) {
   }
 
   ngOnInit() {

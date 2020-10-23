@@ -58,6 +58,8 @@ import {StepOneComponent} from './step-one/step-one.component';
 import {ConnectingAPIComponent} from './connecting-api/connecting-api.component';
 import {ChatComponent} from './chat/chat.component';
 import {AboutComponent} from './about/about.component';
+import {SwipeComponent} from './swipe/swipe.component';
+import {SwipeComponentComponent} from './swipe-component/swipe-component.component';
 import {ContactComponent} from './contact/contact.component';
 import {PriceSortComponent} from './components/price-sort/price-sort.component';
 import {PriceFilterComponent} from './components/price-filter/price-filter.component';
@@ -127,6 +129,8 @@ export class MyHammerConfig extends HammerGestureConfig {
     ConnectingAPIComponent,
     ChatComponent,
     AboutComponent,
+    SwipeComponent,
+    SwipeComponentComponent,    
     ContactComponent,
     PriceSortComponent,
     PriceFilterComponent,

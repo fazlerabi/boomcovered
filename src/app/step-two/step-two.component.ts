@@ -66,6 +66,8 @@ export class StepTwoComponent implements AfterContentInit {
     }
   };
 
+  mapData: object;
+
   constructor(
     private router: Router, public apiService: ApiService, public commonService: CommonService, public local: LocalStorageService
   ) {
