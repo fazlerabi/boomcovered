@@ -12,7 +12,7 @@ const apiRouter = require('./routes/index');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const WAIT_TIME = 500;
-let currentWaitTime = 20;
+let currentWaitTime = 200;
 const app = express();
 
 let corsOptions = {
