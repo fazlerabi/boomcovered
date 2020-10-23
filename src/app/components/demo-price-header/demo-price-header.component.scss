@@ -1,4 +1,4 @@
-@import '../../../assets/styles/variables';
+@import "../../../assets/styles/variables";
 
 $font-family: Roboto;
 .map-container {
@@ -29,6 +29,58 @@ $font-family: Roboto;
   left: 0;
   right: 0;
 
+  #nextBtn {
+    left: 300px;
+  }
+
+  @media screen and (max-width: 1800px) {
+    #nextBtn {
+      left: 200px;
+    }
+  }
+
+  @media screen and (max-width: 1600px) {
+    #nextBtn {
+      left: 150px;
+    }
+  }
+
+  @media screen and (max-width: 1500px) {
+    #nextBtn {
+      left: 120px;
+    }
+  }
+
+  @media screen and (max-width: 1428px) {
+    #nextBtn {
+      left: 100px;
+    }
+  }
+
+  @media screen and (max-width: 1378px) {
+    #nextBtn {
+      left: 80px;
+    }
+  }
+
+  @media screen and (max-width: 1328px) {
+    #nextBtn {
+      left: 50px;
+    }
+  }
+
+  @media screen and (max-width: 1250px) {
+    #nextBtn {
+      left: 20px;
+    }
+  }
+
+  @media screen and (max-width: 998px) {
+    #nextBtn {
+      left: 0px;
+    }
+  }
+
   .loader {
     @media screen and (max-width: $mobile-width) {
       padding-top: 50px !important;
@@ -41,14 +93,14 @@ $font-family: Roboto;
 
   .bg-white {
     border-radius: 5%;
-    opacity: .9;
+    opacity: 0.9;
 
     .send-btn:hover {
       opacity: 0.8;
     }
 
     .cost {
-      color: #EE3722;
+      color: #ee3722;
       font-size: 20px;
     }
 
@@ -64,27 +116,43 @@ $font-family: Roboto;
     }
 
     @-webkit-keyframes orbit {
-      from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
+      from {
+        transform: rotate(0deg) translateX(2px) rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg) translateX(2px) rotate(-360deg);
+      }
     }
 
     @-moz-keyframes orbit {
-      from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
+      from {
+        transform: rotate(0deg) translateX(2px) rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg) translateX(2px) rotate(-360deg);
+      }
     }
 
     @-o-keyframes orbit {
-      from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
+      from {
+        transform: rotate(0deg) translateX(2px) rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg) translateX(2px) rotate(-360deg);
+      }
     }
 
     @keyframes orbit {
-      from { transform: rotate(0deg) translateX(2px) rotate(0deg); }
-      to   { transform: rotate(360deg) translateX(2px) rotate(-360deg); }
+      from {
+        transform: rotate(0deg) translateX(2px) rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg) translateX(2px) rotate(-360deg);
+      }
     }
 
     .medium-price {
-      color: #EE3722;
+      color: #ee3722;
       font-size: 60px;
       margin-bottom: 2rem;
     }
@@ -97,14 +165,14 @@ $font-family: Roboto;
 
     .price-range-text {
       font-size: 30px;
-      color: #A6A8AB;
+      color: #a6a8ab;
       margin-top: 15px;
     }
 
     .description {
       font-size: 13px;
       margin-top: 15px;
-      color: #7F7F7F;
+      color: #7f7f7f;
     }
   }
 
@@ -130,8 +198,12 @@ $font-family: Roboto;
   }
 
   @-webkit-keyframes mover {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-10px); }
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes mover {
@@ -147,12 +219,12 @@ $font-family: Roboto;
   }
 
   .bottomImageContainer.bounce {
-    -webkit-animation: mover 500ms infinite  linear;
-    animation: mover 500ms infinite  linear;
+    -webkit-animation: mover 500ms infinite linear;
+    animation: mover 500ms infinite linear;
     animation-iteration-count: 1;
   }
 }
-.address-header{
+.address-header {
   border-bottom: 1px solid gray;
   font-size: 1.6rem;
   color: #5a5a5a;
@@ -161,21 +233,21 @@ $font-family: Roboto;
   width: 90%;
 }
 
-.rounded-circle-pricing{
+.rounded-circle-pricing {
   width: 12rem;
   height: 12rem;
-  background-color: #4265e4!important;
+  background-color: #4265e4 !important;
   color: white;
 }
 
-.rounded-circle-next{
+.rounded-circle-next {
   width: 7rem;
   height: 7rem;
-  background-color: #fafafa!important;
+  background-color: #fafafa !important;
   color: #4265e4;
 }
 
-.pricing-contents{
+.pricing-contents {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -185,7 +257,7 @@ $font-family: Roboto;
   align-items: center;
 }
 
-.next-contents{
+.next-contents {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -193,14 +265,14 @@ $font-family: Roboto;
   -webkit-align-items: center;
   -webkit-box-align: center;
   align-items: center;
-  text-align:center;
+  text-align: center;
 }
 
 :host ::ng-deep .btn-light {
   color: #4265e4 !important;
   background-color: #fff !important;
   border-color: #4265e4 !important;
-  font-weight:500;
+  font-weight: 500;
   text-transform: lowercase;
 }
 
@@ -208,7 +280,7 @@ $font-family: Roboto;
   color: #4265e4 !important;
   background-color: #fff !important;
   border-color: #4265e4 !important;
-  font-weight:500;
+  font-weight: 500;
 }
 
 :host ::ng-deep .rounded-circle-next:hover {

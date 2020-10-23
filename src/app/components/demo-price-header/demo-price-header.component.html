@@ -5,7 +5,7 @@
 </div>
 <div class="container animated slideInLeft">
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 mr-auto ml-auto pt-5">
+    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 mr-0 ml-auto pt-5">
       <div class="row">
         <div class="col-10 mr-auto ml-auto">
           <div class="address-header">
@@ -33,8 +33,8 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!commonService.isMobileMode()" class="col-2 align-self-center">
-      <div class="d-flex justify-content-center">
+    <div *ngIf="!commonService.isMobileMode()" class="col-2 align-self-center" id="nextBtn">
+      <div class="d-flex justify-content-end">
         <div class="rounded-circle rounded-circle-next next-contents" (click)="goToThreeStep()">
           <div class="col-12 pb-1">
             <div>
