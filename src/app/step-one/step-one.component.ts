@@ -127,6 +127,7 @@ export class StepOneComponent implements AfterViewInit {
 
   async loadGooglePlace() {
     this.mapsAPILoader.load().then(() => {
+      console.log("here: ", this.GooglePlace)
       if (this.GooglePlace) {
         setTimeout(() => {
           let autocomplete = new google.maps.places.Autocomplete(
@@ -136,6 +137,8 @@ export class StepOneComponent implements AfterViewInit {
               componentRestrictions: {country: "USA"}
             }
           );
+
+          console.log("111: ", autocomplete)
 
           autocomplete.addListener("place_changed", async () => {
             this.ngZone.run(async () => {

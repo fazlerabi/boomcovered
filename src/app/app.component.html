@@ -1,6 +1,6 @@
 <!-- Image and text -->
-<mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
-            [ngClass]="!commonService.isMobileMode()?'red navbar-dark':'white  navbar-light'">
+<mdb-navbar SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
+            [ngClass]="!commonService.isMobileMode()?'red navbar-dark':'white  navbar-light'" [containerInside]="false">
   <mdb-navbar-brand>
     <div id='gif_div' *ngIf="commonService.isMobileMode()">
       <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif"/></a>
@@ -42,6 +42,7 @@
     </ul>
   </links>
 </mdb-navbar>
+
 
 <!-- <app-sub-header></app-sub-header> -->
 <div class="main pt-md-2 pt-1" [@routeAnimations]="o && o.activatedRouteData
