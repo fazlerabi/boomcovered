@@ -15,8 +15,8 @@
               {{commonService.getAddressData()['postal_code']}}</span>
           </div>
           <div class="pt-2" style="text-align: center;">coverage for your home</div>
-          <div class="d-flex justify-content-center pt-4">
-            <div class="rounded-circle rounded-circle-pricing pricing-contents">
+          <div class="d-flex justify-content-center pt-4 mb-3">
+            <div class="rounded-circle rounded-circle-pricing pricing-contents" (click) = "togglePrice()">
               <div class="col-12 pt-3">
                 <h1 class="medium-price text-center font-weight-bold">
                   {{medium_price|currency:'USD':'symbol':'1.0-0'}}
@@ -26,6 +26,40 @@
               </div>
             </div>
           </div>
+          <div class="text-center bg-white w-75 p-3" id='price_div' *ngIf = "isShow">
+            <div>
+              <p class="h5 text-muted"><u>Pricing Breakdown</u></p>
+              <table class="w-100 mt-3" id="price_table">
+                <tr>
+                  <td class="text-muted text-left w-50">Low Price:</td>
+                  <td class="text-danger text-left w-50 pl-5">$989</td>
+                </tr>
+                <tr>
+                  <td class="text-muted text-left w-50">High Price:</td>
+                  <td class="text-danger text-left w-50 pl-5">$1,677</td>
+                </tr>
+                <tr>
+                  <td class="text-muted text-left w-50">Mean Price:</td>
+                  <td class="text-danger text-left w-50 pl-5">$1,445</td>
+                </tr>
+                <tr>
+                  <td class="text-muted text-left w-50">Flood Zone:</td>
+                  <td class="text-danger text-left w-50 pl-5">AE</td>
+                </tr>
+                <tr>
+                  <td class="text-muted text-left w-50">Flood Quote:</td>
+                  <td class="text-danger text-left w-50 pl-5">$403</td>
+                </tr>
+              </table>
+              <div class="mt-3">
+                <img class="" src="../../assets/images/demo-price/egW1bF.tif@1X.png"/>
+                <img class="ml-3 mr-3" src="../../assets/images/demo-price/EvN2UE.tif@1X.png"/>
+                <img class="" src="../../assets/images/demo-price/kEtyYS.tif@1X.png"/>
+              </div>
+            </div>
+            
+          </div>
+          
           <div class="row col-lg-12 col-sm-12 mr-auto ml-auto pt-3">
             <button class="col-lg-4 mr-auto ml-auto col-sm-6 col-xs-12 mb-2 btn btn-light" (click)="download()">download</button>
             <button class="col-lg-4 col-sm-6 ml-auto mr-auto col-xs-12 mb-2 btn btn-light" (click)="send()">email</button>
