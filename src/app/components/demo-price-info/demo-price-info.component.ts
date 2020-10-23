@@ -48,8 +48,8 @@ export class DemoPriceInfoComponent implements OnInit {
 
   getInfo(key) {
     const total_data = this.commonService.getLocalItem('total_data');
+    console.log("here: ", total_data)
     if (total_data) return total_data[key];
-
   }
 
   getPrices(name) {

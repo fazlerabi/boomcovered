@@ -16,6 +16,7 @@ export class CommonService {
   }
 
   getLocalItem(key) {
+    console.log("service: ", this.local)
     return this.local.get(key);
   }
 
