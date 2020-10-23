@@ -22,6 +22,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   @Output('sendEmail') sendEmail: EventEmitter<any> = new EventEmitter<any>()
   @Output('sendPdf') sendPdf: EventEmitter<any> = new EventEmitter<any>()
   interval: any;
+  isShow = false;
 
   ngOnInit() {
     $(document).ready(function(){
@@ -98,5 +99,9 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
     this.commonService.setLocalItem('total_data', total_data);
     this.router.navigate(['/step3']);
 
+  }
+
+  togglePrice() {
+    this.isShow = !this.isShow;
   }
 }
