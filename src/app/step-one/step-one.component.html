@@ -10,7 +10,7 @@
             <h1 class="jumbo-h1">Simple for everyone.</h1>
           </div>
         </div>
-        <div cass="row">
+        <div cass="row" style="display: flex">
           <div class="col-10 p-0">
             <div class="col-12 white-bg addressDiv" *ngIf="!isDisplay; else displayAddress">
               <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()" *ngIf="selectedMode == 1" />
