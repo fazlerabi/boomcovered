@@ -30,7 +30,6 @@ export class AppComponent implements AfterViewInit {
     });
 
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((event) => {
-      console.log("aa: ", event["url"]);
       switch (event["url"]) {
         case "/":
           this.fitUI(1000);

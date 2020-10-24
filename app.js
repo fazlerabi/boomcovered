@@ -37,93 +37,34 @@ app.listen(PORT, () => {
 });
 
 const server = app.listen(3000, function () {
-  console.log(
-    "Server listening at http://" +
-      server.address().address +
-      ":" +
-      server.address().port
-  );
+  console.log("Server listening at http://" + server.address().address + ":" + server.address().port);
 });
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "dist/mdb-angular-free")));
-app.use(
-  "/index",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/policy",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
+app.use("/index", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/policy", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 app.use("/pdfs", express.static(path.join(__dirname, "pdfs")));
-app.use(
-  "/step1",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/users",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/users/:id",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
+app.use("/step1", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/users", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/users/:id", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 app.use("/add", express.static(path.join(__dirname, "dist/mdb-angular-free")));
-app.use(
-  "/batch",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step2",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step3",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
+app.use("/batch", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step2", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step3", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 app.use("/roof", express.static(path.join(__dirname, "dist/mdb-angular-free")));
-app.use(
-  "/exterior",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step4",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step5",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step6",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step7",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step8",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/step9",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/esign",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/retrieve",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
-app.use(
-  "/get_quote_data",
-  express.static(path.join(__dirname, "dist/mdb-angular-free"))
-);
+app.use("/exterior", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step4", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step5", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step6", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step7", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step8", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/step9", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/esign", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/retrieve", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+app.use("/get_quote_data", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 app.use("/demo", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 // app.use("/preparing-policy", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 // app.use("/policy-start-date", express.static(path.join(__dirname, "dist/mdb-angular-free")));

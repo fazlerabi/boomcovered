@@ -1,6 +1,5 @@
 <div class="map-container">
-  <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
-  </agm-map>
+  <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng"> </agm-map>
   <div class="overlay"></div>
 </div>
 <div class="container animated slideInLeft">
@@ -9,24 +8,23 @@
       <div class="row">
         <div class="col-10 mr-auto ml-auto">
           <div class="address-header">
-            <span class="address-text font-weight-bold" style="font-family: 'Arial Rounded MT Bold';">
-              {{commonService.getAddressData()['address']}} {{commonService.getAddressData()['locality']}},
-              {{commonService.getAddressData()['administrative_area_level_1']}},
-              {{commonService.getAddressData()['postal_code']}}</span>
+            <span class="address-text font-weight-bold" style="font-family: 'Arial Rounded MT Bold'">
+              {{ commonService.getAddressData()["address"] }} {{ commonService.getAddressData()["locality"] }}, {{ commonService.getAddressData()["administrative_area_level_1"] }}, {{ commonService.getAddressData()["postal_code"] }}</span
+            >
           </div>
-          <div class="pt-2" style="text-align: center;">coverage for your home</div>
+          <div class="pt-2" style="text-align: center">coverage for your home</div>
           <div class="d-flex justify-content-center pt-4 mb-3">
-            <div class="rounded-circle rounded-circle-pricing pricing-contents" (click) = "togglePrice()">
+            <div class="rounded-circle rounded-circle-pricing pricing-contents">
               <div class="col-12 pt-3">
                 <h1 class="medium-price text-center font-weight-bold">
-                  {{medium_price|currency:'USD':'symbol':'1.0-0'}}
+                  {{ medium_price | currency: "USD":"symbol":"1.0-0" }}
                 </h1>
-                <div class="text-center pb-3">PER YEAR</div>
+                <div #toggleButton class="text-center pb-3" id="per_year" (click)="togglePrice()">PER YEAR</div>
                 <div class="text-center"><i class="fas fa-info-circle"></i></div>
               </div>
             </div>
           </div>
-          <div class="text-center bg-white w-75 p-3" id='price_div' *ngIf = "isShow">
+          <div class="text-center bg-white w-75 p-3" id="price_div" *ngIf="isShow" #menu>
             <div>
               <p class="h5 text-muted"><u>Pricing Breakdown</u></p>
               <table class="w-100 mt-3" id="price_table">
@@ -52,14 +50,13 @@
                 </tr>
               </table>
               <div class="mt-3">
-                <img class="" src="../../assets/images/demo-price/progressive.png"/>
-                <img class="ml-3 mr-3" src="../../assets/images/demo-price/nationwide.png"/>
-                <img class="" src="../../assets/images/demo-price/allstate.png"/>
+                <img class="" src="../../assets/images/demo-price/progressive.png" />
+                <img class="ml-3 mr-3" src="../../assets/images/demo-price/nationwide.png" />
+                <img class="" src="../../assets/images/demo-price/allstate.png" />
               </div>
             </div>
-            
           </div>
-          
+
           <div class="row col-lg-12 col-sm-12 mr-auto ml-auto pt-3">
             <button class="col-lg-4 mr-auto ml-auto col-sm-6 col-xs-12 mb-2 btn btn-light" (click)="download()">download</button>
             <button class="col-lg-4 col-sm-6 ml-auto mr-auto col-xs-12 mb-2 btn btn-light" (click)="send()">email</button>
@@ -74,8 +71,7 @@
             <div>
               <i class="fas fa-2x fa-long-arrow-alt-right"></i>
             </div>
-            <div>Next
-            </div>
+            <div>Next</div>
           </div>
         </div>
       </div>

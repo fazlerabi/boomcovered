@@ -1,11 +1,11 @@
-import {AfterViewInit, Component, ElementRef, HostListener, NgZone, ViewChild} from "@angular/core";
-import {SwiperComponent} from "ngx-useful-swiper";
-import {addressData} from "../home/models";
-import {Router} from "@angular/router";
-import {ApiService} from "../services/api-service";
-import {CommonService} from "../services/common.service";
-import {MapsAPILoader} from "@agm/core";
-import {LocalStorageService} from "angular-web-storage";
+import { AfterViewInit, Component, ElementRef, HostListener, NgZone, ViewChild } from "@angular/core";
+import { SwiperComponent } from "ngx-useful-swiper";
+import { addressData } from "../home/models";
+import { Router } from "@angular/router";
+import { ApiService } from "../services/api-service";
+import { CommonService } from "../services/common.service";
+import { MapsAPILoader } from "@agm/core";
+import { LocalStorageService } from "angular-web-storage";
 import CacheManager from "../utils/CacheManager";
 
 declare var google;
@@ -13,12 +13,12 @@ declare var google;
 @Component({
   selector: "app-step-one",
   templateUrl: "./step-one.component.html",
-  styleUrls: ["./step-one.component.scss"]
+  styleUrls: ["./step-one.component.scss"],
 })
 export class StepOneComponent implements AfterViewInit {
-  @ViewChild("placesRef", {static: false})
+  @ViewChild("placesRef", { static: false })
   public searchElementRef: ElementRef;
-  @ViewChild("usefulSwiper", {static: false})
+  @ViewChild("usefulSwiper", { static: false })
   public usefulSwiper: SwiperComponent;
   config: any = {
     initialSlide: 1,
@@ -30,8 +30,8 @@ export class StepOneComponent implements AfterViewInit {
           // this.next.emit();
           this.processDemoQuote();
         }
-      }
-    }
+      },
+    },
   };
   window: any = window;
   cacheMode: boolean = false;
@@ -43,7 +43,7 @@ export class StepOneComponent implements AfterViewInit {
     locality: "",
     administrative_area_level_1: "",
     country: "",
-    postal_code: ""
+    postal_code: "",
   };
   GooglePlace: boolean = true;
   fullAddressText: string = "";
@@ -100,22 +100,13 @@ export class StepOneComponent implements AfterViewInit {
   isMobileVideoDisplay: boolean = false;
   isMobileMode: boolean = this.commonService.isMobileMode();
 
-  constructor(
-    private router: Router,
-    public apiService: ApiService,
-    private ngZone: NgZone,
-    public commonService: CommonService,
-    private mapsAPILoader: MapsAPILoader,
-    public local: LocalStorageService
-  ) {
-  }
+  constructor(private router: Router, public apiService: ApiService, private ngZone: NgZone, public commonService: CommonService, private mapsAPILoader: MapsAPILoader, public local: LocalStorageService) {}
 
   ngOnInit() {
     window.scrollTo(0, 0);
   }
 
-  @HostListener('window:resize', ['$event'])
-
+  @HostListener("window:resize", ["$event"])
   onResize() {
     this.isMobileMode = this.commonService.isMobileMode();
   }
@@ -127,16 +118,12 @@ export class StepOneComponent implements AfterViewInit {
 
   async loadGooglePlace() {
     this.mapsAPILoader.load().then(() => {
-      console.log("here: ", this.GooglePlace)
       if (this.GooglePlace) {
         setTimeout(() => {
-          let autocomplete = new google.maps.places.Autocomplete(
-            this.searchElementRef.nativeElement,
-            {
-              types: ["address"],
-              componentRestrictions: {country: "USA"}
-            }
-          );
+          let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+            types: ["address"],
+            componentRestrictions: { country: "USA" },
+          });
           autocomplete.addListener("place_changed", async () => {
             this.ngZone.run(async () => {
               let address = autocomplete.getPlace();
@@ -151,25 +138,24 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   handleAddressChange(googlePlaceData) {
-    this.commonService.applyTotalData('address_components', googlePlaceData)
-    this.lat = typeof (googlePlaceData.geometry.location.lat) === "function" ? googlePlaceData.geometry.location.lat() : googlePlaceData.geometry.location.lat;
-    this.lng = typeof (googlePlaceData.geometry.location.lng) === "function" ? googlePlaceData.geometry.location.lng() : googlePlaceData.geometry.location.lng;
-    const googlePlaceDataCache = {...googlePlaceData};
+    this.commonService.applyTotalData("address_components", googlePlaceData);
+    this.lat = typeof googlePlaceData.geometry.location.lat === "function" ? googlePlaceData.geometry.location.lat() : googlePlaceData.geometry.location.lat;
+    this.lng = typeof googlePlaceData.geometry.location.lng === "function" ? googlePlaceData.geometry.location.lng() : googlePlaceData.geometry.location.lng;
+    const googlePlaceDataCache = { ...googlePlaceData };
     googlePlaceDataCache.geometry.location.lat = () => this.lat;
     googlePlaceDataCache.geometry.location.lng = () => this.lng;
     CacheManager.setValue("googlePlaceData", googlePlaceDataCache);
     try {
-      this.fullAddressText = this.commonService.getLocalItem('total_data').address_components.formatted_address;
+      this.fullAddressText = this.commonService.getLocalItem("total_data").address_components.formatted_address;
     } catch (e) {
-      this.fullAddressText = '';
+      this.fullAddressText = "";
     }
     try {
-      const {address, locality, administrative_area_level_1, postal_code} = this.commonService.getAddressData();
+      const { address, locality, administrative_area_level_1, postal_code } = this.commonService.getAddressData();
       this.isDisplay = true;
       this.zillowParams = {
         address: address,
-        citystatezip:
-          locality + ", " + administrative_area_level_1 + ", " + postal_code
+        citystatezip: locality + ", " + administrative_area_level_1 + ", " + postal_code,
       };
       this.processDemoQuote();
     } catch (e) {
@@ -185,18 +171,15 @@ export class StepOneComponent implements AfterViewInit {
   async getZillowData(data) {
     return new Promise((resolve, reject) => {
       this.apiService.getZillow(data).subscribe(
-        res => {
-          if(!res.hasOwnProperty('price')) {
+        (res) => {
+          if (!res.hasOwnProperty("price")) {
             this.isDisplay = false;
-            this.commonService.modalOpen(
-              "Error",
-              "Exact address not found, please enter manually."
-            );
+            this.commonService.modalOpen("Error", "Exact address not found, please enter manually.");
             // this.GooglePlace = false;
             reject({
               result: "error",
               code: 508,
-              message: "Exact address not found, please enter manually."
+              message: "Exact address not found, please enter manually.",
             });
             return;
           } else if (res["result"] == "error") {
@@ -204,27 +187,27 @@ export class StepOneComponent implements AfterViewInit {
             reject({
               result: "error",
               code: 400,
-              message: "An error occurred. Please try again later."
+              message: "An error occurred. Please try again later.",
             });
             return;
           }
-            if (res.hasOwnProperty('price')) {
-              const estimate = res.price
-              this.zillowData['square'] = res.building_size;
-              this.zillowData['built_year'] = res.year_built;
-              this.zillowData['estimate'] = estimate != NaN ? this.commonService.commafy(estimate) : 0;
+          if (res.hasOwnProperty("price")) {
+            const estimate = res.price;
+            this.zillowData["square"] = res.building_size;
+            this.zillowData["built_year"] = res.year_built;
+            this.zillowData["estimate"] = estimate != NaN ? this.commonService.commafy(estimate) : 0;
             resolve({
               result: "success",
               code: 200,
-              message: "Successfully completed."
+              message: "Successfully completed.",
             });
           }
         },
-        err => {
+        (err) => {
           reject({
             result: "error",
             code: 400,
-            message: "An error occurred. Please try again later."
+            message: "An error occurred. Please try again later.",
           });
         }
       );
@@ -241,20 +224,20 @@ export class StepOneComponent implements AfterViewInit {
       this.processDemoQuoteWithCache();
     } else {
       const zillowData = await this.getZillowData(this.zillowParams);
-      CacheManager.setValue('zillowData', this.zillowData);
+      CacheManager.setValue("zillowData", this.zillowData);
       this.isProcessing = true;
 
       this.processZillowData(zillowData);
 
-      const total_data = this.commonService.getLocalItem('total_data');
-      if (total_data['insuranceOptions']) {
-        if (total_data['insuranceOptions']['life']) {
-          this.router.navigateByUrl('/haven-inputs');
-        }else{
+      const total_data = this.commonService.getLocalItem("total_data");
+      if (total_data["insuranceOptions"]) {
+        if (total_data["insuranceOptions"]["life"]) {
+          this.router.navigateByUrl("/haven-inputs");
+        } else {
           this.getPricingDataForMobile();
           this.process();
         }
-      }else{
+      } else {
         this.getPricingDataForMobile();
         this.process();
       }
@@ -262,7 +245,7 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   async processDemoQuoteWithCache() {
-    const zillowData = CacheManager.getValue('zillowData');
+    const zillowData = CacheManager.getValue("zillowData");
     this.zillowData = zillowData;
     this.processZillowData(zillowData);
   }
@@ -347,13 +330,13 @@ export class StepOneComponent implements AfterViewInit {
       // this.blinkSequenceFirstImgs(true);
       this.blinkSequenceFirstImgs();
     }
-    return new Promise(r => {
-      r('success');
+    return new Promise((r) => {
+      r("success");
     });
   }
 
   sleep(m) {
-    return new Promise(r => setTimeout(r, m));
+    return new Promise((r) => setTimeout(r, m));
   }
 
   async process() {
@@ -374,14 +357,14 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   initSequences(duration) {
-    return new Promise(r => {
+    return new Promise((r) => {
       this.progress = 0;
       const n = setInterval(() => {
         if (this.progress <= 99) {
           this.progress++;
         } else {
           clearInterval(n);
-          r('success');
+          r("success");
         }
       }, duration);
       this.showCompleted = false;
@@ -397,7 +380,7 @@ export class StepOneComponent implements AfterViewInit {
       postal_code = addressData["postal_code"],
       street = addressData["address"],
       year_built = this.zillowData["built_year"],
-      sqft = this.zillowData["square"],  //.replace(",", ""),
+      sqft = this.zillowData["square"], //.replace(",", ""),
       mode = this.selectedMode,
       ac_year = (electric_year = plumbing_year = roof_year = currentYear),
       construction_type = 1,
@@ -428,13 +411,13 @@ export class StepOneComponent implements AfterViewInit {
       roof_status,
       is_basement,
       foundation_type,
-      is_demo
+      is_demo,
     };
 
     const params = {
       is_security: true,
       is_smart: true,
-      is_bundle: true
+      is_bundle: true,
     };
     /*Homeowners API requests*/
 
@@ -449,110 +432,94 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   getNeptuneFloodData(params) {
-    this.apiService.getNeptuneData(params)
-      .subscribe((res) => {
-          const total_data = this.local.get('total_data');
-          total_data['flood'] = res;
-          this.local.set('total_data', total_data);
-        }, (err) => {
-          alert('error');
-          console.log(err);
-        }
-      )
+    this.apiService.getNeptuneData(params).subscribe(
+      (res) => {
+        const total_data = this.local.get("total_data");
+        total_data["flood"] = res;
+        this.local.set("total_data", total_data);
+      },
+      (err) => {
+        alert("error");
+        console.log(err);
+      }
+    );
   }
 
   getHippoData(params) {
-    this.apiService.getHippoData(params)
-      .subscribe((res) => {
-          if (!res['success']) return;
-          const total_data = this.local.get('total_data');
-          total_data['hippo'] = res['data'];
-          this.local.set('total_data', total_data);
-        }, (err) => {
-          alert('error');
-          console.log(err);
-        }
-      )
+    this.apiService.getHippoData(params).subscribe(
+      (res) => {
+        if (!res["success"]) return;
+        const total_data = this.local.get("total_data");
+        total_data["hippo"] = res["data"];
+        this.local.set("total_data", total_data);
+      },
+      (err) => {
+        alert("error");
+        console.log(err);
+      }
+    );
   }
 
   async makeHomeownersRequests(demoRequestParams) {
     let demo_homeowner_data = {};
-    demoRequestParams['mode'] = 0;
+    demoRequestParams["mode"] = 0;
     let total_data = this.local.get("total_data");
-    this.apiService.getPlymouthData(demoRequestParams)
-      .subscribe(plymouth => {
-        console.log('plymouth homeowner', plymouth);
-        plymouth.result === "success"
-          ? (this.plymouth = plymouth.data)
-          : (this.plymouth = {});
-        let total_data = this.local.get("total_data");
-        Object.assign(demo_homeowner_data, {plymouth: this.plymouth});
-        Object.assign(total_data, {demo_homeowner_data});
-        this.local.set("total_data", total_data);
-      });
-    this.apiService.getUniversalData(demoRequestParams)
-      .subscribe(universal => {
-        console.log('universal homeowner', universal);
-        universal.result === "success"
-          ? (this.universal = universal.data)
-          : (this.universal = {});
-        total_data = this.local.get("total_data");
-        Object.assign(demo_homeowner_data, {universal: this.universal});
-        Object.assign(total_data, {demo_homeowner_data});
-        this.local.set("total_data", total_data);
-      });
+    this.apiService.getPlymouthData(demoRequestParams).subscribe((plymouth) => {
+      console.log("plymouth homeowner", plymouth);
+      plymouth.result === "success" ? (this.plymouth = plymouth.data) : (this.plymouth = {});
+      let total_data = this.local.get("total_data");
+      Object.assign(demo_homeowner_data, { plymouth: this.plymouth });
+      Object.assign(total_data, { demo_homeowner_data });
+      this.local.set("total_data", total_data);
+    });
+    this.apiService.getUniversalData(demoRequestParams).subscribe((universal) => {
+      console.log("universal homeowner", universal);
+      universal.result === "success" ? (this.universal = universal.data) : (this.universal = {});
+      total_data = this.local.get("total_data");
+      Object.assign(demo_homeowner_data, { universal: this.universal });
+      Object.assign(total_data, { demo_homeowner_data });
+      this.local.set("total_data", total_data);
+    });
 
-    this.apiService.getStillwaterData(demoRequestParams)
-      .subscribe(stillwater => {
-        console.log('stillwater homeowner', stillwater);
-        stillwater.result === "success"
-          ? (this.stillwater = stillwater.data)
-          : (this.stillwater = {});
-        total_data = this.local.get("total_data");
-        Object.assign(demo_homeowner_data, {stillwater: this.stillwater});
-        Object.assign(total_data, {demo_homeowner_data});
-        this.local.set("total_data", total_data);
-      });
+    this.apiService.getStillwaterData(demoRequestParams).subscribe((stillwater) => {
+      console.log("stillwater homeowner", stillwater);
+      stillwater.result === "success" ? (this.stillwater = stillwater.data) : (this.stillwater = {});
+      total_data = this.local.get("total_data");
+      Object.assign(demo_homeowner_data, { stillwater: this.stillwater });
+      Object.assign(total_data, { demo_homeowner_data });
+      this.local.set("total_data", total_data);
+    });
   }
 
   async makeCondoRequests(demoRequestParams) {
     let demo_condo_data = {};
-    demoRequestParams['mode'] = 1;
+    demoRequestParams["mode"] = 1;
     let total_data = this.local.get("total_data");
-    this.apiService.getPlymouthData(demoRequestParams)
-      .subscribe(plymouth => {
-        console.log('plymouth condo', plymouth);
-        plymouth.result === "success"
-          ? (this.plymouth = plymouth.data)
-          : (this.plymouth = {});
-        let total_data = this.local.get("total_data");
-        Object.assign(demo_condo_data, {plymouth: this.plymouth});
-        Object.assign(total_data, {demo_condo_data});
-        this.local.set("total_data", total_data);
-      });
-    this.apiService.getUniversalData(demoRequestParams)
-      .subscribe(universal => {
-        console.log('universal condo', universal);
-        universal.result === "success"
-          ? (this.universal = universal.data)
-          : (this.universal = {});
-        total_data = this.local.get("total_data");
-        Object.assign(demo_condo_data, {universal: this.universal});
-        Object.assign(total_data, {demo_condo_data});
-        this.local.set("total_data", total_data);
-      });
+    this.apiService.getPlymouthData(demoRequestParams).subscribe((plymouth) => {
+      console.log("plymouth condo", plymouth);
+      plymouth.result === "success" ? (this.plymouth = plymouth.data) : (this.plymouth = {});
+      let total_data = this.local.get("total_data");
+      Object.assign(demo_condo_data, { plymouth: this.plymouth });
+      Object.assign(total_data, { demo_condo_data });
+      this.local.set("total_data", total_data);
+    });
+    this.apiService.getUniversalData(demoRequestParams).subscribe((universal) => {
+      console.log("universal condo", universal);
+      universal.result === "success" ? (this.universal = universal.data) : (this.universal = {});
+      total_data = this.local.get("total_data");
+      Object.assign(demo_condo_data, { universal: this.universal });
+      Object.assign(total_data, { demo_condo_data });
+      this.local.set("total_data", total_data);
+    });
 
-    this.apiService.getStillwaterData(demoRequestParams)
-      .subscribe(stillwater => {
-        console.log('stillwater condo', stillwater);
-        stillwater.result === "success"
-          ? (this.stillwater = stillwater.data)
-          : (this.stillwater = {});
-        total_data = this.local.get("total_data");
-        Object.assign(demo_condo_data, {stillwater: this.stillwater});
-        Object.assign(total_data, {demo_condo_data});
-        this.local.set("total_data", total_data);
-      });
+    this.apiService.getStillwaterData(demoRequestParams).subscribe((stillwater) => {
+      console.log("stillwater condo", stillwater);
+      stillwater.result === "success" ? (this.stillwater = stillwater.data) : (this.stillwater = {});
+      total_data = this.local.get("total_data");
+      Object.assign(demo_condo_data, { stillwater: this.stillwater });
+      Object.assign(total_data, { demo_condo_data });
+      this.local.set("total_data", total_data);
+    });
   }
 
   gotToStepTwo() {

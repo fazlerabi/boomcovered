@@ -8,18 +8,13 @@ import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
   providedIn: "root",
 })
 export class CommonService {
-  constructor(
-    public local: LocalStorageService,
-    private modalService: NgbModal,
-    public spinnerService: Ng4LoadingSpinnerService
-  ) {}
+  constructor(public local: LocalStorageService, private modalService: NgbModal, public spinnerService: Ng4LoadingSpinnerService) {}
 
   async setLocalItem(key, value) {
     this.local.set(key, value);
   }
 
   getLocalItem(key) {
-    console.log("in service: ", this.local);
     return this.local.get(key);
   }
 
@@ -61,9 +56,7 @@ export class CommonService {
     const total_data = this.getLocalItem("total_data");
     let unique_id;
     try {
-      unique_id =
-        total_data.insurance_data.stillwater.ACORD.InsuranceSvcRs
-          .HomePolicyQuoteInqRs.PolicySummaryInfo.PolicyNumber;
+      unique_id = total_data.insurance_data.stillwater.ACORD.InsuranceSvcRs.HomePolicyQuoteInqRs.PolicySummaryInfo.PolicyNumber;
     } catch (e) {
       unique_id = "";
     }
@@ -162,15 +155,8 @@ export class CommonService {
       }
       arr.push(universal);
       try {
-        if (
-          apiData["stillwater"]["ACORD"]["InsuranceSvcRs"][
-            "HomePolicyQuoteInqRs"
-          ]["MsgStatus"]["MsgStatusCd"] == "Success"
-        ) {
-          stillwater =
-            apiData["stillwater"]["ACORD"]["InsuranceSvcRs"][
-              "HomePolicyQuoteInqRs"
-            ]["PolicySummaryInfo"]["FullTermAmt"]["Amt"];
+        if (apiData["stillwater"]["ACORD"]["InsuranceSvcRs"]["HomePolicyQuoteInqRs"]["MsgStatus"]["MsgStatusCd"] == "Success") {
+          stillwater = apiData["stillwater"]["ACORD"]["InsuranceSvcRs"]["HomePolicyQuoteInqRs"]["PolicySummaryInfo"]["FullTermAmt"]["Amt"];
         }
       } catch (e) {
         stillwater = 0;
@@ -248,14 +234,7 @@ export class CommonService {
     const total_data = this.getLocalItem("total_data");
     try {
       const addressData = total_data.address_components.address_components;
-      let street_number,
-        route,
-        address,
-        locality,
-        administrative_area_level_1,
-        administrative_area_level_2,
-        country,
-        postal_code;
+      let street_number, route, address, locality, administrative_area_level_1, administrative_area_level_2, country, postal_code;
       street_number = addressData.filter((elem) => {
         return elem["types"][0] == "street_number";
       });
@@ -276,16 +255,12 @@ export class CommonService {
       administrative_area_level_1 = addressData.filter((elem) => {
         return elem["types"][0] == "administrative_area_level_1";
       });
-      administrative_area_level_1 = administrative_area_level_1
-        ? administrative_area_level_1[0]["short_name"]
-        : "";
+      administrative_area_level_1 = administrative_area_level_1 ? administrative_area_level_1[0]["short_name"] : "";
 
       administrative_area_level_2 = addressData.filter((elem) => {
         return elem["types"][0] == "administrative_area_level_2";
       });
-      administrative_area_level_2 = administrative_area_level_2
-        ? administrative_area_level_2[0]["short_name"]
-        : "";
+      administrative_area_level_2 = administrative_area_level_2 ? administrative_area_level_2[0]["short_name"] : "";
 
       country = addressData.filter((elem) => {
         return elem["types"][0] == "country";
