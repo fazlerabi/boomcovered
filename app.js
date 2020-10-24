@@ -124,6 +124,16 @@ app.use(
   "/get_quote_data",
   express.static(path.join(__dirname, "dist/mdb-angular-free"))
 );
+app.use("/demo", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/preparing-policy", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/policy-start-date", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/policy-have-mortgage", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/policy-chat", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/haven-inputs", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/esign", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/about", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/contact", express.static(path.join(__dirname, "dist/mdb-angular-free")));
+// app.use("/chat", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 app.use("/", express.static(path.join(__dirname, "dist/mdb-angular-free")));
 
 app.use((req, resp, next) => {
