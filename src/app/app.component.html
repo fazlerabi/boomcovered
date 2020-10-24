@@ -62,7 +62,7 @@
   </svg>
 </div>
 <!-- === Curved Background  ===-->
-<footer class="font-small" style="background-color: #2a354c" *ngIf="isShowFooter">
+<footer class="font-small" style="background-color: #2a354c" *ngIf="isShowFooter" (removeFooter)="hideFooter()">
   <div style="background-color: #2a354c">
     <div class="container">
       <div class="row py-4 d-flex align-items-center"></div>

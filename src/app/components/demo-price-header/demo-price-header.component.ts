@@ -14,9 +14,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
 
   constructor(public commonService: CommonService, private router: Router, private renderer: Renderer2) {
     this.renderer.listen("window", "click", (e: Event) => {
-      console.log("clicked", e.target, this.toggleButton.nativeElement, this.menu.nativeElement);
       if (e.target !== this.toggleButton.nativeElement && e.target !== this.menu.nativeElement) {
-        console.log("here");
         this.isShow = false;
       }
     });
@@ -99,6 +97,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
     const { highest_price, lowest_price, medium_price } = this;
     this.sendPdf.emit({ highest_price, lowest_price, medium_price });
   }
+
   send() {
     const { highest_price, lowest_price, medium_price } = this;
     this.sendEmail.emit({ highest_price, lowest_price, medium_price });
@@ -115,8 +114,6 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   togglePrice() {
-    console.log("1", this.isShow);
     this.isShow = !this.isShow;
-    console.log("2", this.isShow);
   }
 }

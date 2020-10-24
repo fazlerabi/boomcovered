@@ -1,6 +1,6 @@
 <app-demo-price-header (sendPdf)="downloadPdf($event)" (sendEmail)="sendEmail($event)"></app-demo-price-header>
 <div *ngIf="commonService.isMobileMode()" class="row mt-4">
-  <button class="btn btn-primary col-8 mr-auto ml-auto" (click)="goToThreeStep()">next</button>
+  <button class="btn btn-primary col-8 mr-auto ml-auto mt-3" (click)="goToThreeStep()">next</button>
 </div>
 <div>
   <app-demo-coverage-info></app-demo-coverage-info>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, NgZone, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, HostListener, NgZone, ViewChild, EventEmitter, Output } from "@angular/core";
 import { SwiperComponent } from "ngx-useful-swiper";
 import { addressData } from "../home/models";
 import { Router } from "@angular/router";
@@ -99,6 +99,8 @@ export class StepOneComponent implements AfterViewInit {
   zillowParams: object = {};
   isMobileVideoDisplay: boolean = false;
   isMobileMode: boolean = this.commonService.isMobileMode();
+
+  @Output() removeFooter = new EventEmitter<null>();
 
   constructor(private router: Router, public apiService: ApiService, private ngZone: NgZone, public commonService: CommonService, private mapsAPILoader: MapsAPILoader, public local: LocalStorageService) {}
 
@@ -226,6 +228,7 @@ export class StepOneComponent implements AfterViewInit {
       const zillowData = await this.getZillowData(this.zillowParams);
       CacheManager.setValue("zillowData", this.zillowData);
       this.isProcessing = true;
+      this.removeFooter.emit();
 
       this.processZillowData(zillowData);
 
