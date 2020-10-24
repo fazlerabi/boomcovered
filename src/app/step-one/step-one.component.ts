@@ -137,9 +137,6 @@ export class StepOneComponent implements AfterViewInit {
               componentRestrictions: {country: "USA"}
             }
           );
-
-          console.log("111: ", autocomplete)
-
           autocomplete.addListener("place_changed", async () => {
             this.ngZone.run(async () => {
               let address = autocomplete.getPlace();

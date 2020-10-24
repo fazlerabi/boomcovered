@@ -4,43 +4,33 @@
       <!-- Material input -->
       <div class="form-group elemContainer">
         <div id="jumbo-div" class="col-12 title container-fluid d-flex">
-          <img src="../../assets/images/SVG/rocket.svg">
+          <img src="../../assets/images/SVG/rocket.svg" />
           <div>
             <h1 class="jumbo-h1 pt-5">Instant Insurance.</h1>
-            <h1 class="jumbo-h1"> Simple for everyone.</h1>
+            <h1 class="jumbo-h1">Simple for everyone.</h1>
           </div>
         </div>
-        <div class="row">
+        <div cass="row">
           <div class="col-10 p-0">
             <div class="col-12 white-bg addressDiv" *ngIf="!isDisplay; else displayAddress">
-              <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()"
-                *ngIf="selectedMode==1" />
-              <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)"
-                id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text"
-                *ngIf="GooglePlace==true" placeholder="enter address to insure" #placesRef>
-              <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" style="float: right;position: absolute;
-                           top: 0;right: 0;" (click)="handleAddressChangeWithCache()">
-              <input type="text" class="form-control"
-                placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460" *ngIf="GooglePlace==false"
-                [(ngModel)]="fullAddressText" />
+              <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()" *ngIf="selectedMode == 1" />
+              <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)" id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text" *ngIf="GooglePlace == true" placeholder="enter address to insure" #placesRef />
+              <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" style="float: right; position: absolute; top: 0; right: 0" (click)="handleAddressChangeWithCache()" />
+              <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460" *ngIf="GooglePlace == false" [(ngModel)]="fullAddressText" />
 
               <div class="col-md-12 col-sm-12 row pr-0 pl-0 mr-0 ml-0" *ngIf="!GooglePlace">
-                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pl-0'">
-                  <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']">
+                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : 'pl-0'">
+                  <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']" />
                 </div>
-                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':''">
-                  <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']">
+                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : ''">
+                  <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']" />
                 </div>
-                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode()?'pl-0 pr-0 mb-0':'pr-0'">
-                  <input type="number" class="form-control" placeholder="Year Built"
-                    [(ngModel)]="zillowData['built_year']">
+                <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : 'pr-0'">
+                  <input type="number" class="form-control" placeholder="Year Built" [(ngModel)]="zillowData['built_year']" />
                 </div>
               </div>
 
-              <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0"
-                style="text-decoration: underline !important;"
-                [ngStyle]="commonService.isMobileMode()?{'padding-left':'15px !important'}:''"
-                (click)="GooglePlace=!GooglePlace;loadGooglePlace()">
+              <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0" style="text-decoration: underline !important" [ngStyle]="commonService.isMobileMode() ? { 'padding-left': '15px !important' } : ''" (click)="GooglePlace = !GooglePlace; loadGooglePlace()">
                 <!--strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong-->
               </a>
             </div>
@@ -49,9 +39,8 @@
               <div class="col-12 addressDiv white-bg" *ngIf="isDisplay">
                 <div class="addressTxt-wrapper addressSelcted">
                   <h5 class="font-weight-bold text-center pt-2 addressTxt">
-                    <span class="badge badge-pill green mx-2"><i class="fas fa-check white-text"
-                      aria-hidden="true"></i></span>
-                    {{fullAddressText}}
+                    <span class="badge badge-pill green mx-2"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
+                    {{ fullAddressText }}
                   </h5>
                 </div>
               </div>
@@ -60,7 +49,6 @@
           <div class="col-2 white-bg p-0">
             <app-issuing></app-issuing>
           </div>
-
         </div>
         <!-- details section End-->
 
@@ -89,8 +77,6 @@
 </div>
 <!-- Sequence Start -->
 <div *ngIf="isProcessing" class="processingDiv pt-md-2 mx-auto">
-
-
   <div class="col-12 map-container">
     <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
       <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
@@ -101,13 +87,12 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-8 col-xs-8 bg-white mr-auto ml-auto">
         <div class="row">
-          <div class="col-8 mr-auto ml-auto" style="text-align: center; margin-top: 3rem;padding-bottom: 8rem;">
-            <h1 class="jumbo-h1 pt-5" style="margin-bottom:2rem;font-size:3rem;font-weight:900">running quotes....</h1>
+          <div class="col-8 mr-auto ml-auto" style="text-align: center; margin-top: 3rem; padding-bottom: 8rem">
+            <h1 class="jumbo-h1 pt-5" style="margin-bottom: 2rem; font-size: 3rem; font-weight: 900">running quotes....</h1>
             <div class="col-8 mr-auto ml-auto">
-              <mdb-progress value="{{progress}}" style="height:25px" min="0" max="100" type="info"
-                aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100"></mdb-progress>
+              <mdb-progress value="{{ progress }}" style="height: 25px" min="0" max="100" type="info" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"></mdb-progress>
             </div>
-            <div style="text-align: center; padding: 5px;">{{progress}} % complete</div>
+            <div style="text-align: center; padding: 5px">{{ progress }} % complete</div>
           </div>
         </div>
       </div>
@@ -120,62 +105,57 @@
 <section class="showcase-section" *ngIf="!isProcessing">
   <div class="grey-curve-svg">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 220 1440 100">
-      <path fill="#ECF0F3" fill-opacity="1" style="--darkreader-inline-fill:#ECF0F3;" data-darkreader-inline-fill=""
-        d="M0,320L120,298.7C240,277,480,235,720,234.7C960,235,1201,277,1320,298.7L1440,320L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z">
-      </path>
+      <path fill="#ECF0F3" fill-opacity="1" style="--darkreader-inline-fill: #ecf0f3" data-darkreader-inline-fill="" d="M0,320L120,298.7C240,277,480,235,720,234.7C960,235,1201,277,1320,298.7L1440,320L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
     </svg>
   </div>
   <div class="section-background-gif">
     <div class="carriers-gif-wrapper">
-      <img class="carriers-gif" src="../../assets/images/home/frontpage.gif" alt="insurance carriers gif">
+      <img class="carriers-gif" src="../../assets/images/home/frontpage.gif" alt="insurance carriers gif" />
     </div>
   </div>
   <div class="section-background section-background1">
     <div class="showcase-section-container">
       <h1 class="text-center animated bounceInLeft">EASY PEASY INSURANCE</h1>
-      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in
-        a
-        few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the
-        process!</p>
+      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in a few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the process!</p>
       <img class="mx-auto swipeAnimation-gif" src="../../assets/images/home/swipeAnimation.gif" />
     </div>
   </div>
-  <div class="section2-curved-svg" style="margin-bottom: -5px !important;">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#F43C58"
-      style='stroke-width: 0px; background-color: #ECF0F3; margin-bottom: -5px !important;'>
-      <path fill="#F43C58" fill-opacity="1"
+  <div class="section2-curved-svg" style="margin-bottom: -5px !important">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#F43C58" style="stroke-width: 0px; background-color: #ecf0f3; margin-bottom: -5px !important">
+      <path
+        fill="#F43C58"
+        fill-opacity="1"
         d="M0,128L80,144C160,160,320,192,480,181.3C640,171,800,117,960,101.3C1120,85,1280,107,1360,117.3L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-        data-darkreader-inline-fill="" style="--darkreader-inline-fill:#F43C58;"></path>
+        data-darkreader-inline-fill=""
+        style="--darkreader-inline-fill: #f43c58"
+      ></path>
     </svg>
   </div>
   <div class="section-background section-background2">
     <div class="showcase-section-container">
       <h1 class="text-center">Insurance has evolved!</h1>
-      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in
-        a
-        few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the
-        process!</p>
+      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in a few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the process!</p>
       <img class="dinosaur-img mx-auto" src="../../assets/images/home/dino.png" />
     </div>
   </div>
   <div class="section2-curved-svg2nd">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" viewport-fill="#F43C58"
-      style='stroke-width: 0px; background-color: #fff;'>
-      <path fill="#F43C58" fill-opacity="1"
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" viewport-fill="#F43C58" style="stroke-width: 0px; background-color: #fff">
+      <path
+        fill="#F43C58"
+        fill-opacity="1"
         d="M0,32L60,53.3C120,75,240,117,360,144C480,171,600,181,720,154.7C840,128,960,64,1080,48C1200,32,1320,64,1380,80L1440,96L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-        data-darkreader-inline-fill="" style="--darkreader-inline-fill:#F43C58;"></path>
+        data-darkreader-inline-fill=""
+        style="--darkreader-inline-fill: #f43c58"
+      ></path>
     </svg>
   </div>
   <div class="section-background section-background3">
     <div class="showcase-section-container">
       <h1 class="text-center">Insurance has evolved!</h1>
-      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in
-        a
-        few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the
-        process!</p>
+      <p>You can now shop and purchase insurance completely online. SwypCov will get you rates from the top companies in a few minutes of time. You can purchase a policy completely online or work with a virtual agent to complete the process!</p>
       <div class="appStore-container">
         <img class="mx-auto swypeCov-img" src="../../assets/images/home/SwypeApp.png" />
-        <img class="appStore-img" src="../../assets/images/home/appstores.png" alt="app store">
+        <img class="appStore-img" src="../../assets/images/home/appstores.png" alt="app store" />
       </div>
     </div>
   </div>

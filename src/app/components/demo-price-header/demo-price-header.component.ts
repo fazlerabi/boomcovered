@@ -25,7 +25,9 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   isShow = false;
 
   ngOnInit() {
+    console.log("111111")
     $(document).ready(function(){
+      
       $(window).scroll(function() {
         var windowBottom = $(this).scrollTop() + $(this).innerHeight();
           $(".bottomImageContainer").each(function() {
@@ -46,12 +48,16 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
           }).scroll(); //invoke scroll-handler on page-load
         }
     );
-
+    
     let mode;
     const total_data = this.commonService.getLocalItem('total_data');
+    console.log("3333333: ", total_data)
     mode = total_data['mode'];
+    console.log("4444444: ", mode)
+    
     if (!mode) mode = 0;
     mode = 0;
+
     this.generateMapData();
     this.interval = setInterval(() => this.getPricing(mode), 1000);
   }
