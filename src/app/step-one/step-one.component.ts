@@ -100,7 +100,7 @@ export class StepOneComponent implements AfterViewInit {
   isMobileVideoDisplay: boolean = false;
   isMobileMode: boolean = this.commonService.isMobileMode();
 
-  @Output() removeFooter = new EventEmitter<null>();
+  @Output() removeFooter = new EventEmitter<boolean>();
 
   constructor(private router: Router, public apiService: ApiService, private ngZone: NgZone, public commonService: CommonService, private mapsAPILoader: MapsAPILoader, public local: LocalStorageService) {}
 
@@ -229,7 +229,7 @@ export class StepOneComponent implements AfterViewInit {
       CacheManager.setValue("zillowData", this.zillowData);
       this.isProcessing = true;
       console.log("1111111111111");
-      this.removeFooter.emit();
+      this.removeFooter.emit(false);
 
       this.processZillowData(zillowData);
 
