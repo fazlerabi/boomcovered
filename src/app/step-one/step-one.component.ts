@@ -228,6 +228,7 @@ export class StepOneComponent implements AfterViewInit {
       const zillowData = await this.getZillowData(this.zillowParams);
       CacheManager.setValue("zillowData", this.zillowData);
       this.isProcessing = true;
+      console.log("1111111111111");
       this.removeFooter.emit();
 
       this.processZillowData(zillowData);
