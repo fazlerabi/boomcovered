@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { catchError, map } from "rxjs/operators";
+import { environment } from "../../environments/environment";
 
 const httpOptions = {
   headers: new HttpHeaders({ "Content-Type": "application/json" }),
@@ -28,7 +29,7 @@ export class ApiService {
   }
 
   getZillow(data): Observable<any> {
-    return this.http.post("/api/get_zillow", data, httpOptions).pipe(map(ApiService.extractData), catchError(ApiService.handleError));
+    return this.http.post(environment.baseUrl + "/api/get_zillow", data, httpOptions).pipe(map(ApiService.extractData), catchError(ApiService.handleError));
   }
 
   bindNow(data): Observable<any> {

@@ -173,9 +173,12 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   async getZillowData(data) {
+    console.log("1");
     return new Promise((resolve, reject) => {
+      console.log("2");
       this.apiService.getZillow(data).subscribe(
         (res) => {
+          console.log("3");
           if (!res.hasOwnProperty("price")) {
             this.isDisplay = false;
             this.commonService.modalOpen("Error", "Exact address not found, please enter manually.");
@@ -208,6 +211,7 @@ export class StepOneComponent implements AfterViewInit {
           }
         },
         (err) => {
+          console.log("4");
           reject({
             result: "error",
             code: 400,
