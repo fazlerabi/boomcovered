@@ -99,6 +99,7 @@ export class StepOneComponent implements AfterViewInit {
   zillowParams: object = {};
   isMobileVideoDisplay: boolean = false;
   isMobileMode: boolean = this.commonService.isMobileMode();
+  showFirst: boolean = false;
 
   @Output() removeFooter = new EventEmitter<boolean>();
 
@@ -528,6 +529,11 @@ export class StepOneComponent implements AfterViewInit {
 
   gotToStepTwo() {
     this.router.navigate(["/demo"]);
+  }
+
+  clickBegin() {
+    console.log("aaaaaaaaa");
+    this.showFirst = true;
   }
 }
 

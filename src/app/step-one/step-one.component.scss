@@ -29,7 +29,7 @@
           box-sizing: border-box;
           width: 100%;
           height: 80px;
-          border-radius: 10px 0px 0px 10px !important;
+          border-radius: 10px 10px 10px 10px !important;
           box-shadow: none;
           padding-left: 26px;
           border-width: 1px;
@@ -295,16 +295,10 @@
 
       @keyframes ripple {
         0% {
-          box-shadow: 0 0 0 0rem rgba($primary-color, 0.2),
-            0 0 0 1rem rgba($primary-color, 0.2),
-            0 0 0 2rem rgba($primary-color, 0.2),
-            0 0 0 5rem rgba($primary-color, 0.2);
+          box-shadow: 0 0 0 0rem rgba($primary-color, 0.2), 0 0 0 1rem rgba($primary-color, 0.2), 0 0 0 2rem rgba($primary-color, 0.2), 0 0 0 5rem rgba($primary-color, 0.2);
         }
         100% {
-          box-shadow: 0 0 0 1rem rgba($primary-color, 0.2),
-            0 0 0 2rem rgba($primary-color, 0.2),
-            0 0 0 5rem rgba($primary-color, 0.2),
-            0 0 0 8rem rgba($primary-color, 0);
+          box-shadow: 0 0 0 1rem rgba($primary-color, 0.2), 0 0 0 2rem rgba($primary-color, 0.2), 0 0 0 5rem rgba($primary-color, 0.2), 0 0 0 8rem rgba($primary-color, 0);
         }
       }
     }
@@ -959,6 +953,20 @@ input[type="number"] {
   }
 }
 
+@media screen and (max-width: 600px) {
+  #jumbo-div div {
+    display: block !important;
+  }
+}
+
+#jumbo-div + img:hover {
+  cursor: pointer;
+}
+
+#jumbo-div + img {
+  width: 32%;
+}
+
 #jumbo-div {
   text-align: center;
   margin-top: 0 !important;
@@ -974,10 +982,17 @@ input[type="number"] {
     font-family: "Arial Rounded MT Bold";
   }
 
+  .jumbo-h2 {
+    font-weight: 900;
+    font-size: 36px;
+    color: gray;
+    letter-spacing: 5px;
+    font-family: "Arial Rounded MT Bold";
+  }
+
   img {
-    width: 4.875rem;
-    height: 4.875rem;
-    margin-top: 5rem;
+    height: 4.2rem;
+    margin-top: 3.8rem;
   }
 
   span {
@@ -1005,41 +1020,62 @@ input[type="number"] {
     .jumbo-h1 {
       letter-spacing: 1px;
     }
+    .jumbo-h2 {
+      font-size: 30px !important;
+    }
   }
   @media screen and (max-width: 478px) {
     .jumbo-h1 {
       letter-spacing: normal;
       font-size: 38px !important;
     }
+    .jumbo-h2 {
+      font-size: 30px !important;
+    }
   }
   @media screen and (max-width: 466px) {
     .jumbo-h1 {
       font-size: 38px !important;
+    }
+    .jumbo-h2 {
+      font-size: 30px !important;
     }
   }
   @media screen and (max-width: 403px) {
     .jumbo-h1 {
       font-size: 36px !important;
     }
+    .jumbo-h2 {
+      font-size: 30px !important;
+    }
   }
   @media screen and (max-width: 383px) {
     .jumbo-h1 {
       font-size: 32px !important;
+    }
+    .jumbo-h2 {
+      font-size: 30px !important;
     }
   }
   @media screen and (max-width: 365px) {
     .jumbo-h1 {
       font-size: 32px !important;
     }
+    .jumbo-h2 {
+      font-size: 30px !important;
+    }
   }
   @media screen and (max-width: 355px) {
     .jumbo-h1 {
       font-size: 32px !important;
     }
+    .jumbo-h2 {
+      font-size: 30px !important;
+    }
   }
 }
 .title {
-  margin-bottom: 5rem !important;
+  margin-bottom: 3rem !important;
 }
 
 .addressInput::-webkit-input-placeholder {
