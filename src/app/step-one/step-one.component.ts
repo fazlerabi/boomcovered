@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, HostListener, NgZone, ViewChild, EventEmitter, Output } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, HostListener, NgZone, ViewChild } from "@angular/core";
 import { SwiperComponent } from "ngx-useful-swiper";
 import { addressData } from "../home/models";
 import { Router } from "@angular/router";
@@ -102,8 +102,6 @@ export class StepOneComponent implements AfterViewInit {
   isMobileMode: boolean = this.commonService.isMobileMode();
   showFirst: boolean = false;
 
-  @Output() removeFooter = new EventEmitter<boolean>();
-
   constructor(private router: Router, public apiService: ApiService, private ngZone: NgZone, public commonService: CommonService, private mapsAPILoader: MapsAPILoader, public local: LocalStorageService) {}
 
   ngOnInit() {
@@ -173,12 +171,9 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   async getZillowData(data) {
-    console.log("1");
     return new Promise((resolve, reject) => {
-      console.log("2");
       this.apiService.getZillow(data).subscribe(
         (res) => {
-          console.log("3");
           if (!res.hasOwnProperty("price")) {
             this.isDisplay = false;
             this.commonService.modalOpen("Error", "Exact address not found, please enter manually.");
@@ -211,7 +206,6 @@ export class StepOneComponent implements AfterViewInit {
           }
         },
         (err) => {
-          console.log("4");
           reject({
             result: "error",
             code: 400,
@@ -234,9 +228,7 @@ export class StepOneComponent implements AfterViewInit {
       const zillowData = await this.getZillowData(this.zillowParams);
       CacheManager.setValue("zillowData", this.zillowData);
       this.isProcessing = true;
-      console.log("1111111111111");
-      this.removeFooter.emit(false);
-
+      $(".footerFlag").addClass("d-none");
       this.processZillowData(zillowData);
 
       const total_data = this.commonService.getLocalItem("total_data");

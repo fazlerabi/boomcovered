@@ -135,10 +135,6 @@ export class AppComponent implements AfterViewInit {
     }, time);
   }
 
-  hideFooter(val: boolean) {
-    console.log("rrrrrrr: ", val);
-    this.isShowFooter = val;
-  }
   private _setURLs(event: NavigationEnd): void {
     this._previousUrl = this._currentUrl;
     this._currentUrl = event.urlAfterRedirects;
