@@ -1,12 +1,7 @@
 <!-- Image and text -->
 <mdb-navbar SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
-  <mdb-navbar-brand>
-    <div id="gif_div" *ngIf="commonService.isMobileMode()">
-      <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif" /></a>
-    </div>
-  </mdb-navbar-brand>
   <a href="/" class="site-logo"><img style="width: 3rem" src="../../assets/images/SVG/boom-icon.svg" /></a>
-  <links>
+  <links *ngIf="!commonService.isMobileMode()" class="pr-5">
     <ul class="navbar-nav ml-auto">
       <!-- <li class="nav-item" routerLinkActive="active">
         <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>Home</a>
@@ -33,13 +28,11 @@
       <li class="nav-item mr-5" routerLinkActive="active">
         <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>about</a>
       </li>
-      <li class="nav-item ml-5" routerLinkActive="active" *ngIf="!commonService.isMobileMode()">
-        <div id="gif_div">
-          <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif" /></a>
-        </div>
-      </li>
     </ul>
   </links>
+  <div id="gif_div" class="mr-2">
+    <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif" /></a>
+  </div>
 </mdb-navbar>
 
 <!-- <app-sub-header></app-sub-header> -->
@@ -50,7 +43,7 @@
 <!---->
 <!-- Footer -->
 <!-- === Curved Background  ===-->
-<div class="footer-svg-curve" *ngIf="isShowFooter">
+<div class="footer-svg-curve footerFlag" *ngIf="isShowFooter">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#2A354C" style="stroke-width: 0px; background-color: #fff">
     <path
       fill="#2A354C"
@@ -62,7 +55,7 @@
   </svg>
 </div>
 <!-- === Curved Background  ===-->
-<footer class="font-small" style="background-color: #2a354c" *ngIf="isShowFooter" (removeFooter)="hideFooter($event)">
+<footer class="font-small footerFlag" style="background-color: #2a354c" *ngIf="isShowFooter">
   <div style="background-color: #2a354c">
     <div class="container">
       <div class="row py-4 d-flex align-items-center"></div>
