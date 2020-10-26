@@ -14,7 +14,7 @@
           <h1 class="jumbo-h2 pt-5" *ngIf="showFirst">Please enter your address to insure!</h1>
         </div>
         <img src="../../assets/images/SVG/beginBtn.png" (click)="clickBegin()" *ngIf="!showFirst" />
-        <div *ngIf="showFirst">
+        <div class="d-none" id="address_div">
           <div cass="w-100">
             <div class="p-0">
               <div class="col-12 white-bg addressDiv" *ngIf="!isDisplay; else displayAddress">

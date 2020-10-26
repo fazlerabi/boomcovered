@@ -7,6 +7,7 @@ import { CommonService } from "../services/common.service";
 import { MapsAPILoader } from "@agm/core";
 import { LocalStorageService } from "angular-web-storage";
 import CacheManager from "../utils/CacheManager";
+import * as $ from "jquery";
 
 declare var google;
 
@@ -532,8 +533,8 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   clickBegin() {
-    console.log("aaaaaaaaa");
     this.showFirst = true;
+    $("#address_div").removeClass("d-none");
   }
 }
 
