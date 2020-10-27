@@ -14,6 +14,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
 
   constructor(public commonService: CommonService, private router: Router, private renderer: Renderer2) {
     this.renderer.listen("window", "click", (e: Event) => {
+      console.log("123: ", e.target, this.toggleButton.nativeElement, this.menu.nativeElement);
       if (e.target !== this.toggleButton.nativeElement && e.target !== this.menu.nativeElement) {
         this.isShow = false;
       }

@@ -11,9 +11,9 @@
               <h4 class="text-muted w-75 ml-auto mr-auto">Compare & Purchase your policy online in 3 minutes.</h4>
             </div>
           </div>
-          <h1 class="jumbo-h2 pt-5" *ngIf="showFirst">Please enter your address to insure!</h1>
+          <h1 class="jumbo-h3 pt-5 mt-5" *ngIf="showFirst">Please enter your address to insure!</h1>
         </div>
-        <img src="../../assets/images/SVG/beginBtn.png" (click)="clickBegin()" *ngIf="!showFirst" />
+        <img src="../../assets/images/SVG/beginBtn.png" (click)="clickBegin()" *ngIf="!showFirst" id="beginBtn" />
         <div class="d-none" id="address_div">
           <div cass="w-100">
             <div class="p-0">
@@ -109,7 +109,7 @@
 <!-- ==== Sequence End === -->
 
 <!-- New Front page design Start -->
-<section class="showcase-section" *ngIf="!isProcessing">
+<section class="showcase-section" *ngIf="!isProcessing && !showFirst">
   <div class="grey-curve-svg">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 220 1440 100">
       <path fill="#ECF0F3" fill-opacity="1" style="--darkreader-inline-fill: #ecf0f3" data-darkreader-inline-fill="" d="M0,320L120,298.7C240,277,480,235,720,234.7C960,235,1201,277,1320,298.7L1440,320L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>

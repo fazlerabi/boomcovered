@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Router, NavigationEnd } from "@angular/router";
 import { LocalStorageService } from "angular-web-storage";
 import { CommonService } from "../services/common.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
@@ -42,6 +42,8 @@ export class PropertyFormComponent implements OnInit {
   userForm: FormGroup;
   highPrice: number;
   lowPrice: number;
+
+  headerFooter: boolean;
 
   sliderCards = [
     {
@@ -115,6 +117,11 @@ export class PropertyFormComponent implements OnInit {
     this.cards = this.slides[this.sliderCurrentIndex];
     this.loadValue();
     $(".footerFlag").addClass("d-none");
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.headerFooter = event.url !== "/login";
+      }
+    });
   }
 
   async loadValue() {

@@ -14,12 +14,12 @@
           </div>
           <div class="pt-2" style="text-align: center">coverage for your home</div>
           <div class="d-flex justify-content-center pt-4 mb-3">
-            <div class="rounded-circle rounded-circle-pricing pricing-contents">
+            <div class="rounded-circle rounded-circle-pricing pricing-contents" #toggleButton (click)="togglePrice()">
               <div class="col-12 pt-3">
                 <h1 class="medium-price text-center font-weight-bold">
                   {{ medium_price | currency: "USD":"symbol":"1.0-0" }}
                 </h1>
-                <div #toggleButton class="text-center pb-3" id="per_year" (click)="togglePrice()">PER YEAR</div>
+                <div class="text-center pb-3" id="per_year">PER YEAR</div>
                 <div class="text-center"><i class="fas fa-info-circle"></i></div>
               </div>
             </div>

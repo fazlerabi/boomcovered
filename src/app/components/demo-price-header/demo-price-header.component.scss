@@ -227,7 +227,7 @@ $font-family: Roboto;
 }
 .address-header {
   border-bottom: 1px solid gray;
-  font-size: 1.6rem;
+  font-size: 20px;
   color: #5a5a5a;
   text-align: center;
   margin: 0 auto;
@@ -241,10 +241,10 @@ $font-family: Roboto;
   color: white;
 }
 
-#per_year:hover {
-  font-size: 18px;
-  cursor: pointer;
-}
+// #per_year:hover {
+//   font-size: 18px;
+//   cursor: pointer;
+// }
 
 .rounded-circle-next {
   width: 7rem;
