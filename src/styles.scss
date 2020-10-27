@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@import './assets/styles/variables';
+@import "./assets/styles/variables";
 
 html {
   position: relative;
 }
 
-html, body {
+html,
+body {
 }
 
 body {
@@ -25,15 +26,15 @@ header {
     padding: 20px 20px;
     font-size: 20px;
 
-    &:hover, &.active {
+    &:hover,
+    &.active {
       background: white;
       color: #333;
     }
-
   }
 }
 
-[role=document].modal-dialog {
+[role="document"].modal-dialog {
   top: 70px;
 }
 
@@ -45,7 +46,8 @@ button {
   color: #fff !important;
 }
 
-button, input {
+button,
+input {
   border-radius: 10px !important;
 }
 
@@ -57,7 +59,7 @@ button, input {
 }
 
 .badge-default {
-  border: solid 2px #C8C8C8 !important;
+  border: solid 2px #c8c8c8 !important;
   color: #000 !important;
   box-shadow: none;
   border-radius: 10px;
@@ -69,14 +71,16 @@ button, input {
     margin-bottom: 15px;
 
     label {
-      margin-bottom: 1rem !important;
+      // margin-bottom: 1rem !important;
     }
   }
 }
 
-
 /*comment*/
-input[type=text], input[type=date], input[type=email], input[type=number] {
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="number"] {
   //height: 40px !important;
   border-radius: 0px !important;
   border-top: 0px !important;
@@ -86,16 +90,23 @@ input[type=text], input[type=date], input[type=email], input[type=number] {
   background-color: transparent !important;
   text-indent: 10px !important;
 }
-input[type=text]::placeholder, input[type=date]::placeholder, input[type=email]::placeholder, input[type=number]::placeholder
-{
-
+input[type="text"]::placeholder,
+input[type="date"]::placeholder,
+input[type="email"]::placeholder,
+input[type="number"]::placeholder {
   font-weight: bold;
 }
-input[type=text].ng-untouched, input[type=date].ng-untouched, input[type=email].ng-untouched, input[type=number].ng-untouched {
+input[type="text"].ng-untouched,
+input[type="date"].ng-untouched,
+input[type="email"].ng-untouched,
+input[type="number"].ng-untouched {
   border-color: gray !important;
 }
 
-input[type=text].ng-touched, input[type=date].ng-touched, input[type=email].ng-touched, input[type=number].ng-touched {
+input[type="text"].ng-touched,
+input[type="date"].ng-touched,
+input[type="email"].ng-touched,
+input[type="number"].ng-touched {
   border-color: red !important;
 }
 
@@ -147,33 +158,39 @@ nav {
 }
 
 .text-pink {
-  color: #EA0A3F !important;
+  color: #ea0a3f !important;
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  color:    #ccc !important;
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #ccc !important;
 }
 
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color:    #ccc !important;
-  opacity:  1;
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc !important;
+  opacity: 1;
 }
 
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color:    #ccc !important;
-  opacity:  1;
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc !important;
+  opacity: 1;
 }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color:    #ccc !important;
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc !important;
 }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-  color:    #ccc !important;
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #ccc !important;
 }
 
-::placeholder { /* Most modern browsers support this now. */
-  color:    #ccc !important;
+::placeholder {
+  /* Most modern browsers support this now. */
+  color: #ccc !important;
 }
 
 .listview {
@@ -183,14 +200,14 @@ nav {
       margin: 0;
 
       .grid-price-widget {
-	display: none;
+        display: none;
       }
       .list-price-widget {
-	.img-wrapper {
-	  img {
-	    padding-top: 10px;
-	  }
-	}
+        .img-wrapper {
+          img {
+            padding-top: 10px;
+          }
+        }
       }
     }
   }
@@ -200,7 +217,7 @@ nav {
   .form-row {
     .modal-btns {
       .list-price-widget {
-	display: none;
+        display: none;
       }
     }
   }
@@ -214,10 +231,9 @@ nav {
   }
 }
 
-
 @media screen and (max-width: 768px) {
   .gridview {
-    .modal-btns{
+    .modal-btns {
       width: 160px !important;
     }
   }
@@ -229,7 +245,7 @@ nav {
 
 .fixed-continue {
   display: none;
-  
+
   /*position: fixed;
   z-index: 1;
   left: 50%;
@@ -247,10 +263,10 @@ nav {
   }
   app-bar-chart {
     apx-chart > div {
-    min-height: 300px;
-    .apexcharts-canvas {
-      height: 300px !important;
-    }
+      min-height: 300px;
+      .apexcharts-canvas {
+        height: 300px !important;
+      }
     }
   }
 }
@@ -260,7 +276,7 @@ nav {
 }
 
 .apexcharts-xaxis {
-/*  display: none !important;*/
+  /*  display: none !important;*/
 }
 
 .single-email-row .action-area .sebm-google-map-container {
@@ -275,5 +291,3 @@ nav {
 .batch-page app-address-input:not(:first-of-type) .title {
   display: none;
 }
-
-

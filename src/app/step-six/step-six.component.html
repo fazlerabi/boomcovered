@@ -60,7 +60,7 @@
       </div>
     </div> -->
     <!--hiding as per new design-->
-    <div  (filter)="doFilter($event)" class="col-lg-12 col-md-12 col-12 pl-4">
+    <div (filter)="doFilter($event)" class="col-lg-12 col-md-12 col-12 pl-4">
       <div class="col-lg-12 col-md-12">
         <app-price-filter (filter)="doFilter($event)" [hidden]="true"></app-price-filter>
       </div>
@@ -77,35 +77,35 @@
       <div class="d-flex mb-3 mt-4">
         <div class="margin10 mx-2 basementDiv">
           <mdb-badge (click)="sortPrices('')">
-              <div class="my-1">
-               best
-               </div>
-              <img src="../../../assets/images/step-six/value.png" class="btn-icon" alt="">
+            <div class="my-1">best</div>
+            <img src="../../../assets/images/step-six/value.png" class="btn-icon" alt="" />
           </mdb-badge>
-      </div>
-      <div class="margin10 mx-2 basementDiv">
-          <mdb-badge (click)="sortPrices('ASC')">
-            <div class="my-1">
-            low
-          </div>
-              <img src="../../../assets/images/step-six/sort_amount_down.png" class="btn-icon" alt="">
-          </mdb-badge>
-      </div>
-      <div class="margin10 mx-2 basementDiv">
-        <mdb-badge  (click)="sortPrices('DESC')">
-          <div class="my-1">
-          high
         </div>
-           <img src="../../../assets/images/step-six/sort_amount_up.png" class="btn-icon" alt="">
-        </mdb-badge>
-    </div>
+        <div class="margin10 mx-2 basementDiv">
+          <mdb-badge (click)="sortPrices('ASC')">
+            <div class="my-1">low</div>
+            <img src="../../../assets/images/step-six/sort_amount_down.png" class="btn-icon" alt="" />
+          </mdb-badge>
+        </div>
+        <div class="margin10 mx-2 basementDiv">
+          <mdb-badge (click)="sortPrices('DESC')">
+            <div class="my-1">high</div>
+            <img src="../../../assets/images/step-six/sort_amount_up.png" class="btn-icon" alt="" />
+          </mdb-badge>
+        </div>
       </div>
       <div class="row" [ngClass]="viewmode == 'Grid' ? 'gridview' : 'listview'">
         <ng-container *ngFor="let insurance of filteredInsurances">
-        <app-price-widget  *ngIf="insuranceImgs[insurance.type].length > 0"   [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass" [price]="insurance.price"
-                          [imgURL]="insuranceImgs[insurance.type]"  [name]="insurance.name" [bgColor]="bgColor[insurance.type]" [dwelling]="insurance.dwelling"
-                          (openModal)="setModalData(insurance)"
-        ></app-price-widget>
+          <app-price-widget
+            *ngIf="insuranceImgs[insurance.type].length > 0"
+            [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass"
+            [price]="insurance.price"
+            [imgURL]="insuranceImgs[insurance.type]"
+            [name]="insurance.name"
+            [bgColor]="bgColor[insurance.type]"
+            [dwelling]="insurance.dwelling"
+            (openModal)="setModalData(insurance)"
+          ></app-price-widget>
         </ng-container>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showNationWide"></app-price-loader>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="!showMetlife"></app-price-loader>
@@ -116,24 +116,22 @@
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="progressiveLoader"></app-price-loader>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="stillwaterLoader"></app-price-loader>
         <app-price-loader [className]="priceLoaderCommonClass" *ngIf="hippoLoader"></app-price-loader>
-        <div class="col-md-12 mt-5 mb-5 form-row" *ngIf="filteredInsurances.length==0 && allDataLoaded()">
-          <h1 class="mx-auto font-weight-bold ">No data exist.</h1>
+        <div class="col-md-12 mt-5 mb-5 form-row" *ngIf="filteredInsurances.length == 0 && allDataLoaded()">
+          <h1 class="mx-auto font-weight-bold">No data exist.</h1>
         </div>
       </div>
       <div class="row">
         <!--Price details modal-->
-        <app-price-details-modal [showModal]="showModal" (bindNow)="bindNow()" (showChatWidget)="showChatWidget($event)"
-                                 [modalData]="modalData"></app-price-details-modal>
-        <div class="col-md-8 offset-md-2 col-12 chatWidget animated fadeIn"
-             *ngIf="showChat && !commonService.isMobileMode()">
+        <app-price-details-modal [showModal]="showModal" (bindNow)="bindNow()" (showChatWidget)="showChatWidget($event)" [modalData]="modalData"></app-price-details-modal>
+        <div class="col-md-8 offset-md-2 col-12 chatWidget animated fadeIn" *ngIf="showChat && !commonService.isMobileMode()">
           <div class="form-row">
-            <img [src]="insuranceImgs[chatType]" class="mx-auto price-image"/>
+            <img [src]="insuranceImgs[chatType]" class="mx-auto price-image" />
           </div>
           <div class="chat-container" style="margin-bottom: 50px">
             <div class="form-row">
-              <h2 class="text-black pt-3 font-weight-bold mx-auto text-center">{{chatPricing|currency:'USD':'symbol':'1.0-0'}}</h2>
+              <h2 class="text-black pt-3 font-weight-bold mx-auto text-center">{{ chatPricing | currency: "USD":"symbol":"1.0-0" }}</h2>
             </div>
-            <div class="form-row loader" style="margin-top: 100px;">
+            <div class="form-row loader" style="margin-top: 100px">
               <div class="sbl-circ-path mx-auto"></div>
             </div>
             <div id="olark-box-container"></div>
@@ -141,6 +139,7 @@
         </div>
       </div>
     </div>
+
     <!-- <div class="col-md-3 col-12 mt-4">
       <p class="font-weight-bold text-black">add policy:</p>
 

@@ -115,8 +115,8 @@ export class AppComponent implements AfterViewInit {
     }
     togglerColor = "244, 60, 88";
     this.navColor = "244, 60, 88";
-    (<HTMLElement>document.getElementsByClassName("navbar-toggler-icon")[0]).style.cssText =
-      'background-image: url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">' + '<path stroke="rgba(' + togglerColor + ')" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" ' + 'd="M4 7h22M4 15h22M4 23h22"/></svg>\') !important;';
+    // (<HTMLElement>document.getElementsByClassName("navbar-toggler-icon")[0]).style.cssText =
+    //   'background-image: url(\'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">' + '<path stroke="rgba(' + togglerColor + ')" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" ' + 'd="M4 7h22M4 15h22M4 23h22"/></svg>\') !important;';
 
     setTimeout(() => {
       const activedLink = <HTMLElement>document.querySelector(".nav-item.active > a");
