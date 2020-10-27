@@ -115,6 +115,10 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   togglePrice() {
-    this.isShow = !this.isShow;
+    this.isShow = true;
+  }
+
+  exitPopup() {
+    this.isShow = false;
   }
 }

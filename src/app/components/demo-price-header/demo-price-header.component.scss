@@ -349,9 +349,21 @@ $font-family: Roboto;
   }
 
   @media screen and (max-width: 500px) {
-    left: calc((100% - 258px) / 2);
+    left: calc((100% - 342px) / 2);
+    width: 100% !important;
     img {
       width: 60%;
     }
   }
+}
+
+@media screen and (max-width: 600px) {
+  #pdf_btn {
+    display: none;
+  }
+}
+
+#exit_popup:hover {
+  font-size: 17px;
+  cursor: pointer;
 }

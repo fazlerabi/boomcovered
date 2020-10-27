@@ -1,4 +1,4 @@
-<div class="col-12 map-container">
+<div class="col-12 map-container" style="opacity: 0.3">
   <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
     <span style="font-size:15rem; color:blue float:right">
       <i class="fas fa-5x fa-angle-right"></i>
@@ -134,22 +134,22 @@
                 <label>please let us know what year your systems are from&nbsp;<span class="text-danger">*</span></label>
               </div>
               <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>roof</label>
                   <!-- <input type="text" class="form-control" placeholder="roof" id="inputroof"> -->
                   <input mdbInput type="number" class="form-control" id="roofyearInput" [(ngModel)]="roof_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>plumbing</label>
                   <!-- <input type="text" class="form-control" placeholder="plumbing" id="inputplumbing"> -->
                   <input mdbInput type="number" class="form-control" id="plumbingInput" [(ngModel)]="plumbing_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>A/C</label>
                   <!-- <input type="text" class="form-control" placeholder="a/c" id="inputac"> -->
                   <input mdbInput type="number" class="form-control" id="acInput" [(ngModel)]="ac_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
-                <div class="col-md-3 col-sm-6 col-xs-6 margin10 constructionDiv">
+                <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>Electric</label>
                   <!-- <input type="text" class="form-control" placeholder="electrical" id="inputelectric"> -->
                   <input mdbInput type="number" class="form-control" id="electricInput" [(ngModel)]="electric_year" [ngModelOptions]="{ standalone: true }" />
@@ -283,7 +283,7 @@
               </div>
             </div>
             <div class="mt-5 mb-5">
-              <button class="btn btn-primary w-25 p-3" (click)="moveTab(true)">continue -></button>
+              <button class="btn btn-primary p-3" (click)="moveTab(true)" style="width: 40%">continue -></button>
             </div>
           </form>
         </div>
