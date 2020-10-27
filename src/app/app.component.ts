@@ -21,6 +21,7 @@ export class AppComponent implements AfterViewInit {
   private _routeHistory: string[];
   isShowFooter = false;
   public navColor: string;
+  headerFooter: boolean;
 
   public constructor(public router: Router, public location: Location, public commonService: CommonService, private local: LocalStorageService) {
     this._routeHistory = [];
@@ -75,6 +76,14 @@ export class AppComponent implements AfterViewInit {
     });
     this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
       this._setURLs(event);
+    });
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.headerFooter = event.url !== "/step3";
+      }
     });
   }
 
