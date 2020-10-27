@@ -291,3 +291,8 @@ nav {
 .batch-page app-address-input:not(:first-of-type) .title {
   display: none;
 }
+
+ngb-modal-window {
+  margin-top: 50px;
+  padding-right: 11px;
+}
