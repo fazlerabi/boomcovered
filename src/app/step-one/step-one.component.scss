@@ -1138,6 +1138,15 @@ h5.addressTxt {
   background-size: 100% 100%;
 }
 
+@media screen and (max-width: 560px) {
+  .background-img {
+    background-image: url("../../assets/images/background.png");
+    background-position-y: 10rem;
+    background-repeat: no-repeat;
+    background-size: 100% 50%;
+  }
+}
+
 .white-bg {
   background-color: white !important;
 }
