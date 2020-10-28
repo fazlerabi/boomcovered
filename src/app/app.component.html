@@ -1,5 +1,9 @@
 <!-- Image and text -->
 <mdb-navbar SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
+  <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
+    <!-- <mdb-icon fas icon="angle-left" id="mobileLeft"></mdb-icon> -->
+    <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
+  </div>
   <a href="/" class="site-logo"><img style="width: 3rem" src="../../assets/images/SVG/boom-icon.svg" /></a>
   <links *ngIf="!commonService.isMobileMode()" class="pr-5">
     <ul class="navbar-nav ml-auto">
@@ -33,12 +37,16 @@
   <div id="gif_div" class="mr-2">
     <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif" /></a>
   </div>
+  <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">
+    <!-- <mdb-icon fas icon="angle-right" id="mobileRight"></mdb-icon> -->
+    <img src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />
+  </div>
 </mdb-navbar>
 
 <!-- <app-sub-header></app-sub-header> -->
 <div class="main pt-md-2 pt-1" [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']">
   <!--<div class="main" [ngStyle]="{minHeight:mainHeight+'px'}">-->
-  <router-outlet #o="outlet"></router-outlet>
+  <router-outlet #o="outlet" s></router-outlet>
 </div>
 <!---->
 <!-- Footer -->

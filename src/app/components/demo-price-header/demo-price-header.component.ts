@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output, ViewChild, ElementRef, Renderer2 } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, OnDestroy, OnInit, Output } from "@angular/core";
 import * as $ from "jquery";
 import { CommonService } from "../../services/common.service";
 import { Router } from "@angular/router";
@@ -9,17 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./demo-price-header.component.scss"],
 })
 export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild("toggleButton", { static: false }) toggleButton: ElementRef;
-  @ViewChild("menu", { static: false }) menu: ElementRef;
-
-  constructor(public commonService: CommonService, private router: Router, private renderer: Renderer2) {
-    this.renderer.listen("window", "click", (e: Event) => {
-      console.log("123: ", e.target, this.toggleButton.nativeElement, this.menu.nativeElement);
-      if (e.target !== this.toggleButton.nativeElement && e.target !== this.menu.nativeElement) {
-        this.isShow = false;
-      }
-    });
-  }
+  constructor(public commonService: CommonService, private router: Router) {}
 
   showLoader: boolean = true;
   lat: number;
