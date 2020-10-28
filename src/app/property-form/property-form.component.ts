@@ -4,6 +4,7 @@ import { LocalStorageService } from "angular-web-storage";
 import { CommonService } from "../services/common.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import * as $ from "jquery";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-property-form",
@@ -42,6 +43,8 @@ export class PropertyFormComponent implements OnInit {
   userForm: FormGroup;
   highPrice: number;
   lowPrice: number;
+
+  isForward: boolean;
 
   sliderCards = [
     {
@@ -99,7 +102,14 @@ export class PropertyFormComponent implements OnInit {
     return R;
   }
 
-  constructor(public router: Router, public local: LocalStorageService, public commonService: CommonService) {}
+  clickEventsubscription: Subscription;
+
+  constructor(public router: Router, public local: LocalStorageService, public commonService: CommonService) {
+    this.clickEventsubscription = this.commonService.getClickEvent().subscribe((isForward) => {
+      this.isForward = isForward;
+      this.moveTab(this.isForward);
+    });
+  }
 
   lat: number;
   lng: number;
@@ -156,6 +166,7 @@ export class PropertyFormComponent implements OnInit {
   }
 
   async moveTab(isForward: boolean) {
+    console.log("ere");
     switch (this.currentTab) {
       case "Tab1": {
         if (isForward) {

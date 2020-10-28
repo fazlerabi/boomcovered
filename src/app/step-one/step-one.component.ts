@@ -109,8 +109,15 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   @HostListener("window:resize", ["$event"])
-  onResize() {
+  onResize(event) {
     this.isMobileMode = this.commonService.isMobileMode();
+    if (event.target.innerWidth > 600) {
+      $(".site-logo").removeClass("ml-auto mr-auto");
+      $("#gif_div").removeClass("d-none");
+    } else {
+      $(".site-logo").addClass("ml-auto mr-auto");
+      $("#gif_div").addClass("d-none");
+    }
   }
 
   ngAfterViewInit(): void {

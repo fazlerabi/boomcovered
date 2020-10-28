@@ -3,12 +3,23 @@ import { LocalStorageService } from "angular-web-storage";
 import { NgbdModalContent } from "../home/ngbd.modal.content";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
+import { Observable, Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class CommonService {
   constructor(public local: LocalStorageService, private modalService: NgbModal, public spinnerService: Ng4LoadingSpinnerService) {}
+
+  private subject = new Subject<any>();
+
+  sendClickEvent(isForward: boolean) {
+    this.subject.next(isForward);
+  }
+
+  getClickEvent(): Observable<any> {
+    return this.subject.asObservable();
+  }
 
   async setLocalItem(key, value) {
     this.local.set(key, value);
@@ -47,6 +58,7 @@ export class CommonService {
   }
 
   modalOpen(type, text) {
+    console.log("here");
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.name = text;
     modalRef.componentInstance.type = type;

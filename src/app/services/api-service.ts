@@ -99,7 +99,7 @@ export class ApiService {
   }
   getPdfDownloaded(data): Observable<any> {
     let headers = new HttpHeaders();
-    return this.http.post(environment.baseUrl + "api/downlod_pdf", data, { headers: headers, responseType: "blob" });
+    return this.http.post(environment.baseUrl + "/api/downlod_pdf", data, { headers: headers, responseType: "blob" });
   }
 }
 
