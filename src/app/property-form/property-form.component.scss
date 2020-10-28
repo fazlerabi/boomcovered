@@ -277,3 +277,10 @@ mdb-badge.badge-warning {
   line-height: 50px;
   border: 2px dashed blue;
 }
+
+@media screen and (max-width: 600px) {
+  #inputData {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+  }
+}

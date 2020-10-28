@@ -8,13 +8,13 @@
 </div>
 <div class="loader">
   <div class="row justify-content-center">
-    <div class="align-self-center float-left nav-arrow" style="transform: rotate(180deg)" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode()">
+    <div class="col-1 align-self-center float-left nav-arrow" style="transform: rotate(180deg)" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode()">
       <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto" />
     </div>
     <!-- <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
       <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
     </div> -->
-    <div class="bg-white text-center mt-0 mb-3">
+    <div class="col-6 bg-white text-center mt-0 mb-3" id="inputData">
       <div class="container">
         <div *ngIf="currentTab != 'Tab5'" class="col-8 justify-content-center offset-2 mt-5 mb-3" style="height: 25px">
           <mdb-progress value="{{ progress }}" style="height: 15px" min="0" max="100" type="info" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></mdb-progress>
@@ -300,7 +300,7 @@
         <h6 class="text-center">+ auto</h6>
       </div>
     </div>
-    <div class="align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode()">
+    <div class="col-1 align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode()">
       <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto" />
     </div>
     <!-- <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">
