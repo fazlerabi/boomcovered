@@ -91,13 +91,6 @@ export class AppComponent implements AfterViewInit {
   @HostListener("window:resize", ["$event"])
   onResize(event) {
     this.applyHeaderColor();
-    // if (event.target.innerWidth > 600) {
-    //   $(".site-logo").removeClass("ml-auto mr-auto");
-    //   $("#gif_div").removeClass("d-none");
-    // } else {
-    //   $(".site-logo").addClass("ml-auto mr-auto");
-    //   $("#gif_div").addClass("d-none");
-    // }
   }
 
   @HostListener("window:scroll")

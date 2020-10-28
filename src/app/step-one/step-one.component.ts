@@ -147,6 +147,8 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   handleAddressChange(googlePlaceData) {
+    this.isProcessing = true;
+
     this.commonService.applyTotalData("address_components", googlePlaceData);
     this.lat = typeof googlePlaceData.geometry.location.lat === "function" ? googlePlaceData.geometry.location.lat() : googlePlaceData.geometry.location.lat;
     this.lng = typeof googlePlaceData.geometry.location.lng === "function" ? googlePlaceData.geometry.location.lng() : googlePlaceData.geometry.location.lng;
