@@ -91,7 +91,6 @@ export class AppComponent implements AfterViewInit {
   @HostListener("window:resize", ["$event"])
   onResize(event) {
     this.applyHeaderColor();
-    console.log("adf: ", event.target.innerWidth);
     if (event.target.innerWidth > 600) {
       $(".site-logo").removeClass("ml-auto mr-auto");
       $("#gif_div").removeClass("d-none");
