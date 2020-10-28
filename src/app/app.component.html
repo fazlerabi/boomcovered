@@ -1,6 +1,6 @@
 <!-- Image and text -->
 <mdb-navbar SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
-  <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()" class="ml-5 d-none mobileFoward">
+  <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()" class="d-none mobileFoward" style="margin-left: 4rem">
     <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
   </div>
   <a href="/" class="site-logo"><img style="width: 3rem" src="../../assets/images/SVG/boom-icon.svg" /></a>
