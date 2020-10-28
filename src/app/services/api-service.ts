@@ -88,7 +88,6 @@ export class ApiService {
   }
 
   getNeptuneData(data): Observable<any> {
-    console.log("qqqqq");
     return this.http.post(environment.baseUrl + "/api/get_neptuneflood", data, httpOptions).pipe(map(ApiService.extractData), catchError(ApiService.handleError));
   }
 
