@@ -46,7 +46,6 @@ export class DemoPageEmailModalComponent implements OnInit {
       }
     }
     const total_data = this.commonService.getLocalItem("total_data");
-
     let formatted_address = "";
     try {
       formatted_address = total_data["address_components"]["formatted_address"];
@@ -68,7 +67,6 @@ export class DemoPageEmailModalComponent implements OnInit {
       },
     ];
     const addressData = this.commonService.getAddressData();
-
     let hippoPrice = "";
     let coverage_a = "";
     try {

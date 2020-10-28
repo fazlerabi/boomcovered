@@ -58,7 +58,6 @@ export class CommonService {
   }
 
   modalOpen(type, text) {
-    console.log("here");
     const modalRef = this.modalService.open(NgbdModalContent);
     modalRef.componentInstance.name = text;
     modalRef.componentInstance.type = type;

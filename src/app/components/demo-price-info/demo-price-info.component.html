@@ -5,23 +5,23 @@
         <table width="100%" class="">
           <tr>
             <td class="text-left">square feet:</td>
-            <td class="text-right">{{zillowInfo['square']}}</td>
+            <td class="text-right">{{ zillowInfo["square"] }}</td>
           </tr>
           <tr>
             <td class="text-left">year built:</td>
-            <td class="text-right">{{zillowInfo['built_year']}}</td>
+            <td class="text-right">{{ zillowInfo["built_year"] }}</td>
           </tr>
           <tr>
             <td class="text-left">estimate:</td>
-            <td class="text-right">{{'$'+zillowInfo['estimate']}}</td>
+            <td class="text-right">{{ "$" + zillowInfo["estimate"] }}</td>
           </tr>
           <tr *ngIf="floodInfo['zone']">
             <td class="text-left">flood zone:</td>
-            <td class="text-right">{{floodInfo['zone']}}</td>
+            <td class="text-right">{{ floodInfo["zone"] }}</td>
           </tr>
           <tr *ngIf="floodInfo['premium']">
             <td class="text-left">flood estimate:</td>
-            <td class="text-right">{{'$'+floodInfo['premium']}}</td>
+            <td class="text-right">{{ "$" + floodInfo["premium"] }}</td>
           </tr>
           <!--tr>
             <td class="text-left">common claims:</td>

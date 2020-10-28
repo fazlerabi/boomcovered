@@ -166,7 +166,6 @@ export class PropertyFormComponent implements OnInit {
   }
 
   async moveTab(isForward: boolean) {
-    console.log("ere");
     switch (this.currentTab) {
       case "Tab1": {
         if (isForward) {
