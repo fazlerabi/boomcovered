@@ -539,7 +539,6 @@ export class StepOneComponent implements AfterViewInit {
     this.showFirst = true;
     $("#address_div").removeClass("d-none");
     $(".footerFlag").addClass("d-none");
-    this.onResize(event);
   }
 }
 

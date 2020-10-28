@@ -11,10 +11,9 @@
     <div class="align-self-center float-left nav-arrow" style="transform: rotate(180deg)" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode()">
       <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto" />
     </div>
-    <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
-      <!-- <mdb-icon fas icon="angle-left" id="mobileLeft"></mdb-icon> -->
+    <!-- <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
       <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
-    </div>
+    </div> -->
     <div class="bg-white text-center mt-0 mb-3">
       <div class="container">
         <div *ngIf="currentTab != 'Tab5'" class="col-8 justify-content-center offset-2 mt-5 mb-3" style="height: 25px">
@@ -304,10 +303,9 @@
     <div class="align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode()">
       <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto" />
     </div>
-    <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">
-      <!-- <mdb-icon fas icon="angle-right" id="mobileRight"></mdb-icon> -->
+    <!-- <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">
       <img src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />
-    </div>
+    </div> -->
   </div>
 </div>
 <ng-template #carousel>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener } from "@angular/core";
+import { AfterViewInit, Component, HostListener, ViewChild } from "@angular/core";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { Location } from "@angular/common";
 
@@ -6,6 +6,7 @@ import { filter } from "rxjs/operators";
 import { slideInAnimation } from "./route-animation";
 import { CommonService } from "./services/common.service";
 import { LocalStorageService } from "angular-web-storage";
+import * as $ from "jquery";
 
 @Component({
   selector: "app-root",
@@ -87,9 +88,17 @@ export class AppComponent implements AfterViewInit {
     });
   }
 
-  @HostListener("window:resize")
-  onResize() {
+  @HostListener("window:resize", ["$event"])
+  onResize(event) {
     this.applyHeaderColor();
+    console.log("adf: ", event.target.innerWidth);
+    if (event.target.innerWidth > 600) {
+      $(".site-logo").removeClass("ml-auto mr-auto");
+      $("#gif_div").removeClass("d-none");
+    } else {
+      $(".site-logo").addClass("ml-auto mr-auto");
+      $("#gif_div").addClass("d-none");
+    }
   }
 
   @HostListener("window:scroll")
@@ -160,5 +169,9 @@ export class AppComponent implements AfterViewInit {
 
   get routeHistory(): string[] {
     return this._routeHistory;
+  }
+
+  moveTab(isForward: boolean) {
+    this.commonService.sendClickEvent(isForward);
   }
 }

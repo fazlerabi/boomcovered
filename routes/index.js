@@ -340,7 +340,7 @@ async function universal_get_pricing(params) {
 
 router.post("/downlod_pdf", async (req, resp, next) => {
   const { url } = req.body;
-  console.log(url);
+
   if (url && fs.existsSync(url)) {
     //  00a31ea8-cd01-4c1c-8048-be175b99c7ae.pdf')) {
     var data = [];

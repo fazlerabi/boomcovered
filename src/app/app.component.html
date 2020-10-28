@@ -1,6 +1,6 @@
 <!-- Image and text -->
 <mdb-navbar SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
-  <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
+  <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()" class="ml-5 mobileFoward">
     <!-- <mdb-icon fas icon="angle-left" id="mobileLeft"></mdb-icon> -->
     <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
   </div>
@@ -34,10 +34,10 @@
       </li>
     </ul>
   </links>
-  <div id="gif_div" class="mr-2">
+  <div id="gif_div" class="mr-2" *ngIf="!commonService.isMobileMode()">
     <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif" /></a>
   </div>
-  <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">
+  <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()" class="mr-5 mobileFoward">
     <!-- <mdb-icon fas icon="angle-right" id="mobileRight"></mdb-icon> -->
     <img src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />
   </div>
