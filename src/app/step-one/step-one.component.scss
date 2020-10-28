@@ -4,7 +4,9 @@
   color: $primary-color;
   letter-spacing: 0.2px;
 }
-
+input::placeholder {
+  overflow: visible;
+}
 .container {
   min-height: 400px !important;
   display: flex;
