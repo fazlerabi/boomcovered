@@ -29,7 +29,7 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "@ng-bootstrap/ng-bootstrap": "^4.2.2",
     "@nicky-lenaers/ngx-scroll-to": "^2.0.0",
-    "@sendgrid/mail": "^6.4.0",
+    "@sendgrid/mail": "^6.5.5",
     "angular-alert-module": "^2.0.3",
     "angular-web-storage": "^7.0.0-beta.1",
     "animate.css": "^3.7.2",

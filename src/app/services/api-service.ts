@@ -101,6 +101,10 @@ export class ApiService {
     let headers = new HttpHeaders();
     return this.http.post(environment.baseUrl + "/api/downlod_pdf", data, { headers: headers, responseType: "blob" });
   }
+
+  sendMail(data): Observable<any> {
+    return this.http.post(environment.baseUrl + "/api/send_mail", data, httpOptions).pipe(map(ApiService.extractData), catchError(ApiService.handleError));
+  }
 }
 
 /*comment*/

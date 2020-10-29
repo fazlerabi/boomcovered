@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { LocalStorageService } from "angular-web-storage";
 import { CommonService } from "../services/common.service";
+import { ApiService } from "../services/api-service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import * as $ from "jquery";
 import { Subscription } from "rxjs";
@@ -35,6 +36,7 @@ export class PropertyFormComponent implements OnInit {
       first_name: "",
       last_name: "",
       birthday: "1995-02-14",
+      dob: "",
     },
   ];
   //, birthday: ''}];
@@ -104,7 +106,7 @@ export class PropertyFormComponent implements OnInit {
 
   clickEventsubscription: Subscription;
 
-  constructor(public router: Router, public local: LocalStorageService, public commonService: CommonService) {
+  constructor(public router: Router, public local: LocalStorageService, public commonService: CommonService, public apiService: ApiService) {
     this.clickEventsubscription = this.commonService.getClickEvent().subscribe((isForward) => {
       this.isForward = isForward;
       this.moveTab(this.isForward);
@@ -172,6 +174,35 @@ export class PropertyFormComponent implements OnInit {
           if (this.validateAllInputs(false)) {
             this.currentTab = "Tab2";
             this.progress += 25;
+            var foundationType = "";
+            var constructionType = "";
+
+            if (this.foundationType === 1) {
+              foundationType = "Basement";
+            } else if (this.foundationType === 2) {
+              foundationType = "Craw Space";
+            } else {
+              foundationType = "Slab";
+            }
+
+            if (this.constructionType === 1) {
+              constructionType = "Wood Frame";
+            } else if (this.constructionType === 2) {
+              constructionType = "Steal Frame";
+            } else if (this.constructionType === 3) {
+              constructionType = "Masonry/Brick";
+            } else {
+              constructionType = "Concrete";
+            }
+            var property = {
+              built_year: this.built_year,
+              square: this.square,
+              foundationType: foundationType,
+              constructionType: constructionType,
+            };
+            var total_data = this.commonService.getLocalItem("total_data");
+            total_data.property = property;
+            this.commonService.setLocalItem("total_data", total_data);
           }
         }
         break;
@@ -181,6 +212,22 @@ export class PropertyFormComponent implements OnInit {
           if (this.validateAllInputs(false)) {
             this.currentTab = "Tab3";
             this.progress += 25;
+            var isBasement = "";
+            if (this.isBasement === 1) {
+              isBasement = "Yes";
+            } else {
+              isBasement = "No";
+            }
+            var upgrade = {
+              basement_finished: isBasement,
+              roof_year: this.roof_year,
+              plumbing_year: this.plumbing_year,
+              ac_year: this.ac_year,
+              electric_year: this.electric_year,
+            };
+            var total_data = this.commonService.getLocalItem("total_data");
+            total_data.upgrade = upgrade;
+            this.commonService.setLocalItem("total_data", total_data);
           }
         } else {
           this.currentTab = "Tab1";
@@ -201,6 +248,46 @@ export class PropertyFormComponent implements OnInit {
             this.calcPriceRange(data);
             this.currentTab = "Tab4";
             this.progress += 25;
+            var exterior = "";
+
+            switch (this.exterior_type) {
+              case 1:
+                exterior = "Aluminum Siding";
+                break;
+              case 2:
+                exterior = "Brick Veneer";
+                break;
+              case 3:
+                exterior = "Brick";
+                break;
+              case 4:
+                exterior = "Concrete";
+                break;
+              case 5:
+                exterior = "Hardiplank";
+                break;
+              case 6:
+                exterior = "Stone Veneer";
+                break;
+              case 7:
+                exterior = "Stone";
+                break;
+              case 8:
+                exterior = "Stucco Siding";
+                break;
+              case 9:
+                exterior = "Vinyl Siding";
+                break;
+              case 10:
+                exterior = "Wood Siding";
+                break;
+              default:
+              // code block
+            }
+
+            var total_data = this.commonService.getLocalItem("total_data");
+            total_data.exterior = exterior;
+            this.commonService.setLocalItem("total_data", total_data);
           }
         } else {
           this.currentTab = "Tab2";
@@ -304,6 +391,7 @@ export class PropertyFormComponent implements OnInit {
       phoneInput: new FormControl(this.phone, [Validators.required]), // Validators.pattern(/^(\()?\d{3}(\))?(|\s)?\d{3}(|\s)\d{4}$/)]),
       firstnameInput: new FormControl(this.personData[0].first_name, [Validators.required]),
       lastnameInput: new FormControl(this.personData[0].last_name, [Validators.required]),
+      dobInput: new FormControl(this.personData[0].dob, [Validators.required]),
     };
     this.userForm = new FormGroup(formData);
   }
@@ -351,5 +439,43 @@ export class PropertyFormComponent implements OnInit {
     const commonPricing = await this.commonService.getPricings(total_data);
     this.lowPrice = commonPricing["lowPrice"];
     this.highPrice = commonPricing["highPrice"];
+  }
+
+  sendMail() {
+    if (this.validateAllInputs(false)) {
+      var total_data = this.commonService.getLocalItem("total_data");
+      var mailBody = {
+        address: total_data.address_components.formatted_address,
+        // start_time: total_data.address_components.started_time,
+        built_year: total_data.property.built_year,
+        // Square_footage: total_data.property.square,
+        foundation: total_data.property.foundationType,
+        construction_type: total_data.property.constructionType,
+        // Basement_finished: total_data.upgrade.basement_finished,
+        roof_year: total_data.upgrade.roof_year,
+        plumbing_year: total_data.upgrade.plumbing_year,
+        ac_year: total_data.upgrade.ac_year,
+        electric_year: total_data.upgrade.electric_year,
+        exterior_type: total_data.exterior,
+        personData: [
+          {
+            email: this.email,
+            phone: this.phone,
+            first_name: this.personData[0].first_name,
+            last_name: this.personData[0].last_name,
+            dob: this.personData[0].dob,
+          },
+        ],
+      };
+      this.apiService.sendMail(mailBody).subscribe(
+        (res) => {
+          alert(res.msg);
+        },
+        (err) => {
+          alert("error");
+          console.log(err);
+        }
+      );
+    }
   }
 }

@@ -26,10 +26,13 @@ swig.setDefaults({
 });
 
 let fs = require("fs");
-sgMail.setApiKey(config.sendgrid);
+
 const request = require("request");
 const emailHeader = commonTemplate.emailHeader;
 const emailFooter = commonTemplate.emailFooter;
+
+sgMail.setApiKey(config.sendgrid);
+
 /* GET ALL Zillow data*/
 router.post("/get_zillow", async function (req, response, next) {
   let { address, citystatezip } = req.body;
@@ -2311,6 +2314,33 @@ router.post("/send_details_email", (req, res, next) => {
     plumbing_year,
   } = req.body);
   const emailTemplate = swig.compileFile(appDir + "/templates/details_email.twig");
+  const html = emailHeader + emailTemplate(data) + emailFooter;
+  fs.writeFileSync(appDir + "/templates/details_email.html", html);
+  const msg = {
+    to: config.adminEmail,
+    from: config.agentEmail,
+    subject: address + " - Account Update",
+    html: html,
+  };
+  sgMail
+    .send(msg)
+    .then(() => {
+      res.send({
+        result: "success",
+        msg: "successfully received",
+      });
+    })
+    .catch(() => {
+      res.send({
+        result: "error",
+        msg: "An error occurred while sending email",
+      });
+    });
+});
+
+router.post("/send_mail", function (req, res, next) {
+  const data = ({ address, foundation, construction_type, exterior_type, personData, built_year, roof_year, ac_year, electric_year, plumbing_year } = req.body);
+  const emailTemplate = swig.compileFile(appDir + "/templates/details_email1.twig");
   const html = emailHeader + emailTemplate(data) + emailFooter;
   fs.writeFileSync(appDir + "/templates/details_email.html", html);
   const msg = {
