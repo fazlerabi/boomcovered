@@ -23,7 +23,7 @@
         <!--Tab1 contents-->
         <div *ngIf="currentTab === 'Tab1'" class="tab-1 col">
           <h4>Confirm some details about your property:</h4>
-          <div class="container form-row">
+          <div class="form-row">
             <div class="form-group d-flex mr-4">
               <label for="yearInput" class="align-self-center mb-0">year built:</label>
               <input mdbInput type="number" [(ngModel)]="built_year" class="form-control ml-2" [ngModelOptions]="{ standalone: true }" id="yearInput" />
@@ -34,7 +34,7 @@
               <input mdbInput type="number" class="form-control ml-2" [(ngModel)]="square" [ngModelOptions]="{ standalone: true }" id="squareInput" />
             </div>
           </div>
-          <div class="container form-row">
+          <div class="form-row">
             <!-- Default input -->
             <div class="form-group">
               <div class="d-flex justify-content-center">
@@ -65,7 +65,7 @@
               </div>
             </div>
           </div>
-          <div class="container form-row">
+          <div class="flex: 0 0 100% !important; form-row">
             <!-- Default input -->
             <div class="form-group col-md-12">
               <div>
@@ -315,7 +315,7 @@
         <span class="arrow left"></span>
       </button>
     </div>
-    <div class="col-10 carousel-items exteriorDiv d-flex">
+    <div class="col-9 carousel-items exteriorDiv d-flex">
       <ng-container class="mx-2 my-3 exteriorDiv" *ngFor="let card of cards; let i = index">
         <mdb-badge class="mx-3" [default]="roof_type != i + 1" [warning]="roof_type == i + 1" (click)="roof_type = i + 1">
           <div>
@@ -325,7 +325,7 @@
         </mdb-badge>
       </ng-container>
     </div>
-    <div class="col-1">
+    <div class="col-1" style="margin-left: 18px">
       <button class="control next" (click)="slide(false)">
         <span class="arrow right"></span>
       </button>
