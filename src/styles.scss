@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/styles/variables";
+@import "../node_modules/font-awesome/css/font-awesome.css";
 
 html {
   position: relative;
@@ -43,24 +44,24 @@ header {
 }
 
 button {
-  color: #fff !important;
+  color: #fff;
 }
 
 button,
 input {
-  border-radius: 10px !important;
+  border-radius: 10px;
 }
 
 .badge-warning {
-  border: solid 2px $primary-color !important;
-  color: black !important;
+  border: solid 2px $primary-color;
+  color: black;
   border-radius: 10px;
   box-shadow: none;
 }
 
 .badge-default {
-  border: solid 2px #c8c8c8 !important;
-  color: #000 !important;
+  border: solid 2px #c8c8c8;
+  color: #000;
   box-shadow: none;
   border-radius: 10px;
 }
@@ -71,47 +72,13 @@ input {
     margin-bottom: 15px;
 
     label {
-      // margin-bottom: 1rem !important;
+      // margin-bottom: 1rem;
     }
   }
 }
 
-/*comment*/
-input[type="text"],
-input[type="date"],
-input[type="email"],
-input[type="number"] {
-  //height: 40px !important;
-  border-radius: 0px !important;
-  border-top: 0px !important;
-  border-left: 0px !important;
-  border-right: 0px !important;
-  border-bottom-width: 2px !important;
-  background-color: transparent !important;
-  text-indent: 10px !important;
-}
-input[type="text"]::placeholder,
-input[type="date"]::placeholder,
-input[type="email"]::placeholder,
-input[type="number"]::placeholder {
-  font-weight: bold;
-}
-input[type="text"].ng-untouched,
-input[type="date"].ng-untouched,
-input[type="email"].ng-untouched,
-input[type="number"].ng-untouched {
-  border-color: gray !important;
-}
-
-input[type="text"].ng-touched,
-input[type="date"].ng-touched,
-input[type="email"].ng-touched,
-input[type="number"].ng-touched {
-  border-color: red !important;
-}
-
 .text-danger {
-  color: $primary-color !important;
+  color: $primary-color;
 }
 
 mdb-badge {
@@ -128,22 +95,13 @@ mdb-badge {
   }
 }
 
-#navbarCollapse > links > ul > li.nav-item.active > a {
-  padding-left: 6px !important;
-}
-
-#navbarCollapse > links > ul > li.nav-item > a {
-  color: #ed1c24;
-  font-weight: bold !important;
-}
-
 //span.navbar-toggler-icon {
-//  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba(255, 255, 255, 1)" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>') !important;
+//  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path stroke="rgba(255, 255, 255, 1)" stroke-width="4" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/></svg>');
 //}
 
 nav {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .text-small {
@@ -154,49 +112,17 @@ nav {
 }
 
 .text-black {
-  color: #000 !important;
+  color: #000;
 }
 
 .text-pink {
-  color: #ea0a3f !important;
-}
-
-::-webkit-input-placeholder {
-  /* WebKit, Blink, Edge */
-  color: #ccc !important;
-}
-
-:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: #ccc !important;
-  opacity: 1;
-}
-
-::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: #ccc !important;
-  opacity: 1;
-}
-
-:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #ccc !important;
-}
-
-::-ms-input-placeholder {
-  /* Microsoft Edge */
-  color: #ccc !important;
-}
-
-::placeholder {
-  /* Most modern browsers support this now. */
-  color: #ccc !important;
+  color: #ea0a3f;
 }
 
 .listview {
   .form-row {
     .modal-btns {
-      height: auto !important;
+      height: auto;
       margin: 0;
 
       .grid-price-widget {
@@ -226,7 +152,7 @@ nav {
 @media screen and (max-width: 991px) {
   nav {
     .container {
-      flex-direction: row-reverse !important;
+      flex-direction: row-reverse;
     }
   }
 }
@@ -234,13 +160,13 @@ nav {
 @media screen and (max-width: 768px) {
   .gridview {
     .modal-btns {
-      width: 160px !important;
+      width: 160px;
     }
   }
 }
 
 .swiper-container {
-  border-radius: 8px !important;
+  border-radius: 8px;
 }
 
 .fixed-continue {
@@ -265,27 +191,27 @@ nav {
     apx-chart > div {
       min-height: 300px;
       .apexcharts-canvas {
-        height: 300px !important;
+        height: 300px;
       }
     }
   }
 }
 
 .apexcharts-grid {
-  display: none !important;
+  display: none;
 }
 
 .apexcharts-xaxis {
-  /*  display: none !important;*/
+  /*  display: none;*/
 }
 
 .single-email-row .action-area .sebm-google-map-container {
-  width: 90px !important;
-  height: 90px !important;
+  width: 90px;
+  height: 90px;
 }
 
 .single-email-row .progress {
-  width: 100px !important;
+  width: 100px;
 }
 
 .batch-page app-address-input:not(:first-of-type) .title {

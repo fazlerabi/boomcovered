@@ -7,13 +7,16 @@
           <div *ngIf="!showFirst" class="d-flex">
             <img src="../../assets/images/SVG/home.png" />
             <div>
-              <h1 class="jumbo-h1 pt-5">Simple Insurance</h1>
+              <h1 class="jumbo-h1 pt-5">Simple Home Insurance</h1>
               <h4 class="text-muted w-75 ml-auto mr-auto">Compare & Purchase your policy online in 3 minutes.</h4>
+              <button (click)="clickBegin()" *ngIf="!showFirst" id="beginBtn" class="beginBtn mt-5">
+                begin
+                <i class="fa fa-arrow-right ml-2"></i>
+              </button>
             </div>
           </div>
           <h1 class="jumbo-h3 pt-5 mt-5" *ngIf="showFirst">Please enter your address to insure!</h1>
         </div>
-        <img src="../../assets/images/SVG/beginBtn.png" (click)="clickBegin()" *ngIf="!showFirst" id="beginBtn" />
         <div class="d-none" id="address_div">
           <div cass="w-100">
             <div class="p-0">
