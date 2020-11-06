@@ -235,12 +235,6 @@
               height: 50px;
               margin: 0 auto;
             }
-            // agm-map {
-            //   width: 81px;
-            //   height: 81px;
-            //   border-radius: 50%;
-            //   margin: auto;
-            // }
 
             .loading-img-wrapper {
               display: flex;
@@ -251,22 +245,6 @@
               }
             }
           }
-
-          // .progress-container {
-          //   width: 150px;
-          //   margin-left: 200px;
-          // }
-
-          // .progress-container-zillow {
-          //   width: 150px;
-          //   margin-left: 35px;
-          // }
-
-          // .loading-check {
-          //   color: #4caf50;
-          //   margin-top: 24px;
-          //   margin-left: 175px;
-          // }
         }
       }
 
@@ -410,64 +388,6 @@
     }
   }
 
-  @media screen and (max-width: 560px) {
-    .swipeDiv {
-      width: 400px;
-      margin: 0 auto;
-
-      swiper {
-        width: 400px;
-      }
-    }
-
-    .detailsContainer {
-      width: 400px;
-
-      .addressTxt {
-        font-size: 0.8rem;
-      }
-      .badge-pill {
-        padding: 3px;
-      }
-    }
-  }
-
-  @media screen and (max-width: 441px) {
-    .swipeDiv {
-      width: 350px;
-
-      swiper {
-        width: 350px;
-      }
-    }
-
-    .detailsContainer {
-      width: 350px;
-
-      .addressTxt {
-        font-size: 0.75rem;
-      }
-    }
-  }
-
-  @media screen and (max-width: 400px) {
-    .addressTxt {
-      font-size: 0.8rem;
-    }
-
-    .swipeDiv {
-      width: 290px;
-
-      swiper {
-        width: 290px;
-      }
-    }
-
-    .detailsContainer {
-      width: 290px;
-    }
-  }
-
   #nextBtn {
     border-radius: 10px;
     background-color: $primary-color;
@@ -485,7 +405,8 @@
 
     .carriers-gif {
       margin: 0 auto auto auto;
-      width: 700px;
+      max-width: 700px;
+      width: 100%;
     }
   }
 
@@ -528,6 +449,14 @@
       }
     }
   }
+
+  .section2-curved-svg {
+    margin-top: -13rem;
+
+    @media only screen and (max-width: 768px) {
+      margin-top: -4rem;
+    }
+  }
 }
 
 .section-background1 {
@@ -540,38 +469,7 @@
     }
 
     .swipeAnimation-gif {
-      width: 600px;
-    }
-
-    @media screen and (max-width: 620px) {
-      .swipeAnimation-gif {
-        width: 550px;
-      }
-    }
-    @media screen and (max-width: 600px) {
-      .swipeAnimation-gif {
-        width: 500px;
-      }
-    }
-    @media screen and (max-width: 560px) {
-      .swipeAnimation-gif {
-        width: 450px;
-      }
-    }
-    @media screen and (max-width: 500px) {
-      .swipeAnimation-gif {
-        width: 400px;
-      }
-    }
-    @media screen and (max-width: 425px) {
-      .swipeAnimation-gif {
-        width: 350px;
-      }
-    }
-    @media screen and (max-width: 368px) {
-      .swipeAnimation-gif {
-        width: 300px;
-      }
+      max-width: 600px;
     }
   }
 }
@@ -589,15 +487,9 @@
       padding-bottom: 80px;
     }
 
-    @media screen and (max-width: 475px) {
+    @media screen and (max-width: 768px) {
       .dinosaur-img {
         width: 195px;
-      }
-    }
-    @media screen and (max-width: 368px) {
-      .dinosaur-img {
-        width: 170px;
-        padding-bottom: 30px;
       }
     }
   }
@@ -615,69 +507,16 @@
       align-items: center;
 
       .appStore-img {
-        width: 180px;
+        max-width: 180px;
         margin-left: 10px;
       }
 
-      @media screen and (max-width: 560px) {
+      @media screen and (max-width: 768px) {
         .swypeCov-img {
-          width: 325px;
+          max-width: 325px;
         }
         .appStore-img {
-          width: 160px;
-        }
-      }
-      @media screen and (max-width: 520px) {
-        .swypeCov-img {
-          width: 325px;
-        }
-        .appStore-img {
-          width: 140px;
-        }
-      }
-      @media screen and (max-width: 500px) {
-        .swypeCov-img {
-          width: 305px;
-        }
-        .appStore-img {
-          width: 120px;
-        }
-      }
-      @media screen and (max-width: 470px) {
-        .swypeCov-img {
-          width: 295px;
-        }
-        .appStore-img {
-          margin: 0;
-        }
-      }
-      @media screen and (max-width: 435px) {
-        .swypeCov-img {
-          width: 270px;
-        }
-      }
-      @media screen and (max-width: 415px) {
-        .swypeCov-img {
-          width: 230px;
-        }
-        .appStore-img {
-          width: 110px;
-        }
-      }
-      @media screen and (max-width: 415px) {
-        .swypeCov-img {
-          width: 210px;
-        }
-        .appStore-img {
-          width: 100px;
-        }
-      }
-      @media screen and (max-width: 339px) {
-        .swypeCov-img {
-          width: 190px;
-        }
-        .appStore-img {
-          width: 100px;
+          max-width: 160px;
         }
       }
     }
@@ -724,7 +563,7 @@
   }
 
   img {
-    height: 4.2rem;
+    width: 4rem;
     margin-top: 3.8rem;
   }
 

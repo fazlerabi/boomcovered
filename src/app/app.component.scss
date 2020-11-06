@@ -1,7 +1,7 @@
 @import "../assets/styles/variables";
 
 .navbar {
-  padding-right: 28px !important;
+  padding-right: 28px;
 }
 
 .phone-area {
@@ -31,7 +31,7 @@ mdb-navbar-brand {
   }
 
   .arrow-btn:hover {
-    color: #fff !important;
+    color: #fff;
   }
 }
 
@@ -39,22 +39,20 @@ mdb-navbar-brand {
   border-left: 1px solid #cccccc;
   position: absolute;
   right: 0;
-}
 
-#gif_div a img {
-  width: 3rem;
-  margin-left: 20px;
+  a img {
+    width: 3rem;
+    margin-left: 20px;
+  }
 }
 
 ul.navbar-nav {
   li:not([class^="quoteBtn"]) {
-    margin-top: 5px !important;
+    margin-top: 5px;
   }
 
   .nav-item.active > .nav-link {
-    padding-left: 0.1rem !important;
-    padding-right: 0.1rem !important;
-    background-color: transparent !important;
+    background-color: transparent;
   }
 
   .nav-item {
@@ -63,10 +61,10 @@ ul.navbar-nav {
     display: flex;
 
     .nav-link {
-      color: #000 !important;
+      color: #000;
     }
     .nav-link:visited {
-      color: #000 !important;
+      color: #000;
     }
 
     .nav-link:after {
@@ -94,26 +92,28 @@ ul.navbar-nav {
     }
 
     button {
-      border-radius: 10px !important;
-      padding: 6px 30px !important;
-      font-size: 15px !important;
+      border-radius: 10px;
+      padding: 6px 30px;
+      font-size: 15px;
     }
   }
 }
 
 body {
-  font-family: $primary-font !important;
+  font-family: $primary-font;
 }
 
 footer {
-  color: #fff !important;
+  color: #fff;
+  margin-top: -1px;
+  background-color: $dark-blue;
 
-  a {
-    color: #fff !important;
+  .bg-ground {
+    background-color: $dark-blue;
   }
 
-  a:visited {
-    color: #fff !important;
+  a {
+    color: #fff;
   }
 
   // Keeps the hover animation width the same width as the text
@@ -123,80 +123,44 @@ footer {
     align-items: center;
   }
 
-  .footer-links:after {
-    content: "";
-    width: 0px;
-    height: 2px;
-    display: block;
-    background-color: $primary-color;
-    transition: 300ms;
-    color: $primary-color;
-  }
+  .footer-links {
+    background-color: $dark-blue;
 
-  .footer-links:hover:after {
-    width: 100%;
-  }
-
-  .info-links-container {
-    margin: 45px 30px auto auto !important;
-  }
-
-  @media screen and(max-width: 768px) {
-    .info-links-container {
-      margin: 0 auto 45px auto !important;
-    }
-  }
-
-  .carriers-container {
-    margin: auto !important;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .carrier-links-outer-container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: top;
-      min-width: 255px;
-      margin-top: 5px;
-
-      h6 {
-        position: absolute;
-        top: 0;
+    .footer-link {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+  
+      &:after {
+        content: "";
+        width: 0px;
+        height: 2px;
+        display: block;
+        background-color: $primary-color;
+        transition: 300ms;
+        color: $primary-color;
       }
-
-      .carrier-links-inner-container1 {
-        margin-right: 30px;
+  
+      &:hover:after {
+        width: 100%;
       }
-      .carrier-links-inner-container2 {
-        margin-left: 30px;
-      }
-    }
-  }
-
-  @media screen and(max-width: 768px) {
-    .carriers-container {
-      margin-bottom: 45px !important;
-      width: 100% !important;
     }
   }
 
   .footer-img {
-    margin: auto;
+    border-radius: 50%;
   }
 }
 
 .social-links-outer-container {
-  display: flex !important;
-  flex-direction: column !important;
+  display: flex;
+  flex-direction: column;
   justify-content: top;
   align-items: center;
   margin: 0 auto;
   .social-links-inner-container {
-    display: flex !important;
-    flex-direction: row !important;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 
@@ -208,14 +172,14 @@ footer {
 
 @media screen and(max-width: 431px) {
   .social-links-outer-container {
-    width: 100% !important;
-    margin-bottom: 45px !important;
+    width: 100%;
+    margin-bottom: 45px;
   }
 }
 
 .copyright-txt {
-  margin: 0 !important;
-  padding: 25px 10px !important;
+  margin: 0;
+  padding: 25px 10px;
 
   span {
     display: inline-flex;
@@ -247,18 +211,18 @@ footer {
 
 @media screen and (max-width: 991px) {
   #navQuoteBtn {
-    float: left !important;
-    padding-left: 7px !important;
+    float: left;
+    padding-left: 7px;
   }
   nav {
-    background-color: white !important;
+    background-color: white;
   }
 }
 
 @media screen and (max-width: 768px) {
   .site-logo {
     img {
-      width: 3rem !important;
+      width: 3rem;
       height: 36px;
       object-fit: contain;
       padding-top: 3px;
