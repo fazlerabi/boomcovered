@@ -4,15 +4,15 @@
 </div>
 <div class="container animated slideInLeft">
   <div class="row">
-    <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 mr-0 ml-auto pt-5">
+    <div class="offset-md-2 offset-1 col-md-8 col-sm-10 col-xs-10 pt-5">
       <div class="row">
         <div class="col-10 mr-auto ml-auto">
           <div class="address-header">
-            <span class="address-text font-weight-bold" style="font-family: 'Arial Rounded MT Bold'">
+            <span class="address-text font-weight-bold h3">
               {{ commonService.getAddressData()["address"] }} {{ commonService.getAddressData()["locality"] }}, {{ commonService.getAddressData()["administrative_area_level_1"] }}, {{ commonService.getAddressData()["postal_code"] }}</span
             >
           </div>
-          <div class="pt-2" style="text-align: center">coverage for your home</div>
+          <div class="pt-2 text-center">coverage for your home</div>
           <div class="d-flex justify-content-center pt-4 mb-3">
             <div class="rounded-circle rounded-circle-pricing pricing-contents" (click)="togglePrice()">
               <div class="col-12 pt-3">
@@ -68,9 +68,9 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!commonService.isMobileMode()" class="col-2 align-self-center" id="nextBtn">
+    <div class="d-md-flex d-none col-2 align-self-center" id="nextBtn">
       <div class="d-flex justify-content-end">
-        <div class="rounded-circle rounded-circle-next next-contents" (click)="goToThreeStep()" style="width: 112px; height: 112px">
+        <div class="rounded-circle rounded-circle-next next-contents" (click)="goToThreeStep()">
           <div class="col-12 pb-1">
             <div>
               <i class="fas fa-2x fa-long-arrow-alt-right"></i>

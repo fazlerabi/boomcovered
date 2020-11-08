@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/styles/variables";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/font-awesome/css/font-awesome.css";
 
 html {
@@ -41,6 +42,10 @@ header {
 
 .main {
   min-height: calc(100vh - 290px);
+
+  @include mq($until: tablet) {
+    min-height: 100vh;
+  }
 }
 
 button {
@@ -66,7 +71,7 @@ input {
   border-radius: 10px;
 }
 
-@media screen and (max-width: 767px) {
+@include mq($until: tablet) {
   .form-group {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -89,7 +94,7 @@ mdb-badge {
   background-color: #fff;
 }
 
-@media only screen and (max-width: 768px) {
+@include mq($until: tablet) {
   .navbar {
     background-color: #fff;
   }
@@ -149,7 +154,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 991px) {
+@include mq($until: tablet) {
   nav {
     .container {
       flex-direction: row-reverse;
@@ -157,7 +162,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 768px) {
+@include mq($until: tablet) {
   .gridview {
     .modal-btns {
       width: 160px;
@@ -183,7 +188,7 @@ nav {
   }*/
 }
 
-@media only screen and (max-width: 768px) {
+@include mq($until: tablet) {
   .fixed-continue {
     display: block;
   }
@@ -221,4 +226,8 @@ nav {
 ngb-modal-window {
   margin-top: 50px;
   padding-right: 11px;
+}
+
+.navbar-toggler {
+  display: none;
 }

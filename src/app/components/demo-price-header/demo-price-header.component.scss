@@ -16,7 +16,7 @@ $font-family: Roboto;
     height: 100%;
     opacity: 0.4;
     margin-top: -40rem;
-    background: linear-gradient(180deg, #fafafa 50%, #fdfdfd 100%);
+    background: linear-gradient(180deg, $white 50%, $white, 100%);
   }
 }
 
@@ -30,65 +30,13 @@ $font-family: Roboto;
   left: 0;
   right: 0;
 
-  #nextBtn {
-    left: 300px;
-  }
-
-  @media screen and (max-width: 1800px) {
-    #nextBtn {
-      left: 200px;
-    }
-  }
-
-  @media screen and (max-width: 1600px) {
-    #nextBtn {
-      left: 150px;
-    }
-  }
-
-  @media screen and (max-width: 1500px) {
-    #nextBtn {
-      left: 120px;
-    }
-  }
-
-  @media screen and (max-width: 1428px) {
-    #nextBtn {
-      left: 100px;
-    }
-  }
-
-  @media screen and (max-width: 1378px) {
-    #nextBtn {
-      left: 80px;
-    }
-  }
-
-  @media screen and (max-width: 1328px) {
-    #nextBtn {
-      left: 50px;
-    }
-  }
-
-  @media screen and (max-width: 1250px) {
-    #nextBtn {
-      left: 20px;
-    }
-  }
-
-  @media screen and (max-width: 998px) {
-    #nextBtn {
-      left: 0px;
-    }
-  }
-
   .loader {
-    @media screen and (max-width: $mobile-width) {
-      padding-top: 50px !important;
+    @include mq($until: tablet) {
+      padding-top: 50px;
     }
 
     .preloader-wrapper .spinner-red-only {
-      border-color: #db4437 !important;
+      border-color: $primary-red;
     }
   }
 
@@ -101,7 +49,7 @@ $font-family: Roboto;
     }
 
     .cost {
-      color: #ee3722;
+      color: $primary-red;
       font-size: 20px;
     }
 
@@ -173,7 +121,7 @@ $font-family: Roboto;
     .description {
       font-size: 13px;
       margin-top: 15px;
-      color: #7f7f7f;
+      color: $gray;
     }
   }
 
@@ -188,7 +136,7 @@ $font-family: Roboto;
       object-fit: contain;
     }
 
-    @media all and (max-width: $mobile-width) {
+    @include mq($until: tablet) {
       .progressive {
         height: 20px;
       }
@@ -226,19 +174,19 @@ $font-family: Roboto;
   }
 }
 .address-header {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid $gray;
   font-size: 20px;
-  color: #5a5a5a;
+  color: $gray;
   text-align: center;
   margin: 0 auto;
   width: 100%;
 }
 
-@media screen and (max-width: 600px) {
+@include mq($until: tablet) {
   .address-header {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $gray;
     font-size: 14px;
-    color: #5a5a5a;
+    color: $gray;
     text-align: center;
     margin: 0 auto;
     width: 100%;
@@ -248,8 +196,8 @@ $font-family: Roboto;
 .rounded-circle-pricing {
   width: 12rem;
   height: 12rem;
-  background-color: #4265e4 !important;
-  color: white;
+  background-color: $primary-blue;
+  color: $white;
 }
 
 // #per_year:hover {
@@ -258,19 +206,19 @@ $font-family: Roboto;
 // }
 
 .rounded-circle-next {
-  width: 7rem !important;
-  height: 7rem !important;
-  background-color: #fafafa !important;
-  color: #4265e4;
+  width: 7rem;
+  height: 7rem;
+  background-color: $white;
+  color: $primary-blue;
   border: 1px solid;
 }
 
-@media screen and (max-width: 993px) {
+@include mq($until: tablet) {
   .rounded-circle-next {
-    width: 7rem !important;
-    height: 6rem !important;
-    background-color: #fafafa !important;
-    color: #4265e4;
+    width: 7rem;
+    height: 6rem;
+    background-color: $white;
+    color: $primary-blue;
     border: 1px solid;
   }
 }
@@ -297,25 +245,25 @@ $font-family: Roboto;
 }
 
 :host ::ng-deep .btn-light {
-  color: #4265e4 !important;
+  color: $primary-blue;
   border: 1px solid;
-  background-color: #fff !important;
-  border-color: #4265e4 !important;
+  background-color: $white;
+  border-color: $primary-blue;
   font-weight: 500;
   text-transform: lowercase;
 }
 
 :host ::ng-deep .rounded-circle-next {
-  color: #4265e4 !important;
-  background-color: #fff !important;
-  border-color: #4265e4 !important;
+  color: $primary-blue;
+  background-color: $white;
+  border-color: $primary-blue;
   font-weight: 500;
 }
 
 :host ::ng-deep .rounded-circle-next:hover {
-  color: #fff !important;
-  background-color: #4265e4 !important;
-  border-color: #fff !important;
+  color: $white;
+  background-color: $primary-blue;
+  border-color: $white;
 }
 
 #price_table {
@@ -325,26 +273,10 @@ $font-family: Roboto;
     font-weight: 400;
   }
 
-  @media screen and (max-width: 1200px) {
+  @include mq($until: tablet) {
     tr > td {
       padding-left: 80px;
       font-size: 16px;
-      font-weight: 400;
-    }
-  }
-
-  @media screen and (max-width: 993px) {
-    tr > td {
-      padding-left: 40px !important;
-      font-size: 14px;
-      font-weight: 400;
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    tr > td {
-      padding-left: 20px !important;
-      font-size: 14px;
       font-weight: 400;
     }
   }
@@ -352,7 +284,7 @@ $font-family: Roboto;
 
 #price_div {
   border-radius: 5%;
-  border: 0.5px solid #c7c7c7;
+  border: 0.5px solid $white;
   position: absolute;
   z-index: 1;
   left: calc((100% - 474px) / 2);
@@ -361,24 +293,12 @@ $font-family: Roboto;
     width: 30%;
   }
 
-  @media screen and (max-width: 1200px) {
+  @include mq($until: tablet) {
     left: calc((100% - 399px) / 2);
-  }
-
-  @media screen and (max-width: 993px) {
-    left: calc((100% - 295px) / 2);
-  }
-
-  @media screen and (max-width: 500px) {
-    left: calc((100% - 342px) / 2);
-    width: 100% !important;
-    img {
-      width: 60%;
-    }
   }
 }
 
-@media screen and (max-width: 600px) {
+@include mq($until: tablet) {
   #pdf_btn {
     display: none;
   }

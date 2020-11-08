@@ -28,10 +28,10 @@ mdb-navbar-brand {
 
   .arrow-btn {
     background-color: $primary-color;
-  }
 
-  .arrow-btn:hover {
-    color: #fff;
+    &:hover {
+      color: $white;
+    }
   }
 }
 
@@ -219,13 +219,10 @@ footer {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .site-logo {
-    img {
-      width: 3rem;
-      height: 36px;
-      object-fit: contain;
-      padding-top: 3px;
-    }
+.site-logo {
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
   }
 }

@@ -1,10 +1,10 @@
 <!-- Image and text -->
 <mdb-navbar SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
-  <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()" class="d-none mobileFoward mr-auto">
-    <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
+  <div class="d-md-none d-flex mobileFoward mr-auto">
+    <img (click)="moveTab(false)" src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
   </div>
-  <a href="/" class="site-logo"><img style="width: 3rem" src="../../assets/images/SVG/boom-icon.svg" /></a>
-  <links *ngIf="!commonService.isMobileMode()" class="pr-5">
+  <a href="/" class="site-logo"><img src="../../assets/images/SVG/boom-icon.svg" /></a>
+  <links class="pr-5 d-md-flex d-none">
     <ul class="navbar-nav ml-auto">
 
       <li class="nav-item" routerLinkActive="active">
@@ -15,11 +15,11 @@
       </li>
     </ul>
   </links>
-  <div id="gif_div" class="mr-2">
+  <div id="gif_div" class="d-none d-md-flex mr-2">
     <a href="/" class="site-logo"><img src="../../assets/images/SVG/ezgif.com-crop.gif" /></a>
   </div>
-  <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()" class="d-none mobileFoward ml-auto" style="padding-right: 5px">
-    <img src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />
+  <div class="d-flex d-md-none mobileFoward ml-auto pr-1">
+    <img (click)="moveTab(true)" src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />
   </div>
 </mdb-navbar>
 

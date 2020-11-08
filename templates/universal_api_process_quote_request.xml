@@ -13,7 +13,7 @@
         <ns:AdditionalInterests>
           
         </ns:AdditionalInterests>
-        <ns:AddressLine1>247 Cohasset Lane</ns:AddressLine1>
+        <ns:AddressLine1>28 Abel Place</ns:AddressLine1>
         <ns:Agriculture>false</ns:Agriculture>
         <ns:AnyAdditionalInterests>false
         </ns:AnyAdditionalInterests>
@@ -21,10 +21,10 @@
         <ns:AnyScheduledItems>true</ns:AnyScheduledItems>
         <ns:Applicants>
           <ns:Contact>
-            <ns:AddressLine1>247 Cohasset Lane</ns:AddressLine1>
+            <ns:AddressLine1>28 Abel Place</ns:AddressLine1>
             <ns:BusinessEntity>false</ns:BusinessEntity>
             <ns:BusinessName></ns:BusinessName>
-            <ns:City>West Chester</ns:City>
+            <ns:City>Media</ns:City>
             <ns:ContactTypeId>4</ns:ContactTypeId>
             <ns:Country>US</ns:Country>
             <ns:DateOfBirth>1990-02-19</ns:DateOfBirth>
@@ -35,7 +35,7 @@
             <ns:PhoneNumber>610-864-1155</ns:PhoneNumber>
             <ns:ReferenceNumber>0</ns:ReferenceNumber>
             <ns:State>PA</ns:State>
-            <ns:ZipCode>19380</ns:ZipCode>
+            <ns:ZipCode>19063</ns:ZipCode>
           </ns:Contact>
         </ns:Applicants>
         <ns:Arson>false</ns:Arson>
@@ -47,25 +47,23 @@
         <ns:CheckingAccountHolderName>?</ns:CheckingAccountHolderName>
         <ns:CheckingAccountNumber>?</ns:CheckingAccountNumber>
         <ns:CheckingRoutingNumber>?</ns:CheckingRoutingNumber>
-        <ns:City>West Chester</ns:City>
+        <ns:City>Media</ns:City>
         <ns:ConfirmAcknowledgeBinding>false</ns:ConfirmAcknowledgeBinding>
         <ns:ConfirmEmail>demo@boomcovered.com</ns:ConfirmEmail>
-        <ns:CoverageA
-        xsi:nil="true"/>
+        <ns:CoverageA>25000</ns:CoverageA>
         <ns:CoverageB xsi:nil="true"/>
-        <ns:CoverageC xsi:nil="true"/>
-        
-        <ns:CoverageD xsi:nil="true"/>
+        <ns:CoverageC>20000</ns:CoverageC>
+        <ns:CoverageD>8000</ns:CoverageD>
         <ns:CoverageE>300000</ns:CoverageE>
         <ns:CoverageF>3000</ns:CoverageF>
-        <ns:CurrentPolicyExpiration>2020-10-29</ns:CurrentPolicyExpiration>
+        <ns:CurrentPolicyExpiration>2020-11-08</ns:CurrentPolicyExpiration>
         <ns:CurrentlyInsured>true</ns:CurrentlyInsured>
-        <ns:DateOfPurchaseOrLease>2020-10-29</ns:DateOfPurchaseOrLease>
+        <ns:DateOfPurchaseOrLease>2020-11-08</ns:DateOfPurchaseOrLease>
         <ns:DayCare>false</ns:DayCare>
         <ns:DogTypes>
         </ns:DogTypes>
         <ns:Dogs>false</ns:Dogs>
-        <ns:EffectiveDate>2020-10-29</ns:EffectiveDate>
+        <ns:EffectiveDate>2020-11-08</ns:EffectiveDate>
         <ns:ElectricalUpdateYear>2020</ns:ElectricalUpdateYear>
         <ns:Email>demo@boomcovered.com</ns:Email>
         <ns:Felony>false</ns:Felony>
@@ -75,7 +73,7 @@
         <ns:Have1802>true</ns:Have1802>
         <ns:HeatingUpdateYear>2020</ns:HeatingUpdateYear>
         <ns:HurricaneDeductible>
-          2
+          1000
         </ns:HurricaneDeductible>
         <ns:Id>0</ns:Id>
         <ns:InsuranceFraud>false</ns:InsuranceFraud>
@@ -83,7 +81,7 @@
         <ns:KnobTube>false</ns:KnobTube>
         <ns:LastName>Hughes</ns:LastName>
         <ns:LawsuitInsurance>false</ns:LawsuitInsurance>
-        <ns:LivingArea>2011</ns:LivingArea>
+        <ns:LivingArea>1460</ns:LivingArea>
         <ns:LivingUnits>1</ns:LivingUnits>
         <ns:Locked>false</ns:Locked>
         <ns:Losses>
@@ -113,7 +111,7 @@
         <ns:PoolFence>false</ns:PoolFence>
         <ns:PortableHeat>false</ns:PortableHeat>
         <ns:Premium xsi:nil="true"/>
-        <ns:ProductFamily>Homeowners</ns:ProductFamily>
+        <ns:ProductFamily>Condo</ns:ProductFamily>
         <ns:ProductId>1</ns:ProductId>
         <ns:ProtectionClass>0</ns:ProtectionClass>
         <ns:ReplacementCost xsi:nil="true"/>
@@ -140,16 +138,16 @@
         <ns:WPDFactor>211111111</ns:WPDFactor>
         <ns:WithWind>true</ns:WithWind>
         <ns:Within1000ftOfFireHydrant>true</ns:Within1000ftOfFireHydrant>
-        <ns:YearBuilt>1993</ns:YearBuilt>
-        <ns:ZipCode>19380</ns:ZipCode>
+        <ns:YearBuilt>1980</ns:YearBuilt>
+        <ns:ZipCode>19063</ns:ZipCode>
       </tem:q>
       <tem:properties>
         <arr:string>?</arr:string>
       </tem:properties>
       <tem:t>
-        <ns:IP>77.92.76.179</ns:IP>
+        <ns:IP>4.30.179.98</ns:IP>
         <ns:Message></ns:Message>
-        <ns:TokenGuid>D8F42AF9-4733-4065-936F-055AE2AA98EA</ns:TokenGuid>
+        <ns:TokenGuid>805F8157-78E3-40B7-8AAB-36978FFF286C</ns:TokenGuid>
         <ns:Username>pinnacle</ns:Username>
         <ns:Version>1.0</ns:Version>
       </tem:t>

@@ -164,6 +164,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   moveTab(isForward: boolean) {
+    console.log(isForward);
     this.commonService.sendClickEvent(isForward);
   }
 }
