@@ -1,17 +1,17 @@
 <app-demo-price-header (sendPdf)="downloadPdf($event)" (sendEmail)="sendEmail($event)"></app-demo-price-header>
-<div *ngIf="commonService.isMobileMode()" class="row mt-5" id="mobilenext">
-  <button class="btn btn-primary col-8 mr-auto ml-auto mt-5" (click)="goToThreeStep()">next</button>
+<div class="row mt-5 d-flex d-md-none">
+  <div class="col-8 offset-2">
+    <button class="btn btn-primary mt-2" (click)="goToThreeStep()">next</button>
+  </div>
 </div>
-<div class="container-fluid">
+<div class="container">
   <app-demo-coverage-info></app-demo-coverage-info>
   <div class="row">
-    <div class="row col-lg-8 col-sm-10 col-xs-10 mr-auto ml-auto pb-5">
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-3">
-        <app-demo-gmap></app-demo-gmap>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mt-3">
-        <app-demo-price-info></app-demo-price-info>
-      </div>
+    <div class="col-md-5 offset-md-1 pb-5">
+      <app-demo-gmap></app-demo-gmap>
+    </div>
+    <div class="col-md-5 mt-3">
+      <app-demo-price-info></app-demo-price-info>
     </div>
   </div>
   <app-demo-page-email-modal #sendPdf [showModal]="showModal" [prices]="prices"></app-demo-page-email-modal>
