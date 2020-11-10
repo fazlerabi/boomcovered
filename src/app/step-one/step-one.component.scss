@@ -31,6 +31,10 @@
             transform: translateX(5px);
           }
         }
+
+        &:focus {
+          outline: none;
+        }
       }
 
       .addressDiv {
@@ -532,7 +536,6 @@
   }
 }
 
-
 #jumbo-div {
   text-align: center;
   margin-top: 0;
@@ -646,7 +649,6 @@ h5.addressTxt {
 :host ::ng-deep mdb-progress .progress {
   height: 25px;
 }
-
 
 .white-bg {
   background-color: $white;
