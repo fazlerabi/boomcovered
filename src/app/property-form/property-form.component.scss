@@ -18,11 +18,11 @@
 }
 
 :host ::ng-deep .progress .progress-bar {
-  height: 25px !important;
+  height: 25px;
 }
 
 :host ::ng-deep mdb-progress .progress {
-  height: 15px !important;
+  height: 15px;
 }
 
 .loader {
@@ -34,40 +34,36 @@
   width: 100%;
 }
 
-// .loader{
-//     max-width: 1000px;
-//     margin-left: calc((100% - 1000px) / 2) !important;
-//     font-family: Roboto;
-//     position: absolute;
-//     top: 100px;
-//     z-index: 1020;
-//     margin-left: auto;
-//     margin-right: auto;
-//     left: 0;
-//     right: 0;
-// }
-
 .constructionDiv mdb-badge,
 .basementDiv mdb-badge,
+.exteriorDiv mdb-badge,
 .roofDiv mdb-badge {
-  border: solid 2px #c8c8c8 !important;
+  border: 2px solid #c8c8c8;
 }
 
 mdb-badge {
   padding: 10px;
   min-width: 100px;
-  background-color: #fff !important;
-  color: #000 !important;
+  background-color: $white;
+  color: #000;
   box-shadow: none;
   border-radius: 10px;
 }
 
 .exteriorDiv > mdb-badge {
-  width: 8rem;
-  background-color: #fff !important;
-  color: #000 !important;
+  width: 7rem;
+  background-color: $white;
+  color: #000;
   box-shadow: none;
   border-radius: 10px;
+
+  @include mq($until: tablet) {
+    min-width: auto;
+  }
+
+  .text-dark {
+    white-space: initial;
+  }
 }
 
 .container {
@@ -80,7 +76,7 @@ mdb-badge {
 mdb-badge {
   .btn-icon {
     display: block;
-    width: 30px !important;
+    width: 30px;
     margin: 0 auto 10px;
   }
 }
@@ -90,9 +86,12 @@ mdb-badge {
   margin-top: 2rem;
   max-width: 100%;
   overflow: hidden;
-  border: solid 2px #c8c8c8 !important;
+  border: solid 2px #c8c8c8;
   border-radius: 10px;
-  // min-height: 36rem !important;
+
+  @include mq($until: tablet) {
+    border: none;
+  }
 }
 
 .nav-arrow > img {
@@ -103,42 +102,56 @@ mdb-badge {
 h1,
 h4 {
   text-align: left;
+
+  @include mq($until: tablet) {
+    text-align: center;
+  }
 }
 
 :host ::ng-deep .exteriorDiv mdb-badge > span {
-  margin: 0px !important;
+  margin: 0px;
 }
 
 :host ::ng-deep .exteriorDiv mdb-badge > span > div {
-  margin: 0px !important;
+  margin: 0px;
 }
 
 .exteriorDiv mdb-badge img {
-  width: 100% !important;
+  width: 100%;
 }
 
-.constructionDiv img {
-  width: 6rem !important;
-  height: 75px;
-}
+.constructionDiv {
+  cursor: pointer;
 
-@media screen and (max-width: 560px) {
-  .constructionDiv img {
-    width: 4rem !important;
-    height: 60px;
+  img {
+    width: 6rem;
+    height: 75px;
+
+    @include mq($until: tablet) {
+      width: 4rem;
+      height: 60px;
+    }
   }
 
-  .tab2_form {
-    width: 50%;
-    margin-bottom: 10px;
+  mdb-badge {
+    &:hover {
+      box-shadow: 0 3px 10px #d6d6d6;
+    }
+  }
+
+  @include mq($until: tablet) {
+    .tab2_form {
+      width: 50%;
+      margin-bottom: 10px;
+    }
   }
 }
 
 input[type="text"],
 input[type="number"] {
-  background-clip: padding-box !important;
-  border: 2px solid #5bc0de !important;
-  border-radius: 0.5rem !important;
+  background-clip: padding-box;
+  border: 2px solid #5bc0de;
+  border-radius: 0.5rem;
 }
 
 .carousel-items.exteriorDiv {
@@ -146,17 +159,24 @@ input[type="number"] {
 }
 
 mdb-badge.badge-warning {
-  background-color: $primary-color !important;
-  color: white !important;
+  background-color: $primary-color;
+  color: white;
 }
 
 /*style for carousel start*/
 .carousel {
   position: relative;
   height: 100%;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 0.5em;
+
+  .prev {
+    position: absolute;
+    left: -2rem;
+  }
+
+  .next {
+    position: absolute;
+    right: -2rem;
+  }
 }
 
 .slide {
@@ -280,7 +300,13 @@ mdb-badge.badge-warning {
 
 @media screen and (max-width: 600px) {
   #inputData {
-    flex: 0 0 92% !important;
-    width: 100% !important;
+    flex: 0 0 92%;
+    width: 100%;
+  }
+}
+
+.tab-2 {
+  .form-row {
+    margin: 0 20px;
   }
 }
