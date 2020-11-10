@@ -57,12 +57,15 @@
         </div>
       </div>
 
-      <div class="pt-3 d-flex">
-        <div class="w-25 ml-auto button-wrap bg-white d-none d-md-flex">
-          <button class="w-100 my-0 btn btn-outline-primary font-weight-bold" id="pdf_btn" (click)="download()">download</button>
+      <div class="w-50 row d-flex mx-auto justify-content-between">
+        <div class="col-md-5 button-wrap bg-white d-none d-md-flex px-0">
+          <button class="w-100 my-0 btn btn-outline-primary font-weight-bold mx-0" id="pdf_btn" (click)="download()">download</button>
         </div>
-        <div class="w-25 d-flex mr-auto ml-md-0 ml-auto button-wrap bg-white">
-          <button class="w-100 my-0 btn btn-outline-primary font-weight-bold" (click)="send()">email</button>
+        <div class="col-md-5 d-flex ml-md-0 ml-auto button-wrap bg-white px-0">
+          <button class="w-100 my-0 btn btn-outline-primary font-weight-bold mx-0" (click)="send()">email</button>
+        </div>
+        <div class="col-md-5 d-flex ml-md-0 ml-auto button-wrap bg-white px-0 d-flex d-md-none mt-3">
+          <button class="w-100 my-0 btn btn-primary font-weight-bold mx-0" (click)="send()">next</button>
         </div>
       </div>
     </div>

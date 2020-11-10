@@ -43,8 +43,16 @@ $font-family: Roboto;
   .button-wrap {
     border-radius: 1rem;
 
+    @include mq($until: tablet) {
+      border-radius: 0;
+    }
+
     button {
       border-radius: 1rem;
+
+      @include mq($until: tablet) {
+        border-radius: 0;
+      }
     }
   }
 
