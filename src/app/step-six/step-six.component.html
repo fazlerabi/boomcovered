@@ -97,7 +97,6 @@
       <div class="row" [ngClass]="viewmode == 'Grid' ? 'gridview' : 'listview'">
         <ng-container *ngFor="let insurance of filteredInsurances">
           <app-price-widget
-            style="width: 100px"
             *ngIf="insuranceImgs[insurance.type].length > 0"
             [className]="viewmode == 'Grid' ? gridpriceWidgetCommonClass : listpriceWidgetCommonClass"
             [price]="insurance.price"

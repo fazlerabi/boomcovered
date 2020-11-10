@@ -1,10 +1,9 @@
-@import '../../../assets/styles/variables';
+@import "../../../assets/styles/variables";
 .modal-btns {
   width: 100%;
-  height: 174px !important;
-  color: #000 !important;
+  color: #000;
 
-  border-radius:5px !important;
+  border-radius: 5px;
   box-shadow: none;
 
   .img-wrapper {
@@ -20,7 +19,7 @@
       width: 140px;
     }
     .liberty-mutual {
-      width: 140px !important;
+      width: 140px;
       margin-bottom: 16px;
     }
   }
@@ -56,30 +55,32 @@
 }
 
 .modal-btns.btn:hover {
-    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+  .card {
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
     outline: 0;
+  }
 }
 
 @media screen and (max-width: 1200px) {
-  .modal-btns{
-    height: 180px !important;
+  .modal-btns {
+    height: 180px;
 
     .img-wrapper {
       .liberty-mutual {
-        width: 120px !important;
+        width: 120px;
       }
     }
     .price-num-container {
       h3 {
-        font-size: 1.5rem !important;
+        font-size: 1.5rem;
       }
     }
   }
 }
 
 @media screen and (max-width: 768px) {
-  .modal-btns{
-    height: 160px !important;
+  .modal-btns {
+    height: 160px;
   }
 }
 
@@ -87,7 +88,7 @@
   .modal-btns {
     .price-num-container {
       h3 {
-        font-size: 1.2rem !important;
+        font-size: 1.2rem;
       }
     }
   }
@@ -98,10 +99,28 @@
   flex: 1 1 auto;
 }
 
-:host ::ng-deep .card-body{
-  padding:0.23rem !important
+:host ::ng-deep .card-body {
+  padding: 1rem 2rem 1rem 0;
+  font-weight: bold;
+  background: $lightgray;
+
+  @include mq($until: tablet) {
+    padding: 0.5rem 1rem 0.5rem 0;
+  }
 }
 
-:host ::ng-deep .card{
-  border: none !important;
+:host ::ng-deep .card {
+  border: none;
+  border-radius: 1.5rem;
+  overflow: hidden;
+
+  @include mq($until: tablet) {
+    border-radius: 0.5rem;
+  }
+}
+
+.price-num-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

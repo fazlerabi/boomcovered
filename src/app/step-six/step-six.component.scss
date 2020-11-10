@@ -1,10 +1,10 @@
-@import '../../assets/styles/variables';
+@import "../../assets/styles/variables";
 
 .chatWidget {
   margin-top: 50px;
 
   .form-row {
-    min-height: auto !important;
+    min-height: auto;
     img {
       width: 40%;
       height: 40%;
@@ -18,10 +18,10 @@
 }
 
 .send-btn {
-  background-color: $primary-color !important;
+  background-color: $primary-color;
 
   i {
-    color: #fff !important;
+    color: #fff;
   }
 }
 
@@ -30,8 +30,8 @@
   width: 168px;
   display: inline-block;
   font-size: 15px;
-  background: $primary-color !important;
-  border-radius: 5px !important;
+  background: $primary-color;
+  border-radius: 5px;
   color: #fff;
 }
 @media screen and (max-width: 780px) {
@@ -40,7 +40,7 @@
   }
 
   .prices-container {
-    margin-top: 20px !important;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,9 +51,9 @@
   }
 }
 
-@media screen and  (max-width: 450px) {
+@media screen and (max-width: 450px) {
   .prices-container {
-    margin-top: 10px !important;
+    margin-top: 10px;
   }
 }
 
@@ -78,7 +78,7 @@
 
     i {
       margin: 0 auto;
-      border: 3px dotted #F43C58 !important;
+      border: 3px dotted #f43c58;
       padding: 30px;
       border-radius: 10px;
     }
@@ -92,9 +92,13 @@
 }
 
 mdb-badge {
-  background-color: #ffff!important;
-  color: black!important;
-  img{
-    width: 3rem!important;
+  background-color: $lightgray;
+  color: $primary-secondary-color !important;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 0.5rem;
+
+  img {
+    width: 1.5rem;
   }
 }
