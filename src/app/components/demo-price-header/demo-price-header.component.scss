@@ -108,6 +108,7 @@ $font-family: Roboto;
     border-radius: 50%;
     width: 7rem;
     height: 7rem;
+    margin: 0;
   }
 }
 .address-header {
@@ -209,4 +210,10 @@ $font-family: Roboto;
 #exit_popup:hover {
   font-size: 17px;
   cursor: pointer;
+}
+
+.button-groups {
+  @include mq($from: desktop) {
+    width: 60%;
+  }
 }

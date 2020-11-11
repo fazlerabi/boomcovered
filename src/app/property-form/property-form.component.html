@@ -8,8 +8,8 @@
 </div>
 <div class="loader">
   <div class="row justify-content-center">
-    <div class="col-1 align-self-center float-left nav-arrow" style="transform: rotate(180deg)" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode()">
-      <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto" />
+    <div class="col-1 align-self-center float-left nav-arrow" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode()">
+      <i class="fa fa-chevron-left mr-4"></i>
     </div>
     <!-- <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
       <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
@@ -289,7 +289,7 @@
       </div>
     </div>
     <div class="col-1 align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode()">
-      <img src="./assets/images/SVG/right-arrow-white.svg" class="mx-auto" />
+      <i class="fa fa-chevron-right ml-4"></i>
     </div>
     <!-- <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">
       <img src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />

@@ -470,6 +470,7 @@ export class PropertyFormComponent implements OnInit {
       this.apiService.sendMail(mailBody).subscribe(
         (res) => {
           alert(res.msg);
+          this.moveTab(true);
         },
         (err) => {
           alert("error");
