@@ -27,12 +27,12 @@
             <ns:City>Media</ns:City>
             <ns:ContactTypeId>4</ns:ContactTypeId>
             <ns:Country>US</ns:Country>
-            <ns:DateOfBirth>1995-02-14</ns:DateOfBirth>
-            <ns:Email>dev@dev.com</ns:Email>
-            <ns:FirstName>123</ns:FirstName>
+            <ns:DateOfBirth>1990-02-19</ns:DateOfBirth>
+            <ns:Email>demo@boomcovered.com</ns:Email>
+            <ns:FirstName>Peter</ns:FirstName>
             <ns:Id>{00000000-0000-0000-0000-000000000000}</ns:Id>
-            <ns:LastName>123</ns:LastName>
-            <ns:PhoneNumber></ns:PhoneNumber>
+            <ns:LastName>Hughes</ns:LastName>
+            <ns:PhoneNumber>610-864-1155</ns:PhoneNumber>
             <ns:ReferenceNumber>0</ns:ReferenceNumber>
             <ns:State>PA</ns:State>
             <ns:ZipCode>19063</ns:ZipCode>
@@ -49,7 +49,7 @@
         <ns:CheckingRoutingNumber>?</ns:CheckingRoutingNumber>
         <ns:City>Media</ns:City>
         <ns:ConfirmAcknowledgeBinding>false</ns:ConfirmAcknowledgeBinding>
-        <ns:ConfirmEmail>dev@dev.com</ns:ConfirmEmail>
+        <ns:ConfirmEmail>demo@boomcovered.com</ns:ConfirmEmail>
         <ns:CoverageA
         xsi:nil="true"/>
         <ns:CoverageB xsi:nil="true"/>
@@ -66,14 +66,14 @@
         </ns:DogTypes>
         <ns:Dogs>false</ns:Dogs>
         <ns:EffectiveDate>2020-11-11</ns:EffectiveDate>
-        <ns:ElectricalUpdateYear>2010</ns:ElectricalUpdateYear>
-        <ns:Email>dev@dev.com</ns:Email>
+        <ns:ElectricalUpdateYear>2020</ns:ElectricalUpdateYear>
+        <ns:Email>demo@boomcovered.com</ns:Email>
         <ns:Felony>false</ns:Felony>
         <ns:FireAlarm>Local</ns:FireAlarm>
-        <ns:FirstName>123</ns:FirstName>
+        <ns:FirstName>Peter</ns:FirstName>
         <ns:Fuses>false</ns:Fuses>
         <ns:Have1802>true</ns:Have1802>
-        <ns:HeatingUpdateYear>2010</ns:HeatingUpdateYear>
+        <ns:HeatingUpdateYear>2020</ns:HeatingUpdateYear>
         <ns:HurricaneDeductible>
           2
         </ns:HurricaneDeductible>
@@ -81,7 +81,7 @@
         <ns:InsuranceFraud>false</ns:InsuranceFraud>
         <ns:Judgements>false</ns:Judgements>
         <ns:KnobTube>false</ns:KnobTube>
-        <ns:LastName>123</ns:LastName>
+        <ns:LastName>Hughes</ns:LastName>
         <ns:LawsuitInsurance>false</ns:LawsuitInsurance>
         <ns:LivingArea>1460</ns:LivingArea>
         <ns:LivingUnits>1</ns:LivingUnits>
@@ -107,7 +107,7 @@
           </ns:OtherCoverage>
         </ns:OtherCoverages>
         <ns:PaymentPlan>0</ns:PaymentPlan>
-        <ns:PlumbingUpdateYear>2001</ns:PlumbingUpdateYear>
+        <ns:PlumbingUpdateYear>2020</ns:PlumbingUpdateYear>
         <ns:PolicyNumber xsi:nil="true"/>
         <ns:PolyButylene>false</ns:PolyButylene>
         <ns:PoolFence>false</ns:PoolFence>
@@ -121,7 +121,7 @@
         </ns:RiskData>
         <ns:RoofShape>Gable</ns:RoofShape>
         <ns:RoofingMaterial>15001</ns:RoofingMaterial>
-        <ns:RoofingUpdateYear>2003</ns:RoofingUpdateYear>
+        <ns:RoofingUpdateYear>2020</ns:RoofingUpdateYear>
         <ns:ScheduleInspection>false</ns:ScheduleInspection>
         <ns:ScheduledItems>
 
@@ -132,7 +132,7 @@
         <ns:StyleOfHome>Dwelling</ns:StyleOfHome>
         <ns:SwimmingPool>false</ns:SwimmingPool>
         <ns:Trustee>false</ns:Trustee>
-        <ns:TypeOfConstruction>Masonry</ns:TypeOfConstruction>
+        <ns:TypeOfConstruction>Frame</ns:TypeOfConstruction>
         <ns:TypeOfFoundation>Basement</ns:TypeOfFoundation>
         <ns:TypeOfHeating>Electric</ns:TypeOfHeating>
         <ns:TypeOfOccupancy>Primary</ns:TypeOfOccupancy>
@@ -149,7 +149,7 @@
       <tem:t>
         <ns:IP>4.30.179.98</ns:IP>
         <ns:Message></ns:Message>
-        <ns:TokenGuid>6C44A3D8-A35E-4F8F-AFD4-EF21EA5D7896</ns:TokenGuid>
+        <ns:TokenGuid>6C02A808-71A6-420B-8549-70250B4885FF</ns:TokenGuid>
         <ns:Username>pinnacle</ns:Username>
         <ns:Version>1.0</ns:Version>
       </tem:t>

@@ -1,1 +1,1 @@
-{"duration":86400000,"created_at":1605005024867,"token":"error code: 1020"}
+{"duration":86400000,"created_at":1605108485140,"token":"0E752AA0-30C4-4A81-9797-8B4A21781063"}
