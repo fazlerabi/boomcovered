@@ -130,7 +130,8 @@ footer {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
-  
+      text-decoration: none;
+
       &:after {
         content: "";
         width: 0px;
@@ -140,7 +141,7 @@ footer {
         transition: 300ms;
         color: $primary-color;
       }
-  
+
       &:hover:after {
         width: 100%;
       }
