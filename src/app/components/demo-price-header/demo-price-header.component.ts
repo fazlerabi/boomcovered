@@ -21,6 +21,10 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   @Output("sendPdf") sendPdf: EventEmitter<any> = new EventEmitter<any>();
   interval: any;
   isShow = false;
+  formattedAddress = '';
+  square = '';
+  builtyear = '';
+  estimate = '';
 
   ngOnInit() {
     $(document).ready(function () {
@@ -94,7 +98,14 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
     this.sendEmail.emit({ highest_price, lowest_price, medium_price });
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    const totalData = this.commonService.getLocalItem("total_data");
+    console.log('total: ', totalData);
+    this.formattedAddress = totalData.address_components.formatted_address;
+    this.square = totalData.zillow.square;
+    this.builtyear = totalData.zillow.built_year;
+    this.estimate = totalData.zillow.estimate;
+  }
 
   async goToThreeStep() {
     const total_data = this.commonService.getLocalItem("total_data");

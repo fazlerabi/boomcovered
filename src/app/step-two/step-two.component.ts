@@ -47,6 +47,7 @@ export class StepTwoComponent implements AfterContentInit {
   total_data: object;
   sqft: string;
   builtYear: string;
+  estimate: string;
   floodZone: string;
   floodCost: any;
   isAnnual: boolean = true;
@@ -91,9 +92,11 @@ export class StepTwoComponent implements AfterContentInit {
     try {
       this.sqft = this.total_data["zillow"]["square"];
       this.builtYear = this.total_data["zillow"]["built_year"];
+      this.estimate = this.total_data["zillow"]["estimate"];
     } catch (e) {
       this.sqft = "";
       this.builtYear = "";
+      this.estimate = "";
     }
     try {
       this.floodZone = this.total_data["flood"]["data"]["zone"];

@@ -359,6 +359,14 @@
     width: 100%;
     padding: 0;
 
+    .addressInput {
+      padding-left: 50px;
+    }
+
+    .addressSelcted {
+      padding-left: 30px;
+    }
+
     .addressInput,
     .addressSelcted {
       position: relative;
@@ -366,9 +374,16 @@
       box-sizing: border-box;
       width: 100%;
       height: 40px;
+      border-radius: 40px;
       box-shadow: none;
-      padding-left: 70px;
       border: 1px solid #ccc;
+      overflow: hidden;
+
+      span {
+        line-height: 40px;
+        color: $gray;
+        overflow: hidden;
+      }
     }
     .addressInput {
       background-image: url("../../assets/images/addressImg_grey.png");

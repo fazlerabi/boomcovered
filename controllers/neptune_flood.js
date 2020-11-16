@@ -129,7 +129,7 @@ class NeptuneFlood {
         try {
           data = JSON.parse(response.body);
         } catch (e) {
-          data = response.body;
+          data = response && response.body;
         }
         resolve(data);
       });

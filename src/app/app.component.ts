@@ -44,6 +44,10 @@ export class AppComponent implements AfterViewInit {
           this.fitUI(1000);
           this.isShowHeader = false;
           break;
+        case "/demo":
+          this.fitUI(1000);
+          this.isShowHeader = false;
+          break;
         case "/step3":
           this.fitUI(1000);
           this.isShowHeader = false;

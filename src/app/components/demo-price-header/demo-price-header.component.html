@@ -1,3 +1,22 @@
+<div class="container-fluid my-3 px-md-5 px-3 info-header">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="addressSelcted">
+        <span class="font-weight-bold text-center pt-2 addressTxt">
+          {{ formattedAddress }}
+        </span>
+      </div>
+    </div>
+    <div class="col-md-8 d-flex">
+      <div class="col-12 d-flex">
+        <div class="ml-auto col-3">{{ square }}</div>
+        <div class="col-3">{{ builtyear }}</div>
+        <div class="col-3 mr-0">{{ estimate }}</div>
+      </div>
+      <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
 <div class="map-container">
   <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng"> </agm-map>
   <div class="overlay"></div>
