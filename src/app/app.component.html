@@ -1,12 +1,11 @@
 <!-- Image and text -->
-<mdb-navbar SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
+<mdb-navbar *ngIf="isShowHeader" SideClass="container-fluid navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav" [ngClass]="!commonService.isMobileMode() ? 'red navbar-dark' : 'white  navbar-light'" [containerInside]="false">
   <div class="d-md-none d-flex mobileFoward mr-auto">
     <img (click)="moveTab(false)" src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
   </div>
   <a href="/" class="site-logo"><img src="../../assets/images/SVG/boom-icon.svg" /></a>
   <links class="pr-5 d-md-flex d-none">
     <ul class="navbar-nav ml-auto">
-
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link waves-light" routerLink="/step1" mdbWavesEffect>quotes</a>
       </li>
@@ -32,7 +31,7 @@
 <!-- Footer -->
 <!-- === Curved Background  ===-->
 <div class="footer-svg-curve footerFlag" *ngIf="isShowFooter && headerFooter">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#2A354C" style="stroke-width: 0px;">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 315" viewport-fill="#2A354C" style="stroke-width: 0px">
     <path
       fill="#2A354C"
       fill-opacity="1"

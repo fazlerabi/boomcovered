@@ -114,7 +114,9 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.loadGooglePlace();
+    if (this.showFirst) {
+      this.loadGooglePlace();
+    }
     this.commonService.clearValues();
   }
 
@@ -227,23 +229,22 @@ export class StepOneComponent implements AfterViewInit {
     if (this.cacheMode) {
       this.processDemoQuoteWithCache();
     } else {
+      this.process();
       const zillowData = await this.getZillowData(this.zillowParams);
       CacheManager.setValue("zillowData", this.zillowData);
       this.isProcessing = true;
       $(".footerFlag").addClass("d-none");
       this.processZillowData(zillowData);
-
+      
       const total_data = this.commonService.getLocalItem("total_data");
       if (total_data["insuranceOptions"]) {
         if (total_data["insuranceOptions"]["life"]) {
           this.router.navigateByUrl("/haven-inputs");
         } else {
           this.getPricingDataForMobile();
-          this.process();
         }
       } else {
         this.getPricingDataForMobile();
-        this.process();
       }
     }
   }
@@ -351,11 +352,11 @@ export class StepOneComponent implements AfterViewInit {
         return;
       }
       clearInterval(n);
-    }, 150);
+    }, 250);
     // this.showGoogleApiLogo = true; // Show initial image
 
     this.blinkSequenceFirstImgs();
-    await this.initSequences(150);
+    await this.initSequences(250);
 
     this.gotToStepTwo();
   }
@@ -532,6 +533,8 @@ export class StepOneComponent implements AfterViewInit {
 
   clickBegin() {
     this.showFirst = true;
+    this.loadGooglePlace();
+    $(".navbar").addClass("d-none");
     $("#address_div").removeClass("d-none");
     $(".footerFlag").addClass("d-none");
     $(".mobileFoward").removeClass("d-none");

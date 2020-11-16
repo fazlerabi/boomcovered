@@ -36,51 +36,6 @@
           outline: none;
         }
       }
-
-      .addressDiv {
-        width: 100%;
-        padding: 0;
-
-        .addressInput,
-        .addressSelcted {
-          position: relative;
-          margin: 0 auto;
-          box-sizing: border-box;
-          width: 100%;
-          height: 60px;
-          box-shadow: none;
-          padding-left: 70px;
-          border: 1px solid #ccc;
-        }
-        .addressInput {
-          background-image: url("../../assets/images/addressImg_grey.png");
-          background-repeat: no-repeat;
-          background-size: 36px;
-          background-position: 24px;
-          border-radius: 10px;
-          background-position-y: center;
-          line-height: 1;
-        }
-
-        .right-arrow {
-          position: absolute;
-          width: 60px;
-          height: 62px;
-          background: #ea0a3f;
-          top: 0;
-          right: 0;
-          border-radius: 0 10px 10px 0;
-          color: #fff;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          i {
-            font-size: 1.5em;
-          }
-        }
-      }
     }
   }
 
@@ -396,6 +351,76 @@
   #nextBtn {
     border-radius: 10px;
     background-color: $primary-color;
+  }
+}
+
+.container-fluid {
+  .addressDiv {
+    width: 100%;
+    padding: 0;
+
+    .addressInput,
+    .addressSelcted {
+      position: relative;
+      margin: 0 auto;
+      box-sizing: border-box;
+      width: 100%;
+      height: 40px;
+      box-shadow: none;
+      padding-left: 70px;
+      border: 1px solid #ccc;
+    }
+    .addressInput {
+      background-image: url("../../assets/images/addressImg_grey.png");
+      background-repeat: no-repeat;
+      background-size: 26px;
+      background-position: 16px;
+      border-radius: 40px;
+      background-position-y: center;
+      line-height: 1;
+    }
+
+    .right-arrow {
+      position: absolute;
+      width: 60px;
+      height: 62px;
+      background: #ea0a3f;
+      top: 0;
+      right: 0;
+      border-radius: 0 10px 10px 0;
+      color: #fff;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      i {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  .fa-refresh {
+    font-size: 30px;
+    color: $gray1;
+  }
+
+  .skeleton-items {
+    margin-top: 7rem;
+
+    .col-md-4 {
+      .h4 {
+        color: $gray1;
+      }
+
+      .skeleton {
+        height: 20px;
+        width: 60%;
+        margin: auto;
+        margin-top: 0.5rem;
+        background-color: $lightgray;
+      }
+    }
   }
 }
 

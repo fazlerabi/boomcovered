@@ -22,6 +22,7 @@ export class AppComponent implements AfterViewInit {
   private _routeHistory: string[];
   isShowFooter = false;
   public navColor: string;
+  public isShowHeader = true;
   headerFooter: boolean;
 
   public constructor(public router: Router, public location: Location, public commonService: CommonService, private local: LocalStorageService) {
@@ -41,34 +42,43 @@ export class AppComponent implements AfterViewInit {
           break;
         case "/step2":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/step3":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/roof":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/exterior":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/step4":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/step5":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/step6":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/step7":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/step8":
           this.fitUI(1000);
+          this.isShowHeader = false;
           break;
         case "/step9":
           (<HTMLElement>document.getElementsByClassName("red").item(0)).style.cssText = "background-color:#0644f4 !important;";
-
+          this.isShowHeader = false;
           this.fitUI(1000);
           break;
       }

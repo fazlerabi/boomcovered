@@ -1,10 +1,10 @@
 <div>
-  <div class="container pt-md-2 mt-4 title pb-5" *ngIf="!isProcessing">
-    <div class="col-md-9 offset-md-1 inputPage text-center">
+  <div class="container pt-md-2 mt-4 title pb-5" *ngIf="!isProcessing && !showFirst">
+    <div class="col-md-12 inputPage text-center">
       <!-- Material input -->
       <div class="form-group elemContainer">
         <div id="jumbo-div" class="col-12 title container-fluid d-flex mb-3">
-          <div *ngIf="!showFirst" class="d-flex flex-md-row flex-column align-items-center">
+          <div class="d-flex flex-md-row flex-column align-items-center">
             <img src="../../assets/images/SVG/home.png" />
             <div>
               <h1 class="jumbo-h1 pt-5">Simple Home Insurance</h1>
@@ -15,54 +15,80 @@
               </button>
             </div>
           </div>
-          <h1 class="jumbo-h3 pt-5 mt-5" *ngIf="showFirst">Please enter your address to insure!</h1>
-        </div>
-        <div class="d-none" id="address_div">
-          <div cass="w-100">
-            <div class="p-0">
-              <div class="col-12 white-bg addressDiv" *ngIf="!isDisplay; else displayAddress">
-                <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()" *ngIf="selectedMode == 1" />
-                <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)" id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text" *ngIf="GooglePlace == true" placeholder="address" #placesRef />
-                <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" (click)="handleAddressChangeWithCache()" />
-                <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460" *ngIf="GooglePlace == false" [(ngModel)]="fullAddressText" />
-
-                <div class="col-md-12 col-sm-12 row pr-0 pl-0 mr-0 ml-0" *ngIf="!GooglePlace">
-                  <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : 'pl-0'">
-                    <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']" />
-                  </div>
-                  <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : ''">
-                    <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']" />
-                  </div>
-                  <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : 'pr-0'">
-                    <input type="number" class="form-control" placeholder="Year Built" [(ngModel)]="zillowData['built_year']" />
-                  </div>
-                </div>
-
-                <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0" [ngStyle]="commonService.isMobileMode() ? { 'padding-left': '15px !important' } : ''" (click)="GooglePlace = !GooglePlace; loadGooglePlace()">
-                  <!--strong>{{GooglePlace == true ? 'Enter manually.' : 'Enter automatically.'}}</strong-->
-                </a>
-              </div>
-              <!-- details section Start-->
-              <ng-template #displayAddress>
-                <div class="col-12 addressDiv white-bg" *ngIf="isDisplay">
-                  <div class="addressTxt-wrapper addressSelcted">
-                    <h5 class="font-weight-bold text-center pt-2 addressTxt">
-                      <span class="badge badge-pill green mx-2"><i class="fas fa-check white-text" aria-hidden="true"></i></span>
-                      {{ fullAddressText }}
-                    </h5>
-                  </div>
-                </div>
-              </ng-template>
-            </div>
-            <!-- <div class="col-2 white-bg p-0">
-              <app-issuing></app-issuing>
-            </div> -->
-          </div>
         </div>
 
         <!-- details section End-->
 
         <app-alerts></app-alerts>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid mt-3 px-md-5 px-3" [ngClass]="showFirst ? '' : 'd-none'">
+    <div class="row">
+      <div class="col-md-4 col-10">
+        <div class="elemContainer">
+          <div class="white-bg addressDiv" *ngIf="!isDisplay; else displayAddress">
+            <input type="number" class="form-control" [(ngModel)]="coverage" (ngModelChange)="loadGooglePlace()" *ngIf="selectedMode == 1" />
+            <input class="form-control addressInput" autocorrect="off" (onAddressChange)="handleAddressChange($event)" id="inputAddressMD" autocapitalize="off" spellcheck="off" (load)="loadGooglePlace()" type="text" *ngIf="GooglePlace == true" placeholder="Enter your address to cover" #placesRef />
+            <input *ngIf="cacheMode" _ngcontent-elf-c4="" type="button" value="A" (click)="handleAddressChangeWithCache()" />
+            <input type="text" class="form-control" placeholder="Ex: 419 Virginia Ave, Phoenixville, Pennsylvania 19460" *ngIf="GooglePlace == false" [(ngModel)]="fullAddressText" />
+
+            <div class="col-md-12 col-sm-12 row pr-0 pl-0 mr-0 ml-0" *ngIf="!GooglePlace">
+              <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : 'pl-0'">
+                <input type="number" class="form-control" placeholder="Square" [(ngModel)]="zillowData['square']" />
+              </div>
+              <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : ''">
+                <input type="number" class="form-control" placeholder="Estimate" [(ngModel)]="zillowData['estimate']" />
+              </div>
+              <div class="form-group col-md-4" [ngClass]="commonService.isMobileMode() ? 'pl-0 pr-0 mb-0' : 'pr-0'">
+                <input type="number" class="form-control" placeholder="Year Built" [(ngModel)]="zillowData['built_year']" />
+              </div>
+            </div>
+
+            <a class="text font-weight-bolder text-dark col-md-12 pl-0 pr-0" [ngStyle]="commonService.isMobileMode() ? { 'padding-left': '15px !important' } : ''" (click)="GooglePlace = !GooglePlace; loadGooglePlace()"> </a>
+          </div>
+          <!-- details section Start-->
+          <ng-template #displayAddress>
+            <div class="col-12 addressDiv white-bg" *ngIf="isDisplay">
+              <div class="addressTxt-wrapper addressSelcted">
+                <span class="font-weight-bold text-center pt-2 addressTxt">
+                  {{ fullAddressText }}
+                </span>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="col-md-8 d-flex col-2">
+        <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="row mt-5" *ngIf="!isProcessing">
+      <div class="col-md-12">
+        <h1 class="font-weight-bold">Enter information to start home quote...</h1>
+      </div>
+    </div>
+    <div class="row skeleton-items" *ngIf="!isProcessing">
+      <div class="col-md-4 mt-5">
+        <p class="h4 text-center">Company A</p>
+        <p class="h4 text-center">$ --</p>
+        <div class="skeleton mt-4"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+      <div class="col-md-4 mt-5">
+        <p class="h4 text-center">Company A</p>
+        <p class="h4 text-center">$ --</p>
+        <div class="skeleton mt-4"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
+      </div>
+      <div class="col-md-4 mt-5">
+        <p class="h4 text-center">Company A</p>
+        <p class="h4 text-center">$ --</p>
+        <div class="skeleton mt-4"></div>
+        <div class="skeleton"></div>
+        <div class="skeleton"></div>
       </div>
     </div>
   </div>
