@@ -245,6 +245,12 @@ ngb-modal-window {
     }
   }
 
+  @include mq($until: tablet) {
+    .col-12 {
+      display: none;
+    }
+  }
+
   .col-3 {
     background-color: $primary-red;
     border-radius: 40px;
@@ -253,5 +259,10 @@ ngb-modal-window {
     color: $white;
     line-height: 40px;
     text-align: center;
+  }
+
+  .fa-refresh {
+    font-size: 30px;
+    color: $gray1;
   }
 }

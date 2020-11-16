@@ -1,14 +1,14 @@
 <div class="container-fluid my-3 px-md-5 px-3 info-header">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 col-10">
       <div class="addressSelcted">
         <span class="font-weight-bold text-center pt-2 addressTxt">
           {{ formattedAddress }}
         </span>
       </div>
     </div>
-    <div class="col-md-8 d-flex">
-      <div class="col-12 d-flex">
+    <div class="col-md-8 d-flex col-2">
+      <div class="col-12 d-md-flex d-none">
         <div class="ml-auto col-3">{{ square }}</div>
         <div class="col-3">{{ builtyear }}</div>
         <div class="col-3 mr-0">{{ estimate }}</div>
@@ -83,20 +83,10 @@
         <div class="col-md-5 d-flex ml-md-0 ml-auto button-wrap bg-white px-0">
           <button class="w-100 my-0 btn btn-outline-primary font-weight-bold mx-0" (click)="send()">email</button>
         </div>
-        <div class="col-md-5 d-flex ml-md-0 ml-auto button-wrap bg-white px-0 d-flex d-md-none mt-3">
-          <button class="w-100 my-0 btn btn-primary font-weight-bold mx-0" (click)="goToThreeStep()">next</button>
-        </div>
       </div>
-    </div>
-    <div class="d-md-flex d-none col-2 align-self-center" id="nextBtn">
-      <div class="d-flex justify-content-end rounded-circle bg-white">
-        <div class="btn btn-outline-primary rounded-circle-next px-0" (click)="goToThreeStep()">
-          <div class="col-12 pb-1">
-            <div class="mt-4">
-              <i class="fas fa-2x fa-long-arrow-alt-right"></i>
-            </div>
-            <div>Next</div>
-          </div>
+      <div class="button-groups d-flex mx-auto row">
+        <div class="col-md-12 d-flex button-wrap px-0 d-flex mt-3">
+          <button class="w-100 my-0 btn btn-primary font-weight-bold mx-0" (click)="goToThreeStep()">next<i class="fa fa-arrow-right ml-2"></i></button>
         </div>
       </div>
     </div>

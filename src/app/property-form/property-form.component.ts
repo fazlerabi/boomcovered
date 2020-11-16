@@ -31,6 +31,8 @@ export class PropertyFormComponent implements OnInit {
   currentTab = "Tab1";
   sliderCurrentIndex = 0;
   cards = [];
+  estimate = "";
+  formattedAddress = "";
   personData = [
     {
       first_name: "",
@@ -119,9 +121,10 @@ export class PropertyFormComponent implements OnInit {
   async ngOnInit() {
     let data = await this.commonService.getLocalItem("total_data");
     this.staticAddress = data["static_address"];
-    console.log(data["zillow"]);
+    this.estimate = data["zillow"]["estimate"];
     this.built_year = data["zillow"]["built_year"];
     this.square = data["zillow"]["square"];
+    this.formattedAddress = data["address_components"]["formatted_address"];
     this.generateMapData();
     this.slides = this.chunk(this.sliderCards, 4);
     this.cards = this.slides[this.sliderCurrentIndex];
