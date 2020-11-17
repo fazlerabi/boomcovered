@@ -21,7 +21,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   @Output("sendPdf") sendPdf: EventEmitter<any> = new EventEmitter<any>();
   interval: any;
   isShow = false;
-  formattedAddress = '';
+  public formattedAddress = '';
   square = '';
   builtyear = '';
   estimate = '';

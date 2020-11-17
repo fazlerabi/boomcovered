@@ -48,6 +48,17 @@
     }
   }
 
+  .buy-now {
+    border-radius: 30px;
+    border: 1px solid $gray1;
+    cursor: pointer;
+
+    i {
+      font-size: 30px;
+      color: $gray;
+    }
+  }
+
   .dwelling-coverage {
     display: inline-flex;
     align-items: flex-end;

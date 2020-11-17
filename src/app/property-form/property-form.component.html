@@ -25,22 +25,22 @@
   </agm-map>
   <div class="overlay"></div>
 </div>
-<div class="loader">
+<div class="loader slideInRight animated">
   <div class="row justify-content-center">
-    <div class="col-1 align-self-center float-left nav-arrow d-flex justify-content-end" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode()">
+    <div class="col-1 align-self-center float-left nav-arrow d-flex justify-content-end" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode() && currentTab !== 'Tab5'">
       <i class="fa fa-chevron-left mr-4"></i>
     </div>
     <!-- <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
       <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
     </div> -->
-    <div class="col-6 bg-white text-center mt-0 mb-3" id="inputData">
+    <div [ngClass]="!commonService.isMobileMode() && currentTab == 'Tab5' ? 'col-10 text-center mt-0 mb-3' : 'col-6 bg-white ' + 'text-center mt-0 mb-3'" id="inputData">
       <div class="container">
         <div *ngIf="currentTab != 'Tab5'" class="col-8 justify-content-center offset-2 mt-5 mb-3" style="height: 25px">
           <mdb-progress value="{{ progress }}" style="height: 15px" min="0" max="100" type="info" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100"></mdb-progress>
         </div>
 
         <!--Tab1 contents-->
-        <div *ngIf="currentTab === 'Tab1'" class="tab-1 col">
+        <div *ngIf="currentTab === 'Tab1'" class="tab-1 col slideInRight animated">
           <h4 class="mb-4">Confirm some details about your property:</h4>
           <div class="row">
             <div class="col-md-6 d-flex align-items-center">
@@ -108,7 +108,7 @@
           </div>
         </div>
         <!--Tab2 contents-->
-        <div *ngIf="currentTab == 'Tab2'" class="tab-2 col">
+        <div *ngIf="currentTab == 'Tab2'" class="tab-2 col slideInRight animated">
           <h4>tell us about any upgrade:</h4>
 
           <div class="form-row">
@@ -170,7 +170,7 @@
           </div>
         </div>
         <!--Tab3 contents-->
-        <div *ngIf="currentTab == 'Tab3'" class="tab-3 col">
+        <div *ngIf="currentTab == 'Tab3'" class="tab-3 col slideInRight animated">
           <h4>tell us about any exterior:</h4>
           <div class="container form-row">
             <!-- Default input -->
@@ -178,80 +178,80 @@
               <div class="row d-flex justify-content-center">
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 1" [default]="exterior_type == 1" (click)="exterior_type = 1">
-                    <div class="mt-5 mb-5 text-dark">
-                      Aluminum Siding
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Aluminum Siding</span>
                       <img src="../../assets/images/exteriors/aluminum%20siding.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 2" [default]="exterior_type == 2" (click)="exterior_type = 2">
-                    <div class="mt-5 mb-5 text-dark">
-                      Brick Veneer
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Brick Veneer</span>
                       <img src="../../assets/images/exteriors/brick-veneer.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 3" [default]="exterior_type == 3" (click)="exterior_type = 3">
-                    <div class="mt-5 mb-5 text-dark">
-                      Brick
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Brick</span>
                       <img src="../../assets/images/exteriors/brick.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-2 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 4" [default]="exterior_type == 4" (click)="exterior_type = 4">
-                    <div class="mt-5 mb-5 text-dark">
-                      Concrete
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Concrete</span>
                       <img src="../../assets/images/exteriors/concrete.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 5" [default]="exterior_type == 5" (click)="exterior_type = 5">
-                    <div class="mt-5 mb-5 text-dark">
-                      Hardiplank
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Hardiplank</span>
                       <img src="../../assets/images/exteriors/hardiplank.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 6" [default]="foundationType == 6" (click)="foundationType = 6">
-                    <div class="mt-5 mb-5 text-dark">
-                      Stone Veneer
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Stone Veneer</span>
                       <img src="../../assets/images/exteriors/stone%20veneer.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 7" [default]="exterior_type == 7" (click)="exterior_type = 7">
-                    <div class="mt-5 mb-5 text-dark">
-                      Stone
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Stone</span>
                       <img src="../../assets/images/exteriors/stone.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 8" [default]="exterior_type == 8" (click)="exterior_type = 8">
-                    <div class="mt-5 mb-5 text-dark">
-                      Stucco Siding
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Stucco Siding</span>
                       <img src="../../assets/images/exteriors/stucco%20siding.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 9" [default]="exterior_type == 9" (click)="exterior_type = 9">
-                    <div class="mt-5 mb-5 text-dark">
-                      Vinyl Siding
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Vinyl Siding</span>
                       <img src="../../assets/images/exteriors/vinyl%20siding.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
                   <mdb-badge [white]="exterior_type != 10" [default]="exterior_type == 10" (click)="exterior_type = 10">
-                    <div class="mt-5 mb-5 text-dark">
-                      Wood Siding
+                    <div class="mt-5 mb-5 text-dark badge-card">
+                      <span>Wood Siding</span>
                       <img src="../../assets/images/exteriors/wood%20siding.png" class="btn-icon mt-2" alt="" />
                     </div>
                   </mdb-badge>
@@ -261,7 +261,7 @@
           </div>
         </div>
         <!--Tab4 contents-->
-        <div *ngIf="currentTab == 'Tab4'" class="tab-24">
+        <div *ngIf="currentTab == 'Tab4'" class="tab-24 slideInRight animated">
           <form [formGroup]="userForm" (ngSubmit)="submitUserData()" class="container">
             <h4>named insured</h4>
             <div class="form-row">
@@ -293,21 +293,12 @@
             </div>
           </form>
         </div>
-        <div *ngIf="currentTab == 'Tab5'">
+        <div *ngIf="currentTab == 'Tab5'" class="slideInRight animated">
           <app-step-six></app-step-six>
         </div>
       </div>
     </div>
-    <div class="ml-5" *ngIf="!commonService.isMobileMode() && currentTab == 'Tab5'">
-      <div id="blueTile">
-        <h6 class="mb-0">home</h6>
-        <h3 class="text-center mb-0">P</h3>
-      </div>
-      <div id="blue_Tile">
-        <h6 class="text-center">+ auto</h6>
-      </div>
-    </div>
-    <div class="col-1 align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode()">
+    <div class="col-1 align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode() && currentTab !== 'Tab5'">
       <i class="fa fa-chevron-right ml-4"></i>
     </div>
     <!-- <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">

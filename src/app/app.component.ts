@@ -113,7 +113,7 @@ export class AppComponent implements AfterViewInit {
   }
   applyHeaderColor() {
     const navbar = <HTMLElement>document.querySelector("nav");
-    const isHeaderCollapse = navbar.classList.contains("top-nav-collapse");
+    const isHeaderCollapse = navbar && navbar.classList.contains("top-nav-collapse");
     let marginToNav,
       togglerColor = "255, 255, 255, 1";
     if (isHeaderCollapse || (this.router.url !== "/" && this.router.url !== "/index")) {

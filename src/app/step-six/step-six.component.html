@@ -1,100 +1,11 @@
 <div class="container">
   <div class="row">
-    <!--hiding as per new design-->
-    <!-- <div class="col-lg-2 col-md-3 col-12">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 mt-3">
-          <app-price-sort (sort)="sortPrices($event)"></app-price-sort>
-        </div>
-        <div class="col-lg-12 col-md-12">
-          <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-               aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header text-center">
-                  <h4 class="modal-title w-100 font-weight-bold">We're not around but we still want to hear from you!
-                    Leave us
-                    a note:</h4>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body mx-3">
-                  <div class="md-form mb-5">
-                    <i class="fas fa-user prefix grey-text"></i>
-                    <input type="text" id="form34" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form34">Your name</label>
-                  </div>
-
-                  <div class="md-form mb-5">
-                    <i class="fas fa-envelope prefix grey-text"></i>
-                    <input type="email" id="form29" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form29">Your email</label>
-                  </div>
-
-                  <div class="md-form mb-5">
-                    <i class="fas fa-tag prefix grey-text"></i>
-                    <input type="text" id="form32" class="form-control validate">
-                    <label data-error="wrong" data-success="right" for="form32">Subject</label>
-                  </div>
-
-                  <div class="md-form">
-                    <i class="fas fa-pencil prefix grey-text"></i>
-                    <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
-                    <label data-error="wrong" data-success="right" for="form8">Your message</label>
-                  </div>
-
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                  <button class="btn btn-unique send-btn">Send <i class="fas fa-paper-plane-o ml-1"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button type="button" class="btn mb-4 mt-2 pl-0 pr-0 mx-0 chat-btn font-weight-bold text-capitalize"
-                  (click)="goForChat()"><span>Talk to an Expert</span><div><i class="far fa-comment-dots fa-2x mt-2"></i></div></button>
-        </div>
-        <div class="col-lg-12 col-md-12">
-          <app-price-filter (filter)="doFilter($event)"></app-price-filter>
-        </div>
-      </div>
-    </div> -->
-    <!--hiding as per new design-->
+    <h1>Here are your quotes...</h1>
     <div (filter)="doFilter($event)" class="col-lg-12 col-md-12 col-12 pl-4">
       <div class="col-lg-12 col-md-12">
         <app-price-filter (filter)="doFilter($event)" [hidden]="true"></app-price-filter>
       </div>
-      <!-- <div class="mb-3 mt-4">
-        <a href="javascript:void(0)" class="sort-btn mr-3" (click)="viewmode = 'List'">
-          <img class="mx-auto" src="../../../assets/images/step-six/list_view.png" width="24">
-        </a>
-        <a href="javascript:void(0)" class="sort-btn" (click)="viewmode = 'Grid'">
-          <img class="mx-1" src="../../../assets/images/step-six/grid_view.png" width="24">
-        </a>
-      </div> -->
-
-      <!-- new changes-->
-      <div class="d-flex mb-3 mt-4">
-        <div class="margin10 mx-2 basementDiv">
-          <mdb-badge (click)="sortPrices('')">
-            <div class="my-1">best</div>
-            <img src="../../../assets/images/step-six/value.png" class="btn-icon" alt="" />
-          </mdb-badge>
-        </div>
-        <div class="margin10 mx-2 basementDiv">
-          <mdb-badge (click)="sortPrices('ASC')">
-            <div class="my-1">low</div>
-            <img src="../../../assets/images/step-six/sort_amount_down.png" class="btn-icon" alt="" />
-          </mdb-badge>
-        </div>
-        <div class="margin10 mx-2 basementDiv">
-          <mdb-badge (click)="sortPrices('DESC')">
-            <div class="my-1">high</div>
-            <img src="../../../assets/images/step-six/sort_amount_up.png" class="btn-icon" alt="" />
-          </mdb-badge>
-        </div>
-      </div>
-      <div class="row" [ngClass]="viewmode == 'Grid' ? 'gridview' : 'listview'">
+      <div class="row mt-5" [ngClass]="viewmode == 'Grid' ? 'gridview' : 'listview'">
         <ng-container *ngFor="let insurance of filteredInsurances">
           <app-price-widget
             *ngIf="insuranceImgs[insurance.type].length > 0"
@@ -139,25 +50,5 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="col-md-3 col-12 mt-4">
-      <p class="font-weight-bold text-black">add policy:</p>
-
-      <div class="row drag-compare-wrapper mx-0">
-        <div class="col-4 drag-compare px-1">
-          <i class="fas fa-plus fa-1x text-center"></i>
-        </div>
-        <div class="col-4 drag-compare px-1">
-          <i class="fas fa-plus fa-1x text-center"></i>
-        </div>
-        <div class="col-4 drag-compare px-1">
-          <i class="fas fa-plus fa-1x text-center"></i>
-        </div>
-      </div>
-
-      <button class="col-12 mx-auto mt-4 mb-4 text-white btn" mdbbtn="" type="button" (click)="goForChat()" style="border-radius: 3px !important; font-size: 2rem; background-color: #34C07D">NEXT</button>
-      <img class="" src="../../../assets/images/step-six/featured_image.png" width="100%"/>
-      <p class="text-center text-small text-black font-weight-bold pt-1" style="line-height: 1rem">Worried about water damage? Make sure you consider adding <span style="color: #F43C58;">water backup</span> and/or <span style="color: #F43C58">flood</span> protection!</p>
-    </div> -->
   </div>
 </div>

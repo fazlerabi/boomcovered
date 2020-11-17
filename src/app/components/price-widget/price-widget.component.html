@@ -1,4 +1,4 @@
-<div type="button" mdbBtn class="relative waves-light p-2 modal-btns" (click)="openModal()" mdbWavesEffect>
+<div class="relative waves-light p-2 modal-btns" mdbWavesEffect>
   <div class="row grid-price-widget">
     <div class="col d-flex">
       <div class="img-wrapper">
@@ -13,34 +13,27 @@
     </div>
   </div>
 
-  <div class="card list-price-widget h-100">
-    <div class="card-horizontal h-100">
-      <div class="img-wrapper d-flex h-100" [style.border-color]="bgColor" [style.background]="bgColor">
-        <div class="d-flex align-items-center ml-2">
-          <img [src]="imgURL" />
+  <div class="card list-price-widget h-100 bg-transparent">
+    <div class="card-horizontal h-100 d-flex flex-column">
+      <div class="img-wrapper d-flex h-100 flex-column">
+        <div class="price-num-container flex-row">
+          <h3 class="text-black text-capitalize mx-auto">{{ name }}</h3>
         </div>
-        <div class="price-num-container ml-2 mr-md-5 mr-2">
-          <div class="text-white text-capitalize mb-md-4 mb-2">{{ name }}</div>
-          <h4 class="text-white pt-1 font-weight-bold text-lowercase text-center mb-0">
+        <div class="d-flex align-items-center my-3">
+          <h1 class="text-black pt-1 font-weight-bold text-lowercase text-center mx-auto">
             {{ price | currency: "USD":"symbol":"1.0-0" }}
-          </h4>
+          </h1>
         </div>
       </div>
 
-      <div class="card-body d-flex">
-        <div class="">
-          <div class="mt-2 mx-3 text-left d-md-block d-none">
-            <div>1k Deductible</div>
-            <div>500k Liability</div>
-            <div>228k Contents</div>
-            <div>+more coverages</div>
-          </div>
-        </div>
-        <div class="ml-auto">
-          <div class="text-black font-weight-bold text-capitalize text-center text-smaller dwelling-coverage">dwelling coverage</div>
-          <div class="price-num-container">
-            <h5 class="text-black pt-2 font-weight-bold text-lowercase text-center mb-0">{{ dwelling | number: "1.0-0" }}</h5>
-          </div>
+      <div class="d-flex font-weight-bold">
+        <div class="mt-2 mx-3 text-center d-flex flex-column mx-auto">
+          <div class="text-black font-weight-bold dwelling-coverage mb-2">{{ dwelling | number: "1.0-0" }} dwelling coverage</div>
+          <div>1k Deductible</div>
+          <div>500k Liability</div>
+          <div>228k Contents</div>
+          <div class="mb-5">+ more coverages</div>
+          <div class="d-flex buy-now mx-auto px-3 py-2 mb-4" (click)="openModal()"><i class="fas fa-shopping-cart"></i> <span class="ml-3 h4 mb-0">buy</span></div>
         </div>
       </div>
     </div>

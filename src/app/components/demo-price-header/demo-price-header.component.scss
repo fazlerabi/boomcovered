@@ -197,7 +197,8 @@ $font-family: Roboto;
   }
 
   @include mq($until: tablet) {
-    left: calc((100% - 399px) / 2);
+    width: 100% !important;
+    left: calc((100% - 330px) / 2);
   }
 }
 
