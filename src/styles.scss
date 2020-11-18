@@ -252,17 +252,36 @@ ngb-modal-window {
   }
 
   .col-3 {
-    background-color: $primary-red;
+    background-color: #ff2323;
     border-radius: 40px;
     margin-right: 10px;
     margin-left: 10px;
     color: $white;
     line-height: 40px;
     text-align: center;
+    position: relative;
+
+    i {
+      position: absolute;
+      right: 0.5rem;
+      color: white;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: all 0.25s ease;
+
+      &:hover {
+        font-size: 20px;
+      }
+    }
   }
 
   .fa-refresh {
     font-size: 30px;
     color: $gray1;
   }
+}
+
+mdb-modal-backdrop {
+  display: none;
 }

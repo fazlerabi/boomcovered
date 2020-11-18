@@ -9,15 +9,15 @@
     </div>
     <div class="col-md-8 d-flex col-2">
       <div class="col-12 d-md-flex d-none">
-        <div class="ml-auto col-3">{{ square }}</div>
-        <div class="col-3">{{ built_year }}</div>
-        <div class="col-3 mr-0">{{ estimate }}</div>
+        <div class="ml-auto col-3">{{ square }} <i class="fas fa-pencil-alt"></i></div>
+        <div class="col-3">{{ built_year }} <i class="fas fa-pencil-alt"></i></div>
+        <div class="col-3 mr-0">{{ estimate }} <i class="fas fa-pencil-alt"></i></div>
       </div>
       <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true"></i>
     </div>
   </div>
 </div>
-<div class="col-12 map-container" style="opacity: 0.3">
+<div class="col-12 map-container" style="opacity: 0.3" *ngIf="currentTab != 'Tab5'">
   <agm-map [zoom]="17" [latitude]="lat" [longitude]="lng">
     <span style="font-size:15rem; color:blue float:right">
       <i class="fas fa-5x fa-angle-right"></i>
@@ -53,35 +53,31 @@
               <input mdbInput type="number" class="form-control ml-2" [(ngModel)]="square" [ngModelOptions]="{ standalone: true }" id="squareInput" />
             </div>
           </div>
-          <div class="form-row">
+          <div class="row my-4">
             <!-- Default input -->
-            <div class="mx-auto">
-              <div class="d-flex justify-content-center">
-                <div class="constructionDiv mr-3">
-                  <mdb-badge [white]="foundationType != 1" [default]="foundationType == 1" (click)="foundationType = 1">
-                    <div class="my-4 mx-2 text-dark">
-                      <img src="../../assets/images/homebasement.jpg" class="btn-icon" alt="" />
-                      Basement
-                    </div>
-                  </mdb-badge>
+            <div class="col-md-4 constructionDiv mb-3">
+              <mdb-badge [white]="foundationType != 1" [default]="foundationType == 1" (click)="foundationType = 1">
+                <div class="my-4 mx-2 text-dark">
+                  <img src="../../assets/images/homebasement.jpg" class="btn-icon" alt="" />
+                  Basement
                 </div>
-                <div class="constructionDiv mr-3">
-                  <mdb-badge [white]="foundationType != 2" [default]="foundationType == 2" (click)="foundationType = 2">
-                    <div class="my-4 mx-2 text-dark">
-                      <img src="../../assets/images/homecrawlspace.jpg" class="btn-icon" alt="" />
-                      Craw Space
-                    </div>
-                  </mdb-badge>
+              </mdb-badge>
+            </div>
+            <div class="col-md-4 constructionDiv mb-3">
+              <mdb-badge [white]="foundationType != 2" [default]="foundationType == 2" (click)="foundationType = 2">
+                <div class="my-4 mx-2 text-dark">
+                  <img src="../../assets/images/homecrawlspace.jpg" class="btn-icon" alt="" />
+                  Craw Space
                 </div>
-                <div class="constructionDiv">
-                  <mdb-badge [white]="foundationType != 3" [default]="foundationType == 3" (click)="foundationType = 3">
-                    <div class="my-4 mx-2 text-dark">
-                      <img src="../../assets/images/homeonslab.jpg" class="btn-icon" alt="" />
-                      Slab
-                    </div>
-                  </mdb-badge>
+              </mdb-badge>
+            </div>
+            <div class="col-md-4 constructionDiv mb-3">
+              <mdb-badge [white]="foundationType != 3" [default]="foundationType == 3" (click)="foundationType = 3">
+                <div class="my-4 mx-2 text-dark">
+                  <img src="../../assets/images/homeonslab.jpg" class="btn-icon" alt="" />
+                  Slab
                 </div>
-              </div>
+              </mdb-badge>
             </div>
           </div>
           <div class="flex: 0 0 100% !important; form-row">
@@ -311,9 +307,9 @@
     <button class="control prev" (click)="slide(true)">
       <span class="arrow left"></span>
     </button>
-    <div class="col-12 carousel-items exteriorDiv d-flex justify-content-between">
+    <div class="col-12 carousel-items exteriorDiv d-flex justify-content-md-between justify-content-center">
       <ng-container class="mx-2 my-3 exteriorDiv" *ngFor="let card of cards; let i = index">
-        <mdb-badge [white]="roof_type != i + 1" [default]="roof_type == i + 1" (click)="roof_type = i + 1">
+        <mdb-badge class="mx-2 mx-md-0" [white]="roof_type != i + 1" [default]="roof_type == i + 1" (click)="roof_type = i + 1">
           <div class="text-dark">
             {{ card.title }}
             <img [src]="card.img" class="btn-icon mt-2" alt="" />

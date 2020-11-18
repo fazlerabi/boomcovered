@@ -102,3 +102,11 @@ mdb-badge {
     width: 1.5rem;
   }
 }
+
+.listview {
+  flex-wrap: initial;
+  max-width: 100%;
+  overflow-x: auto;
+  flex-direction: row;
+  overflow-y: hidden;
+}

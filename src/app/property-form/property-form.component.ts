@@ -126,7 +126,7 @@ export class PropertyFormComponent implements OnInit {
     this.square = data["zillow"]["square"];
     this.formattedAddress = data["address_components"]["formatted_address"];
     this.generateMapData();
-    this.slides = this.chunk(this.sliderCards, 4);
+    this.slides = this.chunk(this.sliderCards, this.commonService.isMobileMode() ? 2 : 4);
     this.cards = this.slides[this.sliderCurrentIndex];
     this.loadValue();
     $(".footerFlag").addClass("d-none");

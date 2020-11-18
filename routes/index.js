@@ -444,6 +444,7 @@ router.post("/get_stillwater_pricing", async function (req, res, next) {
   try {
     stillwater_data = await stillwater_get_pricing(stillwater_param);
     response = xmlHandler.xmlToJson(null, stillwater_data, null);
+    console.log('response: ', response);
     if (response && response["ACORD"]["InsuranceSvcRs"]["HomePolicyQuoteInqRs"]["MsgStatus"]["MsgStatusCd"] !== "Rejected") {
       res.json({ data: response, result: "success" });
     }
