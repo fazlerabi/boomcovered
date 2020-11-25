@@ -10,16 +10,16 @@
     <div class="col-md-8 d-flex col-2">
       <div class="col-12 d-md-flex d-none">
         <div class="ml-auto col-md-2">
-          <span>{{ square }}</span> <i class="fas fa-pencil-alt"></i>
+          <span>{{ square }}&nbsp;sqft</span>
         </div>
         <div class="col-md-2">
-          <span>{{ builtyear }}</span> <i class="fas fa-pencil-alt"></i>
+          <span>{{ builtyear }}&nbsp;yr</span>
         </div>
         <div class="col-md-2 mr-0">
-          <span>{{ estimate }}</span> <i class="fas fa-pencil-alt"></i>
+          <span>{{ estimate }}&nbsp;est</span>
         </div>
       </div>
-      <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true"></i>
+      <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true" (click)="refresh()"></i>
     </div>
   </div>
 </div>

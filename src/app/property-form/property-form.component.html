@@ -9,11 +9,17 @@
     </div>
     <div class="col-md-8 d-flex col-2">
       <div class="col-12 d-md-flex d-none">
-        <div class="ml-auto col-md-2">{{ square }} <i class="fas fa-pencil-alt"></i></div>
-        <div class="col-md-2">{{ built_year }} <i class="fas fa-pencil-alt"></i></div>
-        <div class="col-md-2 mr-0">{{ estimate }} <i class="fas fa-pencil-alt"></i></div>
+        <div class="ml-auto col-md-2">
+          <span>{{ square }}&nbsp;sqft</span>
+        </div>
+        <div class="col-md-2">
+          <span>{{ built_year }}&nbsp;yr</span>
+        </div>
+        <div class="col-md-2 mr-0">
+          <span>{{ estimate }}&nbsp;est</span>
+        </div>
       </div>
-      <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true"></i>
+      <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true" (click)="refresh()"></i>
     </div>
   </div>
 </div>
@@ -52,7 +58,7 @@
           </div>
           <div class="row my-4">
             <!-- Default input -->
-            <div class="col-md-4 constructionDiv mb-3">
+            <div class="col-4 constructionDiv mb-3">
               <mdb-badge [white]="foundationType != 1" [default]="foundationType == 1" (click)="setKeyValue('foundationType', 1)">
                 <div class="my-4 mx-2 text-dark">
                   <img src="../../assets/images/homebasement.jpg" class="btn-icon" alt="" />
@@ -60,7 +66,7 @@
                 </div>
               </mdb-badge>
             </div>
-            <div class="col-md-4 constructionDiv mb-3">
+            <div class="col-4 constructionDiv mb-3">
               <mdb-badge [white]="foundationType != 2" [default]="foundationType == 2" (click)="setKeyValue('foundationType', 2)">
                 <div class="my-4 mx-2 text-dark">
                   <img src="../../assets/images/homecrawlspace.jpg" class="btn-icon" alt="" />
@@ -68,7 +74,7 @@
                 </div>
               </mdb-badge>
             </div>
-            <div class="col-md-4 constructionDiv mb-3">
+            <div class="col-4 constructionDiv mb-3">
               <mdb-badge [white]="foundationType != 3" [default]="foundationType == 3" (click)="setKeyValue('foundationType', 3)">
                 <div class="my-4 mx-2 text-dark">
                   <img src="../../assets/images/homeonslab.jpg" class="btn-icon" alt="" />
@@ -129,19 +135,19 @@
               <div class="row">
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>roof</label>
-                  <input mdbInput type="number" class="form-control" id="roofyearInput" [(ngModel)]="roof_year" [ngModelOptions]="{ standalone: true }" />
+                  <input mdbInput type="number" class="form-control" id="roofyearInput" (blur)="setblur($event, 'roof_year')" [(ngModel)]="roof_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>plumbing</label>
-                  <input mdbInput type="number" class="form-control" id="plumbingInput" [(ngModel)]="plumbing_year" [ngModelOptions]="{ standalone: true }" />
+                  <input mdbInput type="number" class="form-control" id="plumbingInput" (blur)="setblur($event, 'plumbing_year')" [(ngModel)]="plumbing_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>A/C</label>
-                  <input mdbInput type="number" class="form-control" id="acInput" [(ngModel)]="ac_year" [ngModelOptions]="{ standalone: true }" />
+                  <input mdbInput type="number" class="form-control" id="acInput" (blur)="setblur($event, 'ac_year')" [(ngModel)]="ac_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>Electric</label>
-                  <input mdbInput type="number" class="form-control" id="electricInput" [(ngModel)]="electric_year" [ngModelOptions]="{ standalone: true }" />
+                  <input mdbInput type="number" class="form-control" id="electricInput" (blur)="setblur($event, 'electric_year')" [(ngModel)]="electric_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
               </div>
             </div>
@@ -293,7 +299,7 @@
     </button>
     <div class="col-12 carousel-items exteriorDiv d-flex justify-content-md-between justify-content-center">
       <ng-container class="mx-2 my-3 exteriorDiv" *ngFor="let card of cards; let i = index">
-        <mdb-badge class="mx-2 mx-md-0" [white]="roof_type != i + 1" [default]="roof_type == i + 1" (click)="roof_type = i + 1">
+        <mdb-badge class="mx-2 mx-md-0" [white]="roof_type != i + 1" [default]="roof_type == i + 1" (click)="setKeyBasement('roof_type', i + 1)">
           <div class="text-dark">
             {{ card.title }}
             <img [src]="card.img" class="btn-icon mt-2" alt="" />

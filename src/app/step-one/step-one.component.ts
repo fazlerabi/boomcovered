@@ -101,6 +101,9 @@ export class StepOneComponent implements AfterViewInit {
   isMobileVideoDisplay: boolean = false;
   isMobileMode: boolean = this.commonService.isMobileMode();
   showFirst: boolean = false;
+  square = '';
+  builtyear = '';
+  estimate = '';
 
   constructor(private router: Router, public apiService: ApiService, private ngZone: NgZone, public commonService: CommonService, private mapsAPILoader: MapsAPILoader, public local: LocalStorageService) {}
 
@@ -199,9 +202,9 @@ export class StepOneComponent implements AfterViewInit {
           }
           if (res.hasOwnProperty("price")) {
             const estimate = res.price;
-            this.zillowData["square"] = res.building_size;
-            this.zillowData["built_year"] = res.year_built;
-            this.zillowData["estimate"] = estimate != NaN ? this.commonService.commafy(estimate) : 0;
+            this.square = this.zillowData["square"] = res.building_size;
+            this.builtyear = this.zillowData["built_year"] = res.year_built;
+            this.estimate = this.zillowData["estimate"] = estimate != NaN ? this.commonService.commafy(estimate) : 0;
             resolve({
               result: "success",
               code: 200,
@@ -541,6 +544,10 @@ export class StepOneComponent implements AfterViewInit {
     if (window.innerWidth < 600) {
       $("#gif_div").addClass("d-none");
     }
+  }
+
+  refresh() {
+    location.reload();
   }
 }
 

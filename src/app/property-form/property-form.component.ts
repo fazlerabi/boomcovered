@@ -456,6 +456,10 @@ export class PropertyFormComponent implements OnInit {
     }
   }
 
+  setblur(event, key) {
+    this.setKeyBasement(key, event.target.value);
+  }
+
   setKeyExteriorType(key, value) {
     this[key] = value;
     this.moveTab(true);
@@ -493,5 +497,9 @@ export class PropertyFormComponent implements OnInit {
         }
       );
     }
+  }
+
+  refresh() {
+    location.reload();
   }
 }

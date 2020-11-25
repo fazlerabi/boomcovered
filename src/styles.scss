@@ -267,7 +267,7 @@ ngb-modal-window {
       line-height: 36px;
       color: white;
       cursor: pointer;
-      font-size: 10px;
+      font-size: 16px;
       transition: all 0.25s ease;
 
       &:hover {
@@ -284,4 +284,13 @@ ngb-modal-window {
 
 mdb-modal-backdrop {
   display: none;
+}
+
+.fa-refresh {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: rotate(45deg);
+  }
 }

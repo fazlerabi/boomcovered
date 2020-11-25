@@ -48,7 +48,27 @@
         </div>
       </div>
       <div class="col-md-8 d-flex col-2">
-        <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true"></i>
+        <div class="col-12 d-md-flex d-none">
+          <div class="ml-auto col-md-2" *ngIf="square">
+            <span>{{ square }}&nbsp;sqft</span>
+          </div>
+          <div class="ml-auto col-md-2" *ngIf="totalProgress && !square">
+            <i class="fa fa-spinner fa-spin"></i>
+          </div>
+          <div class="col-md-2" *ngIf="builtyear">
+            <span>{{ builtyear }}&nbsp;yr</span>
+          </div>
+          <div class="col-md-2" *ngIf="totalProgress && !builtyear">
+            <i class="fa fa-spinner fa-spin"></i>
+          </div>
+          <div class="col-md-2 mr-0" *ngIf="estimate">
+            <span>{{ estimate }}&nbsp;est</span>
+          </div>
+          <div class="col-md-2 mr-0" *ngIf="totalProgress && !estimate">
+            <i class="fa fa-spinner fa-spin"></i>
+          </div>
+        </div>
+        <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true" (click)="refresh()"></i>
       </div>
     </div>
     <div class="row mt-5" *ngIf="!isProcessing">

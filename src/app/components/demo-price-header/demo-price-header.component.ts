@@ -57,6 +57,9 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
     let mode;
     const total_data = this.commonService.getLocalItem("total_data");
     mode = total_data["mode"];
+    this.square = total_data.zillow.square;
+    this.builtyear = total_data.zillow.built_year;
+    this.estimate = total_data.zillow.estimate;
 
     if (!mode) mode = 0;
     mode = 0;
@@ -121,5 +124,9 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
 
   exitPopup() {
     this.isShow = false;
+  }
+
+  refresh() {
+    location.reload();
   }
 }
