@@ -9,9 +9,9 @@
     </div>
     <div class="col-md-8 d-flex col-2">
       <div class="col-12 d-md-flex d-none">
-        <div class="ml-auto col-3">{{ square }} <i class="fas fa-pencil-alt"></i></div>
-        <div class="col-3">{{ built_year }} <i class="fas fa-pencil-alt"></i></div>
-        <div class="col-3 mr-0">{{ estimate }} <i class="fas fa-pencil-alt"></i></div>
+        <div class="ml-auto col-md-2">{{ square }} <i class="fas fa-pencil-alt"></i></div>
+        <div class="col-md-2">{{ built_year }} <i class="fas fa-pencil-alt"></i></div>
+        <div class="col-md-2 mr-0">{{ estimate }} <i class="fas fa-pencil-alt"></i></div>
       </div>
       <i class="fa fa-refresh ml-auto mr-0 my-auto" aria-hidden="true"></i>
     </div>
@@ -30,9 +30,6 @@
     <div class="col-1 align-self-center float-left nav-arrow d-flex justify-content-end" (click)="moveTab(false)" *ngIf="!commonService.isMobileMode() && currentTab !== 'Tab5'">
       <i class="fa fa-chevron-left mr-4"></i>
     </div>
-    <!-- <div (click)="moveTab(false)" *ngIf="commonService.isMobileMode()">
-      <img src="../../assets/images/SVG/mobileleft.png" id="mobileLeft" alt="" />
-    </div> -->
     <div [ngClass]="!commonService.isMobileMode() && currentTab == 'Tab5' ? 'col-10 text-center mt-0 mb-3' : 'col-6 bg-white ' + 'text-center mt-0 mb-3'" id="inputData">
       <div class="container">
         <div *ngIf="currentTab != 'Tab5'" class="col-8 justify-content-center offset-2 mt-5 mb-3" style="height: 25px">
@@ -56,7 +53,7 @@
           <div class="row my-4">
             <!-- Default input -->
             <div class="col-md-4 constructionDiv mb-3">
-              <mdb-badge [white]="foundationType != 1" [default]="foundationType == 1" (click)="foundationType = 1">
+              <mdb-badge [white]="foundationType != 1" [default]="foundationType == 1" (click)="setKeyValue('foundationType', 1)">
                 <div class="my-4 mx-2 text-dark">
                   <img src="../../assets/images/homebasement.jpg" class="btn-icon" alt="" />
                   Basement
@@ -64,7 +61,7 @@
               </mdb-badge>
             </div>
             <div class="col-md-4 constructionDiv mb-3">
-              <mdb-badge [white]="foundationType != 2" [default]="foundationType == 2" (click)="foundationType = 2">
+              <mdb-badge [white]="foundationType != 2" [default]="foundationType == 2" (click)="setKeyValue('foundationType', 2)">
                 <div class="my-4 mx-2 text-dark">
                   <img src="../../assets/images/homecrawlspace.jpg" class="btn-icon" alt="" />
                   Craw Space
@@ -72,7 +69,7 @@
               </mdb-badge>
             </div>
             <div class="col-md-4 constructionDiv mb-3">
-              <mdb-badge [white]="foundationType != 3" [default]="foundationType == 3" (click)="foundationType = 3">
+              <mdb-badge [white]="foundationType != 3" [default]="foundationType == 3" (click)="setKeyValue('foundationType', 3)">
                 <div class="my-4 mx-2 text-dark">
                   <img src="../../assets/images/homeonslab.jpg" class="btn-icon" alt="" />
                   Slab
@@ -88,16 +85,16 @@
               </div>
               <div class="row">
                 <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv mb-3">
-                  <mdb-badge [white]="constructionType != 1" [default]="constructionType == 1" class="text-dark" (click)="constructionType = 1"> Wood Frame </mdb-badge>
+                  <mdb-badge [white]="constructionType != 1" [default]="constructionType == 1" class="text-dark" (click)="setKeyValue('constructionType', 1)"> Wood Frame </mdb-badge>
                 </div>
                 <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv mb-3">
-                  <mdb-badge [white]="constructionType != 2" [default]="constructionType == 2" class="text-dark" (click)="constructionType = 2"> Steel Frame </mdb-badge>
+                  <mdb-badge [white]="constructionType != 2" [default]="constructionType == 2" class="text-dark" (click)="setKeyValue('constructionType', 2)"> Steel Frame </mdb-badge>
                 </div>
                 <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv mb-3">
-                  <mdb-badge [white]="constructionType != 3" [default]="constructionType == 3" class="text-dark" (click)="constructionType = 3"> Masonry / Brick </mdb-badge>
+                  <mdb-badge [white]="constructionType != 3" [default]="constructionType == 3" class="text-dark" (click)="setKeyValue('constructionType', 3)"> Masonry / Brick </mdb-badge>
                 </div>
                 <div class="col-md-3 col-sm-6 col-6 margin10 constructionDiv mb-3">
-                  <mdb-badge [white]="constructionType != 4" [default]="constructionType == 4" class="text-dark" (click)="constructionType = 4"> Concrete </mdb-badge>
+                  <mdb-badge [white]="constructionType != 4" [default]="constructionType == 4" class="text-dark" (click)="setKeyValue('constructionType', 4)"> Concrete </mdb-badge>
                 </div>
               </div>
             </div>
@@ -115,16 +112,10 @@
               </div>
               <div class="d-flex">
                 <div class="margin10 mr-2 ml-md-2 ml-auto basementDiv">
-                  <mdb-badge [white]="isBasement != 1" [default]="isBasement == 1" class="text-dark" (click)="isBasement = 1">
-                    <!-- <img src="../../assets/images/icons/woodframe.svg" class="btn-icon" alt=""> -->
-                    Yes
-                  </mdb-badge>
+                  <mdb-badge [white]="isBasement != 1" [default]="isBasement == 1" class="text-dark" (click)="setKeyBasement('isBasement', 1)"> Yes </mdb-badge>
                 </div>
                 <div class="margin10 ml-2 mr-md-2 mr-auto basementDiv">
-                  <mdb-badge [white]="isBasement != 2" [default]="isBasement == 2" class="text-dark" (click)="isBasement = 2">
-                    <!-- <img src="../../assets/images/icons/building.svg" class="btn-icon" alt=""> -->
-                    No
-                  </mdb-badge>
+                  <mdb-badge [white]="isBasement != 2" [default]="isBasement == 2" class="text-dark" (click)="setKeyBasement('isBasement', 2)"> No </mdb-badge>
                 </div>
               </div>
             </div>
@@ -138,22 +129,18 @@
               <div class="row">
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>roof</label>
-                  <!-- <input type="text" class="form-control" placeholder="roof" id="inputroof"> -->
                   <input mdbInput type="number" class="form-control" id="roofyearInput" [(ngModel)]="roof_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>plumbing</label>
-                  <!-- <input type="text" class="form-control" placeholder="plumbing" id="inputplumbing"> -->
                   <input mdbInput type="number" class="form-control" id="plumbingInput" [(ngModel)]="plumbing_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>A/C</label>
-                  <!-- <input type="text" class="form-control" placeholder="a/c" id="inputac"> -->
                   <input mdbInput type="number" class="form-control" id="acInput" [(ngModel)]="ac_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
                 <div class="col-md-3 col-xs-6 margin10 constructionDiv tab2_form">
                   <label>Electric</label>
-                  <!-- <input type="text" class="form-control" placeholder="electrical" id="inputelectric"> -->
                   <input mdbInput type="number" class="form-control" id="electricInput" [(ngModel)]="electric_year" [ngModelOptions]="{ standalone: true }" />
                 </div>
               </div>
@@ -173,7 +160,7 @@
             <div class="form-group col-md-12">
               <div class="row d-flex justify-content-center">
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 1" [default]="exterior_type == 1" (click)="exterior_type = 1">
+                  <mdb-badge [white]="exterior_type != 1" [default]="exterior_type == 1" (click)="setKeyExteriorType('exterior_type', 1)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Aluminum Siding</span>
                       <img src="../../assets/images/exteriors/aluminum%20siding.png" class="btn-icon mt-2" alt="" />
@@ -181,7 +168,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 2" [default]="exterior_type == 2" (click)="exterior_type = 2">
+                  <mdb-badge [white]="exterior_type != 2" [default]="exterior_type == 2" (click)="setKeyExteriorType('exterior_type', 2)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Brick Veneer</span>
                       <img src="../../assets/images/exteriors/brick-veneer.png" class="btn-icon mt-2" alt="" />
@@ -189,7 +176,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 3" [default]="exterior_type == 3" (click)="exterior_type = 3">
+                  <mdb-badge [white]="exterior_type != 3" [default]="exterior_type == 3" (click)="setKeyExteriorType('exterior_type', 3)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Brick</span>
                       <img src="../../assets/images/exteriors/brick.png" class="btn-icon mt-2" alt="" />
@@ -197,7 +184,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-2 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 4" [default]="exterior_type == 4" (click)="exterior_type = 4">
+                  <mdb-badge [white]="exterior_type != 4" [default]="exterior_type == 4" (click)="setKeyExteriorType('exterior_type', 4)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Concrete</span>
                       <img src="../../assets/images/exteriors/concrete.png" class="btn-icon mt-2" alt="" />
@@ -205,7 +192,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 5" [default]="exterior_type == 5" (click)="exterior_type = 5">
+                  <mdb-badge [white]="exterior_type != 5" [default]="exterior_type == 5" (click)="setKeyExteriorType('exterior_type', 5)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Hardiplank</span>
                       <img src="../../assets/images/exteriors/hardiplank.png" class="btn-icon mt-2" alt="" />
@@ -213,7 +200,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 6" [default]="foundationType == 6" (click)="foundationType = 6">
+                  <mdb-badge [white]="exterior_type != 6" [default]="exterior_type == 6" (click)="setKeyExteriorType('exterior_type', 6)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Stone Veneer</span>
                       <img src="../../assets/images/exteriors/stone%20veneer.png" class="btn-icon mt-2" alt="" />
@@ -221,7 +208,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 7" [default]="exterior_type == 7" (click)="exterior_type = 7">
+                  <mdb-badge [white]="exterior_type != 7" [default]="exterior_type == 7" (click)="setKeyExteriorType('exterior_type', 7)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Stone</span>
                       <img src="../../assets/images/exteriors/stone.png" class="btn-icon mt-2" alt="" />
@@ -229,7 +216,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 8" [default]="exterior_type == 8" (click)="exterior_type = 8">
+                  <mdb-badge [white]="exterior_type != 8" [default]="exterior_type == 8" (click)="setKeyExteriorType('exterior_type', 8)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Stucco Siding</span>
                       <img src="../../assets/images/exteriors/stucco%20siding.png" class="btn-icon mt-2" alt="" />
@@ -237,7 +224,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 9" [default]="exterior_type == 9" (click)="exterior_type = 9">
+                  <mdb-badge [white]="exterior_type != 9" [default]="exterior_type == 9" (click)="setKeyExteriorType('exterior_type', 9)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Vinyl Siding</span>
                       <img src="../../assets/images/exteriors/vinyl%20siding.png" class="btn-icon mt-2" alt="" />
@@ -245,7 +232,7 @@
                   </mdb-badge>
                 </div>
                 <div class="mx-1 my-3 exteriorDiv">
-                  <mdb-badge [white]="exterior_type != 10" [default]="exterior_type == 10" (click)="exterior_type = 10">
+                  <mdb-badge [white]="exterior_type != 10" [default]="exterior_type == 10" (click)="setKeyExteriorType('exterior_type', 10)">
                     <div class="mt-5 mb-5 text-dark badge-card">
                       <span>Wood Siding</span>
                       <img src="../../assets/images/exteriors/wood%20siding.png" class="btn-icon mt-2" alt="" />
@@ -297,9 +284,6 @@
     <div class="col-1 align-self-center float-right nav-arrow" (click)="moveTab(true)" *ngIf="!commonService.isMobileMode() && currentTab !== 'Tab5'">
       <i class="fa fa-chevron-right ml-4"></i>
     </div>
-    <!-- <div (click)="moveTab(true)" *ngIf="commonService.isMobileMode()">
-      <img src="../../assets/images/SVG/mobileright.png" id="mobileRight" alt="" />
-    </div> -->
   </div>
 </div>
 <ng-template #carousel>
@@ -320,7 +304,5 @@
     <button class="control next" (click)="slide(false)">
       <span class="arrow right"></span>
     </button>
-    <!-- <div class="carousel-buttons"> -->
-    <!-- controls -->
   </div>
 </ng-template>

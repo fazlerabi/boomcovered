@@ -389,9 +389,7 @@ export class PropertyFormComponent implements OnInit {
   validateUserForm() {
     let formData = {
       emailInput: new FormControl(this.email, [Validators.required]),
-      // Validators.pattern(
-      // /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]),
-      phoneInput: new FormControl(this.phone, [Validators.required]), // Validators.pattern(/^(\()?\d{3}(\))?(|\s)?\d{3}(|\s)\d{4}$/)]),
+      phoneInput: new FormControl(this.phone, [Validators.required]),
       firstnameInput: new FormControl(this.personData[0].first_name, [Validators.required]),
       lastnameInput: new FormControl(this.personData[0].last_name, [Validators.required]),
       dobInput: new FormControl(this.personData[0].dob, [Validators.required]),
@@ -435,7 +433,6 @@ export class PropertyFormComponent implements OnInit {
     total_data["roof_type"] = 1;
     total_data["roof_status"] = "peaked";
     await this.commonService.setLocalItem("total_data", total_data);
-    // this.router.navigate(['/step6']);
   }
 
   async calcPriceRange(total_data) {
@@ -444,17 +441,34 @@ export class PropertyFormComponent implements OnInit {
     this.highPrice = commonPricing["highPrice"];
   }
 
+  setKeyValue(key, value) {
+    this[key] = value;
+    if (this.foundationType && this.constructionType && this.built_year && this.square) {
+      this.moveTab(true);
+    } 
+  }
+
+  setKeyBasement(key, value) {
+    this[key] = value;
+
+    if (this.roof_type && this.roof_year && this.plumbing_year && this.ac_year && this.electric_year && this.isBasement) {
+      this.moveTab(true);
+    }
+  }
+
+  setKeyExteriorType(key, value) {
+    this[key] = value;
+    this.moveTab(true);
+  }
+
   sendMail() {
     if (this.validateAllInputs(false)) {
       var total_data = this.commonService.getLocalItem("total_data");
       var mailBody = {
         address: total_data.address_components.formatted_address,
-        // start_time: total_data.address_components.started_time,
         built_year: total_data.property.built_year,
-        // Square_footage: total_data.property.square,
         foundation: total_data.property.foundationType,
         construction_type: total_data.property.constructionType,
-        // Basement_finished: total_data.upgrade.basement_finished,
         roof_year: total_data.upgrade.roof_year,
         plumbing_year: total_data.upgrade.plumbing_year,
         ac_year: total_data.upgrade.ac_year,
@@ -472,11 +486,9 @@ export class PropertyFormComponent implements OnInit {
       };
       this.apiService.sendMail(mailBody).subscribe(
         (res) => {
-          alert(res.msg);
           this.moveTab(true);
         },
         (err) => {
-          alert("error");
           console.log(err);
         }
       );
