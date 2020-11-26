@@ -500,6 +500,6 @@ export class PropertyFormComponent implements OnInit {
   }
 
   refresh() {
-    location.reload();
+    location.href = "/";
   }
 }

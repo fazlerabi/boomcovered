@@ -110,3 +110,11 @@ mdb-badge {
   flex-direction: row;
   overflow-y: hidden;
 }
+
+app-price-widget {
+  background: #fcfcfc;
+
+  @include mq($until: tablet) {
+    font-size: 70%;
+  }
+}

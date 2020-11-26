@@ -57,13 +57,13 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
   chatType: number;
   userData: object = {};
   insuranceImgs: object = [
-    '../../assets/images/SVG/nationwide-icon.svg',
+    '../../assets/images/SVG/nationwide-icon.png',
     '../../assets/images/metlife-tag.png',
-    '../../assets/images/SVG/travelers-icon.svg',
-    '../../assets/images/SVG/universal-icon.svg',
-    '../../assets/images/plymouth_logo260x50.png',
-    '../../assets/images/companies/liberty-mutual-transparent2.png',
-    '../../assets/images/SVG/progressive-icon.svg',
+    '../../assets/images/SVG/travelers-icon.png',
+    '../../assets/images/SVG/universal-icon.png',
+    '../../assets/images/SVG/plymouth-rock-icon.png',
+    '../../assets/images/SVG/liberty-icon.png',
+    '../../assets/images/SVG/progressive-icon.png',
     '../../assets/images/SVG/hippo-icon.svg',
     '../../assets/images/SVG/still-water.icon'
   ];

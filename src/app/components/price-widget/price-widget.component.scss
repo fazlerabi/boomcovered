@@ -52,16 +52,27 @@
     border-radius: 30px;
     border: 1px solid $gray1;
     cursor: pointer;
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      background: $gray;
+      color: $white;
+      box-shadow: 1px 2px 20px 2px lightgray;
+
+      i {
+        color: $white;
+      }
+    }
 
     i {
       font-size: 30px;
       color: $gray;
+      transition: all 0.3s ease-in;
     }
   }
 
   .dwelling-coverage {
-    display: inline-flex;
-    align-items: flex-end;
+    text-align: center;
   }
 }
 
@@ -95,12 +106,18 @@
   }
 }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 768px) {
   .modal-btns {
     .price-num-container {
       h3 {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
+    }
+  }
+
+  .img-wrapper {
+    h1 {
+      font-size: 1.5rem;
     }
   }
 }

@@ -127,6 +127,6 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   }
 
   refresh() {
-    location.reload();
+    location.href = "/";
   }
 }

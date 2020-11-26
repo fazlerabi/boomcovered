@@ -547,7 +547,7 @@ export class StepOneComponent implements AfterViewInit {
   }
 
   refresh() {
-    location.reload();
+    location.href = "/";
   }
 }
 
