@@ -25,6 +25,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   square = '';
   builtyear = '';
   estimate = '';
+  flood_zone = '';
 
   ngOnInit() {
     $(document).ready(function () {
@@ -108,6 +109,12 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
     this.square = totalData.zillow.square;
     this.builtyear = totalData.zillow.built_year;
     this.estimate = totalData.zillow.estimate;
+    this.flood_zone = '';
+    try {
+      this.flood_zone = totalData.flood.data.zone
+    } catch (e) {
+      this.flood_zone = '';
+    }
   }
 
   async goToThreeStep() {
