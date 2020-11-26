@@ -156,7 +156,7 @@
   max-height: 180px;
 
   @include mq($until: tablet) {
-    max-height: 130px;
+    max-height: 150px;
   }
 }
 
