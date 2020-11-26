@@ -76,8 +76,8 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
   filteredInsurances: Array<ModalData> = [];
   filterConditions: any;
   priceLoaderCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
-  gridpriceWidgetCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn';
-  listpriceWidgetCommonClass = 'col-md-4 my-2 form-row animated bounceIn';
+  gridpriceWidgetCommonClass = 'col-md-4 col-6 mt-2 mb-2 form-row animated bounceIn mr-4';
+  listpriceWidgetCommonClass = 'col-md-4 my-2 form-row animated bounceIn mr-4';
   viewmode: string;
   value_sort_up: boolean;
 

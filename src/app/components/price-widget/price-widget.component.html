@@ -28,12 +28,12 @@
 
       <div class="d-flex font-weight-bold">
         <div class="mt-2 mx-3 text-center d-flex flex-column mx-auto">
-          <div class="text-black font-weight-bold dwelling-coverage mb-2">{{ dwelling | number: "1.0-0" }} dwelling coverage</div>
-          <div>1k Deductible</div>
-          <div>500k Liability</div>
-          <div>228k Contents</div>
-          <div class="mb-5">+ more coverages</div>
-          <div class="d-flex buy-now mx-auto px-3 py-2 mb-4" (click)="openModal()"><i class="fas fa-shopping-cart"></i> <span class="ml-3 h4 mb-0">buy</span></div>
+          <div class="text-black font-weight-bold dwelling-coverage mb-2 desc">{{ dwelling | number: "1.0-0" }} dwelling coverage</div>
+          <div class="desc">1k Deductible</div>
+          <div class="desc">500k Liability</div>
+          <div class="desc">228k Contents</div>
+          <div class="mb-5 desc">+ more coverages</div>
+          <div class="d-flex buy-now mx-auto pl-3 pr-4 py-2 mb-4" (click)="openModal()"><img src="../../../assets/images/SVG/shopping-cart.svg" /> <span class="ml-3 h4 mb-0">buy</span></div>
         </div>
       </div>
     </div>

@@ -21,6 +21,10 @@
       width: 140px;
       margin-bottom: 16px;
     }
+
+    h1 {
+      font-size: 66px;
+    }
   }
   .icon-container {
     display: flex;
@@ -54,8 +58,6 @@
     transition: all 0.3s ease-in;
 
     &:hover {
-      background: $gray;
-      color: $white;
       box-shadow: 1px 2px 20px 2px lightgray;
 
       i {
@@ -63,10 +65,8 @@
       }
     }
 
-    i {
-      font-size: 30px;
-      color: $gray;
-      transition: all 0.3s ease-in;
+    img {
+      width: 28px;
     }
   }
 
@@ -150,4 +150,20 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.card-horizontal > .img-wrapper {
+  max-height: 180px;
+
+  @include mq($until: tablet) {
+    max-height: 130px;
+  }
+}
+
+div {
+  background: #fcfcfc;
+}
+
+.desc {
+  font-size: 14px;
 }
