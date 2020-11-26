@@ -444,6 +444,7 @@ export class StepOneComponent implements AfterViewInit {
       (res) => {
         const total_data = this.local.get("total_data");
         total_data["flood"] = res;
+        total_data["premium_data"] = res.data.premium;
         this.local.set("total_data", total_data);
       },
       (err) => {
