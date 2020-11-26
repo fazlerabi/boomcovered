@@ -203,7 +203,6 @@ export class CommonService {
           return Math.max(a, b);
         });
     } catch (e) {}
-    medium_price = total_data["premium_data"];
     this.setLocalItem(
       "apiData",
       JSON.stringify({
