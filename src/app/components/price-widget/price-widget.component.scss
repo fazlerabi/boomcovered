@@ -55,6 +55,7 @@
     border-radius: 30px;
     border: 1px solid $gray1;
     cursor: pointer;
+    max-height: 3rem;
     transition: all 0.3s ease-in;
 
     &:hover {
