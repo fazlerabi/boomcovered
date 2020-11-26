@@ -64,7 +64,7 @@ export class StepSixComponent implements OnInit, AfterViewInit, OnDestroy {
     '../../assets/images/SVG/plymouth-rock-icon.png',
     '../../assets/images/SVG/liberty-icon.png',
     '../../assets/images/SVG/progressive-icon.png',
-    '../../assets/images/SVG/hippo-icon.svg',
+    '../../assets/images/companies/hippo.png',
     '../../assets/images/SVG/still-water.icon'
   ];
 
