@@ -88,7 +88,7 @@
     <HomeLineBusiness>
       <LOBCd>HOME</LOBCd>
       <Dwell LocationRef="LOC1" id="DWE1">
-        <PolicyTypeCd>{% if mode=='1' %}06{% endif %}{% if mode=='0' %}03{% endif %}</PolicyTypeCd>
+        <PolicyTypeCd>06</PolicyTypeCd>
         <PurchaseDt>{{purchaseDt}}</PurchaseDt>
         <Construction>
           <ConstructionCd>{{construction_type}}</ConstructionCd>
@@ -109,7 +109,7 @@
         <!--</BldgImprovements>-->
         <DwellOccupancy>
           <YearOccupancy>{{yearOccupancy}}</YearOccupancy>
-          <ResidenceTypeCd>{% if mode=='1' %}CD{% endif %}{% if mode=='0' %}DW{% endif %}</ResidenceTypeCd>
+          <ResidenceTypeCd>CD</ResidenceTypeCd>
           <DwellUseCd>1</DwellUseCd>
           <OccupancyTypeCd>OWNER</OccupancyTypeCd>
           <com.stillwater_IsCorporationOwned>YES</com.stillwater_IsCorporationOwned>
@@ -168,11 +168,9 @@
         </DwellInspectionValuation>
         <Coverage>
           <CoverageCd>DWELL</CoverageCd>
-          {% if mode=='1' %}
           <Limit>
             <FormatInteger>{{dwell_coverage}}</FormatInteger>
           </Limit>
-          {% endif %}
           <Limit>
             <FormatCurrencyAmt>
               <Amt>386000</Amt>
@@ -189,7 +187,6 @@
             <FormatInteger>10000</FormatInteger>
           </Limit>
         </Coverage>
-        {% if mode=='1' %}
         <Coverage>
           <CoverageCd>PP</CoverageCd>
           <Limit>
@@ -206,7 +203,6 @@
             <FormatInteger>10000</FormatInteger>
           </Limit>
         </Coverage>
-        {% endif %}
         <Coverage>
           <CoverageCd>MEDPM</CoverageCd>
           <Limit>

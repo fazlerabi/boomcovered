@@ -102,7 +102,7 @@ export class DemoPriceInfoComponent implements OnInit {
   }
 
   getStillwaterPrice() {
-    const data = this.commonService.getLocalItem("total_data").demo_condo_data.stillwater;
+    const data = this.apiResultPriceData.stillwater;
     try {
       let pricing: number = data["ACORD"]["InsuranceSvcRs"]["HomePolicyQuoteInqRs"]["PolicySummaryInfo"]["FullTermAmt"]["Amt"];
       const uniqueId = data.ACORD.InsuranceSvcRs.HomePolicyQuoteInqRs.PolicySummaryInfo.PolicyNumber;
