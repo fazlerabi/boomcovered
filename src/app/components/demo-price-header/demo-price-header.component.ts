@@ -26,6 +26,7 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
   builtyear = '';
   estimate = '';
   flood_zone = '';
+  flood_price = '';
 
   ngOnInit() {
     $(document).ready(function () {
@@ -104,17 +105,19 @@ export class DemoPriceHeaderComponent implements OnInit, OnDestroy, AfterViewIni
 
   ngAfterViewInit(): void {
     const totalData = this.commonService.getLocalItem("total_data");
-    console.log('total: ', totalData);
     this.formattedAddress = totalData.address_components.formatted_address;
     this.square = totalData.zillow.square;
     this.builtyear = totalData.zillow.built_year;
     this.estimate = totalData.zillow.estimate;
     this.flood_zone = '';
+
     try {
       this.flood_zone = totalData.flood.data.zone
     } catch (e) {
       this.flood_zone = '';
     }
+
+    this.flood_price = totalData["flood"]["data"]["premium"];
   }
 
   async goToThreeStep() {

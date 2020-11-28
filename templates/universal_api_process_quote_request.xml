@@ -58,14 +58,14 @@
         <ns:CoverageD xsi:nil="true"/>
         <ns:CoverageE>300000</ns:CoverageE>
         <ns:CoverageF>3000</ns:CoverageF>
-        <ns:CurrentPolicyExpiration>2020-11-26</ns:CurrentPolicyExpiration>
+        <ns:CurrentPolicyExpiration>2020-11-28</ns:CurrentPolicyExpiration>
         <ns:CurrentlyInsured>true</ns:CurrentlyInsured>
-        <ns:DateOfPurchaseOrLease>2020-11-26</ns:DateOfPurchaseOrLease>
+        <ns:DateOfPurchaseOrLease>2020-11-28</ns:DateOfPurchaseOrLease>
         <ns:DayCare>false</ns:DayCare>
         <ns:DogTypes>
         </ns:DogTypes>
         <ns:Dogs>false</ns:Dogs>
-        <ns:EffectiveDate>2020-11-26</ns:EffectiveDate>
+        <ns:EffectiveDate>2020-11-28</ns:EffectiveDate>
         <ns:ElectricalUpdateYear>2020</ns:ElectricalUpdateYear>
         <ns:Email>demo@boomcovered.com</ns:Email>
         <ns:Felony>false</ns:Felony>
@@ -147,9 +147,9 @@
         <arr:string>?</arr:string>
       </tem:properties>
       <tem:t>
-        <ns:IP>4.30.179.100</ns:IP>
+        <ns:IP>4.30.179.102</ns:IP>
         <ns:Message></ns:Message>
-        <ns:TokenGuid>01EE1E54-D8CA-48A8-9C00-A1FA65F42F1E</ns:TokenGuid>
+        <ns:TokenGuid>4882A84F-A66C-4319-9D09-53E0CF9963B0</ns:TokenGuid>
         <ns:Username>pinnacle</ns:Username>
         <ns:Version>1.0</ns:Version>
       </tem:t>

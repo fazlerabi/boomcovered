@@ -490,14 +490,14 @@ export class StepOneComponent implements AfterViewInit {
       this.local.set("total_data", total_data);
     });
 
-    this.apiService.getStillwaterData(demoRequestParams).subscribe((stillwater) => {
-      console.log("stillwater homeowner", stillwater);
-      stillwater.result === "success" ? (this.stillwater = stillwater.data) : (this.stillwater = {});
-      total_data = this.local.get("total_data");
-      Object.assign(demo_homeowner_data, { stillwater: this.stillwater });
-      Object.assign(total_data, { demo_homeowner_data });
-      this.local.set("total_data", total_data);
-    });
+    // this.apiService.getStillwaterData(demoRequestParams).subscribe((stillwater) => {
+    //   console.log("stillwater homeowner", stillwater);
+    //   stillwater.result === "success" ? (this.stillwater = stillwater.data) : (this.stillwater = {});
+    //   total_data = this.local.get("total_data");
+    //   Object.assign(demo_homeowner_data, { stillwater: this.stillwater });
+    //   Object.assign(total_data, { demo_homeowner_data });
+    //   this.local.set("total_data", total_data);
+    // });
   }
 
   async makeCondoRequests(demoRequestParams) {

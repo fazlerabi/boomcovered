@@ -37,32 +37,34 @@ sgMail.setApiKey(config.sendgrid);
 router.post("/get_zillow", async function (req, response, next) {
   let { address, citystatezip } = req.body;
 
-  if (address) {
-    var req = unirest("GET", config.RealtorConfig.endpoint.location_lookup);
+  try {
+    if (address) {
+      var req = unirest("GET", config.RealtorConfig.endpoint.location_lookup);
 
-    req.query({
-      input: address + "," + citystatezip,
-    });
+      req.query({
+        input: address + "," + citystatezip,
+      });
 
-    req.headers(setRapidApiHeader());
+      req.headers(setRapidApiHeader());
 
-    await req.end(async function (res) {
-      if (!res.error) {
-        // throw new Error(res.error);
-        const { mpr_id } = (res.body.autocomplete && res.body.autocomplete[0]) || null;
-        return getPropertyInfo(mpr_id)
-          .then((val) => {
-            response.send(val);
-          })
-          .catch(() => {
-            response.send(null);
-          });
-      }
-      response.send(res);
-    });
-  } else {
-    response.send(null);
-  }
+      await req.end(async function (res) {
+        if (!res.error) {
+          // throw new Error(res.error);
+          const { mpr_id } = (res.body.autocomplete && res.body.autocomplete[0]) || null;
+          return getPropertyInfo(mpr_id)
+            .then((val) => {
+              response.send(val);
+            })
+            .catch(() => {
+              response.send(null);
+            });
+        }
+        response.send(res);
+      });
+    } else {
+      response.send(null);
+    }
+  } catch (err) {}
 });
 
 function prepare_stillwater_params(params) {
@@ -443,12 +445,13 @@ router.post("/get_stillwater_pricing", async function (req, res, next) {
     stillwater_data;
   try {
     stillwater_data = await stillwater_get_pricing(stillwater_param);
+    console.log("response: ", stillwater_data);
     response = xmlHandler.xmlToJson(null, stillwater_data, null);
-    console.log('response: ', response);
-    if (response && response["ACORD"]["InsuranceSvcRs"]["HomePolicyQuoteInqRs"]["MsgStatus"]["MsgStatusCd"] !== "Rejected") {
+    if (response) {
       res.json({ data: response, result: "success" });
     }
   } catch (e) {
+    console.log(e);
     res.json({
       data: [],
       result: "error",

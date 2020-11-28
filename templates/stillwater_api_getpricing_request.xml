@@ -98,7 +98,8 @@
           <RoofingMaterial>
             <RoofMaterialCd>{{roof_type}}</RoofMaterialCd>
           </RoofingMaterial>
-          <RoofGeometryTypeCd>{{roofShapeType}}</RoofGeometryTypeCd>
+          <ElectricalPanelCd>CIRC</ElectricalPanelCd>
+          <!-- <RoofGeometryTypeCd>{{roofShapeType}}</RoofGeometryTypeCd> -->
         </Construction>
         <!--<BldgImprovements>-->
         <!--<HeatingImprovementYear>2020</HeatingImprovementYear>-->
@@ -109,8 +110,34 @@
         <DwellOccupancy>
           <YearOccupancy>{{yearOccupancy}}</YearOccupancy>
           <ResidenceTypeCd>{% if mode=='1' %}CD{% endif %}{% if mode=='0' %}DW{% endif %}</ResidenceTypeCd>
+          <DwellUseCd>1</DwellUseCd>
           <OccupancyTypeCd>OWNER</OccupancyTypeCd>
+          <com.stillwater_IsCorporationOwned>YES</com.stillwater_IsCorporationOwned>
+          <com.stillwater_CorporationOwnerName>XYZ Inc.</com.stillwater_CorporationOwnerName>
+          <com.stillwater_CorporationOwnerPhone>+1-540-555-1234</com.stillwater_CorporationOwnerPhone>
         </DwellOccupancy>
+        <BldgProtection>
+          <DistanceToFireStation>
+            <NumUnits>3</NumUnits>
+            <UnitMeasurementCd>MI</UnitMeasurementCd>
+          </DistanceToFireStation>
+          <DistanceToHydrant>
+            <NumUnits>10</NumUnits>
+            <UnitMeasurementCd>FT</UnitMeasurementCd>
+          </DistanceToHydrant>
+          <FireExtinguisherInd>1</FireExtinguisherInd>
+          <ProtectionDeviceBurglarCd>CN</ProtectionDeviceBurglarCd>
+          <ProtectionDeviceFireCd>CN</ProtectionDeviceFireCd>
+          <ProtectionDeviceSmokeCd>NO</ProtectionDeviceSmokeCd>
+          <ProtectionDeviceSprinklerCd>NO</ProtectionDeviceSprinklerCd>
+          <DoorLockCd>DEADB</DoorLockCd>
+        </BldgProtection>
+        <BldgImprovements>
+          <HeatingImprovementYear>2008</HeatingImprovementYear>
+          <PlumbingImprovementYear>2010</PlumbingImprovementYear>
+          <RoofingImprovementYear>2006</RoofingImprovementYear>
+          <WiringImprovementYear>2010</WiringImprovementYear>
+        </BldgImprovements>
         <DwellInspectionValuation>
           <NumFamilies>1</NumFamilies>
           <NumStoriesInDwellingCd>2</NumStoriesInDwellingCd>
@@ -122,10 +149,19 @@
             <NumFireplaces>1</NumFireplaces>
           </FireplaceInfo>
           <GarageInfo>
-            <GarageTypeCd>BS</GarageTypeCd>
+            <GarageTypeCd>Frame</GarageTypeCd>
             <AttachedInd>1</AttachedInd>
             <NumGarages>1</NumGarages>
           </GarageInfo>
+          <KitchenInfo>
+            <ConstructionQualityCd>Basic</ConstructionQualityCd>
+          </KitchenInfo>
+          <SubstructureInfo>
+            <GroundFloorPct>1</GroundFloorPct>
+            <FinishedBasementInfo>
+              <FinishedBasementPct>0.5</FinishedBasementPct>
+            </FinishedBasementInfo>
+          </SubstructureInfo>
           <TotalLivingArea>
             <NumUnits>{{sqft}}</NumUnits>
           </TotalLivingArea>
@@ -183,7 +219,118 @@
             <FormatInteger>500000</FormatInteger>
           </Limit>
         </Coverage>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_InspectionNotification</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_LimitedAccessLocation</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_ExistingDamage</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_WorkersOnPremises</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_ExtendedVacancy</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>GENRL24</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_ViciousDogOrBiteHistory</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_OilStorageTank</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>GENRL20</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>GENRL15</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>GENRL16</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_PoolUnfenced</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_PermanentFoundation</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>GENRL31</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>HOME24</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_IndustrialLocation</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_MultiFamily</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_RoofSlopeValid</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_RoofCondition</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_RoomingOrBoarding</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_UnusualVehicleStorage</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_ConvertedGarage</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_UnusualConst</QuestionCd>
+          <YesNoCd>NO</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_RoofLess20Year</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
+        <QuestionAnswer>
+          <QuestionCd>com.stillwater_RoadAccess</QuestionCd>
+          <YesNoCd>YES</YesNoCd>
+        </QuestionAnswer>
       </Dwell>
+      <PropertySchedule>
+        <IsSummaryInd>0</IsSummaryInd>
+        <ItemValueAmt>
+          <Amt>10000</Amt>
+        </ItemValueAmt>
+        <PropertyClassCd>144</PropertyClassCd>
+        <ItemDefinition>
+          <ItemTypeCd>ScheduledProperty</ItemTypeCd>
+          <ItemDesc>some expensive silverware</ItemDesc>
+        </ItemDefinition>
+      </PropertySchedule>
     </HomeLineBusiness>
   </HomePolicyQuoteInqRq>
 </InsuranceSvcRq>
